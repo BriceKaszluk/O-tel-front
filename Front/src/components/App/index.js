@@ -10,6 +10,7 @@ import { Route, Link } from 'react-router-dom';
 const App = () => (
   <div className="app">
     <h1>Composant : App</h1>
+
     <Nav />
     <Calendar />
   </div>
@@ -18,7 +19,9 @@ const App = () => (
 // == Export
 export default App;
 
-// TODO: pour ajouter une route
+
+
+//TODO: pour ajouter une route
 //      <Route exact path="/logement">
 //       <logement />
 //      </Route>

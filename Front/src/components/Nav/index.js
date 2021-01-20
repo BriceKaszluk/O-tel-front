@@ -1,16 +1,25 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import style from './style.scss';
+
 export default () => {
     return(
-        <div>
-            <ul>
-                <li><Link to="/">accueil</Link></li>
-                <li><Link to="#logements">logements</Link></li>
-                <li><Link to="/livre_d_or">livre d'or</Link></li>
-                <li><Link to="#contact">contact</Link></li>
-                <li><Link to="/">connexion</Link></li>
-            </ul>
+        <div id="nav" className="navbar">
+                    <Link to="/" className="navbar-item">accueil</Link>
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="navbar-link">
+                        More
+                        </a>
+                        <div class="navbar-dropdown">
+                        <Link to="/logement1" className="navbar-item">logement1</Link>
+                        <Link to="/logement2" className="navbar-item">logement2</Link>
+                        <Link to="/logement3" className="navbar-item">logement3</Link>
+                        </div>
+                    </div>
+                    <Link to="/livre_d_or" className="navbar-item">livre d'or</Link>
+                    <Link to="#contact" className="navbar-item">contact</Link>
+                    <Link to="/" className="navbar-item">connexion</Link>
         </div>
     )
 }
