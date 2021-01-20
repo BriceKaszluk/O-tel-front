@@ -7,11 +7,11 @@ export default () => {
     return(
         <div id="nav" className="navbar">
                     <Link to="/" className="navbar-item">accueil</Link>
-                    <div class="navbar-item has-dropdown is-hoverable">
-                        <a class="navbar-link">
+                    <div className="navbar-item has-dropdown is-hoverable">
+                        <a className="navbar-link">
                         More
                         </a>
-                        <div class="navbar-dropdown">
+                        <div className="navbar-dropdown">
                         <Link to="/logement1" className="navbar-item">logement1</Link>
                         <Link to="/logement2" className="navbar-item">logement2</Link>
                         <Link to="/logement3" className="navbar-item">logement3</Link>

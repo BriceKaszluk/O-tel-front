@@ -1,20 +1,27 @@
 // == Import npm
-import React from 'react';
+import React, { useState } from 'react';
 import Nav from 'src/components/Nav';
 import { Route, Link } from 'react-router-dom';
 
 // == Import
-import reactLogo from './react-logo.svg';
+import bddApiFetcher from 'src/hooks/bddApiFetcher';
+import { apiURL } from 'src/configAPI';
 import './styles.css';
 
 // == Composant
-const App = () => (
-  <div className="app">
-    <h1>Composant : App</h1>
+const App = () => {
+  
+  const roles = bddApiFetcher(apiURL.roles, {
+    init:[]
+  });
+  console.log(roles);
 
-    <Nav />
-  </div>
-);
+  return(
+    <div className="app">
+      <Nav />
+    </div>
+  )
+};
 
 // == Export
 export default App;
