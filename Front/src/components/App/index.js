@@ -1,18 +1,17 @@
 // == Import npm
 import React from 'react';
 import Nav from 'src/components/Nav';
+import Calendar from 'src/components/Calendar';
 import { Route, Link } from 'react-router-dom';
 
 // == Import
-import reactLogo from './react-logo.svg';
-import './styles.css';
 
 // == Composant
 const App = () => (
   <div className="app">
-    <img src={reactLogo} alt="react logo" />
     <h1>Composant : App</h1>
     <Nav />
+    <Calendar />
   </div>
 );
 
