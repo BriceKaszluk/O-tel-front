@@ -1,20 +1,32 @@
 // == Import npm
-import React from 'react';
+import React, { useState } from 'react';
 import Nav from 'src/components/Nav';
 import Calendar from 'src/components/Calendar';
 import { Route, Link } from 'react-router-dom';
 
 // == Import
 
-// == Composant
-const App = () => (
-  <div className="app">
-    <h1>Composant : App</h1>
+import bddApiFetcher from 'src/hooks/bddApiFetcher';
+import { apiURL } from 'src/configAPI';
+import './styles.css';
 
-    <Nav />
+
+// == Composant
+const App = () => {
+  
+  const roles = bddApiFetcher(apiURL.roles, {
+    init:[]
+  });
+  console.log(roles);
+
+  return(
+    <div className="app">
+      <Nav />
     <Calendar />
-  </div>
-);
+    </div>
+  )
+};
+
 
 // == Export
 export default App;
@@ -26,4 +38,4 @@ export default App;
 //       <logement />
 //      </Route>
 
-// TODO: enlever le composant <Nav /> qui servait à tester
+
