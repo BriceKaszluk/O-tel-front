@@ -19,8 +19,8 @@ const App = () => (
 export default App;
 
 // TODO: pour ajouter une route
-//      <Route exact path="/">
-//        <Posts />
+//      <Route exact path="/logement">
+//       <logement />
 //      </Route>
 
 // TODO: enlever le composant <Nav /> qui servait à tester
