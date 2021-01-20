@@ -9,7 +9,7 @@ import { Route, Link } from 'react-router-dom';
 // == Composant
 const App = () => (
   <div className="app">
-    <h1>Composant : App</h1>
+    <h1>O'tel</h1>
     <Nav />
     <Calendar />
   </div>
@@ -18,10 +18,9 @@ const App = () => (
 // == Export
 export default App;
 
-
-//TODO: pour ajouter une route
+// TODO: pour ajouter une route
 //      <Route exact path="/">
 //        <Posts />
 //      </Route>
 
-//TODO: enlever le composant <Nav /> qui servait à tester
+// TODO: enlever le composant <Nav /> qui servait à tester
