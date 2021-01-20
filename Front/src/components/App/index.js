@@ -9,7 +9,7 @@ import { Route, Link } from 'react-router-dom';
 // == Composant
 const App = () => (
   <div className="app">
-    <h1>O'tel</h1>
+    <h1>Composant : App</h1>
     <Nav />
     <Calendar />
   </div>
