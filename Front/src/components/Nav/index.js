@@ -7,8 +7,8 @@ export default () => {
     return(
         <div id="nav" className="navbar">
                     <Link to="/" className="navbar-item">accueil</Link>
-                    <div class="navbar-item has-dropdown is-hoverable">
-                        <a class="navbar-link">
+                    <div className="navbar-item has-dropdown is-hoverable">
+                        <a className="navbar-link">
                         More
                         </a>
                         <div class="navbar-dropdown">

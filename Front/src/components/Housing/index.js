@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import Nav from 'src/components/Nav'
+import Footer from 'src/components/Footer'
+import './styles.scss';
 
 
 export default (name, nbPlace, housingPrice, housingDescription) => {
@@ -28,7 +30,7 @@ export default (name, nbPlace, housingPrice, housingDescription) => {
           </div>
         </div>
 
-        <h1>*Composant footer*</h1>
+        <Footer />
       </div>
 
     )

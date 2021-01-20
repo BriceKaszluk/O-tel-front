@@ -1,18 +1,25 @@
 // == Import npm
 import React from 'react';
-import Nav from 'src/components/Nav';
+import Nav from 'src/components/Nav'
+import Housing from 'src/components/Housing'
 import { Route, Link } from 'react-router-dom';
 
 // == Import
-import reactLogo from './react-logo.svg';
-import './styles.css';
+import './styles.scss';
 
 // == Composant
 const App = () => (
   <div className="app">
-    <h1>Composant : App</h1>
 
-    <Nav />
+    <Route exact path="/">
+       <Nav/>
+    </Route>
+
+    <Route exact path="/logement1">
+       <Housing/>
+    </Route>
+    
+
   </div>
 );
 
