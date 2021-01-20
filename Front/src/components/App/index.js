@@ -1,16 +1,31 @@
-// == Import npm
-import React from 'react';
-import Nav from 'src/components/Nav'
+
+import React, { useState } from 'react';
+import Nav from 'src/components/Nav';
+import Calendar from 'src/components/Calendar';
 import Housing from 'src/components/Housing'
 import { Route, Link } from 'react-router-dom';
-
-// == Import
 import './styles.scss';
 
-// == Composant
-const App = () => (
-  <div className="app">
+// == Import
 
+import bddApiFetcher from 'src/hooks/bddApiFetcher';
+import { apiURL } from 'src/configAPI';
+
+
+
+
+const App = () => {
+  
+  const roles = bddApiFetcher(apiURL.roles, {
+    init:[]
+  });
+  console.log(roles);
+
+  return(
+    <div className="app">
+      
+    <Calendar />
+    
     <Route exact path="/">
        <Nav/>
     </Route>
@@ -18,13 +33,15 @@ const App = () => (
     <Route exact path="/logement1">
        <Housing/>
     </Route>
-    
+    </div>
+  )
+};
 
-  </div>
-);
+
 
 // == Export
 export default App;
+
 
 
 //TODO: pour ajouter une route
@@ -32,4 +49,4 @@ export default App;
 //       <logement />
 //      </Route>
 
-//TODO: enlever le composant <Nav /> qui servait à tester
+

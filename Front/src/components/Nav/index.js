@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -11,7 +12,7 @@ export default () => {
                         <a className="navbar-link">
                         More
                         </a>
-                        <div class="navbar-dropdown">
+                        <div className="navbar-dropdown">
                         <Link to="/logement1" className="navbar-item">logement1</Link>
                         <Link to="/logement2" className="navbar-item">logement2</Link>
                         <Link to="/logement3" className="navbar-item">logement3</Link>
@@ -29,3 +30,4 @@ export default () => {
 
 //FIXME: afficher la modale de connexion utilisateur, le lien n'est pas bon il
 //faudra le modifier
+
