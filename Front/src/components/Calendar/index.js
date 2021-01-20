@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import bulmaCalendar from 'bulma-calendar/dist/js/bulma-calendar.min.js';
-
+import "~bulma-calendar/dist/css/bulma-calendar.min.css";
 
 export default () => {
+    useEffect(() => {
     // Initialize all input of date type.
     const calendars = bulmaCalendar.attach('[type="date"]', isRange);
 
@@ -11,11 +12,12 @@ export default () => {
       // Add listener to select event
       calendar.on('select', date => {
         console.log(date);
+        });
       });
     });
 
     // To access to bulmaCalendar instance of an element
-    const element = document.querySelector('#my-element');
+    const element = document.querySelector('#cal');
     if (element) {
       // bulmaCalendar instance is available as element.bulmaCalendar
       element.bulmaCalendar.on('select', datepicker => {
@@ -23,9 +25,10 @@ export default () => {
       });
     }
 
-    return(
-        <div>
-           
-        </div>
-    )
+    return (
+      <div>
+        <input id="cal" type="date" />
+      </div>
+    );
 }
+
