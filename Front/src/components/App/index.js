@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import Nav from 'src/components/Nav';
+import Background from 'src/components/Background';
 import Calendar from 'src/components/Calendar';
 import Housing from 'src/components/Housing';
-import Background from 'src/components/Background';
+import Footer from 'src/components/Footer';
+// import Background from 'src/components/Background';
 import { Route, Link } from 'react-router-dom';
-import './styles.scss';
 
 // == Import
-import './app.scss';
+import './styles.scss';
 
 import bddApiFetcher from 'src/hooks/bddApiFetcher';
 import { apiURL } from 'src/configAPI';
@@ -20,17 +21,17 @@ const App = () => {
 
   return (
     <div className="app">
-
-      <Calendar />
       <Background />
-
       <Route exact path="/">
         <Nav />
       </Route>
 
+      <Calendar />
       <Route exact path="/logement1">
         <Housing />
       </Route>
+      <Footer />
+
     </div>
   );
 };

@@ -1,7 +1,11 @@
-import BackgroundI from '../../../public/assets/mountains.jpg';
+import React, { Component } from 'react';
 
-import './backgroundImage.scss';
+import './styles.scss';
 
-export default () => (
-  <div className="backgroundImage" style={{ backgroundImage: `url(${BackgroundI})` }} />
-);
+export default () => {
+  return(
+    <div className="bcg">
+    </div>
+  )
+  
+};
