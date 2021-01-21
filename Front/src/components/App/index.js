@@ -8,6 +8,9 @@ import Contact from 'src/components/Contact';
 import Profil from 'src/components/Profil';
 
 import { Route, Link } from 'react-router-dom';
+import Connexion from 'src/components/Connexion';
+import Registration from 'src/components/Registration';
+import './styles.scss';
 
 // == Import
 import './styles.scss';
@@ -23,6 +26,14 @@ const App = () => {
 
   return (
     <div className="app">
+
+      <Route exact path="/connexion">
+        <Connexion />
+      </Route>
+
+      <Route exact path="/inscription">
+        <Registration />
+      </Route>
 
       <Background />
       <Route exact path="/">
