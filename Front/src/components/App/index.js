@@ -8,7 +8,7 @@ import Contact from 'src/components/Contact';
 import { Route, Link } from 'react-router-dom';
 import Connexion from 'src/components/Connexion'
 import Registration from 'src/components/Registration'
-import './styles.scss';
+import Home from 'src/components/Home'
 
 
 // == Import
@@ -26,28 +26,23 @@ const App = () => {
   return (
     <div className="app">
 
-    <Route exact path = "/connexion">
-      <Connexion />
-    </Route>
+      
 
-    <Route exact path = "/inscription">
-      <Registration />
-    </Route>
-    
-      <Background />
-      <Route exact path="/">
-        <Nav />
+      
+      <Route exact path = "/connexion">
+        <Connexion />
       </Route>
-
-      <Calendar />
-    
-      <Route exact path="/">
-        <Contact />
-      </Route>
-    
+      <Route exact path = "/inscription">
+        <Registration />
+      </Route> 
       <Route exact path="/logement1">
         <Housing />
       </Route>
+      <Route exact path = "/">
+        <Home />
+      </Route>
+       
+
       <Footer />
 
     </div>
