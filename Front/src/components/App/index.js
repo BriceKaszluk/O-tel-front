@@ -4,7 +4,8 @@ import Background from 'src/components/Background';
 import Calendar from 'src/components/Calendar';
 import Housing from 'src/components/Housing';
 import Footer from 'src/components/Footer';
-// import Background from 'src/components/Background';
+import Contact from 'src/components/Contact';
+
 import { Route, Link } from 'react-router-dom';
 
 // == Import
@@ -21,12 +22,18 @@ const App = () => {
 
   return (
     <div className="app">
+
       <Background />
       <Route exact path="/">
         <Nav />
       </Route>
 
       <Calendar />
+    
+      <Route exact path="/">
+        <Contact />
+      </Route>
+    
       <Route exact path="/logement1">
         <Housing />
       </Route>
@@ -36,9 +43,10 @@ const App = () => {
   );
 };
 
+
+
 // == Export
 export default App;
-
 // TODO: pour ajouter une route
 //      <Route exact path="/logement">
 //       <logement />

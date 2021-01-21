@@ -3,4 +3,7 @@
     justify-content: space-around;
     width: 500px;
     margin: auto;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0px;
 }

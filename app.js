@@ -4,8 +4,14 @@ const express = require('express');
 // create server express
 const app = express()
 
+const router = require('./Back/app/routers'); 
+
 // add middleware for data POST
 app.use(express.urlencoded({extended: true}))
+
+app.use(express.json());
+
+app.use(router);
 
 // add middleware for sessions management 
 // app.use(session({
