@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Connexion from 'src/components/Connexion'
 
 import style from './style.scss';
 
@@ -20,9 +21,10 @@ export default () => {
                     </div>
                     <Link to="/livre_d_or" className="navbar-item">livre d'or</Link>
                     <Link to="#contact" className="navbar-item">contact</Link>
-                    <Link to="/" className="navbar-item">connexion</Link>
-        </div>
-    )
+                    <Link to="/connexion" className="navbar-item" >connexion</Link>
+                    <Link to="/inscription" className="navbar-item" >inscription</Link>
+            </div>
+           )
 }
 
 
