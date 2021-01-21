@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Connexion from 'src/components/Connexion'
 
-import style from './style.scss';
+import styles from './styles.scss';
 
 
 export default () => {
