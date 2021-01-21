@@ -1,5 +1,11 @@
 import React, { useState } from 'react';
+<<<<<<< HEAD
 import Nav from 'src/components/Nav';
+=======
+import Nav from 'src/components/Nav'
+import Footer from 'src/components/Footer'
+import './styles.scss';
+>>>>>>> 5e85ebbd9e86dffdfdd962d27c54a42b3672b5b3
 
 export default (name, nbPlace, housingPrice, housingDescription) => (
 
@@ -17,6 +23,7 @@ export default (name, nbPlace, housingPrice, housingDescription) => (
         <h2> *housingPrice* par nuit</h2>
         <p> *housingDescription* </p>
 
+        <Footer />
       </div>
       <div className="column">
         <h1> *Composant calendrier* </h1>
