@@ -4,10 +4,10 @@ import './styles.scss';
 
 const Contact = () => (
 
-  <div className="contact">
-    <span className="label">
+  <form className="content">
+    <label className="label">
       Formulaire de contact
-    </span>
+    </label>
 
     <input className="input" type="text" placeholder="Prénom" />
     <input className="input" type="text" placeholder="Nom" />
@@ -28,7 +28,7 @@ const Contact = () => (
     <button className="button is-success" type="submit">
       Envoyer le message
     </button>
-  </div>
+  </form>
 );
 
 export default Contact;

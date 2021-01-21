@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import Nav from 'src/components/Nav';
 import Background from 'src/components/Background';
 import Calendar from 'src/components/Calendar';
+import Goldenbook from 'src/components/Goldenbook';
 import Housing from 'src/components/Housing';
-import Footer from 'src/components/Footer';
 import Contact from 'src/components/Contact';
-import { Route, Link } from 'react-router-dom';
-import Connexion from 'src/components/Connexion'
-import Registration from 'src/components/Registration'
-import './styles.scss';
+import Footer from 'src/components/Footer';
 
+import { Route, Link } from 'react-router-dom';
+import Connexion from 'src/components/Connexion';
+import Registration from 'src/components/Registration';
 
 // == Import
 import './styles.scss';
@@ -26,25 +26,29 @@ const App = () => {
   return (
     <div className="app">
 
-    <Route exact path = "/connexion">
-      <Connexion />
-    </Route>
+      <Route exact path="/connexion">
+        <Connexion />
+      </Route>
 
-    <Route exact path = "/inscription">
-      <Registration />
-    </Route>
-    
+      <Route exact path="/inscription">
+        <Registration />
+      </Route>
+
       <Background />
       <Route exact path="/">
         <Nav />
       </Route>
 
       <Calendar />
-    
+
+      <Route exact path="/">
+        <Goldenbook />
+      </Route>
+
       <Route exact path="/">
         <Contact />
       </Route>
-    
+
       <Route exact path="/logement1">
         <Housing />
       </Route>
@@ -53,8 +57,6 @@ const App = () => {
     </div>
   );
 };
-
-
 
 // == Export
 export default App;
