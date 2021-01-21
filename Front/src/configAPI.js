@@ -1,8 +1,11 @@
-// here are sets the differents URL to get data from databse
+//here are sets the differents URL to get data from databse
 export const apiURL = {
-  roles: 'https://oclock-open-apis.now.sh/api/blog/posts',
-  users: '',
-  notices: '',
-  housing: '',
-  bookings: '',
+    roles: '',
+    users: '',
+    notices: '',
+    housing: '',
+    bookings: 'https://cors-anywhere.herokuapp.com/https://project-otel.herokuapp.com/reservation/reservations'
 };
+
+//TODO: connecter les urls à l'api
+//heroku pg:psql postgresql-infinite-98907 --app project-otel/users
