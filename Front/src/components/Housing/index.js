@@ -1,11 +1,7 @@
 import React, { useState } from 'react';
-<<<<<<< HEAD
 import Nav from 'src/components/Nav';
-=======
-import Nav from 'src/components/Nav'
-import Footer from 'src/components/Footer'
+import Footer from 'src/components/Footer';
 import './styles.scss';
->>>>>>> 5e85ebbd9e86dffdfdd962d27c54a42b3672b5b3
 
 export default (name, nbPlace, housingPrice, housingDescription) => (
 

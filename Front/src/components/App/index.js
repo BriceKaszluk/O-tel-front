@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Nav from 'src/components/Nav';
 import Calendar from 'src/components/Calendar';
 import Housing from 'src/components/Housing';
+import Background from 'src/components/Background';
 import { Route, Link } from 'react-router-dom';
 import './styles.scss';
 
@@ -21,6 +22,7 @@ const App = () => {
     <div className="app">
 
       <Calendar />
+      <Background />
 
       <Route exact path="/">
         <Nav />
