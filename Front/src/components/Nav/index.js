@@ -1,9 +1,9 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Connexion from 'src/components/Connexion'
 
 import style from './style.scss';
+
 
 export default () => {
     return(
@@ -25,11 +25,12 @@ export default () => {
                     <Link to="/inscription" className="navbar-item" >inscription</Link>
             </div>
            )
-}
+          }
 
 
-//FIXME: système d'ancre pour contact et peut-être logements
 
-//FIXME: afficher la modale de connexion utilisateur, le lien n'est pas bon il
-//faudra le modifier
 
+// FIXME: système d'ancre pour contact et peut-être logements
+
+// FIXME: afficher la modale de connexion utilisateur, le lien n'est pas bon il
+// faudra le modifier

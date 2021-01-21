@@ -13,7 +13,7 @@ const sequelize = new Sequelize(
             // we add a config property to activate the automatic addition of 2 fields to our models:
             // - createdAt
             // - updatedAt
-            timestamps: true
+            timestamps: false
         }
     }
 );
