@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 
 import './styles.scss';
 
-export default () => (
-  <div className="bcg" />
-);
+export default () => {
+  return(
+    <div className="bcg">
+
+      
+    </div>
+  )
+  
+};

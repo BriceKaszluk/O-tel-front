@@ -6,11 +6,11 @@ import Housing from 'src/components/Housing';
 import Footer from 'src/components/Footer';
 import Contact from 'src/components/Contact';
 import Profil from 'src/components/Profil';
-
 import { Route, Link } from 'react-router-dom';
-import Connexion from 'src/components/Connexion';
-import Registration from 'src/components/Registration';
-import './styles.scss';
+import Connexion from 'src/components/Connexion'
+import Registration from 'src/components/Registration'
+import Home from 'src/components/Home'
+
 
 // == Import
 import './styles.scss';
@@ -26,34 +26,20 @@ const App = () => {
 
   return (
     <div className="app">
-
-      <Route exact path="/connexion">
+      
+      <Route exact path = "/connexion">
         <Connexion />
       </Route>
-
-      <Route exact path="/inscription">
+      <Route exact path = "/inscription">
         <Registration />
-      </Route>
-
-      <Background />
-      <Route exact path="/">
-        <Nav />
-      </Route>
-
-      <Calendar />
-
-      <Route exact path="/">
-        <Contact />
-      </Route>
-
+      </Route> 
       <Route exact path="/logement1">
         <Housing />
       </Route>
-
-      <Route exact path="/profil">
-        <Profil />
+      <Route exact path = "/">
+        <Home />
       </Route>
-
+       
       <Footer />
 
     </div>
