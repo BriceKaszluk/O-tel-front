@@ -1,12 +1,14 @@
 import React from 'react';
 import Background from 'src/components/Background';
+import Nav from 'src/components/Nav';
 
 import './styles.scss';
 
 export default () => (
   <container>
+    <Nav />
     <div>
-      <section>
+      <section className="section">
         <div className="profil__head">
 
           <Background />
@@ -20,7 +22,7 @@ export default () => (
 
         </div>
       </section>
-      <section>p</section>
+      <section className="section">p</section>
     </div>
   </container>
 );
