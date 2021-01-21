@@ -19,7 +19,6 @@ export default (name, nbPlace, housingPrice, housingDescription) => (
         <h2> *housingPrice* par nuit</h2>
         <p> *housingDescription* </p>
 
-        <Footer />
       </div>
       <div className="column">
         <h1> *Composant calendrier* </h1>
