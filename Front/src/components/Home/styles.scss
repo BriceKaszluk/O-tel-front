@@ -1,0 +1,41 @@
+h1 {
+  z-index: 1;
+  margin-top: 5em;
+  font-size: 3em;
+  color: #EDE7D6;
+}
+h2 {
+  z-index: 1;
+  margin: 1em 2em;
+  font-size: 2em;
+  color:  #EDE7D6;
+  text-align: center;
+}
+.calendar {
+  z-index: 1;
+  margin-top: 2em;
+  width: 15em;
+  margin:auto;
+}
+
+.block {
+  margin-top: 25em;
+  width: 30em;
+  margin-left: 41em;
+  text-align: center;
+  font-size: 1.2em;
+}
+
+.home-column {
+  min-height: 30em;
+  margin-top: 5em;
+  border: 1px solid black;
+}
+
+.gold-book-column {
+  min-width: 20em;
+  min-height: 10em;
+  margin: 5em;
+  margin-bottom: 5em;
+  border: 1px solid black;
+}

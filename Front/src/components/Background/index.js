@@ -5,6 +5,8 @@ import './styles.scss';
 export default () => {
   return(
     <div className="bcg">
+
+      
     </div>
   )
   

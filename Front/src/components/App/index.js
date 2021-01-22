@@ -1,21 +1,19 @@
-import React, { useState } from 'react';
-import Nav from 'src/components/Nav';
-import Background from 'src/components/Background';
-import Calendar from 'src/components/Calendar';
-import Goldenbook from 'src/components/Goldenbook';
-import Housing from 'src/components/Housing';
-import Contact from 'src/components/Contact';
-import Footer from 'src/components/Footer';
+import React from 'react';
+import { Route } from 'react-router-dom';
 
-import { Route, Link } from 'react-router-dom';
+// components
+import Footer from 'src/components/Footer';
+import GoldenBook from 'src/components/GoldenBook';
 import Connexion from 'src/components/Connexion';
 import Registration from 'src/components/Registration';
+import Home from 'src/components/Home';
+
+import Housing from 'src/components/Housing';
 
 // == Import
-import './styles.scss';
-
 import bddApiFetcher from 'src/hooks/bddApiFetcher';
 import { apiURL } from 'src/configAPI';
+import './styles.scss';
 
 const App = () => {
   const roles = bddApiFetcher(apiURL.roles, {
@@ -29,29 +27,19 @@ const App = () => {
       <Route exact path="/connexion">
         <Connexion />
       </Route>
-
       <Route exact path="/inscription">
         <Registration />
       </Route>
-
-      <Background />
-      <Route exact path="/">
-        <Nav />
+      <Route exact path="/livre_d_or">
+        <GoldenBook />
       </Route>
-
-      <Calendar />
-
-      <Route exact path="/">
-        <Goldenbook />
-      </Route>
-
-      <Route exact path="/">
-        <Contact />
-      </Route>
-
       <Route exact path="/logement1">
         <Housing />
       </Route>
+      <Route exact path="/">
+        <Home />
+      </Route>
+
       <Footer />
 
     </div>
