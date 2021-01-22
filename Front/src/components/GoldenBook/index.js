@@ -55,7 +55,6 @@ const GoldenBook = () => (
     <button href="/reservation" className="button is-primary">
       Informations supplémentaires
     </button>
-
   </div>
 );
 
