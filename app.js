@@ -6,7 +6,7 @@ const cors = require('cors');
 // create server express
 const app = express()
 
-const router = require('./app/routers'); 
+const router = require('./Back/app/routers'); 
 
 // add middleware for data POST
 app.use(express.urlencoded({extended: true}))
