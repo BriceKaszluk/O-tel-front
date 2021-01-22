@@ -3,6 +3,7 @@ import Nav from 'src/components/Nav';
 import Background from 'src/components/Background';
 import Calendar from 'src/components/Calendar';
 import Contact from 'src/components/Contact';
+import HousingDescription from 'src/components/HousingDescription'
 import { Route } from 'react-router-dom';
 import './styles.scss';
 
@@ -27,13 +28,13 @@ export default () => (
 
     <div className="columns">
       <div className="column home-column">
-        component housing card
+        <HousingDescription />
       </div>
       <div className="column home-column">
-        component housing card
+        <HousingDescription />
       </div>
       <div className="column home-column">
-        component housing card
+        <HousingDescription />
       </div>
     </div>
 

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { Route} from 'react-router-dom';
 import Nav from 'src/components/Nav';
-import Footer from 'src/components/Footer';
+import HousingDescription from 'src/components/HousingDescription'
+import Calendar from 'src/components/Calendar'
 import './styles.scss';
 
-export default (name, nbPlace, housingPrice, housingDescription) => (
+export default () => (
 
   <div className="housing">
     <Nav />
@@ -14,13 +14,10 @@ export default (name, nbPlace, housingPrice, housingDescription) => (
     </section>
     <div className="columns">
       <div className="column">
-        <h1> *name* </h1>
-        <h2> Logement pour *nbPlace* personnes</h2>
-        <h2> *housingPrice* par nuit</h2>
-        <p> *housingDescription* </p>
+        <HousingDescription />
       </div>
       <div className="column">
-        <h1> *Composant calendrier* </h1>
+        <Calendar />
         <button className="is-primary">Réserver</button>
       </div>
     </div>
