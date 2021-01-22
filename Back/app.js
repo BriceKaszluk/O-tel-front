@@ -1,15 +1,19 @@
 require('dotenv').config();
-const express = require('express'); 
+const express = require('express');
+
+const cors = require('cors');
 
 // create server express
 const app = express()
 
-const router = require('./Back/app/routers'); 
+const router = require('./app/routers'); 
 
 // add middleware for data POST
 app.use(express.urlencoded({extended: true}))
 
 app.use(express.json());
+
+app.use(cors('*'));
 
 app.use(router);
 

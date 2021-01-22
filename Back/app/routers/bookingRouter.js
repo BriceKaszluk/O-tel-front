@@ -4,7 +4,8 @@ const bookingController = require('../controllers/bookingController');
 
 const router = express.Router(); 
 
-router.get('/reservations', bookingController.getAllBookings); 
+router.get('/', bookingController.getAllBookings); 
+router.get('/:id(\\d+)', bookingController.getOneBooking); 
 
 
 module.exports = router; 

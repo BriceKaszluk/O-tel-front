@@ -1,4 +1,5 @@
 
+
 const {Booking, Housing, Notice, Role, User} = require('../models');
 
 
@@ -21,17 +22,25 @@ module.exports = {
         }
     }, 
 
-    getOneBooking: async (request, reponse) => {
+    getOneBooking: async (request, response) => {
             const bookingId = request.params.id;
             try {
-                const booking = await Booking.findOne({})
+                const booking = await Booking.findOne({
+                  where: {id: bookingId},
+                  include: [
+                    {association: 'user'}
+                  ]
+                });
+
+                response.json({data: booking})
                 
             } catch (error) {
-                
+                console.log(error);
+                response.status(500).json({ error });
             }
     },
 
-    createBooking: async (request, reponse) => {
+    createBooking: async (request, response) => {
 
     },
 
