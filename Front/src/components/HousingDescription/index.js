@@ -7,7 +7,7 @@ export default (name, nbPlace, housingPrice, housingDescription, picture) => (
 
     
       <div className = "box">
-        <article class="media">
+        <article className="media">
           <img src='#'></img>
         </article>
         <h1> *name* </h1>
