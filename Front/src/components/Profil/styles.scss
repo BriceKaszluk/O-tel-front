@@ -1,0 +1,21 @@
+.nul {
+  display: flex;
+}
+.profil__container {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: stretch;
+}
+.profil__section {
+  width: 49%;
+  margin: .5rem;
+}
+
+.profil__section2{
+  flex-direction: column;
+  justify-content: space-between;
+}
+

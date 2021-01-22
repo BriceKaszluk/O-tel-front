@@ -15,6 +15,16 @@ function Calendar({ className }) {
       calendar.on('date:selected', (date) => {
         console.log(date);
       });
+      calendar.on('date:selected', (date) => {
+        console.log(date);
+      });
+    });
+
+    bulmaCalendar.attach('#datepickerDemoLabels', {
+      displayMode: 'inline',
+      isRange: true,
+      labelFrom: 'Check-in',
+      labelTo: 'Check-out',
     });
 
     // To access to bulmaCalendar instance of an element

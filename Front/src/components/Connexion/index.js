@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import './styles.scss'
+import './styles.scss';
 
 export default () => (
 
@@ -53,7 +53,7 @@ export default () => (
         </section>
         {/* Footer part with buttons */}
         <footer className="modal-card-foot">
-          <button className="button is-success">Connexion</button>
+          <button type="button" className="button is-success">Connexion</button>
           <Link to="/" className="button">Annuler</Link>
         </footer>
 
