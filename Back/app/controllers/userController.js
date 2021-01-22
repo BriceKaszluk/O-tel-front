@@ -62,7 +62,9 @@ module.exports = {
                         password: hashPassword
                     });
                     // we save in DB
-                    await newUser.save(); 
+                    await newUser.save();
+                    
+                   
                 }
             }
         } catch (error) {
