@@ -90,9 +90,7 @@ module.exports = {
             
                 if (!comparePassword) {
                     response.json({errors: "problème d'authentification"});
-                } else {
-                    request.session.user = checkUser
-                }
+                } 
             }
         } catch (error) {
             console.log(error);
