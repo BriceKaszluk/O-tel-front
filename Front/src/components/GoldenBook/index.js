@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import './styles.scss';
 
@@ -52,9 +53,8 @@ const GoldenBook = () => (
       <time dateTime="2021-1">Jan 2021</time>
     </div>
 
-    <button href="/reservation" className="button is-primary">
-      Informations supplémentaires
-    </button>
+    <Link to="/reservation" className="button is-warning">Voir les disponibilités</Link>
+    <Link to="/" className="button is-info">Information supplémentaire</Link>
 
   </div>
 );

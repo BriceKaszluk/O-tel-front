@@ -62,7 +62,9 @@ module.exports = {
                         password: hashPassword
                     });
                     // we save in DB
-                    await newUser.save(); 
+                    await newUser.save();
+                    
+                   
                 }
             }
         } catch (error) {
@@ -73,28 +75,32 @@ module.exports = {
 
     loginForm: async (request, response) => {
         try {
+            // we check if the user exist in DB
             const checkUser = await User.findOne({
                 where: {
                     email: request.body.email
                 }
             });
+            // if isn't exist, we launch an error
             if (!checkUser) {
                 
                 response.json({errors: "problème d'authentification"});
             
             } else {
-                
+                // we compare the password hashed in DB
                 const comparePassword = bcrypt.compareSync(request.body.password, checkUser.password);
-            
+                
+                //if the password is not the same, we launch an error
                 if (!comparePassword) {
                     response.json({errors: "problème d'authentification"});
                 } else {
-                    request.session.user = checkUser
+                    // else connection
+                    response.json({data: 'done'}); 
                 }
             }
         } catch (error) {
             console.log(error);
-            response.status(500).json({ error });
+            response.status(500).json({error});
         }
     }
 }

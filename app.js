@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express');
+// const session = require('express-session'); 
 
 const cors = require('cors');
 
@@ -19,7 +20,11 @@ app.use(router);
 
 // add middleware for sessions management 
 // app.use(session({
-
+//     secret: process.env.SECRET,
+    
+//     saveUninitialized: true,
+    
+//     resave: true
 // }));
 
 
