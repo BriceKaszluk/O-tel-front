@@ -1,11 +1,18 @@
 import React, { useState } from 'react';
-import Background from 'src/components/Background'
+import Background from 'src/components/Background';
 
+export default (name, nbPlace, housingPrice, housingDescription, picture) => (
 
-export default (name, nbPlace, housingPrice, housingDescription, picture) => (  
+  <div className="box">
+    <article className="media">
+      <img src="#" />
+    </article>
+    <h1> *name* </h1>
+    <h2> Logement pour *nbPlace* personnes</h2>
+    <h2> *housingPrice* par nuit</h2>
+    <h2> *housingDescription* </h2>
+  </div>
 
-
-    
       <div className = "box">
         <article className="media">
           <img src='#'></img>
@@ -15,8 +22,4 @@ export default (name, nbPlace, housingPrice, housingDescription, picture) => (
         <h2> *housingPrice* par nuit</h2>
         <h2> *housingDescription* </h2>
       </div>
-      
-    
-        
-      
 );

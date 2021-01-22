@@ -20,7 +20,6 @@ export default () => {
 
   const handleSubmit = ()  => {
 
-
     axios.post(`https://project-otel.herokuapp.com/connection/log`, {email, password})
 
     .then((response) => {
