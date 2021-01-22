@@ -40,11 +40,10 @@ const App = () => {
       <Route exact path="/">
         <Home />
       </Route>
-
+    
       <Route exact path="/profil">
         <Profil />
       </Route>
-
       <Footer />
 
     </div>
