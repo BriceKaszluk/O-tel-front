@@ -87,13 +87,11 @@ module.exports = {
             } else {
                 
                 const comparePassword = bcrypt.compareSync(request.body.password, checkUser.password);
-               
+            
                 if (!comparePassword) {
                     response.json({errors: "problème d'authentification"});
                 } else {
-                    request.session.user = checkUser
-
-                    response.json({data: checkUser}); 
+                    response.json({data: 'done'}); 
                 }
             }
         } catch (error) {
