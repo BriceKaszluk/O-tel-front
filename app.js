@@ -18,9 +18,13 @@ app.use(cors('*'));
 app.use(router);
 
 // add middleware for sessions management 
-// app.use(session({
-
-// }));
+app.use(session({
+    secret: process.env.SECRET,
+    
+    saveUninitialized: true,
+    
+    resave: true
+}));
 
 
 // server launch
