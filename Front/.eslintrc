@@ -5,7 +5,7 @@
     "browser": true
   },
   "rules": {
-    "brace-style": ["error", "stroustrup"],
+    "brace-style": ["error", "stroustrup"],    
     "no-param-reassign": [
       "error",
       {
@@ -24,6 +24,8 @@
     "jsx-a11y/mouse-events-have-key-events": "off",
     "jsx-a11y/click-events-have-key-events": "off",
     "jsx-a11y/no-noninteractive-element-interactions": "off",
+    "react/jsx-indent-props": "off",
+    "react/jsx-indent" : ["error", 4],
     "react/jsx-filename-extension": "off",
     "react/forbid-prop-types": "off",
     "react/no-access-state-in-setstate": "warn",
