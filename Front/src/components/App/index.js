@@ -7,6 +7,7 @@ import GoldenBook from 'src/components/GoldenBook';
 import Connexion from 'src/components/Connexion';
 import Registration from 'src/components/Registration';
 import Home from 'src/components/Home';
+import Profil from 'src/components/Profil';
 
 import Housing from 'src/components/Housing';
 
@@ -38,6 +39,10 @@ const App = () => {
       </Route>
       <Route exact path="/">
         <Home />
+      </Route>
+
+      <Route exact path="/profil">
+        <Profil />
       </Route>
 
       <Footer />
