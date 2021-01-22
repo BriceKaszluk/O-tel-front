@@ -39,7 +39,6 @@ const App = () => {
       <Route exact path="/">
         <Home />
       </Route>
-
       <Footer />
 
     </div>
