@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import './styles.scss';
 
@@ -17,9 +18,9 @@ const CustomerReviews = () => (
       </p>
     </div>
     <time dateTime="2021-1">Jan 2021</time>
-    <button className="button is primary">
-      Afficher Plus
-    </button>
+
+    <Link to="/livre_d_or" className="button is-primary">Afficher Plus</Link>
+
   </div>
 );
 
