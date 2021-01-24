@@ -8,6 +8,7 @@ module.exports = {
     
     signUpForm: async (request, response) => {
         try {
+            console.log('registration received');
             const errors = []
             //we check if first_name is not empty
             if (!request.body.first_name || request.body.first_name.length === 0) {
@@ -63,6 +64,8 @@ module.exports = {
                     });
                     // we save in DB
                     await newUser.save();
+                    console.log(newUser, 'user saved');
+
                     
                    
                 }

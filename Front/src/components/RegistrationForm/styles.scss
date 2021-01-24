@@ -1,0 +1,40 @@
+.icons-button, .modal-card-head, h1 {
+  text-align: center;
+}
+
+.modal-background {
+  background-image: url('src/assets/images/mountains.jpg');
+  position: absolute;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+}
+
+
+.modal-card {
+  overflow: auto;
+}
+
+
+
+.social {
+  min-width: 8em;
+}
+
+h1 {
+  font-weight: bold;
+}
+
+.terms_and_conditions{
+  color: blue;
+}
+
+.terms_and_conditions:hover{
+  color: red;
+}
+
+.invalid-feedback{
+  color: red;
+  font-size: 0.8rem;
+}

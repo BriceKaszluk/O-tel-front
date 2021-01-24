@@ -5,7 +5,8 @@ import { Route } from 'react-router-dom';
 import Footer from 'src/components/Footer';
 import GoldenBook from 'src/components/GoldenBook';
 import Connexion from 'src/components/Connexion';
-import Registration from 'src/components/Registration';
+import RegistrationForm from 'src/components/RegistrationForm';
+//import Registration from 'src/components/registration';
 import Home from 'src/components/Home';
 import Profil from 'src/components/Profil';
 
@@ -17,10 +18,6 @@ import { apiURL } from 'src/configAPI';
 import './styles.scss';
 
 const App = () => {
-  const roles = bddApiFetcher(apiURL.roles, {
-    init: [],
-  });
-  console.log(roles);
 
   return (
     <div className="app">
@@ -29,7 +26,7 @@ const App = () => {
         <Connexion />
       </Route>
       <Route exact path="/inscription">
-        <Registration />
+        <RegistrationForm />
       </Route>
       <Route exact path="/livre_d_or">
         <GoldenBook />
@@ -56,3 +53,8 @@ export default App;
 //      <Route exact path="/logement">
 //       <logement />
 //      </Route>
+
+//const roles = bddApiFetcher(apiURL.roles, {
+//  init: [],
+//});
+//console.log(roles);

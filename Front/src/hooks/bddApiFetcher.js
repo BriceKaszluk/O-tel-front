@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import Axios from 'axios';
-import { axiosConfig } from 'src/axiosConfig';
 
 export default (url, {init = null} ={}) => {
     //initialising test
@@ -10,7 +9,7 @@ export default (url, {init = null} ={}) => {
 
     //request
     const loadData = (event) => {
-        Axios.get(url, axiosConfig)
+        Axios.get(url)
         .then((response) => {
             if (response.status != 200) return console.error('datas failed to load, please contact SAV');
             setData(response.data);
