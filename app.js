@@ -2,7 +2,6 @@ require('dotenv').config();
 
 const express = require('express');
 
-//const jwt = require('jsonwebtoken'); 
 
 const cors = require('cors');
 
@@ -22,12 +21,8 @@ app.use(cors({
     allowedHeaders: 'Content-Type'
 }));
 
-// use JWT auth to secure the api
-// app.use(jwt());
 
 app.use(router);
-
-
 
 
 // server launch
