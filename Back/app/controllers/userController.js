@@ -65,7 +65,7 @@ module.exports = {
                         password: hashPassword
                     });
                     
-                    // what we want to store in the token
+                    // 1st what we want to store in the token
                     // 2nd argument is the secret string to put in .env
                     // 3rd argument options object
                     const token = jsw.sign({
@@ -74,10 +74,11 @@ module.exports = {
                         phone_number: newUser.phone_number,
                         email: newUser.email
                     }, 'test', { expiresIn: "1h" })
-                    
+                    console.log('token: ', token)
                     // we save in DB
                     await newUser.save();
                     console.log(newUser, 'user saved');
+                    
 
                     response.status(200).json({data: newUser, token}); 
 
