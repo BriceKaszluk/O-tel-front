@@ -4,31 +4,68 @@ import './styles.scss';
 
 const Contact = () => (
 
-  <form className="content">
-    <label className="label">
-      Formulaire de contact
-    </label>
+  <form
+    id="contact-form"
+    method="POST"
+    action="send"
+    className="content panel"
+  >
+    <div className="content-form">
+      <label
+        className="label"
+      >
+        Formulaire de contact
+      </label>
 
-    <input className="input" type="text" placeholder="Prénom" />
-    <input className="input" type="text" placeholder="Nom" />
-    <input className="input" type="tel" placeholder="Tél" />
-    <input className="input" type="email" placeholder="Email" />
+      <div className="field">
+        <input
+            placeholder="Nom/Prénom"
+            id="name"
+            name="name"
+            type="text"
+            className="input"
+        />
+        <input
+            placeholder="Email"
+            id="email"
+            type="email"
+            name="email"
+            className="input"
+        />
 
-    <div className="contact_message">
-      <span className="label">
-        Message
-      </span>
+        <input
+            placeholder="Sujet"
+            id="subject"
+            name="subject"
+            type="text"
+            className="input"
+        />
 
-      <textarea
-        className="textarea is-medium "
-        placeholder="Comment pourions nous vous aider ?"
-      />
-
+        <div className="contact_message">
+          <label
+            className="label"
+          >
+            Message
+          </label>
+          <textarea
+            placeholder="Comment pourions nous vous aider ?"
+            id="message"
+            name="message"
+            className="textarea is-medium"
+          />
+        </div>
+      </div>
+      <button
+            onClick=""
+            type="submit"
+            value="submit"
+            className="button is-primary is-rounded"
+      >
+        Envoyer le message
+      </button>
     </div>
-    <button className="button is-success" type="submit">
-      Envoyer le message
-    </button>
   </form>
 );
 
 export default Contact;
+
