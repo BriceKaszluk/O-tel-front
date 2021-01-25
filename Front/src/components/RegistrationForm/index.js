@@ -3,13 +3,13 @@ import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 import LoadingSpinner from 'src/components/LoadingSpinner';
-import { history } from 'src/services/history';
 import './styles.scss';
 
 
 import { registrationService } from 'src/services/registrationService';
 
 export default ({modalActive, closeModal}) => {
+
     return(
         <div className="modal is-active">
         <div className="modal-background" onClick={(event)=>{closeModal(!modalActive)}} />
@@ -42,12 +42,15 @@ export default ({modalActive, closeModal}) => {
                         setStatus();
                         console.log('submitting form');
                         registrationService.handleRegistration(last_name, first_name, email, phone_number, password)
-                            .then(user => {history.push('/profil', '/')},
+                            .then(user => {
+                                console.log(user);
+                                closeModal(!modalActive);
+                              },
                             error => {
                                 setSubmitting(false);
                                 setStatus(error);
                             }
-                            );
+                            )
                     }}>
                     {/*end of formik settings */}
 

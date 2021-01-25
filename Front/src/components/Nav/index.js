@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Connexion from 'src/components/Connexion';
 import RegistrationForm from 'src/components/RegistrationForm';
+import { HashLink } from 'react-router-hash-link';
 import styles from './styles.scss';
 
 
@@ -24,7 +25,7 @@ export default () => {
                     </div>
                 </div>
                 <Link to="/livre_d_or" className="navbar-item">livre d'or</Link>
-                <Link to="#contact" className="navbar-item">contact</Link>
+                <HashLink  to="/#contact" className="navbar-item">contact</HashLink>
                 <Link to="/connexion" className="navbar-item" >connexion</Link>
                 <a className="navbar-item" onClick={()=>setIsActive(!isActive)}  >inscription</a>
                 {isActive? <RegistrationForm modalActive={isActive} closeModal={setIsActive} /> : ''}

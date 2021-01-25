@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { history } from 'src/services/history';
 export const registrationService = {
 
     handleRegistration : (last_name, first_name, email, phone_number, password) => {
@@ -14,10 +13,6 @@ export const registrationService = {
         return axios(requestOptions)
     }
 };
-
-//TODO: la page /profil s'affiche dans l'url
-//peut être enlevé le modal is-active pour raffrachir
-//ou ien un eseEffect pourrait fonctionner
 
 
 

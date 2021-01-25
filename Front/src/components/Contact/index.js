@@ -4,7 +4,7 @@ import './styles.scss';
 
 const Contact = () => (
 
-  <form className="content">
+  <form id="contact" className="content">
     <label className="label">
       Formulaire de contact
     </label>
