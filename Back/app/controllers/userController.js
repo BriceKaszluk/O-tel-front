@@ -67,6 +67,8 @@ module.exports = {
                     await newUser.save();
                     console.log(newUser, 'user saved');
 
+                    response.status(200).json({data: newUser}); 
+
                     
                    
                 }
