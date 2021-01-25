@@ -1,6 +1,9 @@
-import React from 'react'
+import React from 'react';
 import { func, string } from 'prop-types';
-import styled from "styled-components"
+import styled from 'styled-components';
+
+import './styles.scss';
+
 const Button = styled.button`
   background: ${({ theme }) => theme.background};
   border: 2px solid ${({ theme }) => theme.toggleBorder};
@@ -9,17 +12,15 @@ const Button = styled.button`
   cursor: pointer;
   font-size:0.8rem;
   padding: 0.6rem;`;
-  
-const Toggle = ({theme,  toggleTheme }) => {
-    return (
-        <Button onClick={toggleTheme} >
-          Switch Theme
-        </Button>
-    );
-};
+
+const Toggle = ({ theme, toggleTheme }) => (
+  <Button className="button-toggle" onClick={toggleTheme}>
+    Changer de thème 😄
+  </Button>
+);
 Toggle.propTypes = {
-    theme: string.isRequired,
-    toggleTheme: func.isRequired,
-}
+  theme: string.isRequired,
+  toggleTheme: func.isRequired,
+};
 
 export default Toggle;
