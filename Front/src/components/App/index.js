@@ -6,7 +6,7 @@ import Footer from 'src/components/Footer';
 import GoldenBook from 'src/components/GoldenBook';
 import Connexion from 'src/components/Connexion';
 import RegistrationForm from 'src/components/RegistrationForm';
-import Darkmode from 'src/components/Darkmode';
+import Darkmode2 from 'src/components/Darkmode2';
 import Language from 'src/components//Language';
 // import Registration from 'src/components/registration';
 import Home from 'src/components/Home';
@@ -22,7 +22,7 @@ import './styles.scss';
 const App = () => (
   <div className="app">
 
-    <Darkmode />
+    <Darkmode2 />
     <Language />
     <Route exact path="/connexion">
       <Connexion />
