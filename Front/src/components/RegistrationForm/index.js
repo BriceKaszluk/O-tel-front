@@ -9,10 +9,10 @@ import './styles.scss';
 
 import { registrationService } from 'src/services/registrationService';
 
-export default () => {
+export default ({modalActive, closeModal}) => {
     return(
         <div className="modal is-active">
-        <div className="modal-background" />
+        <div className="modal-background" onClick={(event)=>{closeModal(!modalActive)}} />
             <div className="modal-content">
                 <div className="modal-card">
                 <div className="modal-card-head">
@@ -122,7 +122,7 @@ export default () => {
                                 {isSubmitting &&
                                     <LoadingSpinner />
                                 }
-                                <Link to="/" className="button">Annuler</Link>
+                                <button className="button" onClick={(event)=>{closeModal(!modalActive)}}>Annuler</button>
                             </footer>
                             {status &&
                                 <div className={'alert alert-danger'}>{status}</div>

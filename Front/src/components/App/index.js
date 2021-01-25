@@ -9,6 +9,7 @@ import RegistrationForm from 'src/components/RegistrationForm';
 //import Registration from 'src/components/registration';
 import Home from 'src/components/Home';
 import Profil from 'src/components/Profil';
+import Nav from 'src/components/Nav';
 
 import Housing from 'src/components/Housing';
 
@@ -22,11 +23,10 @@ const App = () => {
   return (
     <div className="app">
 
+      <Nav />
+
       <Route exact path="/connexion">
         <Connexion />
-      </Route>
-      <Route exact path="/inscription">
-        <RegistrationForm />
       </Route>
       <Route exact path="/livre_d_or">
         <GoldenBook />

@@ -1,5 +1,4 @@
 import React from 'react';
-import Nav from 'src/components/Nav';
 import Background from 'src/components/Background';
 import Calendar from 'src/components/Calendar';
 import Contact from 'src/components/Contact';
@@ -12,10 +11,6 @@ import './styles.scss';
 export default () => (
   <section className="hero is-fullheight">
     <Background />
-
-    <Route exact path="/">
-      <Nav />
-    </Route>
 
     <h1>Bienvenue sur le site du super gite</h1>
     <h2>Choisissez une date pour voir les logements disponibles :</h2>

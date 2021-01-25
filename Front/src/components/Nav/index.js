@@ -1,31 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Connexion from 'src/components/Connexion'
-
+import Connexion from 'src/components/Connexion';
+import RegistrationForm from 'src/components/RegistrationForm';
 import styles from './styles.scss';
 
 
 export default () => {
+
+    const [isActive, setIsActive] = useState(false);
+
     return(
         <div id="nav" className="navbar">
-                    <Link to="/" className="navbar-item">accueil</Link>
-                    <div className="navbar-item has-dropdown is-hoverable">
-                        <a className="navbar-link">
-                        More
-                        </a>
-                        <div className="navbar-dropdown">
-                        <Link to="/logement1" className="navbar-item">logement1</Link>
-                        <Link to="/logement2" className="navbar-item">logement2</Link>
-                        <Link to="/logement3" className="navbar-item">logement3</Link>
-                        </div>
+            <div className="navbar-menu">
+                <Link to="/" className="navbar-item">accueil</Link>
+                <div className="navbar-item has-dropdown is-hoverable">
+                    <div className="navbar-link">
+                    More
                     </div>
-                    <Link to="/livre_d_or" className="navbar-item">livre d'or</Link>
-                    <Link to="#contact" className="navbar-item">contact</Link>
-                    <Link to="/connexion" className="navbar-item" >connexion</Link>
-                    <Link to="/inscription" className="navbar-item" >inscription</Link>
+                    <div className="navbar-dropdown">
+                    <Link to="/logement1" className="navbar-item">logement1</Link>
+                    <Link to="/logement1" className="navbar-item">logement1</Link>
+                    <Link to="/logement1" className="navbar-item">logement1</Link>
+                    </div>
+                </div>
+                <Link to="/livre_d_or" className="navbar-item">livre d'or</Link>
+                <Link to="#contact" className="navbar-item">contact</Link>
+                <Link to="/connexion" className="navbar-item" >connexion</Link>
+                <a className="navbar-item" onClick={()=>setIsActive(!isActive)}  >inscription</a>
+                {isActive? <RegistrationForm modalActive={isActive} closeModal={setIsActive} /> : ''}
             </div>
-           )
-          }
+
+        </div>
+    )
+}
 
 
 
