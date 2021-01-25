@@ -1,6 +1,7 @@
 require('dotenv').config();
+
 const express = require('express');
-// const session = require('express-session'); 
+
 
 const cors = require('cors');
 
@@ -14,18 +15,14 @@ app.use(express.urlencoded({extended: true}))
 
 app.use(express.json());
 
-app.use(cors('*'));
+app.use(cors({
+    origin: '*',
+    methods: 'GET,POST,PATCH,DELETE,OPTIONS',
+    allowedHeaders: 'Content-Type'
+}));
+
 
 app.use(router);
-
-// add middleware for sessions management 
-// app.use(session({
-//     secret: process.env.SECRET,
-    
-//     saveUninitialized: true,
-    
-//     resave: true
-// }));
 
 
 // server launch

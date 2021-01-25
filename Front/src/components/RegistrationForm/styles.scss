@@ -25,3 +25,16 @@
 h1 {
   font-weight: bold;
 }
+
+.terms_and_conditions{
+  color: blue;
+}
+
+.terms_and_conditions:hover{
+  color: red;
+}
+
+.invalid-feedback{
+  color: red;
+  font-size: 0.8rem;
+}

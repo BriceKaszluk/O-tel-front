@@ -1,6 +1,6 @@
-BEGIN;
+-- Deploy project-otel:020-add_datas to pg
 
-TRUNCATE TABLE "role", "user", "housing", "booking", "notice" RESTART IDENTITY;
+BEGIN;
 
 INSERT INTO "role" ("id", "label") 
 OVERRIDING SYSTEM VALUE 
@@ -13,5 +13,6 @@ INSERT INTO "housing" ("description", "place_number", "price", "picture") VALUES
 INSERT INTO "booking" ("begining_date",  "ending_date", "housing_id", "user_id") VALUES ('2021-01-21', '2021-01-24', 1, 1);
 
 INSERT INTO "notice" ("comments", "rate", "housing_id", "user_id") VALUES ('Lorem ipsum dolor sit amet, consectetur adipiscing elit', 4, 1, 1);
+
 
 COMMIT;

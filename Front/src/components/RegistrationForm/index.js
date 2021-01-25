@@ -1,5 +1,4 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
@@ -7,7 +6,7 @@ import LoadingSpinner from 'src/components/LoadingSpinner';
 import './styles.scss';
 
 
-import { connexionService } from 'src/services/connexionService';
+import { registrationService } from 'src/services/registrationService';
 
 export default () => {
     return(
@@ -16,27 +15,35 @@ export default () => {
             <div className="modal-content">
                 <div className="modal-card">
                 <div className="modal-card-head">
-                    <p className="modal-card-title">Connexion</p>
+                    <p className="modal-card-title">Inscription</p>
                 </div>
                     {/* settings of formik */}
                     <Formik
                     initialValues={{
+                        last_name: '',
+                        first_name: '',
                         email: '',
+                        phone_number:'',
                         password:'',
+                        password_confirm:'',
+                        acceptTerms: false
                     }}
                     validationSchema={Yup.object().shape({
+                        last_name: Yup.string().required('veuillez entrer un nom'),
+                        first_name: Yup.string().required('veuillez entrer un prénom'),
                         email: Yup.string().required('veuillez entrer un email valide'),
-                        password: Yup.string().required('veuillez entrer un mot de passe'),
+                        phone_number: Yup.string().required('veuillez entrer un numéro de téléphone'),
+                        password: Yup.string().required('Password is required'),
+                        password_confirm: Yup.string().oneOf([Yup.ref('password'), null], 'Passwords must match'),
+                        acceptTerms: Yup.bool().oneOf([true], 'accepter les termes et conditions svp')
                     })}
-                    onSubmit={({ email, password }, { setStatus, setSubmitting }) => {
+                    onSubmit={({ last_name, first_name, email, phone_number, password, password_confirm }, { setStatus, setSubmitting }) => {
                         setStatus();
-                        
                         console.log('submitting form');
-                        connexionService.handleConnexion( email, password)
+                        registrationService.handleRegistration(last_name, first_name, email, phone_number, password, password_confirm)
                             .then(error => {
                                 setSubmitting(false);
                                 setStatus(error);
-                                
                             });
                     }}>
                     {/*end of formik settings */}
@@ -68,29 +75,50 @@ export default () => {
                                 {/* start of register form */}
                                 <h1>OU</h1>
                                 <div className="field">
-                                    
+                                    <div className="form-group field">
+                                        <label htmlFor="last_name" className="label">Nom</label>
+                                        <Field name="last_name" type="text" className={'form-control input' + (errors.first_name && touched.last_name ? ' is-invalid' : '')} />
+                                        <ErrorMessage name="last_name" component="div" className="invalid-feedback" />
+                                    </div>
+                                    <div className="form-group field">
+                                        <label htmlFor="first_name" className="label">Prénom</label>
+                                        <Field name="first_name" type="text" className={'form-control input' + (errors.first_name && touched.first_name ? ' is-invalid' : '')} />
+                                        <ErrorMessage name="first_name" component="div" className="invalid-feedback" />
+                                    </div>
                                     <div className="form-group field">
                                         <label htmlFor="email" className="label">Email</label>
                                         <Field name="email" type="email" className={'form-control input' + (errors.email && touched.email ? ' is-invalid' : '')} />
                                         <ErrorMessage name="email" component="div" className="invalid-feedback" />
                                     </div>
                                     <div className="form-group field">
+                                        <label htmlFor="phone_number" className="label">Téléphone</label>
+                                        <Field name="phone_number" type="tel" className={'form-control input' + (errors.phone_number && touched.phone_number ? ' is-invalid' : '')} />
+                                        <ErrorMessage name="phone_number" component="div" className="invalid-feedback" />
+                                    </div>
+                                    <div className="form-group field">
                                         <label htmlFor="password" className="label">Mot de passe</label>
                                         <Field name="password" type="password" className={'form-control input' + (errors.password && touched.password ? ' is-invalid' : '')} />
                                         <ErrorMessage name="password" component="div" className="invalid-feedback" />
                                     </div>
-                    
+                                    <div className="form-group field">
+                                        <label htmlFor="password_confirm" className="label">Confirmation</label>
+                                        <Field name="password_confirm" type="password" className={'form-control input' + (errors.password_confirm && touched.password_confirm ? ' is-invalid' : '')} />
+                                        <ErrorMessage name="password_confirm" component="div" className="invalid-feedback" />
+                                    </div>
+                                    <div className="form-group field">
+                                        <Field type="checkbox" name="acceptTerms" className={'form-check-input checkbox' + (errors.acceptTerms && touched.acceptTerms ? ' is-invalid' : '')} />
+                                        <span> J'accepte les</span>
+                                        <Link to="/logement2" className="terms_and_conditions">termes et conditions</Link>
+                                        <ErrorMessage name="acceptTerms" component="div" className="invalid-feedback" />
+                                    </div>
                                 </div>
                             </section>
                             
                             <footer className="form-group modal-card-foot">
-                            
                                 <button type="submit" className="button is-success" disabled={isSubmitting}>envoyer</button>
-                                
                                 {isSubmitting &&
                                     <LoadingSpinner />
                                 }
-                          
                                 <Link to="/" className="button">Annuler</Link>
                             </footer>
                             {status &&
@@ -108,3 +136,7 @@ export default () => {
 
 
 }
+
+
+
+

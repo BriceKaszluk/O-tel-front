@@ -20,7 +20,7 @@ export default () => {
                         </div>
                     </div>
                     <Link to="/livre_d_or" className="navbar-item">livre d'or</Link>
-                    <Link to="#contact" className="navbar-item">contact</Link>
+                    <Link to="#contact__form" className="navbar-item">contact</Link>
                     <Link to="/connexion" className="navbar-item" >connexion</Link>
                     <Link to="/inscription" className="navbar-item" >inscription</Link>
             </div>
