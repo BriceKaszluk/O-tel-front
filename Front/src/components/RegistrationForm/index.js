@@ -33,8 +33,8 @@ export default () => {
                         first_name: Yup.string().required('veuillez entrer un prénom'),
                         email: Yup.string().required('veuillez entrer un email valide'),
                         phone_number: Yup.string().required('veuillez entrer un numéro de téléphone'),
-                        password: Yup.string().required('veuillez entrer un mot de passe'),
-                        password_confirm: Yup.string().required('veuillez confirmer votre mot de passe'),
+                        password: Yup.string().required('Password is required'),
+                        password_confirm: Yup.string().oneOf([Yup.ref('password'), null], 'Passwords must match'),
                         acceptTerms: Yup.bool().oneOf([true], 'accepter les termes et conditions svp')
                     })}
                     onSubmit={({ last_name, first_name, email, phone_number, password, password_confirm }, { setStatus, setSubmitting }) => {
