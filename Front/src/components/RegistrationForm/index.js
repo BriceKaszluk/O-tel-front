@@ -3,6 +3,7 @@ import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 import LoadingSpinner from 'src/components/LoadingSpinner';
+import { history } from 'src/services/history';
 import './styles.scss';
 
 
@@ -33,18 +34,20 @@ export default () => {
                         first_name: Yup.string().required('veuillez entrer un prénom'),
                         email: Yup.string().required('veuillez entrer un email valide'),
                         phone_number: Yup.string().required('veuillez entrer un numéro de téléphone'),
-                        password: Yup.string().required('veuillez entrer un mot de passe'),
-                        password_confirm: Yup.string().required('veuillez confirmer votre mot de passe'),
+                        password: Yup.string().required('un mot de passe est requis'),
+                        password_confirm: Yup.string().oneOf([Yup.ref('password'), null], 'les mots de passe doivent correspondre'),
                         acceptTerms: Yup.bool().oneOf([true], 'accepter les termes et conditions svp')
                     })}
-                    onSubmit={({ last_name, first_name, email, phone_number, password, password_confirm }, { setStatus, setSubmitting }) => {
+                    onSubmit={({ last_name, first_name, email, phone_number, password }, { setStatus, setSubmitting }) => {
                         setStatus();
                         console.log('submitting form');
-                        registrationService.handleRegistration(last_name, first_name, email, phone_number, password, password_confirm)
-                            .then(error => {
+                        registrationService.handleRegistration(last_name, first_name, email, phone_number, password)
+                            .then(user => {history.push('/profil', '/')},
+                            error => {
                                 setSubmitting(false);
                                 setStatus(error);
-                            });
+                            }
+                            );
                     }}>
                     {/*end of formik settings */}
 

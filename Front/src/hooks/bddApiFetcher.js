@@ -12,7 +12,6 @@ export default (url, {init = null} ={}) => {
         Axios.get(url)
         .then((response) => {
             if (response.status != 200) return console.error('datas failed to load, please contact SAV');
-            setData(response.data);
         })
         .catch();
     };
