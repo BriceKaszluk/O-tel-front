@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt');
 const emailValidator = require('email-validator');
+const jwt = require('../utils/jwt')
 const {User} = require('../models');
 
 
@@ -19,9 +20,10 @@ module.exports = {
                 errors.push('veuillez indiquer votre nom !')
             }
             //we check if address is not empty
-            if (!request.body.address || request.body.address.length === 0) {
-                errors.push('veuillez indiquer votre adresse')
-            }
+            // if (!request.body.address || request.body.address.length === 0) {
+            //     errors.push('veuillez indiquer votre adresse')
+            // }
+
             //we check if email is valid
             if (!emailValidator.validate(request.body.email)) {
                 errors.push('email non valide !')
@@ -57,14 +59,23 @@ module.exports = {
                     const newUser = new User ({
                         first_name: request.body.first_name,
                         last_name: request.body.last_name,
-                        address: request.body.address,
+                        // address: request.body.address,
                         phone_number: request.body.phone_number,
                         email: request.body.email, 
                         password: hashPassword
                     });
+                    
+                    
+                    const token = jwt.generateTokenForUser(newUser)
+                   
+                    // const verify = jwt.verifyTokenForUser(newUser)
+                    
                     // we save in DB
                     await newUser.save();
                     console.log(newUser, 'user saved');
+                    
+
+                    response.status(200).json({data: newUser, token, verify}); 
 
                     
                    
