@@ -68,7 +68,7 @@ module.exports = {
                     // 1st what we want to store in the token
                     // 2nd argument is the secret string to put in .env
                     // 3rd argument options object
-                    const token = jsw.sign({
+                    const token = jwt.sign({
                         first_name: newUser.first_name,
                         last_name: newUser.last_name,
                         phone_number: newUser.phone_number,
