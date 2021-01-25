@@ -1,6 +1,8 @@
 require('dotenv').config();
+
 const express = require('express');
-// const session = require('express-session'); 
+
+//const jwt = require('jsonwebtoken'); 
 
 const cors = require('cors');
 
@@ -20,16 +22,12 @@ app.use(cors({
     allowedHeaders: 'Content-Type'
 }));
 
+// use JWT auth to secure the api
+// app.use(jwt());
+
 app.use(router);
 
-// add middleware for sessions management 
-// app.use(session({
-//     secret: process.env.SECRET,
-    
-//     saveUninitialized: true,
-    
-//     resave: true
-// }));
+
 
 
 // server launch
