@@ -6,8 +6,8 @@ export const registrationService = {
         console.log('in registration service');
 
         const requestOptions = {
-            method: 'GET',
-            url: 'https://api-adresse.data.gouv.fr/search/?q=8+bd+du+port',
+            method: 'POST',
+            url: 'https://project-otel.herokuapp.com/connection/signup',
             headers: { 'Content-Type': 'application/json' },
             data: JSON.stringify({last_name, first_name, email, phone_number, password, password_confirm})
         };
