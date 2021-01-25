@@ -6,6 +6,7 @@ import Footer from 'src/components/Footer';
 import GoldenBook from 'src/components/GoldenBook';
 import Connexion from 'src/components/Connexion';
 import RegistrationForm from 'src/components/RegistrationForm';
+import Darkmode from 'src/components/Darkmode';
 //import Registration from 'src/components/registration';
 import Home from 'src/components/Home';
 import Profil from 'src/components/Profil';
@@ -22,6 +23,7 @@ const App = () => {
   return (
     <div className="app">
 
+      <Darkmode />
       <Route exact path="/connexion">
         <Connexion />
       </Route>
@@ -41,6 +43,7 @@ const App = () => {
       <Route exact path="/profil">
         <Profil />
       </Route>
+
       <Footer />
 
     </div>
