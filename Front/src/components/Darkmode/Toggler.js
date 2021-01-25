@@ -13,6 +13,7 @@ const Button = styled.button`
   font-size:0.8rem;
   padding: 0.6rem;`;
 
+// eslint-disable-next-line no-unused-vars
 const Toggle = ({ theme, toggleTheme }) => (
   <Button className="button-toggle" onClick={toggleTheme}>
     Changer de thème 😄
