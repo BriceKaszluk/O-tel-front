@@ -76,7 +76,7 @@ module.exports = {
                     }, `${process.env.SECRET_TOKEN}`, { expiresIn: "1h" })
                     
                     const verifiedToken = request.body.token
-                    const verif = jwt.verify(verifiedToken, `${process.env.SECRET_TOKEN}`); 
+                    const verif = jsw.verify(verifiedToken, `${process.env.SECRET_TOKEN}`); 
                     if (verif){
                         console.log("token: ", verif.verifiedToken); 
                     } else {
