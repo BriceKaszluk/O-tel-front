@@ -10,7 +10,7 @@ module.exports = {
                     
                 ]
             });
-
+            console.log('houses good: ', houses)
             response.json({data: houses})
         
         } catch (error) {
