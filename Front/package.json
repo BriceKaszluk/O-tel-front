@@ -51,10 +51,12 @@
     "bulma": "^0.9.1",
     "bulma-social": "^2.0.0",
     "formik": "^2.2.6",
+    "history": "^5.0.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
+    "react-router-hash-link": "^2.3.1",
     "styled-components": "^5.2.1",
     "yup": "^0.32.8"
   }

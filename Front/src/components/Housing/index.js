@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import Nav from 'src/components/Nav';
+import React from 'react';
 import HousingDescription from 'src/components/HousingDescription'
 import Calendar from 'src/components/Calendar'
 import './styles.scss';
@@ -7,7 +6,6 @@ import './styles.scss';
 export default () => (
 
   <div className="housing">
-    <Nav />
     <section className="hero">
       <div className="hero-body">
       </div>

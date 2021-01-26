@@ -9,13 +9,22 @@ const CustomerReviews = () => (
     <div className="card-content ">
       <div className="media-content">
         <div className="image">
-          <img src={picture} className="image is-64x64 is-rounded " />
+          <img 
+            src={picture}
+            className="image is-64x64 is-rounded "
+            alt="avatar"
+          />
         </div>
-        <p className="title is-4">John Smith</p>
-        <p className="subtitle is-6">@johnsmith</p>
+        <p className="title is-4">
+          John Smith
+        </p>
+        <p className="subtitle is-6">
+          @johnsmith
+        </p>
       </div>
-      <p className="">
-        " Utque aegrum corpus quassari etiam levibus solet offensis, ita animus eius angustus et tener,
+      <p className="message">
+        " Utque aegrum corpus quassari etiam levibus solet offensis,
+        ita animus eius angustus et tener,
         quicquid increpuisset, ad salutis suae dispendium existimans factum aut cogitatum,
         insontium caedibus fecit victoriam luctuosam."
       </p>

@@ -4,8 +4,7 @@ import Nav from 'src/components/Nav';
 import './styles.scss';
 
 export default () => (
-  <>
-    <Nav />
+  <div>
     <title>Profil</title>
     <div className="nul">
       <div className="card-content profil__container">
@@ -63,5 +62,5 @@ export default () => (
 
       </div>
     </div>
-  </>
+  </div>
 );

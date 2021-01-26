@@ -8,10 +8,11 @@ import './styles.scss';
 
 import { registrationService } from 'src/services/registrationService';
 
-export default () => {
+export default ({modalActive, closeModal}) => {
+
     return(
         <div className="modal is-active">
-        <div className="modal-background" />
+        <div className="modal-background" onClick={(event)=>{closeModal(!modalActive)}} />
             <div className="modal-content">
                 <div className="modal-card">
                 <div className="modal-card-head">
@@ -33,18 +34,23 @@ export default () => {
                         first_name: Yup.string().required('veuillez entrer un prénom'),
                         email: Yup.string().required('veuillez entrer un email valide'),
                         phone_number: Yup.string().required('veuillez entrer un numéro de téléphone'),
-                        password: Yup.string().required('Password is required'),
-                        password_confirm: Yup.string().oneOf([Yup.ref('password'), null], 'Passwords must match'),
+                        password: Yup.string().required('un mot de passe est requis'),
+                        password_confirm: Yup.string().oneOf([Yup.ref('password'), null], 'les mots de passe doivent correspondre'),
                         acceptTerms: Yup.bool().oneOf([true], 'accepter les termes et conditions svp')
                     })}
-                    onSubmit={({ last_name, first_name, email, phone_number, password, password_confirm }, { setStatus, setSubmitting }) => {
+                    onSubmit={({ last_name, first_name, email, phone_number, password }, { setStatus, setSubmitting }) => {
                         setStatus();
                         console.log('submitting form');
-                        registrationService.handleRegistration(last_name, first_name, email, phone_number, password, password_confirm)
-                            .then(error => {
+                        registrationService.handleRegistration(last_name, first_name, email, phone_number, password)
+                            .then(user => {
+                                console.log(user);
+                                closeModal(!modalActive);
+                              },
+                            error => {
                                 setSubmitting(false);
                                 setStatus(error);
-                            });
+                            }
+                            )
                     }}>
                     {/*end of formik settings */}
 
@@ -119,7 +125,7 @@ export default () => {
                                 {isSubmitting &&
                                     <LoadingSpinner />
                                 }
-                                <Link to="/" className="button">Annuler</Link>
+                                <button className="button" onClick={(event)=>{closeModal(!modalActive)}}>Annuler</button>
                             </footer>
                             {status &&
                                 <div className={'alert alert-danger'}>{status}</div>
