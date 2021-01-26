@@ -2,8 +2,8 @@ import React from 'react';
 import { func, string } from 'prop-types';
 import styled from 'styled-components';
 
-import { MoonIcon } from 'icons/moon.svg';
-import { SunIcon } from 'icons/sun.svg';
+import SunIcon from './SunIcon';
+import MoonIcon from './MoonIcon';
 
 const ToggleContainer = styled.button`
   position: relative;

@@ -20,7 +20,7 @@ function Darkmode2() {
       <>
         <GlobalStyles />
         <Toggle theme={theme} toggleTheme={toggleTheme} />
-        <h3>It's a {theme === 'light' ? 'light theme' : 'dark theme'}!</h3>
+        <h3>Tu es dans le mode {theme === 'light' ? 'jour' : 'nuit'}!</h3>
       </>
     </ThemeProvider>
   );

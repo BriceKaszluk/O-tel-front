@@ -13,11 +13,13 @@ export const GlobalStyles = createGlobalStyle`
     transition: all 0.25s linear;
   }
   small {
-    display: block;
+    display: none;
   }
 
   button {
-    display: block;
+      position: absolute;
+      z-index: 5;
+      top: 10px;
   }
 
   a {

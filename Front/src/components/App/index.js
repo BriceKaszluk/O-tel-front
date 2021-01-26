@@ -22,9 +22,9 @@ import './styles.scss';
 const App = () => (
   <div className="app">
 
-    <Darkmode2 />
     <Language />
     <Nav />
+    <Darkmode2 />
 
     <Route exact path="/connexion" component={Connexion} />
     <Route exact path="/livre_d_or" component={GoldenBook} />
