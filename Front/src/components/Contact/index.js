@@ -56,7 +56,7 @@ const Contact = () => (
         </div>
       </div>
       <button
-            onClick=""
+            
             type="submit"
             value="submit"
             className="button is-primary is-rounded"

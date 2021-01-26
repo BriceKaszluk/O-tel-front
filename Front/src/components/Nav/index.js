@@ -23,7 +23,7 @@ export default () => {
                     </div>
                 </div>
                 <Link to="/livre_d_or" className="navbar-item">livre d'or</Link>
-                <HashLink  to="/#contact__form" className="navbar-item">contact</HashLink>
+                <HashLink  to="/#contact-form" className="navbar-item">contact</HashLink>
                 <Link to="/connexion" className="navbar-item" >connexion</Link>
                 <a className="navbar-item" onClick={()=>setIsActive(!isActive)}>inscription</a>
                 {isActive? <RegistrationForm modalActive={isActive} closeModal={setIsActive} /> : ''}
