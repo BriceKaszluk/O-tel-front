@@ -4,12 +4,8 @@ import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 import LoadingSpinner from 'src/components/LoadingSpinner';
 import './styles.scss';
-
-
 import { registrationService } from 'src/services/registrationService';
-
 export default ({modalActive, closeModal}) => {
-
     return(
         <div className="modal is-active">
         <div className="modal-background" onClick={(event)=>{closeModal(!modalActive)}} />
@@ -53,7 +49,6 @@ export default ({modalActive, closeModal}) => {
                             )
                     }}>
                     {/*end of formik settings */}
-
                     {({ errors, status, touched, isSubmitting }) => (
                         <Form>
                             <section className="modal-card-body">
@@ -119,7 +114,6 @@ export default ({modalActive, closeModal}) => {
                                     </div>
                                 </div>
                             </section>
-                            
                             <footer className="form-group modal-card-foot">
                                 <button type="submit" className="button is-success" disabled={isSubmitting}>envoyer</button>
                                 {isSubmitting &&
@@ -136,13 +130,8 @@ export default ({modalActive, closeModal}) => {
                 </div>
             </div>
         </div>
-
     )
-
-
-
 }
-
 
 
 
