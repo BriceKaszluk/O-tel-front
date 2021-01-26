@@ -66,7 +66,7 @@ module.exports = {
                     });
                     
                     
-                    const token = jwt.generateTokenForUser(newUser)
+                    // const token = jwt.generateTokenForUser(newUser)
                    
                     // const verify = jwt.verifyTokenForUser(newUser)
                     
@@ -75,7 +75,7 @@ module.exports = {
                     console.log(newUser, 'user saved');
                     
 
-                    response.status(200).json({data: newUser, token}); 
+                    response.status(200).json({data: newUser}); 
 
                     
                    
