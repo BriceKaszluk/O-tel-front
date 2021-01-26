@@ -75,10 +75,11 @@ module.exports = {
                         email: newUser.email
                     }, `${process.env.SECRET_TOKEN}`, { expiresIn: "1h" })
                     
-                    const verifiedToken = request.body.token
-                    const verif = jsw.verify(verifiedToken, `${process.env.SECRET_TOKEN}`); 
+                    // JWT VERIFY
+                    // It checks if the signature and expiration date are valid
+                    const verif = jsw.verify(token, `${process.env.SECRET_TOKEN}`); 
                     if (verif){
-                        console.log("token: ", verif.verifiedToken); 
+                        console.log("token good: ", verif); 
                     } else {
                         response.status(404).json("Token not valid");
                     }
