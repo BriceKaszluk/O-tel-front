@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 const emailValidator = require('email-validator');
-const jwt = require('../utils/jwt')
+const jsw = require('jsonwebtoken'); 
 const {User} = require('../models');
 
 
@@ -65,17 +65,22 @@ module.exports = {
                         password: hashPassword
                     });
                     
+                    // what we want to store in the token
+                    // 2nd argument is the secret string to put in .env
+                    // 3rd argument options object
+                    const token = jsw.sign({
+                        first_name: newUser.first_name,
+                        last_name: newUser.last_name,
+                        email: newUser.email
+                    }, process.env.SECRET_TOKEN, { expiresIn: "1h" })
                     
-                    // const token = jwt.generateTokenForUser(newUser)
-                   
-                    // const verify = jwt.verifyTokenForUser(newUser)
                     
                     // we save in DB
                     await newUser.save();
                     console.log(newUser, 'user saved');
                     
 
-                    response.status(200).json({data: newUser}); 
+                    response.status(200).json({data: newUser, token}); 
 
                     
                    
