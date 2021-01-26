@@ -5,11 +5,9 @@ import { useDarkMode } from './useDarkMode';
 import { lightTheme, darkTheme } from './theme';
 import { GlobalStyles } from './global';
 
-import Toggle from './Toggler';
+import Toggle from './components/Toggle';
 
-import './styles.scss';
-
-export default () => {
+function Darkmode2() {
   const [theme, toggleTheme, componentMounted] = useDarkMode();
   const themeMode = theme === 'light' ? lightTheme : darkTheme;
 
@@ -19,11 +17,13 @@ export default () => {
 
   return (
     <ThemeProvider theme={themeMode}>
-      <div className="button__toggle">
+      <>
         <GlobalStyles />
         <Toggle theme={theme} toggleTheme={toggleTheme} />
-        <h1>It's a {theme === 'light' ? 'light theme' : 'dark theme'}!</h1>
-      </div>
+        <h3>It's a {theme === 'light' ? 'light theme' : 'dark theme'}!</h3>
+      </>
     </ThemeProvider>
   );
-};
+}
+
+export default Darkmode2;

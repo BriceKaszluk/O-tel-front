@@ -2,8 +2,8 @@ import React from 'react';
 import { func, string } from 'prop-types';
 import styled from 'styled-components';
 
-import { ReactComponent as MoonIcon } from '../../assets/icons/moon.svg';
-import { ReactComponent as SunIcon } from '../../assetsicons/sun.svg';
+import { MoonIcon } from 'icons/moon.svg';
+import { SunIcon } from 'icons/sun.svg';
 
 const ToggleContainer = styled.button`
   position: relative;
@@ -19,13 +19,16 @@ const ToggleContainer = styled.button`
   padding: 0.5rem;
   overflow: hidden;
   cursor: pointer;
+
   svg {
     width: 2.5rem;
     height: auto;
     transition: all 0.3s linear;
+
     &:first-child {
       transform: ${({ lightTheme }) => (lightTheme ? 'translateY(0)' : 'translateY(100px)')};
     }
+
     &:nth-child(2) {
       transform: ${({ lightTheme }) => (lightTheme ? 'translateY(-100px)' : 'translateY(0)')};
     }
