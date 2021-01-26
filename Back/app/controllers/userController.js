@@ -75,7 +75,14 @@ module.exports = {
                         email: newUser.email
                     }, `${process.env.SECRET_TOKEN}`, { expiresIn: "1h" })
                     
-                    
+                    const verifiedToken = request.body.token
+                    const verif = jwt.verify(verifiedToken, `${process.env.SECRET_TOKEN}`); 
+                    if (verif){
+                        console.log("token: ", verif.verifiedToken); 
+                    } else {
+                        response.status(404).json("Token not valid");
+                    }
+
                     // we save in DB
                     await newUser.save();
                     console.log(newUser, 'user saved');
