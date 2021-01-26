@@ -75,7 +75,7 @@ module.exports = {
                     console.log(newUser, 'user saved');
                     
 
-                    response.status(200).json({data: newUser, token, verify}); 
+                    response.status(200).json({data: newUser, token}); 
 
                     
                    
