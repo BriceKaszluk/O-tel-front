@@ -23,7 +23,7 @@ const App = () => {
 
     return (
     <div className="app">
-        {console.log(data.getAllBookings())}
+        
         <Language />
         <Nav />
 

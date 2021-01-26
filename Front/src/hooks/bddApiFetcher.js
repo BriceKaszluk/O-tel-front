@@ -3,9 +3,9 @@
 import { useEffect, useState } from 'react';
 import Axios from 'axios';
 
-export default (url, init ={}) => {
+export default (url, {}) => {
     //initialising test
-    const [data, setData] = useState(init);
+    const [data, setData] = useState({});
 
     //request
     const loadData = (event) => {
@@ -21,7 +21,7 @@ export default (url, init ={}) => {
         loadData();
     }, [])
 
-    return[
-        data
-    ];
+    return [
+        {data}
+    ]
 };

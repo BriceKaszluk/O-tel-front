@@ -3,7 +3,8 @@ export const apiURL = {
     roles: 'https://project-otel.herokuapp.com/',
     users: 'https://project-otel.herokuapp.com/',
     notices: 'https://project-otel.herokuapp.com/',
-    housing: 'https://project-otel.herokuapp.com/',
+    allHousings: 'https://project-otel.herokuapp.com/hebergement/',
+    oneHousing: 'https://project-otel.herokuapp.com/hebergement/1',
     bookings: 'https://project-otel.herokuapp.com/reservation/'
 
     
