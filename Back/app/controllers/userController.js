@@ -1,3 +1,4 @@
+require("dotenv").config();
 const bcrypt = require('bcrypt');
 const emailValidator = require('email-validator');
 const jsw = require('jsonwebtoken'); 
@@ -72,7 +73,7 @@ module.exports = {
                         first_name: newUser.first_name,
                         last_name: newUser.last_name,
                         email: newUser.email
-                    }, process.env.SECRET_TOKEN, { expiresIn: "1h" })
+                    }, `${process.env.SECRET_TOKEN}`, { expiresIn: "1h" })
                     
                     
                     // we save in DB
