@@ -1,3 +1,4 @@
+require('dotenv').config()
 const jwt = require('jsonwebtoken'); 
 
 
@@ -14,7 +15,7 @@ module.exports = {
         { 
         expiresIn: '1h' 
         })  
-    ),
+    )
 
     // verifyTokenForUser: (request, response, next) => {
 
