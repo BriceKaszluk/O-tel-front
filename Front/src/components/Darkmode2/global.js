@@ -2,11 +2,6 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
-  *,
-  *::after,
-  *::before {
-  }
-
   body {
     background: ${({ theme }) => theme.body};
     color: ${({ theme }) => theme.text};
@@ -19,7 +14,6 @@ export const GlobalStyles = createGlobalStyle`
   button {
       position: absolute;
       z-index: 5;
-      top: 10px;
   }
 
   a {
