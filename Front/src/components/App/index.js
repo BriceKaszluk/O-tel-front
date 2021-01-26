@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 import React from 'react';
 import { Route } from 'react-router-dom';
 
@@ -5,7 +6,8 @@ import { Route } from 'react-router-dom';
 import Footer from 'src/components/Footer';
 import GoldenBook from 'src/components/GoldenBook';
 import Connexion from 'src/components/Connexion';
-import Darkmode from 'src/components/Darkmode';
+// import RegistrationForm from 'src/components/RegistrationForm';
+import Darkmode2 from 'src/components/Darkmode2';
 import Language from 'src/components//Language';
 // import Registration from 'src/components/registration';
 import Home from 'src/components/Home';
@@ -20,9 +22,10 @@ import './styles.scss';
 
 const App = () => (
   <div className="app">
-    
+
     <Language />
     <Nav />
+    <Darkmode2 />
 
     <Route exact path="/connexion" component={Connexion} />
     <Route exact path="/livre_d_or" component={GoldenBook} />
