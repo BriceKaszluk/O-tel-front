@@ -6,7 +6,10 @@ import SunIcon from './SunIcon';
 import MoonIcon from './MoonIcon';
 
 const ToggleContainer = styled.button`
-  position: relative;
+  position: absolute;
+  right: 1rem;
+  top:1.5rem;
+  box-shadow: 0px 7px 38px -6px rgba(143,141,143,0.86);
   display: flex;
   justify-content: space-between;
   background: ${({ theme }) => theme.gradient};
