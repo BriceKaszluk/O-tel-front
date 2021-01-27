@@ -8,7 +8,7 @@ const {User} = require('../models');
 module.exports = {
     
     
-    signUpForm: async (request, response) => {
+    signUpForm: async (request, response, next) => {
         try {
             console.log('registration received');
             const errors = []
@@ -80,6 +80,7 @@ module.exports = {
                     const verif = jsw.verify(token, `${process.env.SECRET_TOKEN}`); 
                     if (verif){
                         console.log("token good: ", verif); 
+                        next(); 
                     } else {
                         response.status(404).json("Token not valid");
                     }
@@ -89,7 +90,7 @@ module.exports = {
                     console.log(newUser, 'user saved');
                     
 
-                    response.status(200).json({data: newUser, token}); 
+                    response.status(200).json({data: newUser, token, verif}); 
 
                     
                    
@@ -101,7 +102,7 @@ module.exports = {
         }
     },
 
-    loginForm: async (request, response) => {
+    loginForm: async (request, response, next) => {
         try {
             // we check if the user exist in DB
             const checkUser = await User.findOne({
@@ -109,6 +110,22 @@ module.exports = {
                     email: request.body.email
                 }
             });
+            
+            const token = jsw.sign({
+                first_name: checkUser.first_name,
+                last_name: checkUser.last_name,
+                email: checkUser.email
+            }, `${process.env.SECRET_TOKEN}`, { expiresIn: "1h" });
+
+            const verif = jsw.verify(token, `${process.env.SECRET_TOKEN}`); 
+                    if (verif){
+                        console.log("token good: ", verif); 
+                        next(); 
+                    } else {
+                        response.status(404).json("Token not valid");
+                    }
+
+
             // if isn't exist, we launch an error
             if (!checkUser) {
                 
@@ -123,7 +140,7 @@ module.exports = {
                     response.json({errors: "problème d'authentification"});
                 } else {
                     // else connection
-                    response.json({data: 'done'}); 
+                    response.json({data: checkUser, token, verif}); 
                 }
             }
         } catch (error) {
