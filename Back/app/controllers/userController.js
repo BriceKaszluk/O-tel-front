@@ -127,7 +127,6 @@ module.exports = {
             const verif = jsw.verify(token, `${process.env.SECRET_TOKEN}`); 
                     if (verif){
                         console.log("token good: ", verif); 
-                       
                     } else {
                         response.status(404).json("Token not valid");
                     }
