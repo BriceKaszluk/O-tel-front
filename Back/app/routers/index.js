@@ -4,11 +4,12 @@ const express = require('express');
 const bookingRouter = require('./bookingRouter'); 
 const userRouter = require('./userRouter'); 
 const housingRouter = require('./housingRouter'); 
+const noticeRouter = require('./noticeRouter'); 
 
 const router = express.Router();
 
 // router.use('/contact')
-//router.use('/livre_d_or')
+router.use('/livre_d_or', noticeRouter);
 router.use('/inscription', userRouter);
 router.use('/reservation', bookingRouter);
 router.use('/hebergement', housingRouter);
