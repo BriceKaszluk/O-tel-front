@@ -6,15 +6,15 @@ const log = console.log;
 let transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: process.env.EMAIL || 'abc@gmail.com', // TODO: your gmail account
-        pass: process.env.PASSWORD || '1234' // TODO: your gmail password
+        user: process.env.EMAILO,
+        pass: process.env.PASSWORDO
     }
 });
 
 let mailOptions = {
     from: 'oteljs@gmail.com', // TODO: email sender
     to: 'oteljs@gmail.com', // TODO: email receiver
-    subject: 'Nodemailer - Test 2',
+    subject: 'Nodemailer - Test 4',
     text: 'Wooohooo it works!!'
 };
 
