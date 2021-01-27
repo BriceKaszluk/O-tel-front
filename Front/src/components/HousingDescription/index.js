@@ -3,29 +3,33 @@ import {getData} from 'src/hooks/dataFetcher'
 
 export default () => {
 
+const [result, setResult] = useState({})
 
-const dataToMap = getData.getAllHousings();
+const dispatch = async () => {
 
-dataToMap.map( x => {
-    
-    console.log(Object.getOwnPropertyNames(x.data))
-})
+    const result =  await getData.getAllHousings();
+    if (result[0].data !== undefined) {
+        const data = result[0].data[0];
+        setResult(data)
+        console.log(result)
+    }
+}
+
+dispatch();
 
     return(
 
         <div className="box">
           <article className="media">
-            <img src="#" />
+            <img src={result.picture}/>
           </article>
-            <h1>Name  </h1> 
-          <h2> Logement pour *nbPlace* personnes</h2>
-          <h2> *housingPrice* par nuit</h2>
-          <h2> *housingDescription* </h2>
+          <h2> Logement pour {result.place_number} personnes</h2>
+          <h2> {result.price} par nuit</h2>
+          <h2> {result.description} </h2>
         </div>
       
       );
 
 } 
-
 
 

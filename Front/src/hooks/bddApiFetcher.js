@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import Axios from 'axios';
 
-export default (url, {}) => {
+export default (url) => {
     //initialising test
     const [data, setData] = useState({});
 
@@ -22,6 +22,6 @@ export default (url, {}) => {
     }, [])
 
     return [
-        {data}
+        data
     ]
 };
