@@ -8,17 +8,19 @@ const {User} = require('../models');
 module.exports = {
     
     
-    signUpForm: async (request, response, next) => {
+    signUpForm: async (request, response) => {
         try {
             console.log('registration received');
             const errors = []
             //we check if first_name is not empty
             if (!request.body.first_name || request.body.first_name.length === 0) {
                 errors.push('veuillez indiquer votre prénom !')
+                response.json(errors); 
             }
             //we check if last_name is not empty
             if (!request.body.last_name || request.body.last_name.length === 0) {
                 errors.push('veuillez indiquer votre nom !')
+                response.json(errors); 
             }
             //we check if address is not empty
             // if (!request.body.address || request.body.address.length === 0) {
@@ -28,14 +30,17 @@ module.exports = {
             //we check if email is valid
             if (!emailValidator.validate(request.body.email)) {
                 errors.push('email non valide !')
+                response.json(errors); 
             }
             //we check if phone_number is not empty
             if (!request.body.phone_number || request.body.phone_number.length === 0) {
                 errors.push('veuillez indiquer votre numéro de téléphone')
+                response.json(errors); 
             }
             //we check if password contains at least 8 characters
             if(!request.body.password || request.body.password.length < 8) {
                 errors.push('le mot de passe doit contenir plus de caractères !')
+                response.json(errors); 
             }
             // we check if we have at least one error
             if (errors.length > 0) {
@@ -47,9 +52,11 @@ module.exports = {
                         email: request.body.email
                     }
                 });
+                
                 // if we have a result, we send an error
                 if (checkUser) {
-                    response.json({errors: ["Une erreur s'est produite lors de la création !"]})
+                    console.log('problème: ')
+                    return response.status(404).json({errors: ["Une erreur s'est produite lors de la création !"]})
                 } else {
                     // if the email does not exist we can create a new user
 
@@ -80,9 +87,9 @@ module.exports = {
                     const verif = jsw.verify(token, `${process.env.SECRET_TOKEN}`); 
                     if (verif){
                         console.log("token good: ", verif); 
-                        next(); 
+                        
                     } else {
-                        response.status(404).json("Token not valid");
+                        return response.status(404).json("Token not valid");
                     }
 
                     // we save in DB
@@ -90,7 +97,7 @@ module.exports = {
                     console.log(newUser, 'user saved');
                     
 
-                    response.status(200).json({data: newUser, token, verif}); 
+                   return response.status(200).json({data: newUser, token}); 
 
                     
                    
@@ -98,7 +105,7 @@ module.exports = {
             }
         } catch (error) {
             console.log(error);
-            response.status(500).json({ error });
+            return response.status(500).send(error.message );
         }
     },
 
