@@ -21,20 +21,15 @@ import { data } from 'src/hooks/dataFetcher';
 import './styles.scss';
 
 
-const App = () => (
+const App = () => {
+
+return (
   <div className="app">
 
+
     <Language />
-    <Nav />
-    <Darkmode2 />
-
-
-    return (
-    <div className="app">
-        
-        <Language />
         <Nav />
-
+        <Darkmode2 />
         <Route exact path="/connexion" component={Connexion} />
         <Route exact path="/livre_d_or" component={GoldenBook} />
         <Route exact path="/logement1" component={Housing} />
