@@ -43,14 +43,16 @@ export default ({modalActive, closeModal}) => {
                         console.log('submitting form');
                         registrationService.handleRegistration(last_name, first_name, email, phone_number, password)
                             .then(user => {
-                                console.log(user);
+                                console.log(user.json(), 'le user');
                                 closeModal(!modalActive);
+                                history.push('/profil');
                               },
-                            error => {
-                                setSubmitting(false);
+                            errors =>{[errors.response.data.errors[0]].map(error=>{
                                 setStatus(error);
-                            }
-                            )
+                            })
+                                setSubmitting(false);
+                                ;
+                        })
                     }}>
                     {/*end of formik settings */}
 
@@ -126,10 +128,10 @@ export default ({modalActive, closeModal}) => {
                                     <LoadingSpinner />
                                 }
                                 <button className="button" onClick={(event)=>{closeModal(!modalActive)}}>Annuler</button>
-                            </footer>
-                            {status &&
+                                {status &&
                                 <div className={'alert alert-danger'}>{status}</div>
                             }
+                            </footer>
                         </Form>
                     )}
                     </Formik>
