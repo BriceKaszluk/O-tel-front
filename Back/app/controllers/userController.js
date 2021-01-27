@@ -55,7 +55,7 @@ module.exports = {
                 
                 // if we have a result, we send an error
                 if (checkUser) {
-                    return response.status(404).json({errors: ["Une erreur s'est produite lors de la création !"]})
+                    return response.status(404).send({errors: ["Une erreur s'est produite lors de la création !"]})
                 } else {
                     // if the email does not exist we can create a new user
 
