@@ -16,9 +16,10 @@ import Nav from 'src/components/Nav';
 import Housing from 'src/components/Housing';
 
 // == Import
-import bddApiFetcher from 'src/hooks/bddApiFetcher';
-import { apiURL } from 'src/services/configAPI';
+import { data } from 'src/hooks/dataFetcher';
+
 import './styles.scss';
+
 
 const App = () => (
   <div className="app">
@@ -27,16 +28,27 @@ const App = () => (
     <Nav />
     <Darkmode2 />
 
-    <Route exact path="/connexion" component={Connexion} />
-    <Route exact path="/livre_d_or" component={GoldenBook} />
-    <Route exact path="/logement1" component={Housing} />
-    <Route exact path="/" component={Home} />
-    <Route exact path="/profil" component={Profil} />
 
-    <Footer />
+    return (
+    <div className="app">
+        
+        <Language />
+        <Nav />
 
-  </div>
-);
+        <Route exact path="/connexion" component={Connexion} />
+        <Route exact path="/livre_d_or" component={GoldenBook} />
+        <Route exact path="/logement1" component={Housing} />
+        <Route exact path="/" component={Home} />
+        <Route exact path="/profil" component={Profil} />
+
+        <Footer />
+
+    </div>
+    )
+    
+}
+  
+
 
 // == Export
 export default App;

@@ -50,6 +50,7 @@
     "webpack-merge": "^5.0.6"
   },
   "dependencies": {
+    "@babel/plugin-transform-runtime": "^7.12.10",
     "axios": "^0.21.1",
     "bulma": "^0.9.1",
     "bulma-social": "^2.0.0",
