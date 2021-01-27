@@ -3,7 +3,6 @@ require('dotenv').config();
 const nodemailer = require('nodemailer');
 const log = console.log;
 
-// Step 1
 let transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -12,18 +11,16 @@ let transporter = nodemailer.createTransport({
     }
 });
 
-// Step 2
 let mailOptions = {
-    from: 'abc@gmail.com', // TODO: email sender
-    to: 'cba@gmail.com', // TODO: email receiver
-    subject: 'Nodemailer - Test',
+    from: 'oteljs@gmail.com', // TODO: email sender
+    to: 'oteljs@gmail.com', // TODO: email receiver
+    subject: 'Nodemailer - Test 2',
     text: 'Wooohooo it works!!'
 };
 
-// Step 3
 transporter.sendMail(mailOptions, (err, data) => {
     if (err) {
-        return log('Error occurs');
+        return log('Error occurs', err);
     }
     return log('Email sent!!!');
 });

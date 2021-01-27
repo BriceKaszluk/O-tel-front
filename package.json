@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "node server.js",
     "dev": "nodemon app.js"
   },
   "keywords": [],
@@ -19,6 +19,7 @@
     "express-session": "^1.17.1",
     "jsonwebtoken": "^8.5.1",
     "multer": "^1.4.2",
+    "nodemailer": "^6.4.17",
     "pg": "^8.5.1",
     "raw-body": "^2.4.1",
     "sequelize": "^6.4.0"
