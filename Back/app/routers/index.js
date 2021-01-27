@@ -8,7 +8,7 @@ const housingRouter = require('./housingRouter');
 const router = express.Router();
 
 // router.use('/contact')
-router.use('/livre_d_or')
+//router.use('/livre_d_or')
 router.use('/inscription', userRouter);
 router.use('/reservation', bookingRouter);
 router.use('/hebergement', housingRouter);
