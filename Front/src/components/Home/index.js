@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 import React from 'react';
 import Background from 'src/components/Background';
 import Calendar from 'src/components/Calendar';
