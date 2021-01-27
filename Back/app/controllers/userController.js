@@ -109,7 +109,7 @@ module.exports = {
         }
     },
 
-    loginForm: async (request, response, next) => {
+    loginForm: async (request, response) => {
         try {
             // we check if the user exist in DB
             const checkUser = await User.findOne({
@@ -127,7 +127,7 @@ module.exports = {
             const verif = jsw.verify(token, `${process.env.SECRET_TOKEN}`); 
                     if (verif){
                         console.log("token good: ", verif); 
-                        next(); 
+                       
                     } else {
                         response.status(404).json("Token not valid");
                     }
