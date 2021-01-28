@@ -1,27 +1,33 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
-import { GlobalStyles } from './Globalstyle';
-import { lightTheme, darkTheme } from './Themes';
+
 import { useDarkMode } from './useDarkMode';
-import Toggle from './Toggler';
+import { lightTheme, darkTheme } from './theme';
+import { GlobalStyles } from './global';
+
+import Toggle from './components/Toggle';
 
 import './styles.scss';
 
-const Darkmode = () => {
-  const [theme, themeToggler, mountedComponent] = useDarkMode();
-
+function Darkmode2() {
+  const [theme, toggleTheme, componentMounted] = useDarkMode();
   const themeMode = theme === 'light' ? lightTheme : darkTheme;
 
-  if (!mountedComponent) return <div />;
+  if (!componentMounted) {
+    return <div />;
+  }
+
   return (
-
+    <div className="button__toggle">
     <ThemeProvider theme={themeMode}>
-      <Toggle theme={theme} toggleTheme={themeToggler} />
-      <GlobalStyles />
-      <button className="dark-mode-button" type="button" onClick={themeToggler}>Switch Theme</button>
+      <>
+        <GlobalStyles />
+        <Toggle theme={theme} toggleTheme={toggleTheme} />
+        {/* <h3>Tu es dans le mode {theme === 'light' ? 'jour' : 'nuit'}!</h3> */}
+      </>
     </ThemeProvider>
-
+    </div>
   );
-};
+}
 
-export default Darkmode;
+export default Darkmode2;
