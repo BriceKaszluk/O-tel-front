@@ -6,7 +6,6 @@ import './styles.scss';
 
 const GoldenBook = () => (
   <>
-    <Nav />
     <div className="card has-text-centered">
       <h1 className="card-header-title-center">
         Livre d'or - Avis Clients
