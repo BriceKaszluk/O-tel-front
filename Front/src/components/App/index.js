@@ -18,7 +18,6 @@ import Housing from 'src/components/Housing';
 // == Import
 // import { data } from 'src/hooks/dataFetcher';
 import 'src/components/Languages/i18n';
-// import * as serviceWorker from 'src/components/Languages/serviceWorker';
 
 import './styles.scss';
 
