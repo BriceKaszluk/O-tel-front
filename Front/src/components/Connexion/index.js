@@ -4,13 +4,11 @@ import {Formik, Field, Form, ErrorMessage} from 'formik';
 
 import * as Yup from 'yup';
 import LoadingSpinner from 'src/components/LoadingSpinner';
-import { useHistory } from "react-router-dom";
 import './styles.scss';
 
 import { connexionService } from 'src/services/connexionService';
 
 export default ({modalActive, closeModal}) => {
-  let history = useHistory();
   return(
   <div className="modal is-active">
     <div className="modal-background" onClick={(event)=>{closeModal(!modalActive)}} />
@@ -40,8 +38,7 @@ export default ({modalActive, closeModal}) => {
                             setSubmitting(false);
                         console.log(user.data.errors, '//user error');
                         }else{
-                        console.log(user.data, 'connect ok');
-                        localStorage.setItem('currentUser', JSON.stringify(user.data));
+                        localStorage.setItem('currentUser', JSON.stringify(user.data.token));
                         console.log(localStorage.currentUser, 'current user dans local storage');
                         closeModal(!modalActive);
                         }

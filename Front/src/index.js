@@ -2,7 +2,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { history } from 'src/services/history';
+
 
 // == Import : local
 // Composants
@@ -12,7 +12,7 @@ import App from 'src/components/App';
 // 1. Élément React racine (celui qui contient l'ensemble de l'app)
 //    => crée une structure d'objets imbriqués (DOM virtuel)
 const rootReactElement = (
-  <Router history={history}>
+  <Router>
     <App />
   </Router>
 );

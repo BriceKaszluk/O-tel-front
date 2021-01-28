@@ -1,6 +1,6 @@
 /* eslint-disable import/no-unresolved */
 import React, { Suspense } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 // components
 import Footer from 'src/components/Footer';
@@ -30,12 +30,13 @@ return (
         <Nav />
         <Darkmode2 />
         <Languages /> 
+        <Switch>
         <Route exact path="/connexion" component={Connexion} />
         <Route exact path="/livre_d_or" component={GoldenBook} />
         <Route exact path="/logement1" component={Housing} />
         <Route exact path="/" component={Home} />
         <Route exact path="/profil" component={Profil} />
-
+        </Switch>
         <Footer />
 
       </Suspense>
