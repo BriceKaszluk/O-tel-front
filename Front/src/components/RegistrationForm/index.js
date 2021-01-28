@@ -4,12 +4,15 @@ import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 import LoadingSpinner from 'src/components/LoadingSpinner';
+import { useHistory } from "react-router-dom";
 import './styles.scss';
 
 
 import { registrationService } from 'src/services/registrationService';
 
 export default ({modalActive, closeModal}) => {
+    //initialize history to use history.push to redirect
+    let history = useHistory();
     return(
         <div className="modal is-active">
         <div className="modal-background" onClick={(event)=>{closeModal(!modalActive)}} />
@@ -43,7 +46,7 @@ export default ({modalActive, closeModal}) => {
                         console.log('submitting form');
                         registrationService.handleRegistration(last_name, first_name, email, phone_number, password)
                             .then(user => {
-                                console.log(user.json(), 'le user');
+                                console.log(user, 'le user');
                                 closeModal(!modalActive);
                                 history.push('/profil');
                               },
