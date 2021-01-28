@@ -1,5 +1,5 @@
 import React from 'react';
-import HousingDescription from 'src/components/HousingDescription'
+import HousingOne from 'src/components/HousingOne'
 import Calendar from 'src/components/Calendar'
 import './styles.scss';
 
@@ -13,7 +13,7 @@ export default () => (
     </section>
     <div className="columns">
       <div className="column">
-        <HousingDescription />
+        <HousingOne />
       </div>
       <div className="column">
         <Calendar />

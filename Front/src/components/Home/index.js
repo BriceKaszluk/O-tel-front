@@ -2,7 +2,9 @@ import React from 'react';
 import Background from 'src/components/Background';
 import Calendar from 'src/components/Calendar';
 import Contact from 'src/components/Contact';
-import HousingDescription from 'src/components/HousingDescription';
+import HousingOne from 'src/components/HousingOne';
+import HousingTwo from 'src/components/HousingTwo';
+import HousingThree from 'src/components/HousingThree'
 import CustomerReviews from 'src/components/CustomerReviews';
 
 import { Route } from 'react-router-dom';
@@ -29,13 +31,13 @@ export default () => (
 
     <div className="columns">
       <div className="column home-column">
-        <HousingDescription />
+        <HousingOne />
       </div>
       <div className="column home-column">
-        <HousingDescription />
+        <HousingTwo />
       </div>
       <div className="column home-column">
-        <HousingDescription />
+        {/* <HousingThree /> */}
       </div>
     </div>
 

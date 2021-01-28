@@ -10,22 +10,32 @@ export const getData = {
     },
 
     getAllNotices: async () => {
-        const notices = await bddApiFetcher(apiUrl.notices, {init: []})
+        const notices = await bddApiFetcher(apiURL.allNotices, {init: []})
         return notices
     },
 
     getAllUsers: async () => {
-        const users = await bddApiFetcher(apiUrl.users, {init: []})
+        const users = await bddApiFetcher(apiURL.users, {init: []})
         return users
     },
 
-    getAllHousings: async () => {
-        const housings = await bddApiFetcher(apiURL.allHousings, {init: []})
-        return housings
+    getHousingOne: async () => {
+        const housingOne = await bddApiFetcher(apiURL.housingOne, {init: []})
+        return housingOne
+    },
+
+    getHousingTwo: async () => {
+        const housingTwo = await bddApiFetcher(apiURL.housingTwo, {init: []})
+        return housingTwo
+    },
+
+    getHousingThree: async () => {
+        const housingThree = await bddApiFetcher(apiURL.housingThree, {init: []})
+        return housingThree
     },
 
     getAllRoles: async () => {
-        const roles = await bddApiFetcher(apiUrl.housings, {init: []})
+        const roles = await bddApiFetcher(apiURL.housings, {init: []})
         return roles
     }
     
