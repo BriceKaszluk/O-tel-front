@@ -13,6 +13,3 @@ export const registrationService = {
         return axios(requestOptions)
     }
 };
-
-
-
