@@ -1,7 +1,7 @@
 require("dotenv").config();
 const bcrypt = require('bcrypt');
 const emailValidator = require('email-validator');
-const jsw = require('jsonwebtoken'); 
+const jwt = require('jsonwebtoken'); 
 const {User} = require('../models');
 
 
@@ -55,8 +55,7 @@ module.exports = {
                 
                 // if we have a result, we send an error
                 if (checkUser) {
-                    console.log('problème: ')
-                    return response.status(404).json({errors: ["Une erreur s'est produite lors de la création !"]})
+                    return response.status(404).send({errors: ["Une erreur s'est produite lors de la création !"]})
                 } else {
                     // if the email does not exist we can create a new user
 
@@ -76,7 +75,7 @@ module.exports = {
                     // what we want to store in the token
                     // 2nd argument is the secret string to put in .env
                     // 3rd argument options object
-                    const token = jsw.sign({
+                    const token = jwt.sign({
                         first_name: newUser.first_name,
                         last_name: newUser.last_name,
                         email: newUser.email
@@ -84,13 +83,14 @@ module.exports = {
                     
                     // JWT VERIFY
                     // It checks if the signature and expiration date are valid
-                    const verif = jsw.verify(token, `${process.env.SECRET_TOKEN}`); 
+                    const verif = jwt.verify(token, `${process.env.SECRET_TOKEN}`); 
                     if (verif){
                         console.log("token good: ", verif); 
-                        
                     } else {
                         return response.status(404).json("Token not valid");
                     }
+
+                 
 
                     // we save in DB
                     await newUser.save();
@@ -118,13 +118,15 @@ module.exports = {
                 }
             });
             
-            const token = jsw.sign({
+            const token = jwt.sign({
                 first_name: checkUser.first_name,
                 last_name: checkUser.last_name,
                 email: checkUser.email
             }, `${process.env.SECRET_TOKEN}`, { expiresIn: "1h" });
 
-            const verif = jsw.verify(token, `${process.env.SECRET_TOKEN}`); 
+          
+
+            const verif = jwt.verify(token, `${process.env.SECRET_TOKEN}`); 
                     if (verif){
                         console.log("token good: ", verif); 
                     } else {
@@ -146,7 +148,7 @@ module.exports = {
                     response.json({errors: "problème d'authentification"});
                 } else {
                     // else connection
-                    response.json({data: checkUser, token, verif}); 
+                    response.json({data: checkUser, token}); 
                 }
             }
         } catch (error) {
