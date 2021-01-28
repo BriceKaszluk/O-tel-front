@@ -11,12 +11,12 @@ export default () => {
   }
 
   return (
-      <div className="Languages">
+      <div className="languages__component">
           <div className="dropdown-trigger">
-              <button className="button is-light" onClick={() => handleClick('en')}>
+              <button className="button is-light languages__component" onClick={() => handleClick('en')}>
                   English
               </button>
-              <button className="button is-light" onClick={() => handleClick('fr')}>
+              <button className="button is-light languages__component" onClick={() => handleClick('fr')}>
                   Français
               </button>
           </div>
