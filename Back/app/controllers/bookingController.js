@@ -71,7 +71,7 @@ module.exports = {
 
             await deletedBooking.destroy(); 
 
-            response.json({statuts: "done"}); 
+            response.json({data: deletedBooking}); 
 
         } catch (error) {
             console.log(error);
@@ -97,12 +97,12 @@ module.exports = {
                    updatedBooking.begining_date = begining_date;
                }
                if (ending_date){
-                   updatedBooking.ending_date = ending_date
+                   updatedBooking.ending_date = ending_date;
                }
 
                // we save in DB
                await updatedBooking.save(); 
-               response.json({data: updatedBooking})
+               response.json({data: updatedBooking});
         
 
         } catch (error) {

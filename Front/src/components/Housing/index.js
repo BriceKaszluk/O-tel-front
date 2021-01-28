@@ -3,6 +3,7 @@ import HousingDescription from 'src/components/HousingDescription'
 import Calendar from 'src/components/Calendar'
 import './styles.scss';
 
+
 export default () => (
 
   <div className="housing">

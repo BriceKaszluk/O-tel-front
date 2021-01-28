@@ -16,9 +16,8 @@ import Nav from 'src/components/Nav';
 import Housing from 'src/components/Housing';
 
 // == Import
-// import { data } from 'src/hooks/dataFetcher';
+import { data } from 'src/hooks/dataFetcher';
 import 'src/components/Languages/i18n';
-// import * as serviceWorker from 'src/components/Languages/serviceWorker';
 
 import './styles.scss';
 
@@ -31,7 +30,6 @@ return (
         <Nav />
         <Darkmode2 />
         <Languages /> 
-
         <Route exact path="/connexion" component={Connexion} />
         <Route exact path="/livre_d_or" component={GoldenBook} />
         <Route exact path="/logement1" component={Housing} />
@@ -43,8 +41,7 @@ return (
       </Suspense>
 
     </div>
-    )
-    
+    )    
 }
   
 
