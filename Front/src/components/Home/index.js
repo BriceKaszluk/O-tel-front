@@ -45,7 +45,7 @@ export default () => {
           <HousingTwo />
         </div>
         <div className="column home-column">
-          {/* <HousingThree /> */}
+          <HousingThree />
         </div>
       </div>
 

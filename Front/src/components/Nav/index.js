@@ -19,7 +19,7 @@ export default () => {
                     <div className="navbar-dropdown">
                     <Link to="/logement1" className="navbar-item">logement1</Link>
                     <Link to="/logement2" className="navbar-item">logement2</Link>
-                    {/* <Link to="/logement1" className="navbar-item">logement1</Link> */}
+                    <Link to="/logement3" className="navbar-item">logement3</Link>
                     </div>
                 </div>
                 <Link to="/livre_d_or" className="navbar-item">livre d'or</Link>

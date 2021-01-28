@@ -7,7 +7,7 @@ export const apiURL = {
     allHousings: 'https://project-otel.herokuapp.com/hebergement/',
     housingOne: 'https://project-otel.herokuapp.com/hebergement/1',
     housingTwo: 'https://project-otel.herokuapp.com/hebergement/2',
-    housingThree: 'https://project-otel.herokuapp.com/hebergement/3',
+    housingThree: 'https://project-otel.herokuapp.com/hebergement/4',
     bookings: 'https://project-otel.herokuapp.com/reservation/',
     registration: 'https://project-otel.herokuapp.com/connection/signup',
     connexion: 'https://project-otel.herokuapp.com/connection/log'
