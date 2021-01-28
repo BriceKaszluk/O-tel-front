@@ -118,9 +118,6 @@ module.exports = {
                 }
             });
             
-          
-
-
             // if isn't exist, we launch an error
             if (!checkUser) {
 
@@ -147,7 +144,8 @@ module.exports = {
                     } else {
                         response.status(404).json("Token not valid");
                     }
-                    response.json({data: checkUser}); 
+
+                    response.json({data: checkUser, token}); 
                 }
             }
         } catch (error) {
