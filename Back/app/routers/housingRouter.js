@@ -6,5 +6,8 @@ const router = express.Router();
 
 router.get('/', housingController.getAllHouses);
 router.get('/:id(\\d+)', housingController.getOneHouse);
+router.post('/', housingController.createHouse);
+router.patch('/:id(\\d+)', housingController.updateHouse);
+router.delete('/:id(\\d+)', housingController.deleteHouse); 
 
 module.exports = router; 

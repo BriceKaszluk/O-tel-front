@@ -1,16 +1,35 @@
-import React, { useState } from 'react';
-import Background from 'src/components/Background';
+import React, { useState, useEffect } from 'react';
+import {getData} from 'src/hooks/dataFetcher'
 
-export default (name, nbPlace, housingPrice, housingDescription, picture) => (
+export default () => {
 
-  <div className="box">
-    <article className="media">
-      <img src="#" />
-    </article>
-    <h1> *name* </h1>
-    <h2> Logement pour *nbPlace* personnes</h2>
-    <h2> *housingPrice* par nuit</h2>
-    <h2> *housingDescription* </h2>
-  </div>
+const [result, setResult] = useState({})
 
-);
+const dispatch = async () => {
+
+    const result =  await getData.getAllHousings();
+    if (result[0].data !== undefined) {
+        const data = result[0].data[0];
+        setResult(data)
+        console.log(result)
+    }
+}
+
+dispatch();
+
+    return(
+
+        <div className="box">
+          <article className="media">
+            <img src={result.picture}/>
+          </article>
+          <h2> Logement pour {result.place_number} personnes</h2>
+          <h2> {result.price} par nuit</h2>
+          <h2> {result.description} </h2>
+        </div>
+      
+      );
+
+} 
+
+

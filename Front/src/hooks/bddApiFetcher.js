@@ -3,15 +3,16 @@
 import { useEffect, useState } from 'react';
 import Axios from 'axios';
 
-export default (url, {init = null} ={}) => {
+export default (url) => {
     //initialising test
-    const [data, setData] = useState(init);
+    const [data, setData] = useState({});
 
     //request
     const loadData = (event) => {
         Axios.get(url)
         .then((response) => {
             if (response.status != 200) return console.error('datas failed to load, please contact SAV');
+            setData(response.data)
         })
         .catch();
     };
@@ -20,7 +21,7 @@ export default (url, {init = null} ={}) => {
         loadData();
     }, [])
 
-    return[
+    return [
         data
-    ];
+    ]
 };
