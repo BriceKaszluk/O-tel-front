@@ -18,13 +18,17 @@ h2 {
   margin:auto;
 }
 
+.is-fullheight {
+  display: flex;
+  align-items: center;
+}
+
 .block {
-  margin-top: 25em;
+  margin-top: 27em;
+  position: relative;
   width: 30em;
-  margin-left: 41em;
   text-align: center;
   font-size: 1.2em;
-  z-index: 1;
 }
 
 .home-column {
