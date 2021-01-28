@@ -11,15 +11,19 @@ export default () => {
   }
 
   return (
-      <div className="languages__component">
-          <div className="dropdown-trigger">
-              <button className="button is-light button__language" onClick={() => handleClick('en')}>
-                  English
-              </button>
-              <button className="button is-light button__language" onClick={() => handleClick('fr')}>
-                  Français
-              </button>
-          </div>
+    <div className="languages__component">
+      <div className="dropdown-trigger">
+        <button type="button" className="button is-light button__language" onClick={() => handleClick('en')}>
+          English
+        </button>
+        <button type="button" className="button is-light button__language" onClick={() => handleClick('fr')}>
+          Français
+        </button>
       </div>
+      <div>
+        <h3 className="newTitle">{t('Title.1')}</h3>
+        <h3>{t('datepicker.1')}</h3>
+      </div>
+    </div>
   );
-}
+};
