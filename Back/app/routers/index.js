@@ -5,10 +5,11 @@ const bookingRouter = require('./bookingRouter');
 const userRouter = require('./userRouter'); 
 const housingRouter = require('./housingRouter'); 
 const noticeRouter = require('./noticeRouter'); 
+const contactRouter = require('./contactRouter');
 
 const router = express.Router();
 
-// router.use('/contact')
+router.use('/contact', contactRouter); 
 router.use('/livre_d_or', noticeRouter);
 router.use('/inscription', userRouter);
 router.use('/reservation', bookingRouter);
