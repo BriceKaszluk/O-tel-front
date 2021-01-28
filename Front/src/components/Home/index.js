@@ -27,9 +27,7 @@ export default () => {
               <Calendar />
           </div>
 
-          <div className="block">
-              Le gîte se trouve dans le parc régional du Verdon : entre Barreme et Castellanne : La maison se situe à la cime du village ; ici nous sommes 73 habitants ! Si vous aimez la nature et le calme cet établissement est fait pour vous! A proximité vous trouverez de nombreux centres d’intérêts comme le canyoning le ski en hiver visite de distillerie de lavande et de nombreux village pittoresques sur les sentiers de randonnées multiples autour de la maison; Bien sur, vous êtes aux portes des gorges du Verdon et les lacs et rivières sont incontournables! Bienvenue aux amoureux de la nature et des grands espaces!
-          </div>
+          <div className="block">{t('description.1')}</div>
 
           <div className="columns_home">
               <div className="column home-column">
