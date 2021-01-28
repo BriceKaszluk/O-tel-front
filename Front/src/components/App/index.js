@@ -15,6 +15,7 @@ import Profil from 'src/components/Profil';
 import Nav from 'src/components/Nav';
 import Housing from 'src/components/Housing';
 
+
 // == Import
 import { data } from 'src/hooks/dataFetcher';
 
@@ -33,6 +34,8 @@ return (
         <Route exact path="/connexion" component={Connexion} />
         <Route exact path="/livre_d_or" component={GoldenBook} />
         <Route exact path="/logement1" component={Housing} />
+        <Route exact path="/logement2" component={Housing} />
+        {/* <Route exact path="/logement3" component={Housing} /> */}
         <Route exact path="/" component={Home} />
         <Route exact path="/profil" component={Profil} />
 

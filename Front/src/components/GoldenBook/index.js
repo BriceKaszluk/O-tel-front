@@ -1,12 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Nav from 'src/components/Nav';
 import picture from 'src/assets/images/profil-picture.jpg';
 import './styles.scss';
 
 const GoldenBook = () => (
   <>
-    <Nav />
     <div className="card has-text-centered">
       <h1 className="card-header-title-center">
         Livre d'or - Avis Clients
