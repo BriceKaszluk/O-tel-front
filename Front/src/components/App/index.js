@@ -35,7 +35,7 @@ return (
         <Route exact path="/livre_d_or" component={GoldenBook} />
         <Route exact path="/logement1" component={Housing} />
         <Route exact path="/logement2" component={Housing} />
-        {/* <Route exact path="/logement3" component={Housing} /> */}
+        <Route exact path="/logement3" component={Housing} />
         <Route exact path="/" component={Home} />
         <Route exact path="/profil" component={Profil} />
 
