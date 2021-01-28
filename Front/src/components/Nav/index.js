@@ -3,12 +3,13 @@ import { Link } from 'react-router-dom';
 import RegistrationForm from 'src/components/RegistrationForm';
 import ConnexionForm from 'src/components/Connexion'; 
 import { HashLink } from 'react-router-hash-link';
+import { connexionService } from 'src/services/connexionService';
+import { useHistory } from "react-router-dom";
 import styles from './styles.scss';
 
-export default () => {
-
+export default ({connexionActive, setConnexionActive}) => {
+    let history = useHistory();
     const [isActiveRegistration, setIsActiveRegistration] = useState(false);
-    const [isActiveConnexion, setIsActiveConnexion] = useState(false);
     return(
         <div id="nav" className="navbar">
             <div className="navbar-menu">
@@ -25,10 +26,28 @@ export default () => {
                 </div>
                 <Link to="/livre_d_or" className="navbar-item">livre d'or</Link>
                 <HashLink  to="/#contact-form" className="navbar-item">contact</HashLink>
-                <a className="navbar-item" onClick={()=>setIsActiveConnexion(!isActiveConnexion)}>connexion</a>
-                {isActiveConnexion? <ConnexionForm modalActive={isActiveConnexion} closeModal={setIsActiveConnexion} /> : ''}
-                <a className="navbar-item" onClick={()=>setIsActiveRegistration(!isActiveRegistration)}>inscription</a>
-                {isActiveRegistration? <RegistrationForm modalActive={isActiveRegistration} closeModal={setIsActiveRegistration} /> : ''}
+                
+                    {
+                    localStorage.currentUser && 
+                    <div className="navbar-item">
+                        <Link to="/profil" className="navbar-item">profil</Link>
+                        <a className="navbar-item" onClick={()=>{
+                            connexionService.logout();
+                            history.go(0);
+                        }}>déconnexion</a>
+                    </div>
+                    }
+                    {
+                    !localStorage.currentUser && 
+                    <div className="navbar-item">
+                        <a className="navbar-item" onClick={()=>setConnexionActive(!connexionActive)}>connexion</a>
+                        {connexionActive? <ConnexionForm modalActive={connexionActive} closeModal={setConnexionActive} /> : ''}
+                        <a className="navbar-item" onClick={()=>setIsActiveRegistration(!isActiveRegistration)}>inscription</a>
+                        {isActiveRegistration? <RegistrationForm modalActive={isActiveRegistration} closeModal={setIsActiveRegistration} /> : ''}
+                    </div>
+                    }
+                
+                
             </div>
         </div>
     )}
