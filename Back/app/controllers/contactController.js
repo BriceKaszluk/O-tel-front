@@ -4,19 +4,12 @@ const nodemailer = require('nodemailer');
 
 module.exports = {
     contactMailer: async (request, response) => {
-        const {email} = request.body
-        const {subject} = request.body
-        const {text} = request.body
+        const {email, subject, text} = request.body
         console.log(request.body)
 
         const transporter = nodemailer.createTransport({
             host: 'smtp.gmail.com',
             port: 587,
-            // auth: {
-            //     user: 'rosemary.buckridge95@ethereal.email',
-            //     pass: 'KmtEq83WWUPHhueW3F'
-            // }
-            // service: 'gmail', 
             auth: {
                 user:process.env.EMAIL_NAME,
                 pass:process.env.SECRET_PASS
