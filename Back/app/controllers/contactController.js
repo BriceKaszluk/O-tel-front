@@ -1,28 +1,41 @@
-// const {Booking, Housing, Notice, Role, User} = require('../models');
+//const {Booking, Housing, Notice, Role, User} = require('../models');
 
-// require('dotenv').config();
+const nodemailer = require('nodemailer');
 
-// const nodemailer = require('nodemailer');
-// const log = console.log;
+module.exports = {
+    contactMailer: async (request, response) => {
+        const {email} = request.body
+        const {subject} = request.body
+        const {text} = request.body
+        console.log(request.body)
 
-// let transporter = nodemailer.createTransport({
-//     service: 'gmail',
-//     auth: {
-//         user: process.env.EMAILO,
-//         pass: process.env.PASSWORDO
-//     }
-// });
+        const transporter = nodemailer.createTransport({
+            host: 'smtp.gmail.com',
+            port: 587,
+            // auth: {
+            //     user: 'rosemary.buckridge95@ethereal.email',
+            //     pass: 'KmtEq83WWUPHhueW3F'
+            // }
+            // service: 'gmail', 
+            auth: {
+                user:process.env.EMAIL_NAME,
+                pass:process.env.SECRET_PASS
+            }
 
-// let mailOptions = {
-//     from: 'oteljs@gmail.com', // TODO: email sender
-//     to: 'oteljs@gmail.com', // TODO: email receiver
-//     subject: 'Nodemailer - Test 4',
-//     text: 'Wooohooo it works!!'
-// };
+        });
+        const messages = {
+            from: `${email}`,
+            to: process.env.EMAIL_NAME,
+            subject: `Message de ${email}: ${subject}`, 
+            text: `${text}`
+        }
+        const info = await transporter.sendMail(messages);
 
-// transporter.sendMail(mailOptions, (err, data) => {
-//     if (err) {
-//         return log('Error occurs', err);
-//     }
-//     return log('Email sent!!!');
-// });
+        console.log("Message sent: %s", info.messageId);
+
+        console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info)); 
+
+        response.send('email send'); 
+    }
+}
+
