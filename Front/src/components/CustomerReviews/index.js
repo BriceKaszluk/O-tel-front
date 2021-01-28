@@ -1,11 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import picture from 'src/assets/images/profil-picture.jpg';
+import {getData} from 'src/hooks/dataFetcher'
 import './styles.scss';
 
-const CustomerReviews = () => (
+export default () => {
 
-  <div className="card">
+const [comment, setComment] = useState({})
+
+const dispatch = async () => {
+
+    const result =  await getData.getAllNotices();
+    if (result[0].data !== undefined) {
+        const data = result[0].data[0];
+        setComment(data)
+    }
+}
+
+dispatch();
+
+return (
+    <div className="card">
     <div className="card-content ">
       <div className="media-content">
         <div className="image">
@@ -16,17 +31,14 @@ const CustomerReviews = () => (
           />
         </div>
         <p className="title is-4">
-          John Smith
+            johnsmith
         </p>
         <p className="subtitle is-6">
           @johnsmith
         </p>
       </div>
       <p className="message">
-        " Utque aegrum corpus quassari etiam levibus solet offensis,
-        ita animus eius angustus et tener,
-        quicquid increpuisset, ad salutis suae dispendium existimans factum aut cogitatum,
-        insontium caedibus fecit victoriam luctuosam."
+        {comment.comments}
       </p>
       <br />
       <time className="is-centered" dateTime="2021-1">Jan 2021</time>
@@ -34,6 +46,6 @@ const CustomerReviews = () => (
       <Link to="/livre_d_or" className="button is-primary">Afficher Plus</Link>
     </div>
   </div>
-);
+)
+};
 
-export default CustomerReviews;
