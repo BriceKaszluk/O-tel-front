@@ -7,7 +7,7 @@ import Footer from 'src/components/Footer';
 import GoldenBook from 'src/components/GoldenBook';
 import Connexion from 'src/components/Connexion';
 // import RegistrationForm from 'src/components/RegistrationForm';
-import Darkmode2 from 'src/components/Darkmode2';
+import Darkmode from 'src/components/Darkmode'; 
 import Languages from 'src/components/Languages';
 // import Registration from 'src/components/registration';
 import Home from 'src/components/Home';
@@ -29,7 +29,7 @@ return (
 
       <Suspense fallback={(<div>Loading</div>)}>
         <Nav />
-        <Darkmode2 />
+        <Darkmode />
         <Languages /> 
         <Route exact path="/connexion" component={Connexion} />
         <Route exact path="/livre_d_or" component={GoldenBook} />

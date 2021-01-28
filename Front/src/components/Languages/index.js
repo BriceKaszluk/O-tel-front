@@ -20,10 +20,6 @@ export default () => {
           Français
         </button>
       </div>
-      <div>
-        <h3 className="newTitle">{t('Title.1')}</h3>
-        <h3>{t('datepicker.1')}</h3>
-      </div>
     </div>
   );
 };
