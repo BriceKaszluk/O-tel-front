@@ -1,5 +1,5 @@
 /* eslint-disable import/no-unresolved */
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Route } from 'react-router-dom';
 
 // components
@@ -8,7 +8,7 @@ import GoldenBook from 'src/components/GoldenBook';
 import Connexion from 'src/components/Connexion';
 // import RegistrationForm from 'src/components/RegistrationForm';
 import Darkmode2 from 'src/components/Darkmode2';
-import Language from 'src/components//Language';
+import Languages from 'src/components/Languages';
 // import Registration from 'src/components/registration';
 import Home from 'src/components/Home';
 import Profil from 'src/components/Profil';
@@ -16,27 +16,39 @@ import Nav from 'src/components/Nav';
 import Housing from 'src/components/Housing';
 
 // == Import
-import bddApiFetcher from 'src/hooks/bddApiFetcher';
-import { apiURL } from 'src/services/configAPI';
+import { data } from 'src/hooks/dataFetcher';
+import 'src/components/Languages/i18n';
+import * as serviceWorker from 'src/components/Languages/serviceWorker';
+
 import './styles.scss';
 
-const App = () => (
+const App = () => {
+
+return (
   <div className="app">
 
-    <Language />
-    <Nav />
-    <Darkmode2 />
+      <Suspense fallback={(<div>Loading</div>)}>
+        <Nav />
+        <Darkmode2 />
+        <Languages />
+        
 
-    <Route exact path="/connexion" component={Connexion} />
-    <Route exact path="/livre_d_or" component={GoldenBook} />
-    <Route exact path="/logement1" component={Housing} />
-    <Route exact path="/" component={Home} />
-    <Route exact path="/profil" component={Profil} />
+        <Route exact path="/connexion" component={Connexion} />
+        <Route exact path="/livre_d_or" component={GoldenBook} />
+        <Route exact path="/logement1" component={Housing} />
+        <Route exact path="/" component={Home} />
+        <Route exact path="/profil" component={Profil} />
 
-    <Footer />
+        <Footer />
 
-  </div>
-);
+      </Suspense>
+
+    </div>
+    )
+    
+}
+  
+
 
 // == Export
 export default App;
