@@ -19,4 +19,7 @@ export const GlobalStyles = createGlobalStyle`
   a {
     color: ${({ theme }) => theme.text};
   }
+  .label {
+    color: ${({ theme }) => theme.text};
+  }
 `;

@@ -20,7 +20,7 @@ const dispatch = async () => {
 dispatch();
 
 return (
-    <div className="card">
+    <div className="card columns-home">
     <div className="card-content ">
       <div className="media-content">
         <div className="image">
