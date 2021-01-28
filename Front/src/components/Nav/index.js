@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import RegistrationForm from 'src/components/RegistrationForm';
+import ConnexionForm from 'src/components/Connexion'; 
 import { HashLink } from 'react-router-hash-link';
 import styles from './styles.scss';
 
 export default () => {
 
-    const [isActive, setIsActive] = useState(false);
-
+    const [isActiveRegistration, setIsActiveRegistration] = useState(false);
+    const [isActiveConnexion, setIsActiveConnexion] = useState(false);
     return(
         <div id="nav" className="navbar">
             <div className="navbar-menu">
@@ -24,9 +25,10 @@ export default () => {
                 </div>
                 <Link to="/livre_d_or" className="navbar-item">livre d'or</Link>
                 <HashLink  to="/#contact-form" className="navbar-item">contact</HashLink>
-                <Link to="/connexion" className="navbar-item" >connexion</Link>
-                <a className="navbar-item" onClick={()=>setIsActive(!isActive)}>inscription</a>
-                {isActive? <RegistrationForm modalActive={isActive} closeModal={setIsActive} /> : ''}
+                <a className="navbar-item" onClick={()=>setIsActiveConnexion(!isActiveConnexion)}>connexion</a>
+                {isActiveConnexion? <ConnexionForm modalActive={isActiveConnexion} closeModal={setIsActiveConnexion} /> : ''}
+                <a className="navbar-item" onClick={()=>setIsActiveRegistration(!isActiveRegistration)}>inscription</a>
+                {isActiveRegistration? <RegistrationForm modalActive={isActiveRegistration} closeModal={setIsActiveRegistration} /> : ''}
             </div>
         </div>
     )}

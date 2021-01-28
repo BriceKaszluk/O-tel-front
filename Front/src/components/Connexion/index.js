@@ -1,18 +1,19 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
-import {
-  Formik, Field, Form, ErrorMessage,
-} from 'formik';
+import {Formik, Field, Form, ErrorMessage} from 'formik';
 
 import * as Yup from 'yup';
 import LoadingSpinner from 'src/components/LoadingSpinner';
+import { useHistory } from "react-router-dom";
 import './styles.scss';
 
 import { connexionService } from 'src/services/connexionService';
 
-export default () => (
+export default ({modalActive, closeModal}) => {
+  let history = useHistory();
+  return(
   <div className="modal is-active">
-    <div className="modal-background" />
+    <div className="modal-background" onClick={(event)=>{closeModal(!modalActive)}} />
     <div className="modal-content">
       <div className="modal-card">
         <div className="modal-card-head">
@@ -33,10 +34,18 @@ export default () => (
 
                       console.log('submitting form');
                       connexionService.handleConnexion(email, password)
-                        .then((error) => {
-                          setSubmitting(false);
-                          setStatus(error);
-                        });
+                      .then(user => {
+                        if(user.data.errors){
+                            setStatus(user.data.errors);
+                            setSubmitting(false);
+                        console.log(user.data.errors, '//user error');
+                        }else{
+                        console.log(user.data, 'connect ok');
+                        localStorage.setItem('currentUser', JSON.stringify(user.data));
+                        console.log(localStorage.currentUser, 'current user dans local storage');
+                        closeModal(!modalActive);
+                        }
+                      })
                     }}
         >
           {/* end of formik settings */}
@@ -88,14 +97,10 @@ export default () => (
               <footer className="form-group modal-card-foot">
 
                 <button type="submit" className="button is-success" disabled={isSubmitting}>envoyer</button>
-
-                {isSubmitting
-                                    && <LoadingSpinner />}
-
-                <Link to="/" className="button">Annuler</Link>
+                {isSubmitting && <LoadingSpinner />}
+                <button className="button" onClick={(event)=>{closeModal(!modalActive)}}>Annuler</button>
+                {status && <div className="alert alert-danger">{status}</div>}
               </footer>
-              {status
-                                && <div className="alert alert-danger">{status}</div>}
             </Form>
           )}
         </Formik>
@@ -103,4 +108,4 @@ export default () => (
     </div>
   </div>
 
-);
+)};
