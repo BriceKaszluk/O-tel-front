@@ -4,12 +4,15 @@ import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 import LoadingSpinner from 'src/components/LoadingSpinner';
+import { useHistory } from "react-router-dom";
 import './styles.scss';
 
 
 import { registrationService } from 'src/services/registrationService';
 
 export default ({modalActive, closeModal}) => {
+    //initialize history to use history.push to redirect
+    let history = useHistory();
     return(
         <div className="modal is-active">
         <div className="modal-background" onClick={(event)=>{closeModal(!modalActive)}} />
@@ -43,14 +46,16 @@ export default ({modalActive, closeModal}) => {
                         console.log('submitting form');
                         registrationService.handleRegistration(last_name, first_name, email, phone_number, password)
                             .then(user => {
-                                console.log(user);
+                                console.log(user, 'le user');
                                 closeModal(!modalActive);
+                                history.push('/profil');
                               },
-                            error => {
-                                setSubmitting(false);
+                            errors =>{[errors.response.data.errors[0]].map(error=>{
                                 setStatus(error);
-                            }
-                            )
+                            })
+                                setSubmitting(false);
+                                ;
+                        })
                     }}>
                     {/*end of formik settings */}
 
@@ -113,7 +118,7 @@ export default ({modalActive, closeModal}) => {
                                     </div>
                                     <div className="form-group field">
                                         <Field type="checkbox" name="acceptTerms" className={'form-check-input checkbox' + (errors.acceptTerms && touched.acceptTerms ? ' is-invalid' : '')} />
-                                        <span> J'accepte les</span>
+                                        <span className="acceptTerm_p"> J'accepte les</span>
                                         <Link to="/logement2" className="terms_and_conditions">termes et conditions</Link>
                                         <ErrorMessage name="acceptTerms" component="div" className="invalid-feedback" />
                                     </div>
@@ -126,10 +131,10 @@ export default ({modalActive, closeModal}) => {
                                     <LoadingSpinner />
                                 }
                                 <button className="button" onClick={(event)=>{closeModal(!modalActive)}}>Annuler</button>
-                            </footer>
-                            {status &&
+                                {status &&
                                 <div className={'alert alert-danger'}>{status}</div>
                             }
+                            </footer>
                         </Form>
                     )}
                     </Formik>
