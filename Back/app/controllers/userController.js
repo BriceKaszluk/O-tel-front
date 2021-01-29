@@ -145,7 +145,7 @@ module.exports = {
                         response.status(404).json("Token not valid");
                     }
 
-                    response.json({data: checkUser, token}); 
+                    response.json({data: {user: checkUser}, token}); 
                 }
             }
         } catch (error) {

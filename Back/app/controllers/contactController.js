@@ -1,4 +1,3 @@
-//const {Booking, Housing, Notice, Role, User} = require('../models');
 
 const nodemailer = require('nodemailer');
 
@@ -26,7 +25,7 @@ module.exports = {
         const info = await transporter.sendMail(messages);
         
         console.log("Message sent: ", info.messageId);
-        console.log("Preview URL: ", nodemailer.getTestMessageUrl(info)); 
+       
         response.status(200).json('email send'); 
         
     } catch (error) {

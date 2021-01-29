@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 
 import React from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
@@ -46,7 +47,7 @@ export default ({modalActive, closeModal}) => {
                         console.log('submitting form');
                         registrationService.handleRegistration(last_name, first_name, email, phone_number, password)
                             .then(user => {
-                                console.log(user, 'le user');
+                                console.log(user.data, 'test user data');
                                 closeModal(!modalActive);
                                 history.push('/profil');
                               },
