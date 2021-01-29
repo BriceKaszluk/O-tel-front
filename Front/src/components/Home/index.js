@@ -1,5 +1,5 @@
 /* eslint-disable linebreak-style */
-import React from 'react';
+import React, {useState} from 'react';
 import Background from 'src/components/Background';
 import Calendar from 'src/components/Calendar';
 import Contact from 'src/components/Contact';
@@ -8,12 +8,29 @@ import HousingTwo from 'src/components/HousingTwo';
 import HousingThree from 'src/components/HousingThree'
 import CustomerReviews from 'src/components/CustomerReviews';
 import { useTranslation } from 'react-i18next';
+import {getData} from 'src/hooks/dataFetcher'
 
-import { Route } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 import './styles.scss';
 
 export default () => {
   const { t } = useTranslation();
+
+// Method for golden book data
+    const [results, setResults] = useState({})
+    const [dataLoaded, setDataLoaded] = useState(false)
+
+    const dispatch = async () => {
+
+        const result =  await getData.getAllNotices();
+        if (result[0].data !== undefined) {
+            const data = result[0].data
+            setResults(data)
+            setDataLoaded(true)
+        }
+    }
+
+    dispatch()
 
   return (
 
@@ -51,14 +68,58 @@ export default () => {
 
       <div className="columns">
         <div className="column gold-book-column">
-          <CustomerReviews />
+          
+
+        {
+            dataLoaded && results.map((result, index) => {
+                if (index === 0){
+                    return <CustomerReviews 
+                    key={result.id}
+                    comments={result.comments}
+                    rate={result.rate}
+                    first_name={result.user.first_name}
+                    last_name={result.user.last_name} />
+                }
+            }) 
+        }
+                
+          <Link to="/livre_d_or" className="button is-primary">Afficher Plus</Link>
         </div>
+
+
         <div className="column gold-book-column">
-          <CustomerReviews />
+        {
+            dataLoaded && results.map((result, index) => {
+                if (index === 1){
+                    return <CustomerReviews 
+                    key={result.id}
+                    comments={result.comments}
+                    rate={result.rate}
+                    first_name={result.user.first_name}
+                    last_name={result.user.last_name} />
+                }
+            }) 
+        }
+          <Link to="/livre_d_or" className="button is-primary">Afficher Plus</Link>
         </div>
+
+        
         <div className="column gold-book-column">
-          <CustomerReviews />
+        {
+            dataLoaded && results.map((result, index) => {
+                if (index === 3){
+                    return <CustomerReviews 
+                    key={result.id}
+                    comments={result.comments}
+                    rate={result.rate}
+                    first_name={result.user.first_name}
+                    last_name={result.user.last_name} />
+                }
+            }) 
+        }
+          <Link to="/livre_d_or" className="button is-primary">Afficher Plus</Link>
         </div>
+        
       </div>
 
       <div className="contact-form">

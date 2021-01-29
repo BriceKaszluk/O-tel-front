@@ -1,5 +1,5 @@
 /* eslint-disable import/no-unresolved */
-import React, { Suspense } from 'react';
+import React, { Suspense, useState } from 'react';
 import { Route } from 'react-router-dom';
 
 // components
@@ -15,14 +15,13 @@ import Profil from 'src/components/Profil';
 import Nav from 'src/components/Nav';
 import Housing from 'src/components/Housing';
 
-
 // == Import
-import { data } from 'src/hooks/dataFetcher';
 import 'src/components/Languages/i18n';
 
 import './styles.scss';
 
 const App = () => {
+
 
 return (
   <div className="app">
