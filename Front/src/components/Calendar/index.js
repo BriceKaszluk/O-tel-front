@@ -7,7 +7,7 @@ import './styles.scss';
 function Calendar({ className }) {
   useEffect(() => {
     // Initialize all input of date type.
-    const calendars = bulmaCalendar.attach('[type="date"]', '[isRange=true]');
+    const calendars = bulmaCalendar.attach('[type="date"]');
 
     // Loop on each calendar initialized
     calendars.forEach((calendar) => {
@@ -20,16 +20,9 @@ function Calendar({ className }) {
       });
     });
 
-    bulmaCalendar.attach('#datepickerDemoLabels', {
-      displayMode: 'inline',
-      isRange: true,
-      labelFrom: 'Check-in',
-      labelTo: 'Check-out',
-    });
-
     // To access to bulmaCalendar instance of an element
     // eslint-disable-next-line no-undef
-    const element = document.querySelector('#calendar');
+    const element = document.querySelector('#bulma-datepicker');
     if (element) {
       // bulmaCalendar instance is available as element.bulmaCalendar
       element.bulmaCalendar.on('select', (datepicker) => {
@@ -38,13 +31,23 @@ function Calendar({ className }) {
     }
   }, []);
 
+ 
+
   return (
     <section className="calendar__section">
       <div className={className} className="calendar__section__div">
-        <input id="calendar" type="date" />
+        <input id="bulma-datepicker" type="date" data-is-range="true" />
       </div>
     </section>
   );
 }
 
 export default Calendar;
+
+// Exemple for label
+// bulmaCalendar.attach('#bulma-datepicker', {    
+//   labelFrom: 'Check-in',
+//   labelTo: 'Check-out',
+//     lang: 'fr'
+// });
+ 
