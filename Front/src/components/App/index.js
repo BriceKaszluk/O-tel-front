@@ -25,13 +25,13 @@ import './styles.scss';
 
 const App = () => {
   //state concerning modal connexion
-  const [isActiveConnexion, setIsActiveConnexion] = useState(false);
+  const [isActiveModalConnexion, setIsActiveModalConnexion] = useState(false);
 
   return(
     <div className="app">
 
     <Suspense fallback={(<div>Loading</div>)}>
-        <Nav  connexionActive={isActiveConnexion} setConnexionActive={setIsActiveConnexion} />
+        <Nav  connexionActive={isActiveModalConnexion} setConnexionActive={setIsActiveModalConnexion} />
         <Darkmode />
         <Languages />
         <Switch>
@@ -41,7 +41,7 @@ const App = () => {
             <Route exact path="/logement2" component={Housing} />
             <Route exact path="/logement3" component={Housing} />
             <Route exact path="/" component={Home} />
-            <PrivateRoute exact path="/profil" component={Profil} setConnexionActive={setIsActiveConnexion} />
+            <PrivateRoute exact path="/profil" component={Profil} setConnexionActive={setIsActiveModalConnexion} />
         </Switch>
         <Footer />
 
