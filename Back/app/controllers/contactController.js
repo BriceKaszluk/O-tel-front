@@ -49,7 +49,15 @@ const contactMail = {
             from: `${email}`,
             to: EMAIL_NAME,
             subject: `Message de ${email}: ${subject}`, 
-            text: `${text}`
+            text: `${text}`,
+            auth: {
+                user:EMAIL_NAME,
+                pass:SECRET_PASS,
+                clientId: EMAIL_CLIENT_ID,
+                clientSecret: EMAIL_CLIENT_SECRET, 
+                refreshToken: EMAIL_REFRESH_TOKEN,
+                accessToken: accessToken
+            }
         }
 
         const info = await transport.sendMail(mailOption);
