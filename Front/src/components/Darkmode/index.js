@@ -18,15 +18,15 @@ function Darkmode2() {
   }
 
   return (
-    <div className="button__toggle">
-    <ThemeProvider theme={themeMode}>
-      <>
-        <GlobalStyles />
-        <Toggle theme={theme} toggleTheme={toggleTheme} />
-        {/* <h3>Tu es dans le mode {theme === 'light' ? 'jour' : 'nuit'}!</h3> */}
-      </>
-    </ThemeProvider>
-    </div>
+      <div className="button__toggle">
+          <ThemeProvider theme={themeMode}>
+              <>
+                  <GlobalStyles />
+                  <Toggle theme={theme} toggleTheme={toggleTheme} />
+                  {/* <h3>Tu es dans le mode {theme === 'light' ? 'jour' : 'nuit'}!</h3> */}
+              </>
+          </ThemeProvider>
+      </div>
   );
 }
 

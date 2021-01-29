@@ -19,12 +19,12 @@ class Language extends Component {
   render() {
     const { language } = this.state;
     return (
-      <div>
-        <div className="button__language">
-          <p>{language === 'fr' ? 'titre' : 'title'}</p>
-          <button type="button" onClick={this.changeLanguage}>Change language</button>
+        <div>
+            <div className="button__language">
+                <p>{language === 'fr' ? 'titre' : 'title'}</p>
+                <button type="button" onClick={this.changeLanguage}>Change language</button>
+            </div>
         </div>
-      </div>
     );
   }
 }
