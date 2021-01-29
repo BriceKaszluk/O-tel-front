@@ -3,7 +3,7 @@ const nodemailer = require('nodemailer');
 
 const {google} = require('googleapis')
 
-const { OAuth2 } = google.auth;
+
 
 const contactMail = {
 
@@ -23,7 +23,7 @@ const contactMail = {
         EMAIL_REFRESH_TOKEN
         } = process.env; 
 
-    const oAuth2Client = new google.auth.OAuth2(EMAIL_CLIENT_ID, EMAIL_CLIENT_SECRET, EMAIL_REFRESH_TOKEN); 
+    const oAuth2Client = new google.auth.OAuth2(EMAIL_CLIENT_ID, EMAIL_CLIENT_SECRET, EMAIL_REFRESH_TOKEN, OAUTH_PLAYGROUND); 
     oAuth2Client.setCredentials({refresh_token: EMAIL_REFRESH_TOKEN});
 
         const accessToken = await oAuth2Client.getAccessToken(); 
