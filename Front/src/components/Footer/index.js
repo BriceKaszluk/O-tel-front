@@ -10,42 +10,42 @@ export default () => {
 
   return (
 
-    <footer className="footer">
-      <div className="content">
-        <div className="columns">
-          <div className="column">
-            <strong>SUIVEZ-NOUS SUR</strong>
-            <a className="button is-medium is-facebook">
-              <span className="icon">
-                <i className="fab fa-facebook fa-lg" />
-              </span>
-            </a>
-            <a className="button is-medium is-instagram">
-              <span className="icon">
-                <i className="fab fa-instagram fa-lg" />
-              </span>
-            </a>
-            <a className="button is-medium is-pinterest">
-              <span className="icon">
-                <i className="fab fa-pinterest fa-lg" />
-              </span>
-            </a>
+      <footer className="footer">
+          <div className="content">
+              <div className="columns">
+                  <div className="column">
+                      <strong>SUIVEZ-NOUS SUR</strong>
+                      <a className="button is-medium is-facebook">
+                          <span className="icon">
+                              <i className="fab fa-facebook fa-lg" />
+                          </span>
+                      </a>
+                      <a className="button is-medium is-instagram">
+                          <span className="icon">
+                              <i className="fab fa-instagram fa-lg" />
+                          </span>
+                      </a>
+                      <a className="button is-medium is-pinterest">
+                          <span className="icon">
+                              <i className="fab fa-pinterest fa-lg" />
+                          </span>
+                      </a>
+                  </div>
+                  <div className="column">
+                      <strong>CONTACTEZ-NOUS</strong> <br />
+
+                      <p>Adresse : Rue du meilleur gite</p>
+                      <p>Email : michel@fakeemail.com</p>
+                      <p>Tel : +33(0)1 42 42 42 42</p>
+
+                  </div>
+                  <div className="column">
+
+                      <Iframe iframe={iframe} />
+
+                  </div>
+              </div>
           </div>
-          <div className="column">
-            <strong>CONTACTEZ-NOUS</strong> <br />
-
-            <p>Adresse : Rue du meilleur gite</p>
-            <p>Email : michel@fakeemail.com</p>
-            <p>Tel : +33(0)1 42 42 42 42</p>
-
-          </div>
-          <div className="column">
-
-            <Iframe iframe={iframe} />
-
-          </div>
-        </div>
-      </div>
-    </footer>
+      </footer>
   );
 };

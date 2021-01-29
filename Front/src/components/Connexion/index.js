@@ -62,38 +62,38 @@ onClick={(event) => {
                                 {/* Signin with google, apple or facebook part */}
                                 <div className="field icons-button">
                                     <a className="button social is-medium is-facebook">
-                                      <span className="icon">
-                                        <i className="fab fa-facebook fa-lg" />
-                                    </span>
-                                      <span>Facebook</span>
-                                  </a>
+                                        <span className="icon">
+                                            <i className="fab fa-facebook fa-lg" />
+                                        </span>
+                                        <span>Facebook</span>
+                                    </a>
                                     <a className="button social is-medium is-google">
-                                      <span className="icon">
-                                        <i className="fab fa-google fa-lg" />
-                                    </span>
-                                      <span>Google</span>
-                                  </a>
+                                        <span className="icon">
+                                            <i className="fab fa-google fa-lg" />
+                                        </span>
+                                        <span>Google</span>
+                                    </a>
                                     <a className="button social is-medium is-apple">
-                                      <span className="icon">
-                                        <i className="fab fa-apple fa-lg" />
-                                    </span>
-                                      <span>Apple</span>
-                                  </a>
+                                        <span className="icon">
+                                            <i className="fab fa-apple fa-lg" />
+                                        </span>
+                                        <span>Apple</span>
+                                    </a>
                                 </div>
                                 {/* start of register form */}
                                 <h1>OU</h1>
                                 <div className="field">
 
                                     <div className="form-group field">
-                                      <label htmlFor="email" className="label">Email</label>
-                                      <Field name="email" type="email" className={`form-control input${errors.email && touched.email ? ' is-invalid' : ''}`} />
-                                      <ErrorMessage name="email" component="div" className="invalid-feedback" />
-                                  </div>
+                                        <label htmlFor="email" className="label">Email</label>
+                                        <Field name="email" type="email" className={`form-control input${errors.email && touched.email ? ' is-invalid' : ''}`} />
+                                        <ErrorMessage name="email" component="div" className="invalid-feedback" />
+                                    </div>
                                     <div className="form-group field">
-                                      <label htmlFor="password" className="label">Mot de passe</label>
-                                      <Field name="password" type="password" className={`form-control input${errors.password && touched.password ? ' is-invalid' : ''}`} />
-                                      <ErrorMessage name="password" component="div" className="invalid-feedback" />
-                                  </div>
+                                        <label htmlFor="password" className="label">Mot de passe</label>
+                                        <Field name="password" type="password" className={`form-control input${errors.password && touched.password ? ' is-invalid' : ''}`} />
+                                        <ErrorMessage name="password" component="div" className="invalid-feedback" />
+                                    </div>
 
                                 </div>
                             </section>

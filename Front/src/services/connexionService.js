@@ -4,7 +4,7 @@ import axios from 'axios';
 
 export const connexionService = {
 
-    handleConnexion: (email, password) => {
+  handleConnexion: (email, password) => {
     console.log('in connexion service');
 
     const requestOptions = {
