@@ -1,12 +1,17 @@
-.content {
-  width: 800px;
+.form-content {
+  width: 700px;
   margin: 1rem auto;
   padding: 3rem;
+
+  .label {
+     margin: 0.3rem auto;
+     padding: auto;
+  }
+
+  .button {
+    margin: 0.7rem auto;
+  }
+
 }
 
-.input {
-  margin: 0.3rem 0;
-}
-.contact_message {
-  margin: 1rem 0;
-}
+
