@@ -118,27 +118,11 @@ module.exports = {
                 }
             });
             
-            const token = jwt.sign({
-                first_name: checkUser.first_name,
-                last_name: checkUser.last_name,
-                email: checkUser.email
-            }, `${process.env.SECRET_TOKEN}`, { expiresIn: "1h" });
-
-          
-
-            const verif = jwt.verify(token, `${process.env.SECRET_TOKEN}`); 
-                    if (verif){
-                        console.log("token good: ", verif); 
-                    } else {
-                        response.status(404).json("Token not valid");
-                    }
-
-
             // if isn't exist, we launch an error
             if (!checkUser) {
-                
+
                 response.json({errors: "problème d'authentification"});
-            
+                
             } else {
                 // we compare the password hashed in DB
                 const comparePassword = bcrypt.compareSync(request.body.password, checkUser.password);
@@ -148,6 +132,19 @@ module.exports = {
                     response.json({errors: "problème d'authentification"});
                 } else {
                     // else connection
+                const token = jwt.sign({
+                first_name: checkUser.first_name,
+                last_name: checkUser.last_name,
+                email: checkUser.email
+                }, `${process.env.SECRET_TOKEN}`, { expiresIn: "1h" });
+
+            const verif = jwt.verify(token, `${process.env.SECRET_TOKEN}`); 
+                    if (verif){
+                        console.log("token good: ", verif); 
+                    } else {
+                        response.status(404).json("Token not valid");
+                    }
+
                     response.json({data: checkUser, token}); 
                 }
             }
