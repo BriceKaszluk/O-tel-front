@@ -3,7 +3,9 @@ import React from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
+import { mailService } from 'src/services/mailService';
 import './styles.scss';
+
 
 function Contact() {
   return (
@@ -22,9 +24,12 @@ function Contact() {
             subject: Yup.string().required('Sujet du message'),
             message: Yup.string().required('Veuillez taper votre message'),
           })}
-          onSubmit={(values, actions) => {
-            console.log(JSON.stringify(values, null, 2));
-            actions.resetForm();
+          onSubmit={({ last_name, first_name, email, subject, message }, { setStatus, setSubmitting }) => {
+            setStatus();
+            console.log('submitting form');
+            mailService.handleSubmit(last_name, first_name, email, subject, message)
+            setSubmitting(false);
+        
           }}
       >
           {({ errors, touched, isSubmitting }) => (
