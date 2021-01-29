@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import {
   Formik, Field, Form, ErrorMessage,
 } from 'formik';
+import LoadingSpinner from 'src/components/LoadingSpinner'
 import * as Yup from 'yup';
 
 import { mailService } from 'src/services/mailService';
@@ -38,7 +39,8 @@ export default () => (
                 }, { setStatus, setSubmitting }) => {
                   setStatus();
                   console.log('submitting form');
-                  mailService.handleSubmit(last_name, first_name, email, phone, dates, message);
+                  // eslint-disable-next-line max-len
+                  mailService.handleSubmit(last_name, first_name, email, phone_number, dates, message);
                   setSubmitting(false);
                 }}
         >
