@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
-import { mailService } from 'src/services/mailService';
+import { bookingService } from 'src/services/bookingService';
 
 // components
 import Calendar from 'src/components/Calendar';
@@ -38,7 +38,7 @@ export default () => {
                 }, { setStatus, setSubmitting }) => {
                     setStatus();
                     console.log('submitting form');
-                    mailService.handleSubmit(last_name, first_name, email, phone, dates, message);
+                    bookingService.handleBooking(last_name, first_name, email, phone_number, dates, message);
                     setSubmitting(false);
                 }}
             >
