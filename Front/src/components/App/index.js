@@ -1,7 +1,7 @@
 /* eslint-disable import/no-unresolved */
 import React, { Suspense, useState } from 'react';
 
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 
 // components
@@ -16,7 +16,7 @@ import Home from 'src/components/Home';
 import Profil from 'src/components/Profil';
 import Nav from 'src/components/Nav';
 import Housing from 'src/components/Housing';
-
+import Booking from 'src/components/Booking'
 //component to set path for connected users
 import {PrivateRoute} from 'src/components/PrivateRoute'
 
@@ -46,6 +46,7 @@ return (
             <Route exact path="/logement2" component={Housing} />
             <Route exact path="/logement3" component={Housing} />
             <Route exact path="/" component={Home} />
+            <Route exact path="/booking" component={Booking} />
             <PrivateRoute exact path="/profil" component={Profil} setConnexionActive={setIsActiveModalConnexion} />
         </Switch>
         <Footer />
