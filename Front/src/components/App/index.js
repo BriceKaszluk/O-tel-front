@@ -1,6 +1,8 @@
 /* eslint-disable import/no-unresolved */
 import React, { Suspense, useState } from 'react';
-import { Route, Switch } from 'react-router-dom';
+
+import { Route } from 'react-router-dom';
+
 
 // components
 import Footer from 'src/components/Footer';
@@ -14,11 +16,12 @@ import Home from 'src/components/Home';
 import Profil from 'src/components/Profil';
 import Nav from 'src/components/Nav';
 import Housing from 'src/components/Housing';
+
 //component to set path for connected users
 import {PrivateRoute} from 'src/components/PrivateRoute'
 
+
 // == Import
-import { data } from 'src/hooks/dataFetcher';
 import 'src/components/Languages/i18n';
 
 import './styles.scss';
@@ -27,8 +30,10 @@ const App = () => {
   //state concerning modal connexion
   const [isActiveModalConnexion, setIsActiveModalConnexion] = useState(false);
 
-  return(
-    <div className="app">
+
+return (
+  <div className="app">
+
 
     <Suspense fallback={(<div>Loading</div>)}>
         <Nav  connexionActive={isActiveModalConnexion} setConnexionActive={setIsActiveModalConnexion} />
