@@ -24,7 +24,7 @@ export default () => {
           <h2>{t('datepicker.1')}</h2>
 
           <div className="calendar">
-              <Calendar />
+              <Calendar isRange={true} />
           </div>
 
           <div className="block">{t('description.1')}</div>

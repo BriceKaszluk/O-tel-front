@@ -7,7 +7,7 @@ import './styles.scss';
 function Calendar({ className }) {
   useEffect(() => {
     // Initialize all input of date type.
-    const calendars = bulmaCalendar.attach('[type="date"]', isRange);
+    const calendars = bulmaCalendar.attach('[type="date"]', '[isRange=true]');
 
     // Loop on each calendar initialized
     calendars.forEach((calendar) => {
