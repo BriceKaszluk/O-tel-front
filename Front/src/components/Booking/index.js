@@ -1,5 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Formik, Field, Form, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+
+import { mailService } from 'src/services/mailService';
 
 // components
 import Calendar from 'src/components/Calendar';
@@ -9,6 +13,34 @@ import './styles.scss';
 
 export default () => (
     <div>
+
+        <Formik
+          initialValues={{
+            last_name: '',
+            first_name: '',
+            email: '',
+            phone: '',
+            dates: '',
+            message: '',
+          }}
+          validationSchema={Yup.object().shape({
+            last_name: Yup.string().required('Veuillez entrer un nom '),
+            first_name: Yup.string().required('Veuillez entrer un prénom'),
+            email: Yup.string().email().required('Veuillez entrer un email valide'),
+            phone: Yup.string().required('Veuillez entrer un numéro valide'),
+            dates: Yup.string(),
+            message: Yup.string().required('Veuillez taper votre message'),
+          })}
+          onSubmit={({
+            last_name, first_name, email, phone, dates, message,
+          }, { setStatus, setSubmitting }) => {
+            setStatus();
+            console.log('submitting form');
+            mailService.handleSubmit(last_name, first_name, email, phone, dates, message);
+            setSubmitting(false);
+          }}
+        />
+
         <h1>Réservation</h1>
 
         <img
@@ -17,6 +49,7 @@ export default () => (
           alt="logement"
         />
 
+        {({ errors, touched, isSubmitting }) => (
         <form>
             {/* FIRST NAME */}
             <div className="field">
@@ -71,10 +104,18 @@ export default () => (
             </div>
             <div className="field">
                 <div className="control">
-                    <button className="button is-link">Submit</button>
+                    <button 
+                        className="button is-link"
+                        type="submit"
+                        className="button is-primary is-small is-rounded"
+                        disabled={isSubmitting}
+                      >Submit
+                          {isSubmitting ? 'Please wait...' : 'Envoyer le message'}
+                    </button>
                 </div>
             </div>
         </form>
+        )}
     </div>
 );
 
