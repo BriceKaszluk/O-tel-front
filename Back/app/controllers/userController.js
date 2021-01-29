@@ -118,15 +118,11 @@ module.exports = {
                 }
             });
             
-          
-
-
             // if isn't exist, we launch an error
             if (!checkUser) {
 
-               
-                response.status(404).json({errors: "problème d'authentification"});
-            
+                response.json({errors: "problème d'authentification"});
+                
             } else {
                 // we compare the password hashed in DB
                 const comparePassword = bcrypt.compareSync(request.body.password, checkUser.password);
@@ -148,7 +144,8 @@ module.exports = {
                     } else {
                         response.status(404).json("Token not valid");
                     }
-                    response.json({data: checkUser}); 
+
+                    response.json({data: {user: checkUser}, token}); 
                 }
             }
         } catch (error) {

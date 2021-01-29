@@ -3,7 +3,6 @@ import './styles.scss';
 
 export default (props) => {
 
-    
     return (
         <div className="card">
         <div className="card-content ">
@@ -23,7 +22,6 @@ export default (props) => {
           </p>
           <br />
           <time className="is-centered"></time>
-    
         </div>
       </div>
     )
