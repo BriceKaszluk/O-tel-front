@@ -1,18 +1,28 @@
+/* eslint-disable linebreak-style */
 import React, { useEffect } from 'react';
-import bulmaCalendar, { isRange } from 'bulma-calendar/dist/js/bulma-calendar.min.js';
+import bulmaCalendar from 'bulma-calendar/dist/js/bulma-calendar.min.js';
 import 'bulma-calendar/dist/css/bulma-calendar.min.css';
 
 import './styles.scss';
+
+const invalidDates = [
+  new Date(new Date().getTime() + 24 * 60 * 60 * 1000),
+  new Date(new Date().getTime() + 192 * 60 * 60 * 1000)
+]
 
 function Calendar({ className }) {
   useEffect(() => {
     const options = {
       type: 'date',
+      startDate: '',
+      endDate: '',
+      showHeader: false,
       labelFrom: 'Check-in',
       labelTo: 'Check-out',
       dateFormat: 'DD-MM-YYYY',
       displayMode: 'dialog',
       lang: 'fr',
+      disabledDates: invalidDates,
     };
 
     // Initialize all input of date type.
@@ -21,11 +31,11 @@ function Calendar({ className }) {
     // Loop on each calendar initialized
     calendars.forEach((calendar) => {
       // Add listener to date:selected event
-      calendar.on('date:selected', (date) => {
-        console.log(date);
+      calendar.on('date:selected', (Checkin) => {
+        console.log(Checkin);
       });
-      calendar.on('date:selected', (date) => {
-        console.log(date);
+      calendar.on('date:selected', (Checkout) => {
+        console.log(Checkout);
       });
     });
 
