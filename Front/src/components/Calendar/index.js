@@ -6,8 +6,17 @@ import './styles.scss';
 
 function Calendar({ className }) {
   useEffect(() => {
+    const options = {
+      type: 'date',
+      labelFrom: 'Check-in',
+      labelTo: 'Check-out',
+      dateFormat: 'DD-MM-YYYY',
+      displayMode: 'dialog',
+      lang: 'fr',
+    };
+
     // Initialize all input of date type.
-    const calendars = bulmaCalendar.attach('[type="date"]');
+    const calendars = bulmaCalendar.attach('[type="date"]', options);
 
     // Loop on each calendar initialized
     calendars.forEach((calendar) => {
@@ -31,23 +40,20 @@ function Calendar({ className }) {
     }
   }, []);
 
- 
-
   return (
-    <section className="calendar__section">
-      <div className={className} className="calendar__section__div">
-        <input id="bulma-datepicker" type="date" data-is-range="true" />
-      </div>
-    </section>
+      <section className="calendar__section field">
+          <div className={className} className="calendar__section__div control">
+              <input id="bulma-datepicker" type="date" data-is-range="true" />
+          </div>
+      </section>
   );
 }
 
 export default Calendar;
 
 // Exemple for label
-// bulmaCalendar.attach('#bulma-datepicker', {    
+// bulmaCalendar.attach('#bulma-datepicker', {
 //   labelFrom: 'Check-in',
 //   labelTo: 'Check-out',
 //     lang: 'fr'
 // });
- 
