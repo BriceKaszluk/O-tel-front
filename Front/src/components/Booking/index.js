@@ -20,7 +20,7 @@ export default () => (
         <form>
             {/* FIRST NAME */}
             <div className="field">
-                <label htmlFor="label" className="label">nom</label>
+                <label className="label">nom</label>
                 <div className="control">
                     <input className="input" type="text" placeholder="Text input" />
                 </div>
