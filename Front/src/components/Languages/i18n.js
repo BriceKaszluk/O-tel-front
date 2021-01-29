@@ -34,7 +34,7 @@ const options = {
 }
 
 i18n
-  .use(Backend) // load translation using xhr -> see /public/locales. We will add locales in the next step
+  .use(Backend) // load translation using xhr -> see /public/locales
 
   .use(LanguageDetector) // detect user language
 
