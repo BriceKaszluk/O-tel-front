@@ -39,10 +39,8 @@ const contactMail = {
                 clientSecret: EMAIL_CLIENT_SECRET, 
                 refreshToken: EMAIL_REFRESH_TOKEN,
                 accessToken: accessToken
-            },
-            tls: {
-                rejectUnauthorized: false
-              }
+            }
+            
         })
 
         const mailOption = {
