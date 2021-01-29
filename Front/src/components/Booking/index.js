@@ -1,5 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Formik, Field, Form, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+
+import { mailService } from 'src/services/mailService';
 
 // components
 import Calendar from 'src/components/Calendar';
@@ -7,75 +11,93 @@ import Calendar from 'src/components/Calendar';
 // import
 import './styles.scss';
 
-export default () => (
-    <div>
-        <h1>Réservation</h1>
+export default () => {
 
-        <img
-          className="fit-picture"
-          src=""
-          alt="logement"
-        />
+    return (
 
-        <form>
-            {/* FIRST NAME */}
-            <div className="field">
-                <label className="label">nom</label>
-                <div className="control">
-                    <input className="input" type="text" placeholder="Text input" />
-                </div>
-                <p className="help">This is a help text</p>
-            </div>
-            {/* LAST NAME */}
-            <div className="field">
-                <label className="label">prénom</label>
-                <div className="control">
-                    <input className="input" type="text" placeholder="Text input" />
-                </div>
-                <p className="help">This is a help text</p>
-            </div>
-            {/* EMAIL */}
-            <div className="field">
-                <label className="label">Email</label>
-                <div className="control">
-                    <input className="input" type="email" placeholder="e.g. alexsmith@gmail.com" />
-                </div>
-            </div>
-            {/* PHONE NUMBER */}
-            <div className="field">
-                <label className="label">Tel</label>
-                <div className="control">
-                    <input className="input" type="tel" placeholder="+336-84-56-32" />
-                </div>
-            </div>
-            {/* BEGIN AND END DATE */}
-            <Calendar />
-            {/* MORE INFORMATIONS */}
-            <div className="field">
-                <label className="label">Message</label>
-                <div className="control">
-                    <textarea className="textarea" placeholder="informations complémentaires" />
-                </div>
-            </div>
-            {/* TERMS AND CONDITIONS CHECKBOX */}
-            <div className="field">
-                <div className="control">
-                    <label className="checkbox">
-                        <div>
-                            <input type="checkbox" />
-                            <span> I agree to the</span>
-                            <Link to="/logement2" className="terms_and_conditions">terms and conditions</Link>
+        <div>   
+            <Formik
+                initialValues={{
+                    last_name: '',
+                    first_name: '',
+                    email: '',
+                    phone_number: '',
+                    dates: '',
+                    message: '',
+                }}
+                validationSchema={Yup.object().shape({
+                    last_name: Yup.string().required('Veuillez entrer un nom '),
+                    first_name: Yup.string().required('Veuillez entrer un prénom'),
+                    email: Yup.string().email().required('Veuillez entrer un email valide'),
+                    phone_number: Yup.string().required('Veuillez entrer un numéro valide'),
+                    dates: Yup.string(),
+                    message: Yup.string().required('Veuillez taper votre message'),
+                })}
+                onSubmit={({
+                    last_name, first_name, email, phone_number, dates, message,
+                }, { setStatus, setSubmitting }) => {
+                    setStatus();
+                    console.log('submitting form');
+                    mailService.handleSubmit(last_name, first_name, email, phone, dates, message);
+                    setSubmitting(false);
+                }}
+            >
+
+
+                {({ errors, touched, isSubmitting }) => (
+                    <Form>
+                        {/* FIRST NAME */}
+                        <div className="field">
+                            <div className="form-group field">
+                                <label htmlFor="last_name" className="label">Nom</label>
+                                <Field name="last_name" type="text" className={'form-control input' + (errors.first_name && touched.last_name ? ' is-invalid' : '')} />
+                                <ErrorMessage name="last_name" component="div" className="invalid-feedback" />
+                            </div>
                         </div>
-                    </label>
-                </div>
-            </div>
-            <div className="field">
-                <div className="control">
-                    <button className="button is-link">Submit</button>
-                </div>
-            </div>
-        </form>
-    </div>
-);
-
+                        {/* LAST NAME */}
+                        <div className="form-group-field">
+                            <label htmlFor="first_name" className="label">Prénom</label>
+                            <Field name="first_name" type="text" className={'form-control input' + (errors.first_name && touched.first_name ? ' is-invalid' : '')} />
+                            <ErrorMessage name="first_name" component="div" className="invalid-feedback" />
+                        </div>
+                        {/* EMAIL */}
+                        <div className="form-group-field">
+                            <label htmlFor="email" className="label">Email</label>
+                            <Field name="email" type="email" className={'form-control input' + (errors.email && touched.email ? ' is-invalid' : '')} />
+                            <ErrorMessage name="email" component="div" className="invalid-feedback" />
+                        </div>
+                        
+                        {/* PHONE NUMBER */}
+                        <div className="form-group-field">
+                            <label htmlFor="phone_number" className="label">Téléphone</label>
+                            <Field name="phone_number" type="tel" className={'form-control input' + (errors.phone_number && touched.phone_number ? ' is-invalid' : '')} />
+                            <ErrorMessage name="phone_number" component="div" className="invalid-feedback" />
+                        </div>
+                        {/* BEGIN AND END DATE */}
+                        <Calendar />
+                        {/* MORE INFORMATIONS */}
+                        <div className="form-group-field">
+                            <label htmlFor="message" className="label">Message</label>
+                            <Field component="textarea" name="message" type="textarea" className="Rounded Medium textarea" />
+                            <ErrorMessage name="message" component="div" className="invalid-feedback" />
+                        </div>
+                        {/* TERMS AND CONDITIONS CHECKBOX */}
+                        <div className="form-group-field">
+                            <Field type="checkbox" name="acceptTerms" className={'form-check-input checkbox' + (errors.acceptTerms && touched.acceptTerms ? ' is-invalid' : '')} />
+                            <span className="acceptTerm_p"> J'accepte les</span>
+                            <Link to="/logement2" className="terms_and_conditions">termes et conditions</Link>
+                            <ErrorMessage name="acceptTerms" component="div" className="invalid-feedback" />
+                        </div>
+                        <footer className="form-group modal-card-foot">
+                            <button type="submit" className="button is-success" disabled={isSubmitting}>envoyer</button>
+                            { isSubmitting && <LoadingSpinner /> }
+                            <Link to="/">Annuler</Link>
+                            {status && <div className={'alert alert-danger'}>{status}</div> }
+                        </footer>
+                    </Form>
+                )}
+            </Formik>
+        </div> 
+    )
+}
 // TODO: configure link terms and conditions
