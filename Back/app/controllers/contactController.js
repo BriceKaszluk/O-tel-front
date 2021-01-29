@@ -24,9 +24,11 @@ const contactMail = {
         } = process.env; 
 
     const oAuth2Client = new google.auth.OAuth2(EMAIL_CLIENT_ID, EMAIL_CLIENT_SECRET, EMAIL_REFRESH_TOKEN, OAUTH_PLAYGROUND); 
+    console.log('probleme: ', oAuth2Client)
     oAuth2Client.setCredentials({refresh_token: EMAIL_REFRESH_TOKEN});
 
         const accessToken = await oAuth2Client.getAccessToken(); 
+        
         const transport = nodemailer.createTransport({
             service: 'gmail', 
             auth: {
@@ -37,7 +39,10 @@ const contactMail = {
                 clientSecret: EMAIL_CLIENT_SECRET, 
                 refreshToken: EMAIL_REFRESH_TOKEN,
                 accessToken: accessToken
-            }
+            },
+            tls: {
+                rejectUnauthorized: false
+              }
         })
 
         const mailOption = {
