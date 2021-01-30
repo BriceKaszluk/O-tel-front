@@ -18,7 +18,9 @@ export default () => {
                 selected={(value && new Date(value)) || null}
                 onChange={val => {
                     onChange(name, val)
-                }} />
+                }}
+                dateFormat="dd/MM/yyyy"
+                 />
         )
     }
 
@@ -77,7 +79,7 @@ export default () => {
                             <Field name="email" type="email" className={'form-control input' + (errors.email && touched.email ? ' is-invalid' : '')} />
                             <ErrorMessage name="email" component="div" className="invalid-feedback" />
                         </div>
-                        
+
                         {/* PHONE NUMBER */}
                         <div className="form-group-field">
                             <label htmlFor="phone_number" className="label">Téléphone</label>
@@ -96,8 +98,8 @@ export default () => {
                                     <DatePickerField name="endDate" value={values.endDate} onChange={setFieldValue} />
                                 </div>
                             </div>
-                            
-                        </div>    
+
+                        </div>
                         {/* MORE INFORMATIONS */}
                         <div className="form-group-field">
                             <label htmlFor="message" className="label">Message</label>
