@@ -6,8 +6,6 @@ export default () => {
 
     const [result, setResult] = useState({})
 
-    
-
     const dispatch = async () => {
 
         const result =  await getData.getHousingOne();
