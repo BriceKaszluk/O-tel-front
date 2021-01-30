@@ -42,10 +42,10 @@ const Toggle = ({ theme, toggleTheme }) => {
   const isLight = theme === 'light';
 
   return (
-    <ToggleContainer lightTheme={isLight} onClick={toggleTheme}>
-      <SunIcon />
-      <MoonIcon />
-    </ToggleContainer>
+      <ToggleContainer lightTheme={isLight} onClick={toggleTheme}>
+          <SunIcon />
+          <MoonIcon />
+      </ToggleContainer>
   );
 };
 

@@ -123,4 +123,3 @@ export default () => {
         </div> 
     )
 }
-// TODO: configure link terms and conditions

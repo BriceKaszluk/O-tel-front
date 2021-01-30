@@ -1,4 +1,4 @@
 import React from 'react';
-import './styles.scss'; 
+import './styles.scss';
 
-export default () => <div className="loader"></div>
+export default () => <div className="loader" />;

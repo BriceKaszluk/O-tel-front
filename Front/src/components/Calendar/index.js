@@ -7,8 +7,8 @@ import './styles.scss';
 
 const invalidDates = [
   new Date(new Date().getTime() + 24 * 60 * 60 * 1000),
-  new Date(new Date().getTime() + 192 * 60 * 60 * 1000)
-]
+  new Date(new Date().getTime() + 192 * 60 * 60 * 1000),
+];
 
 function Calendar({ className }) {
   useEffect(() => {
