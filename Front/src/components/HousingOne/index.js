@@ -4,11 +4,15 @@ import { getData } from 'src/hooks/dataFetcher';
 export default () => {
   const [result, setResult] = useState({});
 
-  const dispatch = async () => {
-    const result = await getData.getHousingOne();
-    if (result[0].data !== undefined) {
-      const { data } = result[0];
-      setResult(data);
+    const [result, setResult] = useState({})
+
+    const dispatch = async () => {
+
+        const result =  await getData.getHousingOne();
+        if (result[0].data !== undefined) {
+            const data = result[0].data;
+            setResult(data)
+        }
     }
   };
 
