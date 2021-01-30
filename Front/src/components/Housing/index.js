@@ -6,8 +6,6 @@ import {Route, Link, BrowserRouter as Router, Switch} from 'react-router-dom'
 
 import './styles.scss';
 
-export default () => (
-
 
 export default () => {
 
@@ -26,10 +24,6 @@ export default () => {
                     <Link to="/booking" className="button is-primary">Réserver ce logement</Link>
                 </div>
             </div>
-            <div className="column">
-                <Link to="/booking" className="button is-primary">Réserver ce logement</Link>
-            </div>
         </div>
-    </div>
-
-);
+    )
+};
