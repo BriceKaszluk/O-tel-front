@@ -3,7 +3,7 @@ import { withRouter, Link } from 'react-router-dom';
 import {
   Formik, Field, Form, ErrorMessage,
 } from 'formik';
-import Facebook from 'src/components/Facebook'
+import Facebook from 'src/components/Facebook';
 
 import * as Yup from 'yup';
 import LoadingSpinner from 'src/components/LoadingSpinner';
@@ -62,13 +62,8 @@ onClick={(event) => {
                             <section className="modal-card-body">
                                 {/* Signin with google, apple or facebook part */}
                                 <div className="field icons-button">
-                                    <a className="button social is-medium is-facebook">
-                                        <span className="icon">
-                                            <i className="fab fa-facebook fa-lg" />
-                                        </span>
-                                        <span>Facebook</span>
-                                    </a>
-                                    
+                                    <Facebook />
+
                                     <a className="button social is-medium is-google">
                                         <span className="icon">
                                             <i className="fab fa-google fa-lg" />
@@ -107,7 +102,7 @@ onClick={(event) => {
                                 <button
                                     className="button"
                                     onClick={(event) => {
-                                    closeModal(!modalActive);
+                                      closeModal(!modalActive);
                                     }}
                                 >Annuler
                                 </button>
