@@ -63,6 +63,7 @@
     "react": "^16.13.1",
     "react-datepicker": "^3.4.1",
     "react-dom": "^16.13.1",
+    "react-facebook-login": "^4.1.1",
     "react-i18next": "^11.8.5",
     "react-router-dom": "^5.2.0",
     "react-router-hash-link": "^2.3.1",
