@@ -16,6 +16,7 @@ import Profil from 'src/components/Profil';
 import Nav from 'src/components/Nav';
 import Housing from 'src/components/Housing';
 import Booking from 'src/components/Booking';
+import Facebook from 'src/components/Facebook';
 // component to set path for connected users
 import { PrivateRoute } from 'src/components/PrivateRoute';
 
@@ -35,6 +36,7 @@ const App = () => {
               <Nav connexionActive={isActiveModalConnexion} setConnexionActive={setIsActiveModalConnexion} />
               <Darkmode />
               <Languages />
+              <Facebook />
               <Switch>
                   <Route exact path="/connexion" component={Connexion} />
                   <Route exact path="/livre_d_or" component={GoldenBook} />

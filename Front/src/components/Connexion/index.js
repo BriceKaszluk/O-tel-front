@@ -3,6 +3,7 @@ import { withRouter, Link } from 'react-router-dom';
 import {
   Formik, Field, Form, ErrorMessage,
 } from 'formik';
+import Facebook from 'src/components/Facebook'
 
 import * as Yup from 'yup';
 import LoadingSpinner from 'src/components/LoadingSpinner';
@@ -67,6 +68,7 @@ onClick={(event) => {
                                         </span>
                                         <span>Facebook</span>
                                     </a>
+                                    
                                     <a className="button social is-medium is-google">
                                         <span className="icon">
                                             <i className="fab fa-google fa-lg" />
@@ -103,10 +105,10 @@ onClick={(event) => {
                                 <button type="submit" className="button is-success" disabled={isSubmitting}>envoyer</button>
                                 {isSubmitting && <LoadingSpinner />}
                                 <button
-className="button"
-onClick={(event) => {
-  closeModal(!modalActive);
-}}
+                                    className="button"
+                                    onClick={(event) => {
+                                    closeModal(!modalActive);
+                                    }}
                                 >Annuler
                                 </button>
                                 {status && <div className="alert alert-danger">{status}</div>}
