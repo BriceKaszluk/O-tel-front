@@ -7,14 +7,17 @@ import {
 import { Link, useHistory } from 'react-router-dom';
 import * as Yup from 'yup';
 import LoadingSpinner from 'src/components/LoadingSpinner';
-
+import { useAuthentication } from 'src/components/UserContext';
 import './styles.scss';
 
 import { registrationService } from 'src/services/registrationService';
 
 export default ({ modalActive, closeModal }) => {
+
+    const { authenticate } = useAuthentication();
     // initialize history to use history.push to redirect
     const history = useHistory();
+
     return (
         <div className="modal is-active">
             <div
@@ -54,6 +57,7 @@ export default ({ modalActive, closeModal }) => {
                         registrationService.handleRegistration(last_name, first_name, email, phone_number, password)
                             .then((user) => {
                                 console.log(user.data, 'test user data');
+                                authenticate(user.data.data.user, user.data.token);
                                 closeModal(!modalActive);
                                 history.push('/profil');
                               },

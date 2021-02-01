@@ -2,6 +2,7 @@ import React, { createContext, useState, useEffect, useContext } from "react";
 
 const userContext = createContext();
 
+//will be use to provide context in 'src/index'
 const UserProvider = (props) => {
 
     const [user, setUser] = useState(null);
@@ -17,7 +18,7 @@ const UserProvider = (props) => {
     }
 
     useEffect(() => {
-        //on vérifie le local storage
+        //we check local storage
         const userProfile = localStorage.getItem('profile');
         const userToken = localStorage.getItem('token');
         if(userProfile && userToken){
