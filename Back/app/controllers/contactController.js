@@ -9,7 +9,7 @@ const contactMail = {
 
 
  contactMailer: async(request, response) => {
-    const {email, subject, text} = request.body
+    const {email, subject, message} = request.body
     console.log(request.body)
     try {
         const OAUTH_PLAYGROUND = 'https://developers.google.com/oauthplayground';
@@ -46,7 +46,7 @@ const contactMail = {
             from: `${email}`,
             to: EMAIL_NAME,
             subject: `Message de ${email}: ${subject}`, 
-            text: `${text}`
+            text: `${message}`
         }
 
         const info = await transport.sendMail(mailOption);
