@@ -4,6 +4,7 @@ import {
   Formik, Field, Form, ErrorMessage,
 } from 'formik';
 import Facebook from 'src/components/Facebook';
+import Google from 'src/components/Google';
 
 import * as Yup from 'yup';
 import LoadingSpinner from 'src/components/LoadingSpinner';
@@ -63,6 +64,7 @@ onClick={(event) => {
                                 {/* Signin with google, apple or facebook part */}
                                 <div className="field icons-button">
                                     <Facebook />
+                                    <Google />
 
                                     <a className="button social is-medium is-google">
                                         <span className="icon">
