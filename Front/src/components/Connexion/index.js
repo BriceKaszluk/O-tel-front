@@ -3,16 +3,20 @@ import { withRouter, Link } from 'react-router-dom';
 import {
   Formik, Field, Form, ErrorMessage,
 } from 'formik';
+import { useAuthentication } from 'src/components/UserContext';
 import Facebook from 'src/components/Facebook';
 import Google from 'src/components/Google';
-
 import * as Yup from 'yup';
 import LoadingSpinner from 'src/components/LoadingSpinner';
 import './styles.scss';
 
 import { connexionService } from 'src/services/connexionService';
 
-export default ({ modalActive, closeModal }) => (
+export default ({ modalActive, closeModal }) => {
+
+    const { authenticate } = useAuthentication();
+
+    return(
     <div className="modal is-active">
         <div
 className="modal-background"
@@ -37,7 +41,6 @@ onClick={(event) => {
                     })}
                     onSubmit={({ email, password }, { setStatus, setSubmitting }) => {
                       setStatus();
-
                       console.log('submitting form');
                       connexionService.handleConnexion(email, password)
                         .then((user) => {
@@ -47,8 +50,7 @@ onClick={(event) => {
                             console.log(user.data.errors, '//user error');
                           }
                           else {
-                            localStorage.setItem('currentUser', JSON.stringify(user.data.token));
-                            console.log(localStorage.currentUser, 'current user dans local storage');
+                            authenticate(user.data.data.user, user.data.token);
                             closeModal(!modalActive);
                           }
                         });
@@ -117,4 +119,4 @@ onClick={(event) => {
         </div>
     </div>
 
-);
+)};

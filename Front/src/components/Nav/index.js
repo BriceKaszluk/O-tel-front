@@ -5,10 +5,12 @@ import ConnexionForm from 'src/components/Connexion';
 import { HashLink } from 'react-router-hash-link';
 import { useTranslation } from 'react-i18next';
 import { connexionService } from 'src/services/connexionService';
+import { useAuthentication } from 'src/components/UserContext';
 
 import styles from './styles.scss';
 
 export default ({ connexionActive, setConnexionActive }) => {
+  const { user } = useAuthentication();
   const history = useHistory();
   const { t } = useTranslation();
   const [isActiveRegistration, setIsActiveRegistration] = useState(false);
@@ -30,23 +32,22 @@ export default ({ connexionActive, setConnexionActive }) => {
               <HashLink to="/#contact-form" className="navbar-item">{t('contact.1')}</HashLink>
 
               {
-                    localStorage.currentUser
+                    user
                     && (
                     <div className="navbar-item">
                         <Link to="/profil" className="navbar-item">profil</Link>
                         <a
-className="navbar-item"
-onClick={() => {
-  connexionService.logout();
-  history.go(0);
-}}
-                        >déconnexion
+                        className="navbar-item"
+                        onClick={() => {
+                        connexionService.logout();
+                        history.go(0);
+                        }}>déconnexion
                         </a>
                     </div>
                     )
                     }
               {
-                    !localStorage.currentUser
+                    !user
                     && (
                     <div className="navbar-item">
                         <a className="navbar-item" onClick={() => setConnexionActive(!connexionActive)}>{t('connexion.1')}</a>
