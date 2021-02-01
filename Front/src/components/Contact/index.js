@@ -25,14 +25,16 @@ function Contact() {
             })}
             onSubmit={({
               name, email, subject, message,
-            }, { setStatus, setSubmitting }) => {
-              setStatus();
-              console.log('submitting form');
-              mailService.handleSubmit(name, email, subject, message);
-              setSubmitting(false);
-            }}
+            }, { resetForm }) => {
+              console.log('Soumission du formulaire');
+              mailService.handleSubmit(name, email, subject, message)
+                  .then(
+                      resetForm()
+                  );
+
+              }}
       >
-          {({ errors, touched, isSubmitting }) => (
+              {({ errors, touched, isSubmitting }) => (
               <Form className="form-content panel">
                   <div className="field">
                       <label className="label has-text-centered is-medium">

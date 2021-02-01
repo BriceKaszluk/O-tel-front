@@ -3,7 +3,7 @@ import axios from 'axios';
 export const mailService = {
 
   handleSubmit: (name, email, subject, message) => {
-    console.log('in mail service');
+    console.log('Envoie du message (mailService)');
 
     const requestOptions = {
       method: 'POST',
