@@ -64,6 +64,7 @@ module.exports = {
 
                     // we create a new user
                     const newUser = new User ({
+                        id: request.body.id, 
                         first_name: request.body.first_name,
                         last_name: request.body.last_name,
                         // address: request.body.address,
@@ -76,6 +77,7 @@ module.exports = {
                     // 2nd argument is the secret string to put in .env
                     // 3rd argument options object
                     const token = jwt.sign({
+                        id: newUser.id, 
                         first_name: newUser.first_name,
                         last_name: newUser.last_name,
                         email: newUser.email
@@ -97,7 +99,7 @@ module.exports = {
                     console.log(newUser, 'user saved');
                     
 
-                   return response.status(200).json({data: newUser, token}); 
+                   return response.status(200).json({data: newUser, token, verif}); 
 
                     
                    
@@ -133,19 +135,24 @@ module.exports = {
                 } else {
                     // else connection
                 const token = jwt.sign({
+                id: checkUser.id, 
                 first_name: checkUser.first_name,
                 last_name: checkUser.last_name,
                 email: checkUser.email
-                }, `${process.env.SECRET_TOKEN}`, { expiresIn: "1h" });
+                }, process.env.SECRET_TOKEN, { expiresIn: "1h" });
 
-            const verif = jwt.verify(token, `${process.env.SECRET_TOKEN}`); 
+            const verif = jwt.verify(token, process.env.SECRET_TOKEN); 
                     if (verif){
-                        console.log("token good: ", verif); 
+                       verif.id == token.id
+                       verif.first_name == token.first_name 
+                       verif.last_name == token.last_name
+                       verif.email == token.email; 
+                    
                     } else {
                         response.status(404).json("Token not valid");
                     }
 
-                    response.json({data: {user: checkUser}, token}); 
+                    response.json({data: {user: checkUser}, token, verif}); 
                 }
             }
         } catch (error) {

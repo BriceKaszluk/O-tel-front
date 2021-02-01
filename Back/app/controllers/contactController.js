@@ -1,6 +1,5 @@
 
 const nodemailer = require('nodemailer');
-
 const {google} = require('googleapis')
 
 
@@ -10,7 +9,7 @@ const contactMail = {
 
 
  contactMailer: async(request, response) => {
-    const {email, subject, text} = request.body
+    const {email, subject, message} = request.body
     console.log(request.body)
     try {
         const OAUTH_PLAYGROUND = 'https://developers.google.com/oauthplayground';
@@ -47,15 +46,7 @@ const contactMail = {
             from: `${email}`,
             to: EMAIL_NAME,
             subject: `Message de ${email}: ${subject}`, 
-            text: `${text}`,
-            auth: {
-                user:EMAIL_NAME,
-                pass:SECRET_PASS,
-                clientId: EMAIL_CLIENT_ID,
-                clientSecret: EMAIL_CLIENT_SECRET, 
-                refreshToken: EMAIL_REFRESH_TOKEN,
-                accessToken: accessToken
-            }
+            text: `${message}`
         }
 
         const info = await transport.sendMail(mailOption);

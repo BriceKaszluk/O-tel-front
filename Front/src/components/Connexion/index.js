@@ -4,8 +4,6 @@ import {
   Formik, Field, Form, ErrorMessage,
 } from 'formik';
 import { useAuthentication } from 'src/components/UserContext';
-import Facebook from 'src/components/Facebook';
-import Google from 'src/components/Google';
 import * as Yup from 'yup';
 import LoadingSpinner from 'src/components/LoadingSpinner';
 import './styles.scss';
@@ -63,26 +61,6 @@ onClick={(event) => {
                     }) => (
                         <Form>
                             <section className="modal-card-body">
-                                {/* Signin with google, apple or facebook part */}
-                                <div className="field icons-button">
-                                    <Facebook />
-                                    <Google />
-
-                                    <a className="button social is-medium is-google">
-                                        <span className="icon">
-                                            <i className="fab fa-google fa-lg" />
-                                        </span>
-                                        <span>Google</span>
-                                    </a>
-                                    <a className="button social is-medium is-apple">
-                                        <span className="icon">
-                                            <i className="fab fa-apple fa-lg" />
-                                        </span>
-                                        <span>Apple</span>
-                                    </a>
-                                </div>
-                                {/* start of register form */}
-                                <h1>OU</h1>
                                 <div className="field">
 
                                     <div className="form-group field">

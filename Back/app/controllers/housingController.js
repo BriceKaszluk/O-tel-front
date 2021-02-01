@@ -27,7 +27,8 @@ module.exports = {
             const house = await Housing.findOne({
                 where: {id: houseId},
                 include: [
-                    {association: 'notices'}
+                    {association: 'notices'}, 
+                    {association: 'bookings'}
                 ]
             });
 
@@ -118,5 +119,35 @@ module.exports = {
         }
     },
 
+    associateHousingBooking: async(request, response) => {
+        const houseId = request.params.id; 
+        const bookingId = request.params.id;
+        try {
+            const associatedHouse = await Housing.findOne({
+                where: {id: houseId}, 
+                include: [
+                   { association:'bookings'}
+                ]
+              
+            });
+    
+            const associatedBooking = await Booking.findOne({
+                where: {id: bookingId}, 
+                include: [
+                   { association:'house'}
+                ]
+            });
+            
+            const result = await associatedHouse.addBooking(associatedBooking); 
+        
+            response.json({data: result}); 
+    
+        } catch (error) {
+            console.log(error);
+            response.status(500).json({ error });
+        }
+        
+        
+    }
 
 }
