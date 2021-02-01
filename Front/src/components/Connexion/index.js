@@ -4,6 +4,9 @@ import {
   Formik, Field, Form, ErrorMessage,
 } from 'formik';
 import { useAuthentication } from 'src/components/UserContext';
+import Facebook from 'src/components/Facebook';
+import Google from 'src/components/Google';
+
 import * as Yup from 'yup';
 import LoadingSpinner from 'src/components/LoadingSpinner';
 import './styles.scss';
@@ -63,12 +66,9 @@ onClick={(event) => {
                             <section className="modal-card-body">
                                 {/* Signin with google, apple or facebook part */}
                                 <div className="field icons-button">
-                                    <a className="button social is-medium is-facebook">
-                                        <span className="icon">
-                                            <i className="fab fa-facebook fa-lg" />
-                                        </span>
-                                        <span>Facebook</span>
-                                    </a>
+                                    <Facebook />
+                                    <Google />
+
                                     <a className="button social is-medium is-google">
                                         <span className="icon">
                                             <i className="fab fa-google fa-lg" />
@@ -105,10 +105,10 @@ onClick={(event) => {
                                 <button type="submit" className="button is-success" disabled={isSubmitting}>envoyer</button>
                                 {isSubmitting && <LoadingSpinner />}
                                 <button
-className="button"
-onClick={(event) => {
-  closeModal(!modalActive);
-}}
+                                    className="button"
+                                    onClick={(event) => {
+                                      closeModal(!modalActive);
+                                    }}
                                 >Annuler
                                 </button>
                                 {status && <div className="alert alert-danger">{status}</div>}

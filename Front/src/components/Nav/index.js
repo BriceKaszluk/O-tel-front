@@ -10,7 +10,7 @@ import { useAuthentication } from 'src/components/UserContext';
 import styles from './styles.scss';
 
 export default ({ connexionActive, setConnexionActive }) => {
-  const { user } = useAuthentication();
+  const { user, authenticate } = useAuthentication();
   const history = useHistory();
   const { t } = useTranslation();
   const [isActiveRegistration, setIsActiveRegistration] = useState(false);
@@ -38,9 +38,10 @@ export default ({ connexionActive, setConnexionActive }) => {
                         <Link to="/profil" className="navbar-item">profil</Link>
                         <a
                         className="navbar-item"
-                        onClick={() => {
-                        connexionService.logout();
-                        history.go(0);
+                        onClick={(event) => {
+                        event.preventDefault();
+                        authenticate(null, null);
+                        history.push('/');
                         }}>déconnexion
                         </a>
                     </div>
