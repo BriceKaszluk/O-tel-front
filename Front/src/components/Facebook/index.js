@@ -17,7 +17,7 @@ export default class Facebook extends Component {
 
       this.setState({
         isLoggeIn: true,
-        userID: response.userID, 
+        userID: response.userID,
         name: response.name,
         email: response.email,
         picture: response.picture.data.url,
@@ -42,7 +42,7 @@ export default class Facebook extends Component {
         fbContent = (
             <FacebookLogin
                 appId="170403177866239"
-                autoLoad
+                autoLoad={true}
                 fields="name,email,picture"
                 onClick={this.componentClicked}
                 callback={this.responseFacebook}
