@@ -3,16 +3,18 @@ import { withRouter, Link } from 'react-router-dom';
 import {
   Formik, Field, Form, ErrorMessage,
 } from 'formik';
-import Facebook from 'src/components/Facebook';
-import Google from 'src/components/Google';
-
+import { useAuthentication } from 'src/components/UserContext';
 import * as Yup from 'yup';
 import LoadingSpinner from 'src/components/LoadingSpinner';
 import './styles.scss';
 
 import { connexionService } from 'src/services/connexionService';
 
-export default ({ modalActive, closeModal }) => (
+export default ({ modalActive, closeModal }) => {
+
+    const { authenticate } = useAuthentication();
+
+    return(
     <div className="modal is-active">
         <div
 className="modal-background"
@@ -37,7 +39,6 @@ onClick={(event) => {
                     })}
                     onSubmit={({ email, password }, { setStatus, setSubmitting }) => {
                       setStatus();
-
                       console.log('submitting form');
                       connexionService.handleConnexion(email, password)
                         .then((user) => {
@@ -47,8 +48,7 @@ onClick={(event) => {
                             console.log(user.data.errors, '//user error');
                           }
                           else {
-                            localStorage.setItem('currentUser', JSON.stringify(user.data.token));
-                            console.log(localStorage.currentUser, 'current user dans local storage');
+                            authenticate(user.data.data.user, user.data.token);
                             closeModal(!modalActive);
                           }
                         });
@@ -61,26 +61,6 @@ onClick={(event) => {
                     }) => (
                         <Form>
                             <section className="modal-card-body">
-                                {/* Signin with google, apple or facebook part */}
-                                <div className="field icons-button">
-                                    <Facebook />
-                                    <Google />
-
-                                    <a className="button social is-medium is-google">
-                                        <span className="icon">
-                                            <i className="fab fa-google fa-lg" />
-                                        </span>
-                                        <span>Google</span>
-                                    </a>
-                                    <a className="button social is-medium is-apple">
-                                        <span className="icon">
-                                            <i className="fab fa-apple fa-lg" />
-                                        </span>
-                                        <span>Apple</span>
-                                    </a>
-                                </div>
-                                {/* start of register form */}
-                                <h1>OU</h1>
                                 <div className="field">
 
                                     <div className="form-group field">
@@ -117,4 +97,4 @@ onClick={(event) => {
         </div>
     </div>
 
-);
+)};

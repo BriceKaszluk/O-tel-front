@@ -17,7 +17,8 @@ import Nav from 'src/components/Nav';
 import Housing from 'src/components/Housing';
 import Booking from 'src/components/Booking';
 // component to set path for connected users
-import { PrivateRoute } from 'src/components/PrivateRoute';
+import PrivateRoute from 'src/components/PrivateRoute';
+import { useAuthentication } from 'src/components/UserContext';
 
 // == Import
 import 'src/components/Languages/i18n';
@@ -26,8 +27,10 @@ import './styles.scss';
 
 const App = () => {
   // state concerning modal connexion
-  const [isActiveModalConnexion, setIsActiveModalConnexion] = useState(false);
+    const [isActiveModalConnexion, setIsActiveModalConnexion] = useState(false);
+    const { loading } = useAuthentication();
 
+    console.log('loading', loading);
   return (
       <div className="app">
 
@@ -43,7 +46,7 @@ const App = () => {
                   <Route exact path="/logement3" component={Housing} />
                   <Route exact path="/" component={Home} />
                   <Route exact path="/booking" component={Booking} />
-                  <PrivateRoute exact path="/profil" component={Profil} setConnexionActive={setIsActiveModalConnexion} />
+                  <PrivateRoute exact path="/profil" component={Profil} />
               </Switch>
               <Footer />
 
