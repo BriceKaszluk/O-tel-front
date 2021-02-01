@@ -35,9 +35,10 @@ const App = () => {
       <div className="app">
 
           <Suspense fallback={(<div>Loading</div>)}>
-              <Nav connexionActive={isActiveModalConnexion} setConnexionActive={setIsActiveModalConnexion} />
               <Darkmode />
               <Languages />
+              <Nav connexionActive={isActiveModalConnexion} setConnexionActive={setIsActiveModalConnexion} />
+              
               <Switch>
                   <Route exact path="/connexion" component={Connexion} />
                   <Route exact path="/livre_d_or" component={GoldenBook} />
@@ -48,6 +49,7 @@ const App = () => {
                   <Route exact path="/booking" component={Booking} />
                   <PrivateRoute exact path="/profil" component={Profil} />
               </Switch>
+              
               <Footer />
 
           </Suspense>

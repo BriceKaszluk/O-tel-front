@@ -15,7 +15,7 @@ export default ({ connexionActive, setConnexionActive }) => {
   const { t } = useTranslation();
   const [isActiveRegistration, setIsActiveRegistration] = useState(false);
   return (
-      <div id="nav" className="navbar">
+      <nav id="nav" className="navbar">
           <div className="navbar-menu">
               <Link to="/" className="navbar-item">{t('Home.1')}</Link>
               <div className="navbar-item has-dropdown is-hoverable">
@@ -60,7 +60,7 @@ export default ({ connexionActive, setConnexionActive }) => {
                     }
 
           </div>
-      </div>
+      </nav>
   );
 };
 // FIXME: système d'ancre pour contact et peut-être logements

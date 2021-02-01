@@ -45,14 +45,14 @@ export default () => {
 
           <div className="block">{t('description.1')}</div>
 
-          <div className="columns_home">
-              <div className="column home-column">
+          <div className="columns_housing">
+              <div className="column housing">
                   <HousingOne />
               </div>
-              <div className="column home-column">
+              <div className="column housing">
                   <HousingTwo />
               </div>
-              <div className="column home-column">
+              <div className="column housing">
                   <HousingThree />
               </div>
           </div>
