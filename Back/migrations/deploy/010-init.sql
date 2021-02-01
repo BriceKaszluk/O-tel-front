@@ -17,7 +17,7 @@ CREATE TABLE "user" (
     "last_name" TEXT NOT NULL, 
     "address" TEXT NULL,
     "email" TEXT NOT NULL UNIQUE, 
-    "phone_number" TEXT NOT NULL, 
+    "phone_number" TEXT, 
     "password" TEXT NOT NULL, 
     "role_id" INT REFERENCES "role"("id")
 );
