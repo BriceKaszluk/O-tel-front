@@ -20,9 +20,7 @@ export default () => {
                         <Route path="/logement3" component={HousingThree} />
                     </Switch>
                 </div>
-                <div className="column">
-                    <Link to="/booking" className="button is-primary">Réserver ce logement</Link>
-                </div>
+                
             </div>
         </div>
     )

@@ -14,7 +14,7 @@ const BookingDashboard = () => {
             const { data } = result[0];
             setResults(data);
             setDataLoaded(true);
-            
+            console.log(results)
         }
     };
 
