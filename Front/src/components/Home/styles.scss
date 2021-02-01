@@ -24,38 +24,21 @@ h2 {
 }
 
 .block {
-  margin-top: 27em;
+  margin-top: 22em;
   position: relative;
   width: 30em;
   text-align: center;
   font-size: 1.2em;
 }
 
-.home-column {
-  min-height: 30em;
-  margin-top: 5em;
-  border: 1px solid black;
-}
-
 .gold-book-column {
-  min-width: 20em;
-  min-height: 10em;
-  margin: 5em;
-  margin-bottom: 5em;
-  border: 1px solid black;
+  justify-content: center;
+  margin: 2rem auto;
+  border-radius: 30px;
+  width: 30vw;
 }
 
-.bcg {
-  background-image: url('src/assets/images/mountains.jpg');
-  background-size: cover;
-  background-position: center;
-  width: 100%;
-  height: 100%;
-  //filter:blur(0.2rem);
-  //opacity: 0.8;
-}
-
-.columns_home {
+.columns_housing {
   display: flex;
   flex-wrap: wrap;
 }

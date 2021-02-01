@@ -23,16 +23,13 @@ function Contact() {
               subject: Yup.string().required('Sujet du message'),
               message: Yup.string().required('Veuillez taper votre message'),
             })}
-            onSubmit={({
-              name, email, subject, message,
-            }, { resetForm }) => {
-              console.log('Soumission du formulaire');
-              mailService.handleSubmit(name, email, subject, message)
-                  .then(
-                      resetForm()
-                  );
-
-              }}
+            onSubmit={({ name, email, subject, message,}, { resetForm }) => {
+                console.log('Soumission du formulaire');
+                mailService.handleSubmit(name, email, subject, message)
+                    .then(
+                        resetForm()
+                    );
+            }}
       >
               {({ errors, touched, isSubmitting }) => (
               <Form className="form-content panel">

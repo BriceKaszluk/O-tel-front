@@ -15,17 +15,17 @@ export default () => {
               <div className="columns">
                   <div className="column">
                       <strong>SUIVEZ-NOUS SUR</strong>
-                      <a className="button is-medium is-facebook">
+                      <a className="button  is-facebook">
                           <span className="icon">
                               <i className="fab fa-facebook fa-lg" />
                           </span>
                       </a>
-                      <a className="button is-medium is-instagram">
+                      <a className="button  is-instagram">
                           <span className="icon">
                               <i className="fab fa-instagram fa-lg" />
                           </span>
                       </a>
-                      <a className="button is-medium is-pinterest">
+                      <a className="button  is-pinterest">
                           <span className="icon">
                               <i className="fab fa-pinterest fa-lg" />
                           </span>
