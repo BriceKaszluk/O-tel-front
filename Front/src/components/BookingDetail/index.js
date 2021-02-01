@@ -4,9 +4,6 @@ import './styles.scss';
 
 export default (props) => {
 
-    const [isActiveRegistration, setIsActiveRegistration] = useState(false);
-   
-
     const handleDeleteClick = () => {
         if(confirm("étes vous sure ?")) {
             // bookingService.deleteBooking(props);
