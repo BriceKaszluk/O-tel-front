@@ -27,7 +27,6 @@ export default (url, {init=[], body={}, method='GET'}) => {
       url,
       headers: { 
         'Content-Type': 'application/json'
-
        },
       data : body
     };
