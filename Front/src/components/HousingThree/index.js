@@ -18,7 +18,7 @@ export default () => {
   return (
 
       <div className="box">
-          <article className="media">
+          <article className="media-content">
               <img src={result.picture} />
           </article>
           <h2> Logement pour {result.place_number} personnes</h2>

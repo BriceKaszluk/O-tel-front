@@ -11,9 +11,8 @@ export default () => {
 
     return (
 
-        <div className="housing">
             <div className="box">
-                <div className="media">
+                <div className="media-content">
                     <Switch>
                         <Route path="/logement1" component={HousingOne} />
                         <Route path="/logement2" component={HousingTwo} />
@@ -22,6 +21,6 @@ export default () => {
                 </div>
                 
             </div>
-        </div>
+
     )
 };

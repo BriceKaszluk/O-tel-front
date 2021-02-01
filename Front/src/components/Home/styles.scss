@@ -31,15 +31,18 @@ h2 {
   font-size: 1.2em;
 }
 
+// component customer reviews
 .gold-book-column {
-  justify-content: center;
+  
   margin: 1rem auto;
-  width: 30vw;
-  height: 50vh;
- 
+  border-radius: 30px;
+  width: 90%;
+  height: auto;
 }
 
+// components housing
 .columns_housing {
   display: flex;
   flex-wrap: wrap;
+
 }
