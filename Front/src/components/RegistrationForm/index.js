@@ -48,7 +48,7 @@ export default ({ modalActive, closeModal }) => {
                         password_confirm: Yup.string().oneOf([Yup.ref('password'), null], 'les mots de passe doivent correspondre'),
                         acceptTerms: Yup.bool().oneOf([true], 'accepter les termes et conditions svp'),
                     })}
-                    onSubmit={({last_name, first_name, email, phone_number, password,}, { setStatus, setSubmitting }) => {
+                    onSubmit={({ last_name, first_name, email, phone_number, password }, { setStatus, setSubmitting }) => {
                         setStatus();
                         console.log('submitting form');
                         registrationService.handleRegistration(last_name, first_name, email, phone_number, password)
@@ -66,7 +66,7 @@ export default ({ modalActive, closeModal }) => {
                     >
                         {/* end of formik settings */}
 
-                        {({errors, status, touched, isSubmitting,}) => (
+                        {({errors, status, touched, isSubmitting}) => (
                         <Form>
                             <section className="modal-card-body">
                                 {/* Signin with google, apple or facebook part */}
