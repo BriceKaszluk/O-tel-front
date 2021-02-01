@@ -137,11 +137,9 @@ module.exports = {
                    { association:'house'}
                 ]
             });
-            console.log("association: ", associatedBooking)
-
-
+            
             const result = await associatedHouse.addBooking(associatedBooking); 
-            console.log('result: ', result)
+        
             response.json({data: result}); 
     
         } catch (error) {

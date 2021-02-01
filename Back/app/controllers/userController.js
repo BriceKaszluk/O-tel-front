@@ -64,6 +64,7 @@ module.exports = {
 
                     // we create a new user
                     const newUser = new User ({
+                        id: request.body.id, 
                         first_name: request.body.first_name,
                         last_name: request.body.last_name,
                         // address: request.body.address,
@@ -76,6 +77,7 @@ module.exports = {
                     // 2nd argument is the secret string to put in .env
                     // 3rd argument options object
                     const token = jwt.sign({
+                        id: newUser.id, 
                         first_name: newUser.first_name,
                         last_name: newUser.last_name,
                         email: newUser.email
