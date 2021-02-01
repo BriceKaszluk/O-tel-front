@@ -1,24 +1,25 @@
 const nodemailer = require('nodemailer');
 const {google} = require('googleapis')
 
-const {User} = require('../models');
+const userController = require('./userController'); 
 
 
 
-const contactMail = {
+
+
+const confirmation = {
 
 
 
     confirmSignUp: async(request, response) => {
       
-        // const confirmUser = new User({
-        //     first_name: request.body.first_name,
-        //     last_name: request.body.last_name
-        // })
 
-        // console.log('confirmation: ', confirmUser)
+        // const {first_name, last_name, email} = request.body
+      
+
+        // console.log('confirmation: ', userData)
        
-       console.log(request.body)
+        
        try {
            const OAUTH_PLAYGROUND = 'https://developers.google.com/oauthplayground';
    
@@ -52,20 +53,20 @@ const contactMail = {
    
            const mailOption = {
                from: EMAIL_NAME,
-               to: EMAIL_NAME,
+               to: `${email}`,
                subject: "Message de " + EMAIL_NAME + " Confirmation d'inscription", 
-               text: `Bonjour  merci pour votre inscription, voici votre confirmation.`
+               text: `Bonjour ${first_name}, ${last_name} merci pour votre inscription, voici votre confirmation.`
            }
    
            const info = await transport.sendMail(mailOption);
            console.log("Message sent: ", info.messageId);
-           response.send('email send'); 
+           response.status(200).json('email send'); 
    
        } catch (error) {
            console.log(error);
-           response.send({ error });
+           response.status(500).json({ error });
        }
        }
    }
    
-   module.exports = contactMail 
+   module.exports = confirmation 
