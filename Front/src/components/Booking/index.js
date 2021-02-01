@@ -4,13 +4,18 @@ import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import DatePicker from "react-datepicker";
 import { bookingService } from 'src/services/bookingService';
+import LoadingSpinner from 'src/components/LoadingSpinner'
 import "react-datepicker/dist/react-datepicker.css";
+import { useAuthentication } from 'src/components/UserContext';
+
 
 
 // import
 import './styles.scss';
 
 export default () => {
+
+    const { user } = useAuthentication();
 
     const DatePickerField = ({ name, value, onChange }) => {
         return (
@@ -36,6 +41,8 @@ export default () => {
                     startDate: '',
                     endDate:'',
                     message: '',
+                    user_id: user.id,
+                    housing_id: '',
                 }}
                 validationSchema={Yup.object().shape({
                     last_name: Yup.string().required('Veuillez entrer un nom '),
@@ -47,15 +54,15 @@ export default () => {
                     message: Yup.string().required('Veuillez taper votre message'),
                 })}
                 onSubmit={({
-                    last_name, first_name, email, phone_number, startDate, endDates, message,
+                    last_name, first_name, email, phone_number, begining_date, ending_date, message, housing_id, user_id
                 }, { setStatus, setSubmitting }) => {
                     setStatus();
                     console.log('submitting form');
-                    bookingService.handleBooking(last_name, first_name, email, phone_number, startDate, endDates, message);
+                    bookingService.handleBooking(last_name, first_name, email, phone_number, begining_date, ending_date, message, housing_id, user_id);
                     setSubmitting(false);
                 }}
             >
-
+               
 
                 {({ errors, touched, isSubmitting, values, setFieldValue }) => (
                     <Form>
@@ -90,15 +97,19 @@ export default () => {
                         <div className="form-group-field">
                             <div className="columns">
                                 <div className="column">
-                                <label htmlFor="startDate" className="label">Arrivée</label>
-                                    <DatePickerField name="startDate" value={values.startDate} onChange={setFieldValue}/>
+                                <label htmlFor="begining_date" className="label">Arrivée</label>
+                                    <DatePickerField name="begining_date" value={values.begining_date} onChange={setFieldValue}/>
                                 </div>
                                 <div className="column">
-                                <label htmlFor="endDate" className="label">Départ</label>
-                                    <DatePickerField name="endDate" value={values.endDate} onChange={setFieldValue} />
+                                <label htmlFor="ending_date" className="label">Départ</label>
+                                    <DatePickerField name="ending_date" value={values.ending_date} onChange={setFieldValue} />
                                 </div>
                             </div>
-
+                        </div>
+                        <div className="form-group-field">
+                            <label htmlFor="house_id" className="label">House_id</label>
+                            <Field name="housing_id" type="housing_id" className={'form-control input' + (errors.housing_id && touched.housing_id ? ' is-invalid' : '')} />
+                            <ErrorMessage name="housing_id" component="div" className="invalid-feedback" />
                         </div>
                         {/* MORE INFORMATIONS */}
                         <div className="form-group-field">
@@ -114,7 +125,7 @@ export default () => {
                             <ErrorMessage name="acceptTerms" component="div" className="invalid-feedback" />
                         </div>
                         <footer className="form-group modal-card-foot">
-                            <button type="submit" className="button is-success" disabled={isSubmitting}>envoyer</button>
+                            <button to="/" type="submit" className="button is-success" disabled={isSubmitting}>envoyer</button>
                             { isSubmitting && <LoadingSpinner /> }
                             <Link to="/">Annuler</Link>
                             {status && <div className={'alert alert-danger'}>{status}</div> }

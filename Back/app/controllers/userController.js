@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt');
 const emailValidator = require('email-validator');
 const jwt = require('jsonwebtoken'); 
 const {User} = require('../models');
+// const {confirmSignUp} = require('./confirmSignUpAndReservation')
 
 
 module.exports = {
@@ -96,6 +97,7 @@ module.exports = {
 
                     // we save in DB
                     await newUser.save();
+                    // await confirmSignUp(request.body);
                     console.log(newUser, 'user saved');
                     
 

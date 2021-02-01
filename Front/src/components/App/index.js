@@ -16,6 +16,7 @@ import Profil from 'src/components/Profil';
 import Nav from 'src/components/Nav';
 import Housing from 'src/components/Housing';
 import Booking from 'src/components/Booking';
+import BookingDashboard from 'src/components/BookingDashboard';
 // component to set path for connected users
 import PrivateRoute from 'src/components/PrivateRoute';
 import { useAuthentication } from 'src/components/UserContext';
@@ -47,6 +48,7 @@ const App = () => {
                   <Route exact path="/logement3" component={Housing} />
                   <Route exact path="/" component={Home} />
                   <Route exact path="/booking" component={Booking} />
+                  <Route exact path="/booking_dashboard" component={BookingDashboard} />
                   <PrivateRoute exact path="/profil" component={Profil} />
               </Switch>
               

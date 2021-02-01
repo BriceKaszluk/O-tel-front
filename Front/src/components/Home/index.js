@@ -6,6 +6,7 @@ import Contact from 'src/components/Contact';
 import HousingOne from 'src/components/HousingOne';
 import HousingTwo from 'src/components/HousingTwo';
 import HousingThree from 'src/components/HousingThree';
+import Description from 'src/components/Description';
 import CustomerReviews from 'src/components/CustomerReviews';
 import { useTranslation } from 'react-i18next';
 import { getData } from 'src/hooks/dataFetcher';
@@ -43,7 +44,7 @@ export default () => {
               <Calendar />
           </div>
 
-          <div className="block">{t('description.1')}</div>
+          <Description />
 
           <div className="columns_housing">
               <div className="column housing">
