@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './styles.scss';
 
 export default (props) => (
-    <div className="card">
+    <div className="box">
         <div className="card-content ">
             <div className="media-content">
                 <div className="image">

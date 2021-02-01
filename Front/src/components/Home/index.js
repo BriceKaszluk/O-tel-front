@@ -77,7 +77,7 @@ export default () => {
             })
         }
 
-                  <Link to="/livre_d_or" className="button is-primary">Afficher Plus</Link>
+                  <Link to="/livre_d_or" className="button is-primary is-small is-rounded">Afficher Plus</Link>
               </div>
 
               <div className="column gold-book-column">
@@ -96,26 +96,27 @@ export default () => {
               }
             })
         }
-                  <Link to="/livre_d_or" className="button is-primary">Afficher Plus</Link>
+                  <Link to="/livre_d_or" className="button is-primary is-small is-rounded">Afficher Plus</Link>
               </div>
 
               <div className="column gold-book-column">
                   {
-            dataLoaded && results.map((result, index) => {
-              if (index === 3) {
-                return (
-                    <CustomerReviews
-                    key={result.id}
-                    comments={result.comments}
-                    rate={result.rate}
-                    first_name={result.user.first_name}
-                    last_name={result.user.last_name}
-                    />
-                );
-              }
-            })
-        }
-                  <Link to="/livre_d_or" className="button is-primary">Afficher Plus</Link>
+                      dataLoaded && results.map((result, index) => {
+                        if (index === 3) {
+                          return (
+                              <CustomerReviews
+                              key={result.id}
+                              comments={result.comments}
+                              rate={result.rate}
+                              first_name={result.user.first_name}
+                              last_name={result.user.last_name}
+                              />
+                          );
+                        }
+                        
+                      })
+                  }
+                  <Link to="/livre_d_or" className="button is-primary is-small is-rounded">Afficher Plus</Link>
               </div>
 
           </div>

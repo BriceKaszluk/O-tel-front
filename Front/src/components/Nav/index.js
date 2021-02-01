@@ -17,65 +17,65 @@ export default ({ connexionActive, setConnexionActive }) => {
   const [isActiveRegistration, setIsActiveRegistration] = useState(false);
   return (
 
-        <div id="nav" className="navbar">
-            <div className="navbar-brand">
-                <a className="navbar-burgr">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </a>
-            </div>
+      <div id="nav" className="navbar">
+          <div className="navbar-brand">
+              <a className="navbar-burgr">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+              </a>
+          </div>
 
-            <div className="navbar-menu">
-                <Link to="/" className="navbar-item">{t('Home.1')}</Link>
-                <div className="navbar-item has-dropdown is-hoverable">
-                    <div className="navbar-link">
-                        {t('More.1')}
-                    </div>
-                    <div className="navbar-dropdown">
-                        <Link to="/logement1" className="navbar-item">{t('Housing.1')}</Link>
-                        <Link to="/logement2" className="navbar-item">{t('Housing.2')}</Link>
-                        <Link to="/logement3" className="navbar-item">{t('Housing.3')}</Link>
-                    </div>
+          <div className="navbar-menu">
+              <Link to="/" className="navbar-item">{t('Home.1')}</Link>
+              <div className="navbar-item has-dropdown is-hoverable">
+                  <div className="navbar-link">
+                      {t('More.1')}
+                  </div>
+                  <div className="navbar-dropdown">
+                      <Link to="/logement1" className="navbar-item">{t('Housing.1')}</Link>
+                      <Link to="/logement2" className="navbar-item">{t('Housing.2')}</Link>
+                      <Link to="/logement3" className="navbar-item">{t('Housing.3')}</Link>
+                  </div>
+              </div>
+              {/* <div className="navbar-brand">
+                <div className="navbar-end">
+                    <Darkmode />
                 </div>
-                {/* <div className="navbar-brand">
-                    <div className="navbar-end">
-                        <Darkmode />
+              </div> */}
+              <Link to="/livre_d_or" className="navbar-item">{t('GoldenBook.1')}</Link>
+              <HashLink to="/#contact-form" className="navbar-item">{t('contact.1')}</HashLink>
+
+              {
+                    user
+                    && (
+                    <div className="navbar-item">
+                        <Link to="/profil" className="navbar-item">profil</Link>
+                        <a
+                        className="navbar-item"
+                        onClick={(event) => {
+                        event.preventDefault();
+                        authenticate(null, null);
+                        history.push('/');
+                        }}>déconnexion
+                        </a>
                     </div>
-                </div> */}
-                <Link to="/livre_d_or" className="navbar-item">{t('GoldenBook.1')}</Link>
-                <HashLink to="/#contact-form" className="navbar-item">{t('contact.1')}</HashLink>
+                    )
+                    }
+              {
+                    !user
+                    && (
+                    <div className="navbar-item">
+                        <a className="navbar-item" onClick={() => setConnexionActive(!connexionActive)}>{t('connexion.1')}</a>
+                        {connexionActive ? <ConnexionForm modalActive={connexionActive} closeModal={setConnexionActive} /> : ''}
+                        <a className="navbar-item" onClick={() => setIsActiveRegistration(!isActiveRegistration)}>{t('Login.1')}</a>
+                        {isActiveRegistration ? <RegistrationForm modalActive={isActiveRegistration} closeModal={setIsActiveRegistration} /> : ''}
+                    </div>
+                    )
+                    }
 
-                {
-                        user
-                        && (
-                        <div className="navbar-item">
-                            <Link to="/profil" className="navbar-item">profil</Link>
-                            <a
-                            className="navbar-item"
-                            onClick={(event) => {
-                            event.preventDefault();
-                            authenticate(null, null);
-                            history.push('/');
-                            }}>déconnexion
-                            </a>
-                        </div>
-                        )
-                        }
-                {
-                        !user
-                        && (
-                        <div className="navbar-item">
-                            <a className="navbar-item" onClick={() => setConnexionActive(!connexionActive)}>{t('connexion.1')}</a>
-                            {connexionActive ? <ConnexionForm modalActive={connexionActive} closeModal={setConnexionActive} /> : ''}
-                            <a className="navbar-item" onClick={() => setIsActiveRegistration(!isActiveRegistration)}>{t('Login.1')}</a>
-                            {isActiveRegistration ? <RegistrationForm modalActive={isActiveRegistration} closeModal={setIsActiveRegistration} /> : ''}
-                        </div>
-                        )
-                        }
-
-            </div>
-        </div>
+          </div>
+      </div>
   );
 };
 // FIXME: système d'ancre pour contact et peut-être logements

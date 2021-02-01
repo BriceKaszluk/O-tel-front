@@ -26,7 +26,7 @@ export default () => {
           <h2> {result.description} </h2>
           <h2> {result.id }</h2>
           <div className="column">
-            <Link to="/booking" housing_id={result.id} className="button is-primary">Réserver ce logement</Link>
+            <Link to="/booking" housing_id={result.id} className="button is-primary is-small is-rounded">Réserver ce logement</Link>
         </div>
       </div>
   );

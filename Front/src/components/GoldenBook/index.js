@@ -23,8 +23,8 @@ const GoldenBook = () => {
 
   return (
 
-      <div className="card has-text-centered">
-          <h1 className="card-header-title-center">
+      <section className="section has-text-centered">
+          <h1 className="title">
               Livre d'or - Avis Clients
           </h1>
           {
@@ -38,10 +38,10 @@ const GoldenBook = () => {
             />
         ))
       }
-          <Link to="/reservation" className="button is-warning">Voir les disponibilités</Link>
-          <Link to="/" className="button is-info">Information supplémentaire</Link>
+          <Link to="/reservation" className="button is-warning is-small is-rounded ">Voir les disponibilités</Link>
+          <Link to="/" className="button is-info is-small is-rounded ">Information supplémentaire</Link>
 
-      </div>
+      </section>
   );
 };
 
