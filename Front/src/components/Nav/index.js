@@ -6,6 +6,7 @@ import { HashLink } from 'react-router-hash-link';
 import { useTranslation } from 'react-i18next';
 import { connexionService } from 'src/services/connexionService';
 import { useAuthentication } from 'src/components/UserContext';
+// import Darkmode from 'src/components/Darkmode'
 
 import styles from './styles.scss';
 
@@ -16,6 +17,13 @@ export default ({ connexionActive, setConnexionActive }) => {
   const [isActiveRegistration, setIsActiveRegistration] = useState(false);
   return (
       <div id="nav" className="navbar">
+          <div className="navbar-brand">
+              <a className="navbar-burgr">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+              </a>
+          </div>
           <div className="navbar-menu">
               <Link to="/" className="navbar-item">{t('Home.1')}</Link>
               <div className="navbar-item has-dropdown is-hoverable">
@@ -28,6 +36,11 @@ export default ({ connexionActive, setConnexionActive }) => {
                       <Link to="/logement3" className="navbar-item">{t('Housing.3')}</Link>
                   </div>
               </div>
+              {/* <div className="navbar-brand">
+                <div className="navbar-end">
+                    <Darkmode />
+                </div>
+              </div> */}
               <Link to="/livre_d_or" className="navbar-item">{t('GoldenBook.1')}</Link>
               <HashLink to="/#contact-form" className="navbar-item">{t('contact.1')}</HashLink>
 
