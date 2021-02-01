@@ -49,8 +49,8 @@ closeModal(!modalActive);
                         acceptTerms: Yup.bool().oneOf([true], 'accepter les termes et conditions svp'),
                     })}
                     onSubmit={({
- last_name, first_name, email, phone_number, password,
-}, { setStatus, setSubmitting }) => {
+                        last_name, first_name, email, phone_number, password,
+                        }, { setStatus, setSubmitting }) => {
                         setStatus();
                         console.log('submitting form');
                         registrationService.handleRegistration(last_name, first_name, email, phone_number, password)
