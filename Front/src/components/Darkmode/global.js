@@ -2,7 +2,7 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
-  body {
+  body, .navbar-item, .navbar-link {
     background: ${({ theme }) => theme.body};
     color: ${({ theme }) => theme.text};
     transition: all 0.35s linear;
@@ -13,13 +13,15 @@ export const GlobalStyles = createGlobalStyle`
 
   button {
       position: relative;
-      z-index: 5;
   }
 
   a {
     color: ${({ theme }) => theme.text};
   }
   .label {
+    color: ${({ theme }) => theme.text};
+  }
+  .navbar-item, .navbar-link {
     color: ${({ theme }) => theme.text};
   }
 `;
