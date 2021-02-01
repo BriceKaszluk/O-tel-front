@@ -4,7 +4,6 @@ import RegistrationForm from 'src/components/RegistrationForm';
 import ConnexionForm from 'src/components/Connexion';
 import { HashLink } from 'react-router-hash-link';
 import { useTranslation } from 'react-i18next';
-import { connexionService } from 'src/services/connexionService';
 import { useAuthentication } from 'src/components/UserContext';
 // import Darkmode from 'src/components/Darkmode'
 

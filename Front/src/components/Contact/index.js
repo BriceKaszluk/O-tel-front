@@ -33,7 +33,7 @@ function Contact() {
       >
               {({ errors, touched, isSubmitting }) => (
               <Form className="form-content panel">
-                  <div className="field">
+                  <div id="contact-form" className="field">
                       <label className="label has-text-centered is-medium">
                           Formulaire de contact
                       </label>
