@@ -19,14 +19,14 @@ export default ({ connexionActive, setConnexionActive }) => {
 
         <div id="nav" className="navbar">
             <div className="navbar-brand">
-                <a className="navbar-burgr">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false">  {/* A rajouter :  is-active */}
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
                 </a>
             </div>
 
-            <div className="navbar-menu">
+            <div className="navbar-menu">  {/* A rajouter :  is-active */}
                 <Link to="/" className="navbar-item">{t('Home.1')}</Link>
                 <div className="navbar-item has-dropdown is-hoverable">
                     <div className="navbar-link">
