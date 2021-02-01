@@ -28,7 +28,8 @@ module.exports = {
                 const booking = await Booking.findOne({
                   where: {id: bookingId},
                   include: [
-                    {association: 'user'}
+                    {association: 'user'}, 
+                    {association: 'house'}
                   ]
                 });
 
