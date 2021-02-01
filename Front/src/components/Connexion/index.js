@@ -6,7 +6,6 @@ import {
 import { useAuthentication } from 'src/components/UserContext';
 import Facebook from 'src/components/Facebook';
 import Google from 'src/components/Google';
-
 import * as Yup from 'yup';
 import LoadingSpinner from 'src/components/LoadingSpinner';
 import './styles.scss';
