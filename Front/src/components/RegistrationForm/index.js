@@ -56,8 +56,8 @@ export default ({ modalActive, closeModal }) => {
                         console.log('submitting form');
                         registrationService.handleRegistration(last_name, first_name, email, phone_number, password)
                             .then((user) => {
-                                console.log(user.data, 'test user data');
-                                authenticate(user.data.data.user, user.data.token);
+                                console.log(user.data.data, 'test user data');
+                                authenticate(user.data.data, user.data.token);
                                 closeModal(!modalActive);
                                 history.push('/profil');
                               },

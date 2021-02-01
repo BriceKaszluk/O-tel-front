@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useAuthentication } from 'src/components/UserContext';
+import { allBookings } from 'src/hooks/bookingSetter';
 import './styles.scss';
 
 export default () => {
 
-    const { user } = useAuthentication();
+    const { user, booking, oldBooking } = useAuthentication();
+    allBookings();
     console.log(user);
+    console.log(booking, 'actual booking');
+    console.log(oldBooking, 'old booking');
 
     return(
         <div>

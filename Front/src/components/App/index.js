@@ -1,5 +1,5 @@
 /* eslint-disable import/no-unresolved */
-import React, { Suspense, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 
 import { Route, Switch } from 'react-router-dom';
 
@@ -18,7 +18,6 @@ import Housing from 'src/components/Housing';
 import Booking from 'src/components/Booking';
 // component to set path for connected users
 import PrivateRoute from 'src/components/PrivateRoute';
-import { useAuthentication } from 'src/components/UserContext';
 
 // == Import
 import 'src/components/Languages/i18n';
@@ -28,9 +27,7 @@ import './styles.scss';
 const App = () => {
   // state concerning modal connexion
     const [isActiveModalConnexion, setIsActiveModalConnexion] = useState(false);
-    const { loading } = useAuthentication();
 
-    console.log('loading', loading);
   return (
       <div className="app">
 

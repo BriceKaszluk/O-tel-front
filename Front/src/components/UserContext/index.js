@@ -1,14 +1,17 @@
 import React, { createContext, useState, useEffect, useContext } from "react";
-
 const userContext = createContext();
 
 //will be use to provide context in 'src/index'
 const UserProvider = (props) => {
-
+    //user state
     const [user, setUser] = useState(null);
     const [token, setToken] = useState(null);
     const [loading, setLoading] = useState(true);
+    //booking and old booking state
+    const [booking, setBooking] = useState(null);
+    const [oldBooking, setOldBooking] = useState(null);
 
+    //function called to set user info et put them in localStorage
     const authenticate = (userProfile, userToken) => {
         setUser(userProfile);
         setToken(userToken);
@@ -17,20 +20,25 @@ const UserProvider = (props) => {
         localStorage.setItem('token', userToken );
     }
 
+    const bookingGestion = (actualBookings, oldBookings) => {
+        setBooking(actualBookings);
+        setOldBooking(oldBookings);
+    }
+
     useEffect(() => {
         //we check local storage
-        const userProfile = localStorage.getItem('profile');
-        const userToken = localStorage.getItem('token');
-        if(userProfile && userToken){
-            setUser(JSON.parse(userProfile));
-            setToken(userToken);
-        } 
+            const userProfile = localStorage.getItem('profile');
+            const userToken = localStorage.getItem('token');
+            if(userProfile && userToken){
+                setUser(JSON.parse(userProfile));
+                setToken(userToken);
+            } 
         setLoading(false);
     }, [])
 
     return (
         <userContext.Provider value={{
-            user, token, loading, authenticate
+            user, token, loading, authenticate, bookingGestion, booking, oldBooking
         }}>
             {props.children}
         </userContext.Provider>
