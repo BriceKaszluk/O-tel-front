@@ -31,6 +31,7 @@ export default () => {
             <h2> {result.id }</h2>
             <div className="column">
             <Link to="/booking" housing_id={result.id} className="button is-primary">Réserver ce logement</Link>
+
         </div>
         </div>
         
