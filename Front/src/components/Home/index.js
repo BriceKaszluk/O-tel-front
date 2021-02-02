@@ -36,7 +36,7 @@ export default () => {
 
       <section className="hero is-fullheight">
           <Background />
-
+          <div className="misc" />
           <h1>{t('Title.1')}</h1>
 
           <Description />
