@@ -30,16 +30,8 @@ export default () => {
             <h2> {result.description} </h2>
             <h2> {result.id }</h2>
             <div className="column">
-                {
-                    user !== null &&
-                        <Link to="/booking" housing_id={result.id} className="button is-primary">Réserver ce logement</Link>,
-                    
+            <Link to="/booking" housing_id={result.id} className="button is-primary">Réserver ce logement</Link>
 
-                    user === null &&
-                        <Link to="/connexion" housing_id={result.id} className="button is-primary">Réserver ce logement</Link>  
-                        
-                }
-            
         </div>
         </div>
         
