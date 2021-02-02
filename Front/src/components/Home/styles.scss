@@ -49,3 +49,30 @@ h2 {
   position: center;
   height: 100vh;
 }
+
+@media only screen and (max-width: 1023px) {
+  .form-content {
+      max-width: 35rem;
+  }
+  .gold-book-column {
+    width: 40rem;
+  }
+}
+
+@media only screen and (max-width: 728px) {
+  .form-content {
+      max-width: 30rem;
+  }
+  .gold-book-column {
+    width: 35rem;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .form-content {
+      max-width: 20rem;
+  }
+  .gold-book-column {
+    width: 25rem;
+  }
+}
