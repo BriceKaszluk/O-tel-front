@@ -38,11 +38,6 @@ export default () => {
           <Background />
 
           <h1>{t('Title.1')}</h1>
-          <h2>{t('datepicker.1')}</h2>
-
-          <div className="calendar">
-              <Calendar />
-          </div>
 
           <Description />
 
