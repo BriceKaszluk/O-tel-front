@@ -41,23 +41,23 @@ function Contact() {
                       <div className="field">
                           <label htmlFor="name" className="label">Nom</label>
                             <div className="control">
-                              <Field name="name" type="text" placeholder="Nom" className={`input is-small${errors.first_name && touched.last_name ? ' is-invalid' : ''}`} />
+                              <Field name="name" type="text" placeholder="Nom complet" className={`input is-small${errors.first_name && touched.last_name ? ' is-invalid' : ''}`} />
                               <ErrorMessage name="name" component="div" className="invalid-feedback" />
                             </div>
                       </div>
                       <div className="field">
                           <label htmlFor="email" className="label">Email</label>
-                          <Field name="email" type="email" className={`input is-small${errors.email && touched.email ? ' is-invalid' : ''}`} />
+                          <Field name="email" placeholder="mail@exemple.com" type="email" className={`input is-small${errors.email && touched.email ? ' is-invalid' : ''}`} />
                           <ErrorMessage name="email" component="div" className="invalid-feedback" />
                       </div>
                       <div className="field">
                           <label htmlFor="subject" className="label">Sujet</label>
-                          <Field name="subject" type="text" className="input is-small" />
+                          <Field placeholder="Objet" name="subject" type="text" className="input is-small" />
                           <ErrorMessage name="subject" component="div" className="invalid-feedback" />
                       </div>
                       <div className="field">
                           <label htmlFor="message" className="label">Message</label>
-                          <Field component="textarea" name="message" type="textarea" className="Rounded Medium textarea" />
+                          <Field component="textarea" placeholder="Votre message*" name="message" type="textarea" className="Rounded Medium textarea" />
                           <ErrorMessage name="message" component="div" className="invalid-feedback" />
                       </div>
                       <div className="field">
