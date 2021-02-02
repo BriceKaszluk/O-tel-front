@@ -13,6 +13,6 @@ router.get('/livre_d_or/:id(\\d+)', roleController.getAdminAndOneNotice);
 router.patch('/reservation/:id(\\d+)', roleController.uptadeAdminBooking);
 router.patch('/livre_d_or/:id(\\d+)', roleController.uptadeAdminNotice); 
 router.delete('/reservation/:id(\\d+)', roleController.deleteAdminBooking); 
-
+router.delete('/livre_d_or/:id(\\d+)', roleController.deleteAdminNotice); 
 
 module.exports = router; 
