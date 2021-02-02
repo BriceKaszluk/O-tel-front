@@ -27,7 +27,7 @@ h2 {
 .block {
   margin-top: 1rem;
   position: relative;
-  width: 30em;
+  max-width: 30em;
   text-align: center;
   font-size: 1.2em;
 }
@@ -47,6 +47,5 @@ h2 {
 .misc {
   size: cover;
   position: center;
-  width: 100vh;
   height: 100vh;
 }
