@@ -40,7 +40,7 @@ function Contact() {
                       </div>
                       <div className="field">
                           <label htmlFor="name" className="label">Nom</label>
-                            <div class="control">
+                            <div className="control">
                               <Field name="name" type="text" placeholder="Nom" className={`input is-small${errors.first_name && touched.last_name ? ' is-invalid' : ''}`} />
                               <ErrorMessage name="name" component="div" className="invalid-feedback" />
                             </div>
