@@ -65,7 +65,7 @@ module.exports = {
 
                     // we create a new user
                     const newUser = new User ({
-                        id: request.body.id, 
+                        id: request.params.id, 
                         first_name: request.body.first_name,
                         last_name: request.body.last_name,
                         // address: request.body.address,
@@ -82,11 +82,11 @@ module.exports = {
                         first_name: newUser.first_name,
                         last_name: newUser.last_name,
                         email: newUser.email
-                    }, `${process.env.SECRET_TOKEN}`, { expiresIn: "1h" })
-                    
+                    }, process.env.SECRET_TOKEN, { expiresIn: "1h" })
+                    console.log('my token: ', token);
                     // JWT VERIFY
                     // It checks if the signature and expiration date are valid
-                    const verif = jwt.verify(token, `${process.env.SECRET_TOKEN}`); 
+                    const verif = jwt.verify(token, process.env.SECRET_TOKEN); 
                     if (verif){
                         console.log("token good: ", verif); 
                     } else {
