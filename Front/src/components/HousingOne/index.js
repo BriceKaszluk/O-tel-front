@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { getData } from 'src/hooks/dataFetcher';
 import { Link } from 'react-router-dom'
+import { useAuthentication } from 'src/components/UserContext';
 
 export default () => {
 
     const [result, setResult] = useState({})
+    const { user } = useAuthentication();
 
     const dispatch = async () => {
 
@@ -28,7 +30,16 @@ export default () => {
             <h2> {result.description} </h2>
             <h2> {result.id }</h2>
             <div className="column">
-            <Link to="/booking" housing_id={result.id} className="button is-primary">Réserver ce logement</Link>
+                {
+                    user !== null &&
+                        <Link to="/booking" housing_id={result.id} className="button is-primary">Réserver ce logement</Link>
+                    
+
+                    // user === null &&
+                    //     <Link to="/connexion"  className="button is-primary">Réserver ce logement</Link>  
+                        
+                }
+            
         </div>
         </div>
         

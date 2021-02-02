@@ -16,7 +16,7 @@ import './styles.scss';
 export default () => {
 
     const { user } = useAuthentication();
-
+    
     const DatePickerField = ({ name, value, onChange }) => {
         return (
             <DatePicker
@@ -25,7 +25,7 @@ export default () => {
                     onChange(name, val)
                 }}
                 dateFormat="dd/MM/yyyy"
-                 />
+                />
         )
     }
 

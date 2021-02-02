@@ -38,9 +38,6 @@ const GoldenBook = () => {
             />
         ))
       }
-          <Link to="/reservation" className="button is-warning">Voir les disponibilités</Link>
-          <Link to="/" className="button is-info">Information supplémentaire</Link>
-
       </div>
   );
 };
