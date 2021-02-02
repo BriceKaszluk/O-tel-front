@@ -14,18 +14,25 @@ export default ({ connexionActive, setConnexionActive }) => {
   const history = useHistory();
   const { t } = useTranslation();
   const [isActiveRegistration, setIsActiveRegistration] = useState(false);
+
+  // Menu responsive
+  const [showMenu, setShowMenu] = useState(false);
+  const classToggle = () => {
+    setShowMenu(!showMenu);
+  };
+
   return (
 
         <div id="nav" className="navbar">
             <div className="navbar-brand">
-                <a className="navbar-burgr">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                <a role="button" onClick={classToggle} className={`navbar-burger ${showMenu ? 'is-active' : ''}`} aria-label="menu" aria-expanded="false">  {/* A rajouter :  is-active */}
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
                 </a>
             </div>
 
-            <div className="navbar-menu">
+            <div className={`navbar-menu ${showMenu ? 'is-active' : ''}`}>  {/* A rajouter :  is-active */}
                 <Link to="/" className="navbar-item">{t('Home.1')}</Link>
                 <div className="navbar-item has-dropdown is-hoverable">
                     <div className="navbar-link">
