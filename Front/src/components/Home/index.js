@@ -13,6 +13,9 @@ import { getData } from 'src/hooks/dataFetcher';
 
 import { Route, Link } from 'react-router-dom';
 import './styles.scss';
+import Zoom from 'react-reveal/Zoom';
+import Fade from 'react-reveal/Fade';
+import Roll from 'react-reveal/Roll';
 
 export default () => {
   const { t } = useTranslation();
@@ -36,11 +39,15 @@ export default () => {
 
       <section className="hero is-fullheight">
           <Background />
-
-          <h1>{t('Title.1')}</h1>
-
+          <div className="misc" />
+          <Zoom>
+            <h1>{t('Title.1')}</h1>
+          </Zoom>
+          
+          <Fade left>
           <Description />
-
+          </Fade>
+          <Fade right>
           <div className="columns_housing">
               <div className="column housing">
                   <HousingOne />
@@ -52,8 +59,10 @@ export default () => {
                   <HousingThree />
               </div>
           </div>
-
+          </Fade>
+          <Fade bottom>
           <div className="columns">
+          
               <div className="column gold-book-column">
 
                   {
@@ -74,7 +83,6 @@ export default () => {
 
                   <Link to="/livre_d_or" className="button is-primary">Afficher Plus</Link>
               </div>
-
               <div className="column gold-book-column">
                   {
             dataLoaded && results.map((result, index) => {
@@ -114,11 +122,14 @@ export default () => {
               </div>
 
           </div>
+          </Fade>
+          <Roll>
           <div className="contact-form">
               <Route exact path="/">
                   <Contact />
               </Route>
           </div>
+          </Roll>
 
       </section>
   );

@@ -107,7 +107,7 @@ export default ({ modalActive, closeModal }) => {
                                     <div className="form-group field">
                                         <Field type="checkbox" name="acceptTerms" className={`form-check-input checkbox${errors.acceptTerms && touched.acceptTerms ? ' is-invalid' : ''}`} />
                                         <span className="acceptTerm_p"> J'accepte les</span>
-                                        <Link to="/logement2" className="terms_and_conditions">termes et conditions</Link>
+                                        <Link to="/TermsOfUse" className="terms_and_conditions">termes et conditions</Link>
                                         <ErrorMessage name="acceptTerms" component="div" className="invalid-feedback" />
                                     </div>
                                 </div>
