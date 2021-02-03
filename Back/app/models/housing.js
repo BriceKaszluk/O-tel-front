@@ -12,6 +12,7 @@ Housing.init (
     // No need to indicate the id field, Sequelize adds it automatically
     {
         // we define fields by indicating their names and types
+        house_name: DataTypes.TEXT,
         description: DataTypes.TEXT,
         place_number: DataTypes.INTEGER,
         price: DataTypes.INTEGER,
