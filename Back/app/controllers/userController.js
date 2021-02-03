@@ -3,10 +3,14 @@ const bcrypt = require('bcrypt');
 const emailValidator = require('email-validator');
 const jwt = require('jsonwebtoken'); 
 const {User} = require('../models');
-// const {confirmSignUp} = require('./confirmSignUpAndReservation')
+const nodemailer = require('nodemailer');
+
+// we require googleapis to get the client google auth
+const {google} = require('googleapis');
 
 
 module.exports = {
+    
     
     
     signUpForm: async (request, response) => {
@@ -93,15 +97,57 @@ module.exports = {
                         return response.status(404).json("Token not valid");
                     }
 
-                 
-
+                    const {email, first_name, last_name} = request.body
+        
+        
+                const OAUTH_PLAYGROUND = 'https://developers.google.com/oauthplayground';
+        
+                const {
+                EMAIL_NAME,
+                SECRET_PASS,
+                EMAIL_CLIENT_ID,
+                EMAIL_CLIENT_SECRET,
+                EMAIL_REFRESH_TOKEN
+                } = process.env; 
+        
+            const oAuth2Client = new google.auth.OAuth2(EMAIL_CLIENT_ID, EMAIL_CLIENT_SECRET, EMAIL_REFRESH_TOKEN, OAUTH_PLAYGROUND); 
+            console.log('probleme: ', oAuth2Client)
+            oAuth2Client.setCredentials({refresh_token: EMAIL_REFRESH_TOKEN});
+        
+                const accessToken = await oAuth2Client.getAccessToken(); 
+                
+                const transport = nodemailer.createTransport({
+                    service: 'gmail', 
+                    auth: {
+                        type: 'OAuth2',
+                        user:EMAIL_NAME,
+                        pass:SECRET_PASS,
+                        clientId: EMAIL_CLIENT_ID,
+                        clientSecret: EMAIL_CLIENT_SECRET, 
+                        refreshToken: EMAIL_REFRESH_TOKEN,
+                        accessToken: accessToken
+                    }
+                    
+                })
+        
+                const mailOption = {
+                    from: EMAIL_NAME,
+                    to: `${email}`,
+                    subject: "Message de " + EMAIL_NAME + " Confirmation d'inscription", 
+                    text: `Bonjour ${first_name}, ${last_name} merci pour votre inscription, voici votre confirmation.`
+                }
+        
+                const info = await transport.sendMail(mailOption);
+                console.log("Message sent: ", info.messageId);
+               
+        
                     // we save in DB
                     await newUser.save();
-                    // await confirmSignUp(request.body);
+                  
                     console.log(newUser, 'user saved');
                     
 
-                   return response.status(200).json({data: newUser, token, verif}); 
+                   return response.status(200).json({data: newUser, token, verif, mailOption}); 
 
                     
                    
