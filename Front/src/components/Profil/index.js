@@ -56,7 +56,7 @@ export default () => {
                                 booking!==null && fliterActualUserBookings().map(booking => {
                                     return(
                                         <div key={booking.id} className="card">
-                                            <div>Gîtes grand soleil</div>
+                                            <div>nom a dynamiser</div>
                                             <div>Du {booking.begining_date} au {booking.ending_date}</div>
                                             {
                                                 booking.house!==null &&
