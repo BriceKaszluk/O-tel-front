@@ -83,7 +83,6 @@ export default () => {
 
                   <Link to="/livre_d_or" className="button is-primary">Afficher Plus</Link>
               </div>
-              
               <div className="column gold-book-column">
                   {
             dataLoaded && results.map((result, index) => {
