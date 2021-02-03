@@ -22,7 +22,7 @@ export default () => {
 
     return (
             <div className="box">
-            <article className="media">
+            {/* <article className="media">
                 <img src={result.picture} />
             </article>
             <h2> Logement pour {result.place_number} personnes</h2>
@@ -32,7 +32,7 @@ export default () => {
             <div className="column">
             <Link to="/booking" housing_id={result.id} className="button is-primary">Réserver ce logement</Link>
 
-        </div>
+        </div> */}
         </div>
         
         

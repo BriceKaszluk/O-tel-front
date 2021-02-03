@@ -73,6 +73,12 @@ module.exports = {
         test: /\.svg$/,
         use: ['@svgr/webpack'],
       },
+
+      // Video
+      {
+        test: /\.mp4$/,
+        use: 'file-loader?name=videos/[name].[ext]',
+      },
     ],
   },
 };

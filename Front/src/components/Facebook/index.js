@@ -9,7 +9,7 @@ export default class Facebook extends Component {
       UserId: '',
       name: '',
       email: '',
-      picture: '',
+      // picture: '',
     }
 
     responseFacebook = (response) => {
@@ -20,7 +20,7 @@ export default class Facebook extends Component {
         userID: response.userID,
         name: response.name,
         email: response.email,
-        picture: response.picture.data.url,
+      //  picture: response.picture.data.url,
       });
     }
 

@@ -1,7 +1,7 @@
 import { element } from 'prop-types';
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import picture from 'src/assets/images/profil-picture.jpg';
+// import picture from 'src/assets/images/profil-picture.jpg';
 import { getData } from 'src/hooks/dataFetcher';
 import CustomerReviews from 'src/components/CustomerReviews';
 import './styles.scss';
