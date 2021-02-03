@@ -23,22 +23,26 @@ const GoldenBook = () => {
 
   return (
 
-      <div className="card has-text-centered">
-          <h1 className="card-header-title-center">
+      <section className="section">
+          <h2 className="title">
               Livre d'or - Avis Clients
-          </h1>
-          {
-        dataLoaded && results.map((result) => (
-            <CustomerReviews
-            key={result.id}
-            comments={result.comments}
-            rate={result.rate}
-            first_name={result.user.first_name}
-            last_name={result.user.last_name}
-            />
-        ))
-      }
-      </div>
+          </h2>
+          <div className="card">
+              <div className="content has-text-centered ">
+                  {
+                    dataLoaded && results.map((result) => (
+                        <CustomerReviews
+                        key={result.id}
+                        comments={result.comments}
+                        rate={result.rate}
+                        first_name={result.user.first_name}
+                        last_name={result.user.last_name}
+                        />
+                    ))
+                  }
+              </div>
+          </div>
+      </section>
   );
 };
 

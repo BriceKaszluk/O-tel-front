@@ -1,17 +1,13 @@
-.columns {
-  display:flex;
-  flex-wrap: wrap;
+
+.section {
+  justify-content: center;
+  border: 1px solid rgb(226, 224, 224);
+  
 }
 
-.card {
-  width: 30em;
-  margin: 2rem auto;
-  padding: 2rem;
-  display: flex;
-  flex-wrap: wrap;
-
-}
-p {
-  color: black;
-  z-index: 1;
+.card{
+  margin: 2rem;
+  .content{
+    border-radius: 30%;
+  }
 }
