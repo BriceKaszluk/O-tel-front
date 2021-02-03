@@ -3,9 +3,7 @@ import React, { useState } from 'react';
 import Background from 'src/components/Background';
 import Calendar from 'src/components/Calendar';
 import Contact from 'src/components/Contact';
-import HousingOne from 'src/components/HousingOne';
-import HousingTwo from 'src/components/HousingTwo';
-import HousingThree from 'src/components/HousingThree';
+import Housing from 'src/components/Housing';
 import Description from 'src/components/Description';
 import CustomerReviews from 'src/components/CustomerReviews';
 import { useTranslation } from 'react-i18next';
@@ -43,20 +41,14 @@ export default () => {
 
           <div className="columns_housing">
               <div className="column housing">
-                  <HousingOne />
-              </div>
-              <div className="column housing">
-                  <HousingTwo />
-              </div>
-              <div className="column housing">
-                  <HousingThree />
+                  <Housing />
               </div>
           </div>
 
           <div className="columns">
               <div className="column gold-book-column">
 
-                  {
+                {
             dataLoaded && results.map((result, index) => {
               if (index === 0) {
                 return (

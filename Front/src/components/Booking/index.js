@@ -13,7 +13,8 @@ import { useAuthentication } from 'src/components/UserContext';
 // import
 import './styles.scss';
 
-export default () => {
+export default (props) => {
+
 
     const { user } = useAuthentication();
     
@@ -24,7 +25,7 @@ export default () => {
                 onChange={val => {
                     onChange(name, val)
                 }}
-                dateFormat="dd/MM/yyyy"
+                dateFormat="d/MM/yyyy" 
                 />
         )
     }
@@ -38,19 +39,15 @@ export default () => {
                     first_name: '',
                     email: '',
                     phone_number: '',
-                    startDate: '',
-                    endDate:'',
+                    begining_date: '',
+                    ending_date:'',
                     message: '',
-                    user_id: user.id,
+                    user_id: '',
                     housing_id: '',
                 }}
                 validationSchema={Yup.object().shape({
-                    last_name: Yup.string().required('Veuillez entrer un nom '),
-                    first_name: Yup.string().required('Veuillez entrer un prénom'),
-                    email: Yup.string().email().required('Veuillez entrer un email valide'),
-                    phone_number: Yup.string().required('Veuillez entrer un numéro valide'),
-                    startDates: Yup.string(),
-                    endDates: Yup.string(),
+                    begining_date: Yup.string('Veuillez entrer une date'),
+                    ending_date: Yup.string('Veuillez entrer une date'),
                     message: Yup.string().required('Veuillez taper votre message'),
                 })}
                 onSubmit={({
@@ -66,33 +63,7 @@ export default () => {
 
                 {({ errors, touched, isSubmitting, values, setFieldValue }) => (
                     <Form>
-                        {/* FIRST NAME */}
-                        <div className="field">
-                            <div className="form-group field">
-                            <label htmlFor="last_name" className="label">Nom</label>
-                            <Field name="last_name" type="text" className={'form-control input' + (errors.first_name && touched.last_name ? ' is-invalid' : '')} />
-                            <ErrorMessage name="last_name" component="div" className="invalid-feedback" />
-                            </div>
-                        </div>
-                        {/* LAST NAME */}
-                        <div className="form-group-field">
-                            <label htmlFor="first_name" className="label">Prénom</label>
-                            <Field name="first_name" type="text" className={'form-control input' + (errors.first_name && touched.first_name ? ' is-invalid' : '')} />
-                            <ErrorMessage name="first_name" component="div" className="invalid-feedback" />
-                        </div>
-                        {/* EMAIL */}
-                        <div className="form-group-field">
-                            <label htmlFor="email" className="label">Email</label>
-                            <Field name="email" type="email" className={'form-control input' + (errors.email && touched.email ? ' is-invalid' : '')} />
-                            <ErrorMessage name="email" component="div" className="invalid-feedback" />
-                        </div>
-
-                        {/* PHONE NUMBER */}
-                        <div className="form-group-field">
-                            <label htmlFor="phone_number" className="label">Téléphone</label>
-                            <Field name="phone_number" type="tel" className={'form-control input' + (errors.phone_number && touched.phone_number ? ' is-invalid' : '')} />
-                            <ErrorMessage name="phone_number" component="div" className="invalid-feedback" />
-                        </div>
+                    
                         {/* BEGIN AND END DATE */}
                         <div className="form-group-field">
                             <div className="columns">
@@ -105,11 +76,6 @@ export default () => {
                                     <DatePickerField name="ending_date" value={values.ending_date} onChange={setFieldValue} />
                                 </div>
                             </div>
-                        </div>
-                        <div className="form-group-field">
-                            <label htmlFor="house_id" className="label">House_id</label>
-                            <Field name="housing_id" type="housing_id" className={'form-control input' + (errors.housing_id && touched.housing_id ? ' is-invalid' : '')} />
-                            <ErrorMessage name="housing_id" component="div" className="invalid-feedback" />
                         </div>
                         {/* MORE INFORMATIONS */}
                         <div className="form-group-field">
@@ -125,8 +91,9 @@ export default () => {
                             <ErrorMessage name="acceptTerms" component="div" className="invalid-feedback" />
                         </div>
                         <footer className="form-group modal-card-foot">
-                            <button to="/" type="submit" className="button is-success" disabled={isSubmitting}>envoyer</button>
-                            { isSubmitting && <LoadingSpinner /> }
+                            <Link to="/" type="submit" className="button is-success" disabled={isSubmitting}>Réserver ce logement</Link>
+                            {  isSubmitting && <LoadingSpinner /> }
+                            { isSubmitting != true && (() => {alert('Tout les champs ne sont pas valides')})}
                             <Link to="/">Annuler</Link>
                             {status && <div className={'alert alert-danger'}>{status}</div> }
                         </footer>

@@ -4,7 +4,7 @@ import { useAuthentication } from 'src/components/UserContext';
 import Axios from 'axios';
 
 export default (url, {init=[], body={}, method='GET'}) => {
-
+console.log('url', url)
   const { token } = useAuthentication();
   // initialising test
   const [data, setData] = useState({});
