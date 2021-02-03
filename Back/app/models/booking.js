@@ -13,8 +13,8 @@ Booking.init (
     // No need to indicate the id field, Sequelize adds it automatically
     {
         // we define fields by indicating their names and types
-        begining_date: DataTypes.DATE,
-        ending_date: DataTypes.DATE, 
+        begining_date: DataTypes.DATEONLY,
+        ending_date: DataTypes.DATEONLY, 
         housing_id: DataTypes.INTEGER,
         user_id: DataTypes.INTEGER
     }, 

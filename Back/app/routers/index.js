@@ -6,6 +6,7 @@ const userRouter = require('./userRouter');
 const housingRouter = require('./housingRouter'); 
 const noticeRouter = require('./noticeRouter'); 
 const contactRouter = require('./contactRouter');
+const adminRouter= require('./adminRouter'); 
 
 const router = express.Router();
 
@@ -15,7 +16,7 @@ router.use('/inscription', userRouter);
 router.use('/reservation', bookingRouter);
 router.use('/hebergement', housingRouter);
 router.use('/connection', userRouter); 
-// router.use('/admin')
+router.use('/admin', adminRouter);
 
 
 module.exports = router; 
