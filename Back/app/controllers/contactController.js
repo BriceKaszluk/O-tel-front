@@ -5,8 +5,7 @@ const nodemailer = require('nodemailer');
 const {google} = require('googleapis');
 
 
-
-const contactMail = {
+module.exports = {
 
 
 
@@ -67,7 +66,8 @@ const contactMail = {
             response.status(500).json({ error });
         }
     }
+    
 }
 
-module.exports = contactMail 
+
 
