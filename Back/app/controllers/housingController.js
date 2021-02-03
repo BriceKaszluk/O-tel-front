@@ -43,6 +43,7 @@ module.exports = {
 
     createHouse: async (request, response) => {
         const houseData = {
+            house_name: request.body.house_name, 
             description: request.body.description,
             place_number: request.body.place_number,
             price: request.body.price,
