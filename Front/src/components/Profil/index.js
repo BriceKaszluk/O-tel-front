@@ -8,9 +8,19 @@ export default () => {
     const { user, booking, oldBooking } = useAuthentication();
     allBookings();
     console.log(user);
+
+    const fliterActualUserBookings = () => {
+        return booking.filter(book => book.user.id === user.id);
+    }
+
+    const filterUserOldBookings = () => {
+        if(oldBooking!==null){
+            return oldBooking.filter(book => book.user.id === user.id);
+        }
+    }
+
     console.log(booking, 'actual booking');
     console.log(oldBooking, 'old booking');
-
     return(
         <div>
             <title>Profil</title>
@@ -42,28 +52,44 @@ export default () => {
                             <div className="title is-4">
                                 Réservation
                             </div>
-                            <div className="card">
-                                <div>Gîtes grand soleil</div>
-                                <div>Du 13/04/2021 au 20/04/2021</div>
-                                <div>Paiement: A régler sur place</div>
-                            </div>
+                            {
+                                booking!==null && fliterActualUserBookings().map(booking => {
+                                    return(
+                                        <div key={booking.id} className="card">
+                                            <div>Gîtes grand soleil</div>
+                                            <div>Du {booking.begining_date} au {booking.ending_date}</div>
+                                            {
+                                                booking.house!==null &&
+                                                <div>{booking.house.price} €</div>
+                                            }
+                                            
+                                        </div>
+                                    )
+                                })
+                            }
+                            
                         </div>
 
                         {/* First part: history */}
                         <div>
                             <div className="title is-4">
-                                Réservation
+                                Historique
                             </div>
-                            <div className="card">
-                                <div>Gîtes lounge</div>
-                                <div>Du 13/06/2019 au 20/06/2019</div>
-                                <div>Paiement: réglé sur place  -  Espèce</div>
-                            </div>
-                            <div className="card">
-                                <div>Gîtes extrem zen</div>
-                                <div>Du 01/07/2020 au 20/08/2020</div>
-                                <div>Paiement: réglé sur place  -  CB</div>
-                            </div>
+                            {
+                                oldBooking!==null && filterUserOldBookings().map(booking => {
+                                    return(
+                                        <div key={booking.id} className="card">
+                                            <div>Gîtes grand soleil</div>
+                                            <div>Du {booking.begining_date} au {booking.ending_date}</div>
+                                            {
+                                                booking.house!==null &&
+                                                <div>{booking.house.price} €</div>
+                                            }
+                                            
+                                        </div>
+                                    )
+                                })
+                            }
                         </div>
                     </section>
 
