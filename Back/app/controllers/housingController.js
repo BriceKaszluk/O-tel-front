@@ -127,33 +127,28 @@ module.exports = {
 
     associateHousingBooking: async(request, response) => {
         const houseId = request.params.id; 
-        const bookingId = request.params.id;
+       
         try {
-            const associatedHouse = await Housing.findOne({
+            const associatedHouseBooking = await Housing.findOne({
                 where: {id: houseId}, 
                 include: [
-                   { association:'bookings'}
+                   { 
+                       association:'bookings', 
+                       model: Booking, 
+                       as: 'house'
+                    
+                   }
                 ]
               
             });
     
-            const associatedBooking = await Booking.findOne({
-                where: {id: bookingId}, 
-                include: [
-                   { association:'house'}
-                ]
-            });
-            
-            const result = await associatedHouse.addBooking(associatedBooking); 
-        
-            response.json({data: result}); 
+            response.json({data: associatedHouseBooking}); 
     
         } catch (error) {
             console.log(error);
             response.status(500).json({ error });
         }
-        
-        
+         
     }
 
 }
