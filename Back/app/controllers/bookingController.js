@@ -100,8 +100,10 @@ module.exports = {
       
               const info = await transport.sendMail(mailOption);
               console.log("Message sent: ", info.messageId);
+              
               response.status(201).json({data: booking}); 
-          } catch (error) {
+          
+            } catch (error) {
             console.log(error);
             response.status(500).json({ error });
           }
