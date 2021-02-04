@@ -29,8 +29,8 @@ export default () => {
                   <div className="card-content">
                       <div className="media">
                           <div className="media-content">
-                              <p className="title is-4">{result.house_name}</p>
-                              <p className="subtitle is-6">  {' '}
+                              <p className="title is-4 has-text-white">{result.house_name}</p>
+                              <p className="subtitle is-6 has-text-white">  {' '}
                                   Logement pour {result.place_number}{' '}
                                   personnes
                               </p>
@@ -38,8 +38,8 @@ export default () => {
                       </div>
 
                       <div className="content">
-                          <h2> {result.price} par nuit</h2>
-                          <h2> {result.description} </h2>
+                          <h2 className="has-text-white"> {result.price} par nuit</h2>
+                          <h2 className="has-text-white"> {result.description} </h2>
                       </div>
                   </div>
                   <Link
