@@ -5,7 +5,7 @@ export const GlobalStyles = createGlobalStyle`
   body, .navbar-item, .navbar-link {
     background: ${({ theme }) => theme.body};
     color: ${({ theme }) => theme.text};
-    transition: all 0.35s linear;
+    transition: all 1.35s linear;
   }
   small {
     display: none;
@@ -23,5 +23,11 @@ export const GlobalStyles = createGlobalStyle`
   }
   .navbar-item, .navbar-link {
     color: ${({ theme }) => theme.text};
+  }
+  .navbar-burger {
+    color: ${({ theme }) => theme.text};
+  }
+  .navbar-menu {
+    background-color: ${({ theme }) => theme.body};
   }
 `;
