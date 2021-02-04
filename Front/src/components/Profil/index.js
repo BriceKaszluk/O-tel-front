@@ -57,7 +57,7 @@ export default () => {
                                     console.log(book, 'cahque book');
                                     return(
                                         <div key={book.id} className="card">
-                                            <div>nom a dynamiser</div>
+                                            <div>{book.house.house_name}</div>
                                             <div>Du {book.begining_date} au {book.ending_date}</div>
                                             {
                                                 book.house!==null &&
@@ -80,7 +80,7 @@ export default () => {
                                 oldBooking!==null && filterUserOldBookings().map(booking => {
                                     return(
                                         <div key={booking.id} className="card">
-                                            <div>Gîtes grand soleil</div>
+                                            <div>{booking.house.house_name}</div>
                                             <div>Du {booking.begining_date} au {booking.ending_date}</div>
                                             {
                                                 booking.house!==null &&

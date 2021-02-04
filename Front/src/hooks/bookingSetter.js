@@ -9,8 +9,8 @@ export const allBookings = async () => {
         array.map(date => {
             const oldBegining_date = new Date(date.begining_date);
             const oldEnding_date = new Date (date.ending_date);
-            date.begining_date = oldBegining_date.toString();
-            date.ending_date = oldEnding_date.toString();
+            date.begining_date = oldBegining_date.toLocaleDateString();
+            date.ending_date = oldEnding_date.toLocaleDateString();
         })
     }
 
