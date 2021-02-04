@@ -6,6 +6,7 @@ import { HashLink } from 'react-router-hash-link';
 import { useTranslation } from 'react-i18next';
 import { useAuthentication } from 'src/components/UserContext';
 // import Darkmode from 'src/components/Darkmode'
+import Roll from 'react-reveal/Roll';
 
 import styles from './styles.scss';
 
