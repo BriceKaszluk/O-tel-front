@@ -53,14 +53,15 @@ export default () => {
                                 Réservation
                             </div>
                             {
-                                booking!==null && fliterActualUserBookings().map(booking => {
+                                booking!==null && fliterActualUserBookings().map(book => {
+                                    console.log(book, 'cahque book');
                                     return(
-                                        <div key={booking.id} className="card">
+                                        <div key={book.id} className="card">
                                             <div>nom a dynamiser</div>
-                                            <div>Du {booking.begining_date} au {booking.ending_date}</div>
+                                            <div>Du {book.begining_date} au {book.ending_date}</div>
                                             {
-                                                booking.house!==null &&
-                                                <div>{booking.house.price} €</div>
+                                                book.house!==null &&
+                                                <div>{book.house.price} €</div>
                                             }
                                             
                                         </div>
