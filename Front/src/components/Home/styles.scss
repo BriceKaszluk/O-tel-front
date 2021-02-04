@@ -1,5 +1,6 @@
 h1 {
   z-index: 1;
+  position: absolute;
   margin-top: 8em;
   font-size: 3em;
   color: #EDE7D6;
@@ -24,9 +25,9 @@ h2 {
 }
 
 .block {
-  margin-top: 22em;
+  margin-top: 1rem;
   position: relative;
-  width: 30em;
+  max-width: 30em;
   text-align: center;
   font-size: 1.2em;
 }
@@ -41,4 +42,37 @@ h2 {
 .columns_housing {
   display: flex;
   flex-wrap: wrap;
+}
+
+.misc {
+  size: cover;
+  position: center;
+  height: 100vh;
+}
+
+@media only screen and (max-width: 1023px) {
+  .form-content {
+      max-width: 35rem;
+  }
+  .gold-book-column {
+    width: 40rem;
+  }
+}
+
+@media only screen and (max-width: 728px) {
+  .form-content {
+      max-width: 30rem;
+  }
+  .gold-book-column {
+    width: 35rem;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .form-content {
+      max-width: 20rem;
+  }
+  .gold-book-column {
+    width: 25rem;
+  }
 }

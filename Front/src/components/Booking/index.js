@@ -1,15 +1,19 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { Formik, Field, Form, ErrorMessage } from 'formik'
-import * as Yup from 'yup'
-import DatePicker from 'react-datepicker'
-import { bookingService } from 'src/services/bookingService'
-import LoadingSpinner from 'src/components/LoadingSpinner'
-import 'react-datepicker/dist/react-datepicker.css'
-import { useAuthentication } from 'src/components/UserContext'
+
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Formik, Field, Form, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+import DatePicker from 'react-datepicker';
+import { bookingService } from 'src/services/bookingService';
+import LoadingSpinner from 'src/components/LoadingSpinner';
+import 'react-datepicker/dist/react-datepicker.css';
+import { useAuthentication } from 'src/components/UserContext';
+import subDays from 'date-fns/subDays';
+
 
 // import
 import './styles.scss'
+
 
 export default (props) => {
     const { user } = useAuthentication()
@@ -179,3 +183,4 @@ export default (props) => {
         </div>
     )
 }
+
