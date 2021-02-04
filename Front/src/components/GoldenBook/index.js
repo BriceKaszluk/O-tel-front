@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { getData } from 'src/hooks/dataFetcher';
 import CustomerReviews from 'src/components/CustomerReviews';
@@ -20,23 +19,27 @@ const GoldenBook = () => {
   dispatch();
 
   return (
-      <section className="section">
+      <section className="section goldenbook">
           <div className="card-content">
-              <h2 className="card-title">
-                  Livre d'or - Avis Clients
-              </h2>
-              <div className="card has-text-centered ">
-                  {
+              <div className="card-title">
+                  <h2 className="title is-1">
+                      Livre d'or - Avis Clients
+                  </h2>
+                  <div className="has-text-centered">
+                      {
                     dataLoaded && results.map((result) => (
-                        <CustomerReviews
-                        key={result.id}
-                        comments={result.comments}
-                        rate={result.rate}
-                        first_name={result.user.first_name}
-                        last_name={result.user.last_name}
-                        />
+                        <div className="notice">
+                            <CustomerReviews
+                                key={result.id}
+                                comments={result.comments}
+                                rate={result.rate}
+                                first_name={result.user.first_name}
+                                last_name={result.user.last_name}
+                            />
+                        </div>
                     ))
                   }
+                  </div>
               </div>
           </div>
       </section>
