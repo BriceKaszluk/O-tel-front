@@ -40,6 +40,7 @@ export default (props) => {
                 onChange={(val) => {
                     onChange(name, val)
                 }}
+                minDate={new Date()}
                 dateFormat='dd/MM/yyyy'
             />
         )
