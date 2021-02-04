@@ -40,7 +40,6 @@ export default () => {
                       <div className="content">
                           <h2> {result.price} par nuit</h2>
                           <h2> {result.description} </h2>
-                          <time dateTime="2016-1-1">11:09 PM - 1 Jan 2016</time>
                       </div>
                   </div>
                   <Link
