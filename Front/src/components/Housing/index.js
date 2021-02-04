@@ -24,35 +24,36 @@ export default () => {
     return (
         <div className='housing'>
             <div className='box'>
-                <div className='media'>
+            
                     {dataLoaded &&
                         results.map((result, index) => (
-                            <div key={result.id}>
-                                <div>
-                                    <article className='media'>
-                                        <img src={'#'} />
-                                    </article>
-                                    <h2> {result.house_name}</h2>
-                                    <h2>
-                                        {' '}
-                                        Logement pour {result.place_number}{' '}
-                                        personnes
-                                    </h2>
-                                    <h2> {result.price} par nuit</h2>
-                                    <h2> {result.description} </h2>
-                                    <div className='column'></div>
-                                </div>
+                            <div key={result.id} id={`logement${result.id}`} className='media'>
+                                <div class="media-content">
+                                    <div>
+                                        <article className='media'>
+                                            <img src={'#'} />
+                                        </article>
+                                        <h2> {result.house_name}</h2>
+                                        <h2>
+                                            {' '}
+                                            Logement pour {result.place_number}{' '}
+                                            personnes
+                                        </h2>
+                                        <h2> {result.price} par nuit</h2>
+                                        <h2> {result.description} </h2>
+                                        <div className='column'></div>
+                                    </div>
 
-                                <Link
-                                    to={{ pathname: `/logement/${result.id}` }}
-                                    className='button is-primary'
-                                >
-                                    Voir le logement
-                                </Link>
-                            </div>
+                                    <Link
+                                        to={{ pathname: `/logement/${result.id}` }}
+                                        className='button is-primary'
+                                    >
+                                        Voir le logement
+                                    </Link>
+                                    </div>
+                                </div>
                         ))}
                 </div>
             </div>
-        </div>
-    )
+        )
 }
