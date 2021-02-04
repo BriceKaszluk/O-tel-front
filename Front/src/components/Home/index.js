@@ -39,7 +39,7 @@ export default () => {
           <Background />
           <div className="misc" />
           <Zoom>
-            <h1>{t('Title.1')}</h1>
+              <h1 className="title_homepage">{t('Title.1')}</h1>
           </Zoom>
           <Fade left>
           <Description />
