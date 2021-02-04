@@ -47,7 +47,7 @@ export default () => {
                                     to={{ pathname: `/logement/${result.id}` }}
                                     className='button is-primary'
                                 >
-                                    Réserver ce logement
+                                    Voir le logement
                                 </Link>
                             </div>
                         ))}
