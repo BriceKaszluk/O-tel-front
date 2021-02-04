@@ -1,7 +1,7 @@
 /* eslint-disable linebreak-style */
 import React, { useState } from 'react';
 import Background from 'src/components/Background';
-import Calendar from 'src/components/Calendar';
+
 import Contact from 'src/components/Contact';
 import Housing from 'src/components/Housing';
 import Description from 'src/components/Description';
@@ -35,7 +35,7 @@ export default () => {
 
   return (
 
-      <section className="hero is-fullheight">
+      <section className="hero">
           <Background />
           <div className="misc" />
           <Zoom>

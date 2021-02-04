@@ -12,24 +12,20 @@ h2 {
   color:  #EDE7D6;
   text-align: center;
 }
-.calendar {
-  z-index: 1;
-  margin-top: 2em;
-  width: 15em;
-  margin:auto;
-}
 
-.is-fullheight {
+.hero {
   display: flex;
   align-items: center;
 }
 
 .block {
-  margin-top: 1rem;
+  margin-top: 2rem;
   position: relative;
   max-width: 30em;
   text-align: center;
   font-size: 1.2em;
+  line-height: 1.3em;
+
 }
 
 .misc {
