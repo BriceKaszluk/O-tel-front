@@ -25,7 +25,7 @@ export default () => {
   return (
       <div className="section">
           {dataLoaded && results.map((result, index) => (
-              <div key={result.id} className="card">
+              <div key={result.id} id={`logement${result.id}`} className="card">
                   <div className="card-content">
                       <div className="media">
                           <div className="media-content">
