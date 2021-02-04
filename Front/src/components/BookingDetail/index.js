@@ -26,7 +26,7 @@ export default (props) => {
                             {props.customer_phone_number}
                         </p>
                         <p className="message">
-                            House : {props.house_id}
+                            House : {props.house_name}
                         </p>
                     </div>
                     <div className= "buttons">

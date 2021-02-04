@@ -1,22 +1,37 @@
-
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Formik, Field, Form, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
-import DatePicker from 'react-datepicker';
-import { bookingService } from 'src/services/bookingService';
-import LoadingSpinner from 'src/components/LoadingSpinner';
-import 'react-datepicker/dist/react-datepicker.css';
-import { useAuthentication } from 'src/components/UserContext';
-import subDays from 'date-fns/subDays';
-
+import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import { Formik, Field, Form, ErrorMessage } from 'formik'
+import * as Yup from 'yup'
+import DatePicker from 'react-datepicker'
+import { bookingService } from 'src/services/bookingService'
+import LoadingSpinner from 'src/components/LoadingSpinner'
+import 'react-datepicker/dist/react-datepicker.css'
+import { useAuthentication } from 'src/components/UserContext'
+import axios from 'axios'
+import subDays from 'date-fns/subDays'
 
 // import
 import './styles.scss'
 
-
 export default (props) => {
     const { user } = useAuthentication()
+    const houseId = props.match.params.houseId
+
+    const [result, setResult] = useState({})
+    const [dataLoaded, setDataLoaded] = useState(false)
+
+    //Methode pour avoir toutest les réservations du logement
+    // useEffect(() => {
+    //     axios
+    //         .get(`https://project-otel.herokuapp.com/hebergement/${houseId}/reservation`)
+    //         .then((response) => {
+    //             setResult(response.data.data), setDataLoaded(true)
+    //         })
+    //         .catch((error) => {
+    //             console.log('error', error)
+    //         }),
+    //         []
+    // })
 
     const DatePickerField = ({ name, value, onChange }) => {
         return (
@@ -29,7 +44,6 @@ export default (props) => {
             />
         )
     }
-
     return (
         <div>
             <Formik
@@ -42,7 +56,7 @@ export default (props) => {
                     ending_date: '',
                     message: '',
                     user_id: user.id,
-                    housing_id: props.houseId
+                    housing_id: houseId
                 }}
                 validationSchema={Yup.object().shape({
                     begining_date: Yup.string('Veuillez entrer une date'),
@@ -157,14 +171,13 @@ export default (props) => {
                             />
                         </div>
                         <footer className='form-group modal-card-foot'>
-                            <Link
-                                to='/'
+                            <button
                                 type='submit'
                                 className='button is-success'
                                 disabled={isSubmitting}
                             >
                                 Réserver ce logement
-                            </Link>
+                            </button>
                             {isSubmitting && <LoadingSpinner />}
                             {isSubmitting != true &&
                                 (() => {
@@ -183,4 +196,3 @@ export default (props) => {
         </div>
     )
 }
-

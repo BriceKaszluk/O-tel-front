@@ -13,10 +13,10 @@ export default () => {
   return (
       <div className="languages__component">
           <div className="dropdown-trigger">
-              <button type="button" className="button is-light button__language" onClick={() => handleClick('en')}>
+              <button type="button" className="button is-light is-rounded button__language" onClick={() => handleClick('en')}>
                   English
               </button>
-              <button type="button" className="button is-light button__language" onClick={() => handleClick('fr')}>
+              <button type="button" className="button is-light is-rounded button__language" onClick={() => handleClick('fr')}>
                   Français
               </button>
           </div>
