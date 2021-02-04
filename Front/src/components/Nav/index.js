@@ -39,9 +39,9 @@ export default ({ connexionActive, setConnexionActive }) => {
                         {t('More.1')}
                     </div>
                     <div className="navbar-dropdown">
-                        <Link to="/logement1" className="navbar-item">{t('Housing.1')}</Link>
-                        <Link to="/logement2" className="navbar-item">{t('Housing.2')}</Link>
-                        <Link to="/logement3" className="navbar-item">{t('Housing.3')}</Link>
+                        <Link to="/logement/6" className="navbar-item">{t('Housing.1')}</Link>
+                        <Link to="/logement/7" className="navbar-item">{t('Housing.2')}</Link>
+                        <Link to="/logement/8" className="navbar-item">{t('Housing.3')}</Link>
                     </div>
                 </div>
                 {/* <div className="navbar-brand">

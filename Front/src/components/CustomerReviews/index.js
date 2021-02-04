@@ -15,7 +15,7 @@ export default (props) => (
                     {props.rate}/5
                 </p>
             </div>
-            <p className="content">
+            <p className="message">
                 {props.comments}
             </p>
             <br />
