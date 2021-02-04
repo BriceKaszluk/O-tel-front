@@ -1,31 +1,26 @@
-
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { Formik, Field, Form, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
-import DatePicker from 'react-datepicker';
-import { bookingService } from 'src/services/bookingService';
-import LoadingSpinner from 'src/components/LoadingSpinner';
-import 'react-datepicker/dist/react-datepicker.css';
-import { useAuthentication } from 'src/components/UserContext';
+import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import { Formik, Field, Form, ErrorMessage } from 'formik'
+import * as Yup from 'yup'
+import DatePicker from 'react-datepicker'
+import { bookingService } from 'src/services/bookingService'
+import LoadingSpinner from 'src/components/LoadingSpinner'
+import 'react-datepicker/dist/react-datepicker.css'
+import { useAuthentication } from 'src/components/UserContext'
 import axios from 'axios'
-import subDays from 'date-fns/subDays';
-
+import subDays from 'date-fns/subDays'
 
 // import
 import './styles.scss'
-
 
 export default (props) => {
     const { user } = useAuthentication()
     const houseId = props.match.params.houseId
 
-
     const [result, setResult] = useState({})
     const [dataLoaded, setDataLoaded] = useState(false)
 
-
-//Methode pour avoir toutest les réservations du logement
+    //Methode pour avoir toutest les réservations du logement
     // useEffect(() => {
     //     axios
     //         .get(`https://project-otel.herokuapp.com/hebergement/${houseId}/reservation`)
@@ -49,10 +44,8 @@ export default (props) => {
             />
         )
     }
-return (
-        dataLoaded  && (
-
-            <div> 
+    return (
+        <div>
             <Formik
                 initialValues={{
                     last_name: user.last_name,
@@ -201,12 +194,5 @@ return (
                 )}
             </Formik>
         </div>
-
-        )
-            
-        
-        
     )
 }
-
-
