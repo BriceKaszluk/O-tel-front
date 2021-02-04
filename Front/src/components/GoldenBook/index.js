@@ -1,6 +1,5 @@
 
 import React, { useState, useEffect } from 'react';
-
 import { getData } from 'src/hooks/dataFetcher';
 import CustomerReviews from 'src/components/CustomerReviews';
 import './styles.scss';
