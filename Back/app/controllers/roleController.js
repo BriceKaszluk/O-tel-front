@@ -21,11 +21,7 @@ module.exports = {
     
     getAdminAndBookings: async (request, response) => {
         try {
-            const roles = await Role.findAll({
-                include: [
-                  {association: 'users'},
-                ]
-            }); 
+            
             const bookings = await Booking.findAll({
                 include: [
                     {association: 'house'}, 
@@ -33,7 +29,7 @@ module.exports = {
                 ]
             });
             
-            response.json({data: roles, bookings}); 
+            response.json({data: bookings}); 
         
         } catch (error) {
             console.log(error);
@@ -43,12 +39,7 @@ module.exports = {
 
     getAdminAndNotice: async (request, response) => {
         try {
-            const roles = await Role.findAll({
-                include: [
-                  {association: 'users'},
-                ]
-            }); 
-
+           
             const notice = await Notice.findAll({
                 include: [
                     {association: 'user'}, 
@@ -63,18 +54,12 @@ module.exports = {
     },
 
     getAdminAndOneBooking: async (request, response) => {
-        const roleId = request.params.id 
+        
         const bookingId = request.params.id;
 
         try {
             
-            const role = await Role.findOne({
-                where: {id: roleId},
-                include: [
-                    {association: 'users'}
-                ]
-            });
-            
+         
             const booking = await Booking.findOne({
                 where: {id: bookingId}, 
                 include: [
@@ -92,18 +77,12 @@ module.exports = {
     },
     
     getAdminAndOneNotice: async (request, response) => {
-        const roleId = request.params.id 
+        
         const noticeId = request.params.id;
 
         try {
             
-            const role = await Role.findOne({
-                where: {id: roleId},
-                include: [
-                    {association: 'users'}
-                ]
-            });
-            
+    
             const notice = await Notice.findOne({
                 where: {id: noticeId}, 
                 include: [
@@ -113,8 +92,7 @@ module.exports = {
                 ]
             });
             
-            
-            
+    
             response.json({data: role, notice});
         
         } catch (error) {
