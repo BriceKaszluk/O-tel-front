@@ -46,7 +46,7 @@ module.exports = {
                     {association: 'house'}
                 ]
             });
-            response.json({data: roles, notice}); 
+            response.json({data: notice}); 
         } catch (error) {
             console.log(error);
             response.status(500).json({ error });
@@ -68,7 +68,7 @@ module.exports = {
             });
             
             
-            response.json({data: role, booking});
+            response.json({data: booking});
         
         } catch (error) {
             console.log(error);
@@ -93,7 +93,7 @@ module.exports = {
             });
             
     
-            response.json({data: role, notice});
+            response.json({data: notice});
         
         } catch (error) {
             console.log(error);
