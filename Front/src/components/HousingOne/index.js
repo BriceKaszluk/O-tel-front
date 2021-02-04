@@ -1,40 +1,43 @@
-import React, { useState, useEffect } from 'react';
-import { getData } from 'src/hooks/dataFetcher';
+import axios from 'axios'
+import React, { useState, useEffect } from 'react'
+import Booking from 'src/components/Booking'
+import { useAuthentication } from 'src/components/UserContext'
 import { Link } from 'react-router-dom'
-
-export default () => {
+export default (props) => {
+    const id = props.match.params.houseId
+    const { user } = useAuthentication()
 
     const [result, setResult] = useState({})
+    const [dataLoaded, setDataLoaded] = useState(false)
 
-    const dispatch = async () => {
-
-        const result =  await getData.getHousingOne();
-        if (result[0].data !== undefined) {
-            const data = result[0].data;
-            setResult(data)
-        }
-    }
-
-    dispatch();
-
+    useEffect(() => {
+        axios
+            .get(`https://project-otel.herokuapp.com/hebergement/${id}`)
+            .then((response) => {
+                setResult(response.data.data), setDataLoaded(true)
+            })
+            .catch((error) => {
+                console.log('error', error)
+            }),
+            []
+    })
 
     return (
-        <div className="box">
-            <article className="media-content">
-                <img src={result.picture} />
-            </article>
-            <h2> Logement pour {result.place_number} personnes</h2>
-            <h2> {result.price} par nuit</h2>
-            <h2> {result.description} </h2>
-            <h2> {result.id }</h2>
-            <div className="column">
-            <Link to="/booking" housing_id={result.id} className="button is-primary is-small is-rounded">Réserver ce logement</Link>
-            </div>
+        <div className='box'>
+            {dataLoaded && (
+                <div>
+                    <article className='media'>
+                        <img src={'#'} />
+                    </article>
+                    <h2> {result.house_name}</h2>
+                    <h2> Logement pour {result.place_number} personnes</h2>
+                    <h2> {result.price} par nuit</h2>
+                    <h2> {result.description} </h2>
+                    <div className='column'>
+                        {user && <Booking houseId={id} />}
+                    </div>
+                </div>
+            )}
         </div>
-        
-        
-    );
-
-};
-
-
+    )
+}

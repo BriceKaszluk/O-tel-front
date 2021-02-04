@@ -43,6 +43,7 @@ module.exports = {
 
     createHouse: async (request, response) => {
         const houseData = {
+            house_name: request.body.house_name, 
             description: request.body.description,
             place_number: request.body.place_number,
             price: request.body.price,
@@ -67,11 +68,16 @@ module.exports = {
                 where: {id: request.params.id}
             });
 
+            const house_name = request.body.house_name;
             const description = request.body.description;
             const place_number = request.body.place_number;
             const price = request.body.price;
             const picture = request.body.picture
 
+
+            if(house_name){
+                updatedHouse.house_name = house_name;
+            }
             if(description){
                 updatedHouse.description = description;
             }
@@ -121,33 +127,28 @@ module.exports = {
 
     associateHousingBooking: async(request, response) => {
         const houseId = request.params.id; 
-        const bookingId = request.params.id;
+       
         try {
-            const associatedHouse = await Housing.findOne({
+            const associatedHouseBooking = await Housing.findOne({
                 where: {id: houseId}, 
                 include: [
-                   { association:'bookings'}
+                   { 
+                       association:'bookings', 
+                       model: Booking, 
+                       as: 'house'
+                    
+                   }
                 ]
               
             });
     
-            const associatedBooking = await Booking.findOne({
-                where: {id: bookingId}, 
-                include: [
-                   { association:'house'}
-                ]
-            });
-            
-            const result = await associatedHouse.addBooking(associatedBooking); 
-        
-            response.json({data: result}); 
+            response.json({data: associatedHouseBooking}); 
     
         } catch (error) {
             console.log(error);
             response.status(500).json({ error });
         }
-        
-        
+         
     }
 
 }

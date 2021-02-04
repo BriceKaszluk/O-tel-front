@@ -1,11 +1,10 @@
 // this hook is use to get the differents datas from the bdd
-
 import { useEffect, useState } from 'react';
 import { useAuthentication } from 'src/components/UserContext';
 import Axios from 'axios';
 
 export default (url, {init=[], body={}, method='GET'}) => {
-
+console.log('url', url)
   const { token } = useAuthentication();
   // initialising test
   const [data, setData] = useState({});
@@ -31,7 +30,7 @@ export default (url, {init=[], body={}, method='GET'}) => {
       data : body
     };
     if(token){
-     // requestOptions.headers['Authorization'] = `Bearer ${token}`;
+    //requestOptions.headers['Authorization'] = `Bearer ${token}`;
     }
     console.log('dataAPI useEffect');
     loadData(requestOptions);

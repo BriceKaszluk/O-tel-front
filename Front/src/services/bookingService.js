@@ -15,4 +15,16 @@ export const bookingService = {
     return axios(requestOptions);
   },
 
+  deleteBooking: (id, last_name, first_name, email, phone_number, begining_date, ending_date, message) => {
+    
+    const requestOptions = {
+        
+        method: 'DELETE',
+        url: `https://project-otel.herokuapp.com/reservation/${id}` ,
+        headers: { 'Content-Type': 'application/json' },
+        data: JSON.stringify({ last_name, first_name, email, phone_number, begining_date, ending_date, message}),
+      };
+      return axios(requestOptions);
+  }
+
 };

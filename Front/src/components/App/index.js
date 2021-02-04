@@ -1,5 +1,5 @@
 /* eslint-disable import/no-unresolved */
-import React, { Suspense, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 
 import { Route, Switch } from 'react-router-dom';
 
@@ -14,12 +14,12 @@ import Languages from 'src/components/Languages';
 import Home from 'src/components/Home';
 import Profil from 'src/components/Profil';
 import Nav from 'src/components/Nav';
-import Housing from 'src/components/Housing';
+import HousingOne from 'src/components/HousingOne';
 import Booking from 'src/components/Booking';
 import BookingDashboard from 'src/components/BookingDashboard';
+import TermsOfUse from 'src/components/TermsOfUse';
 // component to set path for connected users
 import PrivateRoute from 'src/components/PrivateRoute';
-import { useAuthentication } from 'src/components/UserContext';
 
 // == Import
 import 'src/components/Languages/i18n';
@@ -29,9 +29,7 @@ import './styles.scss';
 const App = () => {
   // state concerning modal connexion
     const [isActiveModalConnexion, setIsActiveModalConnexion] = useState(false);
-    const { loading } = useAuthentication();
 
-    console.log('loading', loading);
   return (
       <div className="app">
 
@@ -43,13 +41,12 @@ const App = () => {
               <Switch>
                   <Route exact path="/connexion" component={Connexion} />
                   <Route exact path="/livre_d_or" component={GoldenBook} />
-                  <Route exact path="/logement1" component={Housing} />
-                  <Route exact path="/logement2" component={Housing} />
-                  <Route exact path="/logement3" component={Housing} />
+                  <Route path="/logement/:houseId" component={HousingOne} />
                   <Route exact path="/" component={Home} />
                   <Route exact path="/booking" component={Booking} />
                   <Route exact path="/booking_dashboard" component={BookingDashboard} />
                   <PrivateRoute exact path="/profil" component={Profil} />
+                  <Route exact path="/TermsOfUse" component={TermsOfUse} />
               </Switch>
               
               <Footer />

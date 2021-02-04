@@ -7,14 +7,17 @@ import {
 import { Link, useHistory } from 'react-router-dom';
 import * as Yup from 'yup';
 import LoadingSpinner from 'src/components/LoadingSpinner';
-
+import { useAuthentication } from 'src/components/UserContext';
 import './styles.scss';
 
 import { registrationService } from 'src/services/registrationService';
 
 export default ({ modalActive, closeModal }) => {
+
+    const { authenticate } = useAuthentication();
     // initialize history to use history.push to redirect
     const history = useHistory();
+
     return (
         <div className="modal is-active">
             <div
@@ -53,7 +56,8 @@ export default ({ modalActive, closeModal }) => {
                         console.log('submitting form');
                         registrationService.handleRegistration(last_name, first_name, email, phone_number, password)
                             .then((user) => {
-                                console.log(user.data, 'test user data');
+                                console.log(user.data.data, 'test user data');
+                                authenticate(user.data.data, user.data.token);
                                 closeModal(!modalActive);
                                 history.push('/profil');
                               },
@@ -103,7 +107,7 @@ export default ({ modalActive, closeModal }) => {
                                     <div className="form-group field">
                                         <Field type="checkbox" name="acceptTerms" className={`form-check-input checkbox${errors.acceptTerms && touched.acceptTerms ? ' is-invalid' : ''}`} />
                                         <span className="acceptTerm_p"> J'accepte les</span>
-                                        <Link to="/logement2" className="terms_and_conditions">termes et conditions</Link>
+                                        <Link to="/TermsOfUse" className="terms_and_conditions">termes et conditions</Link>
                                         <ErrorMessage name="acceptTerms" component="div" className="invalid-feedback" />
                                     </div>
                                 </div>

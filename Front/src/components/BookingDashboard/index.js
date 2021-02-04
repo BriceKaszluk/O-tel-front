@@ -31,9 +31,9 @@ const BookingDashboard = () => {
                     dataLoaded && results.map((result) => (
                         <BookingDetail
                         key={result.id}
-                        begining_date={result.begining_date}
-                        ending_date={result.ending_date}
-                        house_id={result.house.id}
+                        booking_id={result.id}
+                        begining_date={result.begining_date }
+                        ending_date={result.ending_date }
                         customer_phone_number={result.user.phone_number}
                         customer_first_name={result.user.first_name}
                         customer_last_name={result.user.last_name}

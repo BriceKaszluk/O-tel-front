@@ -1,7 +1,7 @@
 /* eslint-disable linebreak-style */
 import React, { useEffect } from 'react';
-import bulmaCalendar from 'bulma-calendar/dist/js/bulma-calendar.min.js';
-import 'bulma-calendar/dist/css/bulma-calendar.min.css';
+// import bulmaCalendar from 'bulma-calendar/dist/js/bulma-calendar.min.js';
+// import 'bulma-calendar/dist/css/bulma-calendar.min.css';
 
 import './styles.scss';
 

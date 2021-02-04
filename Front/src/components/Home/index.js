@@ -3,9 +3,7 @@ import React, { useState } from 'react';
 import Background from 'src/components/Background';
 import Calendar from 'src/components/Calendar';
 import Contact from 'src/components/Contact';
-import HousingOne from 'src/components/HousingOne';
-import HousingTwo from 'src/components/HousingTwo';
-import HousingThree from 'src/components/HousingThree';
+import Housing from 'src/components/Housing';
 import Description from 'src/components/Description';
 import CustomerReviews from 'src/components/CustomerReviews';
 import { useTranslation } from 'react-i18next';
@@ -13,6 +11,9 @@ import { getData } from 'src/hooks/dataFetcher';
 
 import { Route, Link } from 'react-router-dom';
 import './styles.scss';
+import Zoom from 'react-reveal/Zoom';
+import Fade from 'react-reveal/Fade';
+import Roll from 'react-reveal/Roll';
 
 export default () => {
   const { t } = useTranslation();
@@ -36,32 +37,27 @@ export default () => {
 
       <section className="hero is-fullheight">
           <Background />
-
-          <h1>{t('Title.1')}</h1>
-          <h2>{t('datepicker.1')}</h2>
-
-          <div className="calendar">
-              <Calendar />
-          </div>
-
+          <div className="misc" />
+          <Zoom>
+            <h1>{t('Title.1')}</h1>
+          </Zoom>
+          
+          <Fade left>
           <Description />
-
+          </Fade>
+          <Fade right>
           <div className="columns_housing">
               <div className="column housing">
-                  <HousingOne />
-              </div>
-              <div className="column housing">
-                  <HousingTwo />
-              </div>
-              <div className="column housing">
-                  <HousingThree />
+                  <Housing />
               </div>
           </div>
-
+          </Fade>
+          <Fade bottom>
           <div className="columns">
+          
               <div className="column gold-book-column">
 
-                  {
+                {
             dataLoaded && results.map((result, index) => {
               if (index === 0) {
                 return (
@@ -79,7 +75,6 @@ export default () => {
 
                   <Link to="/livre_d_or" className="button is-primary is-small is-rounded">Afficher Plus</Link>
               </div>
-
               <div className="column gold-book-column">
                   {
             dataLoaded && results.map((result, index) => {
@@ -120,11 +115,14 @@ export default () => {
               </div>
 
           </div>
+          </Fade>
+          <Roll>
           <div className="contact-form">
               <Route exact path="/">
                   <Contact />
               </Route>
           </div>
+          </Roll>
 
       </section>
   );
