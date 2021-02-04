@@ -14,7 +14,7 @@ import Languages from 'src/components/Languages';
 import Home from 'src/components/Home';
 import Profil from 'src/components/Profil';
 import Nav from 'src/components/Nav';
-import Housing from 'src/components/Housing';
+import HousingOne from 'src/components/HousingOne';
 import Booking from 'src/components/Booking';
 import BookingDashboard from 'src/components/BookingDashboard';
 import TermsOfUse from 'src/components/TermsOfUse';
@@ -41,9 +41,7 @@ const App = () => {
               <Switch>
                   <Route exact path="/connexion" component={Connexion} />
                   <Route exact path="/livre_d_or" component={GoldenBook} />
-                  <Route exact path="/logement1" component={Housing} />
-                  <Route exact path="/logement2" component={Housing} />
-                  <Route exact path="/logement3" component={Housing} />
+                  <Route path="/logement/:houseId" component={HousingOne} />
                   <Route exact path="/" component={Home} />
                   <Route exact path="/booking" component={Booking} />
                   <Route exact path="/booking_dashboard" component={BookingDashboard} />
