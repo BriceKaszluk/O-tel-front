@@ -46,8 +46,7 @@ export default () => {
           </Fade>
           <Fade right>
           <Housing />
-          </Fade>
-          <Fade bottom>
+          <Roll>
           <div className="columns">
               <div className="column gold-book-column">
                   {dataLoaded && results.map((result, index) => {
@@ -103,14 +102,15 @@ export default () => {
               </div>
 
           </div>
+          </Roll>
           </Fade>
-          <Roll>
+          <Fade bottom>
           <div className="contact-form">
               <Route exact path="/">
                   <Contact />
               </Route>
           </div>
-          </Roll>
+          </Fade>
 
       </section>
   );
