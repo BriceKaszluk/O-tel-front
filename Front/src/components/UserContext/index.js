@@ -20,9 +20,9 @@ const UserProvider = (props) => {
         localStorage.setItem('token', userToken );
     }
 
-    const bookingGestion = (actualBookings, oldBookings) => {
+    const bookingGestion = (actualBookings, pastBookings) => {
         setBooking(actualBookings);
-        setOldBooking(oldBookings);
+        setOldBooking(pastBookings);
     }
 
     useEffect(() => {

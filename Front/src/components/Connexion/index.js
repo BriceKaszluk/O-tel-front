@@ -17,10 +17,10 @@ export default ({ modalActive, closeModal }) => {
     return(
     <div className="modal is-active">
         <div
-className="modal-background"
-onClick={(event) => {
-  closeModal(!modalActive);
-}}
+    className="modal-background"
+    onClick={(event) => {
+      closeModal(!modalActive);
+    }}
         />
         <div className="modal-content">
             <div className="modal-card">
