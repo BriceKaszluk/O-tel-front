@@ -32,6 +32,7 @@ const BookingDashboard = () => {
                         <BookingDetail
                         key={result.id}
                         booking_id={result.id}
+                        house_name={result.house.house_name}
                         begining_date={result.begining_date }
                         ending_date={result.ending_date }
                         customer_phone_number={result.user.phone_number}

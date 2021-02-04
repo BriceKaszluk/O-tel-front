@@ -10,6 +10,7 @@ export default (props) => {
     const [result, setResult] = useState({})
     const [dataLoaded, setDataLoaded] = useState(false)
 
+
     useEffect(() => {
         axios
             .get(`https://project-otel.herokuapp.com/hebergement/${id}`)
@@ -33,9 +34,9 @@ export default (props) => {
                     <h2> Logement pour {result.place_number} personnes</h2>
                     <h2> {result.price} par nuit</h2>
                     <h2> {result.description} </h2>
-                    <div className='column'>
-                        {user && <Booking houseId={id} />}
-                    </div>
+                    
+                        <Link to={`/booking/${id}`} className="button btn-primary"> Réserver ce logement</Link>
+    
                 </div>
             )}
         </div>
