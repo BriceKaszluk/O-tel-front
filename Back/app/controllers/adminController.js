@@ -103,6 +103,26 @@ module.exports = {
         }
     },
 
+    createAdmin: async(request, reponse) => {
+        try {
+            const roles = await Role.findAll({
+                include: [
+                  {
+                      association: 'users'
+
+                },
+                ]
+            }); 
+            
+            response.json({data: roles});
+        
+        } catch (error) {
+            console.log(error);
+            response.status(500).json({ error });
+        }
+    }, 
+    
+
     createAdminBooking: async(request, response) => {
         const bookingData = {
             last_name: request.body.last_name, 
@@ -113,7 +133,6 @@ module.exports = {
             begining_date: request.body.begining_date,
             ending_date: request.body.ending_date,
             housing_id: request.body.housing_id,
-            user_id: request.body.user_id
         }  
 
         try {
