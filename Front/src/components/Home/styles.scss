@@ -1,10 +1,8 @@
 h1 {
   z-index: 1;
   position: absolute;
-  margin-top: 16rem;
   font-size: 8rem;
   color: #EDE7D6;
-  font-family: 'HARRYP__';
   text-shadow:   -1px -1px 0 #000,  
     1px -1px 0 #000,
     -1px 1px 0 #000,
@@ -16,6 +14,10 @@ h1 {
      1px 1px 10px #141414,
      1px 1px 12px #141414,
      1px 1px 18px #141414;color:#fff;
+}
+.title_homepage {  
+  font-family: 'HARRYP__';  
+  margin-top: 16rem;
 }
 h2 {
   z-index: 1;
