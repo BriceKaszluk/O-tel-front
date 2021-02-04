@@ -54,6 +54,11 @@ h2 {
   .gold-book-column {
     width: 35rem;
   }
+  .button__language {
+    width: 4rem;
+    height: 2.2rem;
+    font-size: 1rem;
+  }
 }
 
 @media only screen and (max-width: 480px) {
@@ -62,5 +67,10 @@ h2 {
   }
   .gold-book-column {
     width: 25rem;
+  }
+  .button__language {
+    width: 3rem;
+    height: 1.8rem;
+    font-size: 0.7rem;
   }
 }
