@@ -1,11 +1,10 @@
 
-
 const nodemailer = require('nodemailer');
 
 // we require googleapis to get the client google auth
 const {google} = require('googleapis');
 
-const {Booking, Housing, Notice, Role, User} = require('../models');
+const {Booking} = require('../models');
 
 
 module.exports = {

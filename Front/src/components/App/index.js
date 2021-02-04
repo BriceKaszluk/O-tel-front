@@ -39,8 +39,11 @@ const App = () => {
                   <Route exact path="/connexion" component={Connexion} />
                   <Route exact path="/livre_d_or" component={GoldenBook} />
                   <Route path="/logement/:houseId" component={HousingOne} />
-                  <Route exact path="/" component={Home}  />
-                  <PrivateRoute exact path="/booking" component={Booking} />
+
+                  <Route exact path="/" component={Home} />
+
+                  <Route path="/booking/:houseId" component={Booking} />
+
                   <Route exact path="/booking_dashboard" component={BookingDashboard} />
                   <PrivateRoute exact path="/profil" component={Profil} />
                   <Route exact path="/TermsOfUse" component={TermsOfUse} />
