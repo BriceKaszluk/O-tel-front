@@ -10,16 +10,17 @@ import './styles.scss';
 
 import { connexionService } from 'src/services/connexionService';
 
-export default ({ modalActive, closeModal }) => {
+export default () => {
 
     const { authenticate } = useAuthentication();
+    const { isActiveModalConnexion, setIsActiveModalConnexion } = useAuthentication();
 
     return(
     <div className="modal is-active">
         <div
     className="modal-background"
     onClick={(event) => {
-      closeModal(!modalActive);
+      setIsActiveModalConnexion(!isActiveModalConnexion);
     }}
         />
         <div className="modal-content">
@@ -49,7 +50,7 @@ export default ({ modalActive, closeModal }) => {
                           }
                           else {
                             authenticate(user.data.data.user, user.data.token);
-                            closeModal(!modalActive);
+                            setIsActiveModalConnexion(!isActiveModalConnexion);
                           }
                         });
                     }}
@@ -84,7 +85,7 @@ export default ({ modalActive, closeModal }) => {
                                 <button
                                     className="button"
                                     onClick={(event) => {
-                                      closeModal(!modalActive);
+                                      setIsActiveModalConnexion(!isActiveModalConnexion);
                                     }}
                                 >Annuler
                                 </button>

@@ -10,6 +10,8 @@ const UserProvider = (props) => {
     //booking and old booking state
     const [booking, setBooking] = useState(null);
     const [oldBooking, setOldBooking] = useState(null);
+    //to show the modal to connect
+    const [isActiveModalConnexion, setIsActiveModalConnexion] = useState(false);
 
     //function called to set user info et put them in localStorage
     const authenticate = (userProfile, userToken) => {
@@ -38,7 +40,9 @@ const UserProvider = (props) => {
 
     return (
         <userContext.Provider value={{
-            user, token, loading, authenticate, bookingGestion, booking, oldBooking
+            user, token, loading, authenticate, 
+            bookingGestion, booking, oldBooking,
+            isActiveModalConnexion, setIsActiveModalConnexion
         }}>
             {props.children}
         </userContext.Provider>

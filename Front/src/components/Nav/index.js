@@ -9,8 +9,8 @@ import { useAuthentication } from 'src/components/UserContext';
 
 import styles from './styles.scss';
 
-export default ({ connexionActive, setConnexionActive }) => {
-  const { user, authenticate } = useAuthentication();
+export default () => {
+  const { user, authenticate, isActiveModalConnexion, setIsActiveModalConnexion } = useAuthentication();
   const history = useHistory();
   const { t } = useTranslation();
   const [isActiveRegistration, setIsActiveRegistration] = useState(false);
@@ -72,14 +72,13 @@ export default ({ connexionActive, setConnexionActive }) => {
                         !user
                         && (
                         <div className="navbar-item">
-                            <a className="navbar-item" onClick={() => setConnexionActive(!connexionActive)}>{t('connexion.1')}</a>
-                            {connexionActive ? <ConnexionForm modalActive={connexionActive} closeModal={setConnexionActive} /> : ''}
+                            <a className="navbar-item" onClick={() => setIsActiveModalConnexion(!isActiveModalConnexion)}>{t('connexion.1')}</a>
+                            {isActiveModalConnexion ? <ConnexionForm /> : ''}
                             <a className="navbar-item" onClick={() => setIsActiveRegistration(!isActiveRegistration)}>{t('Login.1')}</a>
                             {isActiveRegistration ? <RegistrationForm modalActive={isActiveRegistration} closeModal={setIsActiveRegistration} /> : ''}
                         </div>
                         )
                         }
-
             </div>
         </div>
   );
