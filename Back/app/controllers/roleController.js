@@ -1,5 +1,5 @@
 
-const {Booking, Housing, Notice, Role, User} = require('../models');
+const {Booking, Notice, Role} = require('../models');
 
 
 module.exports = {

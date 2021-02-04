@@ -2,20 +2,20 @@ import React, { useState, useEffect } from 'react';
 import './styles.scss';
 
 export default (props) => (
-    <div className="card">
+    <div className="box">
         <div className="card-content ">
             <div className="media-content">
-                <div className="image">
-                    <p>Super gite logement 1</p>
-                </div>
-                <p className="title is-4">
+                <p className="title is-6">
                     {props.first_name} {props.last_name}
-                </p>
-                <p className="subtitle is-6">
+                </p> 
+                <p className="subtitle is-7">
                     {props.rate}/5
                 </p>
+                <div className="image">
+                    <p>Avis clients</p>
+                </div>
             </div>
-            <p className="message">
+            <p className="content">
                 {props.comments}
             </p>
             <br />

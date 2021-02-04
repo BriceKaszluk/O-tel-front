@@ -11,8 +11,6 @@ const {google} = require('googleapis');
 
 module.exports = {
     
-    
-    
     signUpForm: async (request, response) => {
         try {
             console.log('registration received');
@@ -146,10 +144,7 @@ module.exports = {
                   
                     console.log(newUser, 'user saved');
                     
-
                    return response.status(200).json({data: newUser, token, verif, mailOption}); 
-
-                    
                    
                 }
             }
