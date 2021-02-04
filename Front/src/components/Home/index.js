@@ -45,31 +45,25 @@ export default () => {
           <Description />
           </Fade>
           <Fade right>
-          <div className="columns_housing">
-              <div className="column housing">
-                  <Housing />
-              </div>
-          </div>
+          <Housing />
           </Fade>
           <Fade bottom>
           <div className="columns">
               <div className="column gold-book-column">
+                  {dataLoaded && results.map((result, index) => {
+                      if (index === 0) {
+                        return (
+                            <CustomerReviews
+                            key={result.id}
+                            comments={result.comments}
+                            rate={result.rate}
+                            first_name={result.user.first_name}
+                            last_name={result.user.last_name}
+                            />
+                        );
+                      }
+                  })}
 
-                  {
-              dataLoaded && results.map((result, index) => {
-                if (index === 0) {
-                  return (
-                      <CustomerReviews
-                      key={result.id}
-                      comments={result.comments}
-                      rate={result.rate}
-                      first_name={result.user.first_name}
-                      last_name={result.user.last_name}
-                      />
-                  );
-                }
-              })
-          }
               </div>
               <div className="column gold-book-column">
                   {
