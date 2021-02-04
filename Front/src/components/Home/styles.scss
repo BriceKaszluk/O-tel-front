@@ -57,6 +57,9 @@ h2 {
     flex-grow: 1;
     flex-shrink: 0;
   }
+  a:hover {
+    color: rgba(255,255,255,0);
+  }
 } 
 
 @media only screen and (max-width: 1023px) {
@@ -66,8 +69,8 @@ h2 {
   .gold-book-column {
     width: 40rem;
   }
-  .navbar-burger {
-    color: seashell;
+  a:hover {
+    color: rgba(255,255,255,1);
   }
 }
 
@@ -85,7 +88,7 @@ h2 {
   }
   .block {
     text-align: justify;
-    margin: 0 1.5rem;
+    margin: 2.5rem 1.5rem;
   }
 }
 
