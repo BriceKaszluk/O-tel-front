@@ -27,21 +27,19 @@ import 'src/components/Languages/i18n';
 import './styles.scss';
 
 const App = () => {
-  // state concerning modal connexion
-    const [isActiveModalConnexion, setIsActiveModalConnexion] = useState(false);
-
   return (
       <div className="app">
 
           <Suspense fallback={(<div>Loading</div>)}>
               <Darkmode />
               <Languages />
-              <Nav connexionActive={isActiveModalConnexion} setConnexionActive={setIsActiveModalConnexion} />
+              <Nav />
               
               <Switch>
                   <Route exact path="/connexion" component={Connexion} />
                   <Route exact path="/livre_d_or" component={GoldenBook} />
                   <Route path="/logement/:houseId" component={HousingOne} />
+
                   <Route exact path="/" component={Home} />
 
                   <Route path="/booking/:houseId" component={Booking} />

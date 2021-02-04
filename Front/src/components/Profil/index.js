@@ -54,7 +54,6 @@ export default () => {
                             </div>
                             {
                                 booking!==null && fliterActualUserBookings().map(book => {
-                                    console.log(book, 'cahque book');
                                     return(
                                         <div key={book.id} className="card">
                                             <div>{book.house.house_name}</div>
