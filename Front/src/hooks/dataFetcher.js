@@ -18,20 +18,20 @@ export const getData = {
     return users;
   },
 
-  getHousingOne: async () => {
-    const housingOne = await bddApiFetcher(apiURL.housingOne, { init: [] });
-    return housingOne;
+  getAllHousing: async () => {
+    const housings = await bddApiFetcher(apiURL.allHousings, { init: [] });
+    return housings;
   },
 
-  getHousingTwo: async () => {
-    const housingTwo = await bddApiFetcher(apiURL.housingTwo, { init: [] });
-    return housingTwo;
+  getOneHousing: async (id) => {
+      console.log('id :', id)
+    const housings = await bddApiFetcher(`https://project-otel.herokuapp.com/hebergement/${id}`, { init: [] });
+    console.log('housing', housings)
+    return housings;
+    
   },
 
-  getHousingThree: async () => {
-    const housingThree = await bddApiFetcher(apiURL.housingThree, { init: [] });
-    return housingThree;
-  },
+
 
   getAllRoles: async () => {
     const roles = await bddApiFetcher(apiURL.housings, { init: [] });
