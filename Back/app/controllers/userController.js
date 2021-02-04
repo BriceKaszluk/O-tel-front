@@ -73,7 +73,8 @@ module.exports = {
                         // address: request.body.address,
                         phone_number: request.body.phone_number,
                         email: request.body.email, 
-                        password: hashPassword
+                        password: hashPassword, 
+                        role_id: request.body.role_id
                     });
                     
                     // what we want to store in the token
@@ -83,7 +84,8 @@ module.exports = {
                         id: newUser.id, 
                         first_name: newUser.first_name,
                         last_name: newUser.last_name,
-                        email: newUser.email
+                        email: newUser.email, 
+                        role_id: newUser.role_id
                     }, process.env.SECRET_TOKEN, { expiresIn: "1h" })
                     console.log('my token: ', token);
                     // JWT VERIFY
@@ -181,7 +183,8 @@ module.exports = {
                 id: checkUser.id, 
                 first_name: checkUser.first_name,
                 last_name: checkUser.last_name,
-                email: checkUser.email
+                email: checkUser.email, 
+                role_id: checkUser.role_id
                 }, process.env.SECRET_TOKEN, { expiresIn: "1h" });
 
             const verif = jwt.verify(token, process.env.SECRET_TOKEN); 
@@ -190,6 +193,7 @@ module.exports = {
                        verif.first_name == token.first_name 
                        verif.last_name == token.last_name
                        verif.email == token.email; 
+                       verif.role_id == token.role_id
                     
                     } else {
                         response.status(404).json("Token not valid");
