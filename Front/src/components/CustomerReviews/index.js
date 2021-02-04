@@ -16,14 +16,14 @@ export default (props) => (
                     {props.rate}/5
                 </p>
             </div>
-            <div className="content">
+            <div className="content has-text-centered">
                     <p className="notification ">
                         {props.comments}
                     </p>
             </div>
-            <br />
-            <time className="is-centered" />
-            <Link to="/livre_d_or" className="button is-primary is-small is-rounded">Afficher Plus</Link>
+            <div className="">
+                    <Link to="/livre_d_or" className="button is-primary is-small is-rounded">Afficher Plus</Link>
+            </div>
         </div>
     </div>
 );

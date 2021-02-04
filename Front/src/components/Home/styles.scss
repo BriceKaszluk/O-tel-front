@@ -24,29 +24,20 @@ h2 {
   color:  #EDE7D6;
   text-align: center;
 }
-.calendar {
-  z-index: 1;
-  margin-top: 2em;
-  width: 15em;
-  margin:auto;
-}
 
-.is-fullheight {
+.hero {
   display: flex;
   align-items: center;
 }
 
 .block {
-  margin-top: 1rem;
+  margin-top: 2rem;
   position: relative;
   max-width: 30em;
   text-align: center;
   font-size: 1.2em;
-}
+  line-height: 1.3em;
 
-.columns_housing {
-  display: flex;
-  flex-wrap: wrap;
 }
 
 .misc {
@@ -63,6 +54,17 @@ h2 {
     width: 40rem;
   }
 }
+@media screen and (min-width: 1174px){
+.navbar-menu {
+    flex-grow: 1;
+    flex-shrink: 0;
+}
+.navbar-menu {
+  flex-grow: 1;
+  flex-shrink: 0;
+}
+}
+
 
 @media only screen and (max-width: 728px) {
   .form-content {
@@ -75,6 +77,10 @@ h2 {
     width: 4rem;
     height: 2.2rem;
     font-size: 1rem;
+  }
+  .block {
+    text-align: justify;
+    margin: 0 1.5rem;
   }
 }
 
@@ -89,5 +95,9 @@ h2 {
     width: 3rem;
     height: 1.8rem;
     font-size: 0.7rem;
+  }
+  h1 {
+    font-size: 7rem;
+    margin-top: 5rem;
   }
 }

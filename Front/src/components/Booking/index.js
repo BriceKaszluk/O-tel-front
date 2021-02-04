@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
-import DatePicker from 'react-datepicker'
 import { bookingService } from 'src/services/bookingService'
 import LoadingSpinner from 'src/components/LoadingSpinner'
 import 'react-datepicker/dist/react-datepicker.css'
 import { useAuthentication } from 'src/components/UserContext'
+import DatePickerField from 'src/components/DatePickerField'
 import axios from 'axios'
 import subDays from 'date-fns/subDays'
 
@@ -14,6 +14,7 @@ import subDays from 'date-fns/subDays'
 import './styles.scss'
 
 export default (props) => {
+    const history = useHistory();
     const { user } = useAuthentication()
     const houseId = props.match.params.houseId
 
@@ -33,18 +34,6 @@ export default (props) => {
     //         []
     // })
 
-    const DatePickerField = ({ name, value, onChange }) => {
-        return (
-            <DatePicker
-                selected={(value && new Date(value)) || null}
-                onChange={(val) => {
-                    onChange(name, val)
-                }}
-                minDate={new Date()}
-                dateFormat='dd/MM/yyyy'
-            />
-        )
-    }
     return (
         <div>
             <Formik
@@ -96,7 +85,7 @@ export default (props) => {
                     setSubmitting(false)
                 }}
             >
-                {({ errors, touched, isSubmitting, values, setFieldValue }) => (
+                {({ errors, status, touched, isSubmitting, values, setFieldValue }) => (
                     <Form>
                         {/* BEGIN AND END DATE */}
                         <div className='form-group-field'>
@@ -180,11 +169,13 @@ export default (props) => {
                                 Réserver ce logement
                             </button>
                             {isSubmitting && <LoadingSpinner />}
-                            {isSubmitting != true &&
-                                (() => {
-                                    alert('Tout les champs ne sont pas valides')
-                                })}
-                            <Link to='/'>Annuler</Link>
+                            <button
+                                className="button"
+                                onClick={(event) => {
+                                    history.push('/');
+                                }}
+                                >Annuler
+                            </button>
                             {status && (
                                 <div className={'alert alert-danger'}>
                                     {status}
