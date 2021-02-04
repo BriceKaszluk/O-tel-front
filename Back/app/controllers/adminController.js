@@ -1,5 +1,7 @@
 
 const {Booking, Notice, Role} = require('../models');
+const {google} = require('googleapis');
+const nodemailer = require('nodemailer');
 
 
 module.exports = {
@@ -21,11 +23,7 @@ module.exports = {
     
     getAdminAndBookings: async (request, response) => {
         try {
-            const roles = await Role.findAll({
-                include: [
-                  {association: 'users'},
-                ]
-            }); 
+            
             const bookings = await Booking.findAll({
                 include: [
                     {association: 'house'}, 
@@ -33,7 +31,7 @@ module.exports = {
                 ]
             });
             
-            response.json({data: roles, bookings}); 
+            response.json({data: bookings}); 
         
         } catch (error) {
             console.log(error);
@@ -43,19 +41,14 @@ module.exports = {
 
     getAdminAndNotice: async (request, response) => {
         try {
-            const roles = await Role.findAll({
-                include: [
-                  {association: 'users'},
-                ]
-            }); 
-
+           
             const notice = await Notice.findAll({
                 include: [
                     {association: 'user'}, 
                     {association: 'house'}
                 ]
             });
-            response.json({data: roles, notice}); 
+            response.json({data: notice}); 
         } catch (error) {
             console.log(error);
             response.status(500).json({ error });
@@ -63,18 +56,12 @@ module.exports = {
     },
 
     getAdminAndOneBooking: async (request, response) => {
-        const roleId = request.params.id 
+        
         const bookingId = request.params.id;
 
         try {
             
-            const role = await Role.findOne({
-                where: {id: roleId},
-                include: [
-                    {association: 'users'}
-                ]
-            });
-            
+         
             const booking = await Booking.findOne({
                 where: {id: bookingId}, 
                 include: [
@@ -83,7 +70,7 @@ module.exports = {
             });
             
             
-            response.json({data: role, booking});
+            response.json({data: booking});
         
         } catch (error) {
             console.log(error);
@@ -92,18 +79,12 @@ module.exports = {
     },
     
     getAdminAndOneNotice: async (request, response) => {
-        const roleId = request.params.id 
+        
         const noticeId = request.params.id;
 
         try {
             
-            const role = await Role.findOne({
-                where: {id: roleId},
-                include: [
-                    {association: 'users'}
-                ]
-            });
-            
+    
             const notice = await Notice.findOne({
                 where: {id: noticeId}, 
                 include: [
@@ -113,15 +94,80 @@ module.exports = {
                 ]
             });
             
-            
-            
-            response.json({data: role, notice});
+    
+            response.json({data: notice});
         
         } catch (error) {
             console.log(error);
             response.status(500).json({ error });
         }
     },
+
+    createAdminBooking: async(request, response) => {
+        const bookingData = {
+            last_name: request.body.last_name, 
+            first_name: request.body.first_name,
+            phone_number: request.body.phone_number,
+            email: request.body.email,
+            message: request.body.message, 
+            begining_date: request.body.begining_date,
+            ending_date: request.body.ending_date,
+            housing_id: request.body.housing_id,
+            user_id: request.body.user_id
+        }  
+
+        try {
+            const booking = await Booking.create(bookingData); 
+            
+            const {last_name, first_name, email, begining_date, ending_date} = request.body
+      
+      
+            const OAUTH_PLAYGROUND = 'https://developers.google.com/oauthplayground';
+    
+            const {
+            EMAIL_NAME,
+            SECRET_PASS,
+            EMAIL_CLIENT_ID,
+            EMAIL_CLIENT_SECRET,
+            EMAIL_REFRESH_TOKEN
+            } = process.env; 
+    
+        const oAuth2Client = new google.auth.OAuth2(EMAIL_CLIENT_ID, EMAIL_CLIENT_SECRET, EMAIL_REFRESH_TOKEN, OAUTH_PLAYGROUND); 
+        console.log('probleme: ', oAuth2Client)
+        oAuth2Client.setCredentials({refresh_token: EMAIL_REFRESH_TOKEN});
+    
+            const accessToken = await oAuth2Client.getAccessToken(); 
+            
+            const transport = nodemailer.createTransport({
+                service: 'gmail', 
+                auth: {
+                    type: 'OAuth2',
+                    user:EMAIL_NAME,
+                    pass:SECRET_PASS,
+                    clientId: EMAIL_CLIENT_ID,
+                    clientSecret: EMAIL_CLIENT_SECRET, 
+                    refreshToken: EMAIL_REFRESH_TOKEN,
+                    accessToken: accessToken
+                }
+            }); 
+    
+            const mailOption = {
+                from: EMAIL_NAME,
+                to: `${email}`,
+                subject: "Message de " + EMAIL_NAME + " Confirmation d'inscription", 
+                text: `Bonjour ${last_name} ${first_name}, merci pour votre réservation du ${begining_date} au ${ending_date}, a bien été prise en compte.`
+            }
+    
+            const info = await transport.sendMail(mailOption);
+            console.log("Message sent: ", info.messageId);
+            
+            response.status(201).json({data: booking}); 
+
+        } catch (error) {
+            console.log(error);
+            response.status(500).json({ error });
+        }    
+    }, 
 
     uptadeAdminBooking: async (request, response) => {
         try {

@@ -9,7 +9,7 @@ import CustomerReviews from 'src/components/CustomerReviews';
 import { useTranslation } from 'react-i18next';
 import { getData } from 'src/hooks/dataFetcher';
 
-import { Route, Link } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import './styles.scss';
 import Zoom from 'react-reveal/Zoom';
 import Fade from 'react-reveal/Fade';
@@ -41,7 +41,6 @@ export default () => {
           <Zoom>
             <h1>{t('Title.1')}</h1>
           </Zoom>
-          
           <Fade left>
           <Description />
           </Fade>
@@ -54,26 +53,23 @@ export default () => {
           </Fade>
           <Fade bottom>
           <div className="columns">
-          
               <div className="column gold-book-column">
 
-                {
-            dataLoaded && results.map((result, index) => {
-              if (index === 0) {
-                return (
-                    <CustomerReviews
-                    key={result.id}
-                    comments={result.comments}
-                    rate={result.rate}
-                    first_name={result.user.first_name}
-                    last_name={result.user.last_name}
-                    />
-                );
-              }
-            })
-        }
-
-                  <Link to="/livre_d_or" className="button is-primary is-small is-rounded">Afficher Plus</Link>
+                  {
+              dataLoaded && results.map((result, index) => {
+                if (index === 0) {
+                  return (
+                      <CustomerReviews
+                      key={result.id}
+                      comments={result.comments}
+                      rate={result.rate}
+                      first_name={result.user.first_name}
+                      last_name={result.user.last_name}
+                      />
+                  );
+                }
+              })
+          }
               </div>
               <div className="column gold-book-column">
                   {
@@ -91,7 +87,6 @@ export default () => {
               }
             })
         }
-                  <Link to="/livre_d_or" className="button is-primary is-small is-rounded">Afficher Plus</Link>
               </div>
 
               <div className="column gold-book-column">
@@ -108,10 +103,9 @@ export default () => {
                               />
                           );
                         }
-                        
                       })
                   }
-                  <Link to="/livre_d_or" className="button is-primary is-small is-rounded">Afficher Plus</Link>
+ 
               </div>
 
           </div>
