@@ -31,17 +31,12 @@ export default () => {
                       <div className="card-content">
                           <div className="media">
                               <div className="media-content">
-                                  <p className="title is-4 has-text-white">{result.house_name}</p>
+                                  <p className="title is-2 has-text-white">{result.house_name}</p>
                                   <p className="subtitle is-6 has-text-white">  {' '}
                                       Logement pour {result.place_number}{' '}
                                       personnes
                                   </p>
                               </div>
-                          </div>
-
-                          <div className="content">
-                              <h2 className="has-text-white"> {result.price} par nuit</h2>
-                              <h2 className="has-text-white"> {result.description} </h2>
                           </div>
                       </div>
                       <Link
