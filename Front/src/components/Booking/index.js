@@ -6,7 +6,7 @@ import { bookingService } from 'src/services/bookingService'
 import LoadingSpinner from 'src/components/LoadingSpinner'
 import 'react-datepicker/dist/react-datepicker.css'
 import { useAuthentication } from 'src/components/UserContext'
-import DatePickerField from 'src/components/DatePickerField'
+import DatePicker from 'react-datepicker'
 import axios from 'axios'
 import subDays from 'date-fns/subDays'
 
