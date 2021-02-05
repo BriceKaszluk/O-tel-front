@@ -1,25 +1,16 @@
-.title.is-1 {
-    font-size: 3rem;
-    text-shadow: 0em 0.1em 0.1em rgb(223, 190, 7);
-    font-style: italic;
-    margin-top: 0.1rem;
+.h1{
+    position:relative;
+    font-size: 5rem;
 }
-
-.goldenbook {
-    border-top: 1px solid rgb(209, 208, 208);
-    padding: 1rem;
-    background-image: url("src/assets/images/goldbook_icon.png");
-    background-repeat: no-repeat;
-    background-position: 90% 40%;
-    background-size : 25% 40%;
+.columns.reviews{
+    margin: 2rem auto;
+    padding: 2rem auto;
+    display: flex;
+    flex-wrap:wrap;
+    flex-direction: row;
+    justify-content:center;
 }
 .notice{
-    opacity: 0.96;
-    width: 60%;
-    padding: 1rem;
-    .notification{
-        margin: 2rem auto;
-        padding: 2rem auto;
-        width: 80%;
-    }
+    padding: 2rem auto;
+    
 }
