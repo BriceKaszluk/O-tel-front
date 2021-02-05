@@ -48,6 +48,7 @@ export const bookingService = {
       method: 'PATCH',
       url: `https://project-otel.herokuapp.com/admin/reservation/${id}` ,
       headers: { 'Content-Type': 'application/json' },
+      data: JSON.stringify({ last_name, first_name, email, phone_number, begining_date, ending_date, message, housing_id, user_id }),
     };
 
     return axios(requestOptions);

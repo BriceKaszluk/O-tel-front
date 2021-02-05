@@ -11,12 +11,11 @@ const BookingDashboard = () => {
     function removeBooking(id) {
         const newResults = results;
         const index = newResults.findIndex(a => a.id === id);
-    
         if (index === -1) return;
         newResults.splice(index, 1);
-    
-        setResults(newResults); // This will update the state and trigger a rerender of the components
+        setResults(newResults); 
     }
+
     
     
     const dispatch = async () => {
