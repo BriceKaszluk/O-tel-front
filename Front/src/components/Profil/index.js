@@ -1,23 +1,25 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+//context
 import { useAuthentication } from 'src/components/UserContext';
+//component
 import ProfilModifierModale from 'src/components/ProfilModifierModale';
+//services
 import { allBookings } from 'src/hooks/bookingSetter';
 import { userServices } from 'src/services/userServices';
 import { connexionService } from 'src/services/connexionService';
+//scss
 import './styles.scss';
 
 export default () => {
-
+    //to activate or not the modifier modale
     const [isActiveModifier, setIsActiveModifier] = useState(false);
-
+    //context
     const { user, booking, oldBooking } = useAuthentication();
-
+    
     const history = useHistory();
-
+    //hooks that get all bookings of users
     allBookings();
-
-    console.log(user);
 
     const fliterActualUserBookings = () => {
         return booking.filter(book => book.user.id === user.id);
@@ -29,15 +31,12 @@ export default () => {
         }
     }
 
-    console.log(booking, 'actual booking');
-    console.log(oldBooking, 'old booking');
     return(
         <div>
             <title>Profil</title>
             <div className="nul">
                 <div className="card-content profil__container">
-
-                    {/* Section left */}
+                    {/* user informations */}
                     <section className="card profil__section">
                         <div className="title is-4 profil__main__head">
                             MON PROFIL
@@ -57,6 +56,7 @@ export default () => {
                                 onClick={() => setIsActiveModifier(!isActiveModifier)}
                                 >modifier
                             </button>
+                            {/* if modifier is active show the modifier modal */}
                             {
                             isActiveModifier ? 
                                 <ProfilModifierModale 
@@ -64,6 +64,7 @@ export default () => {
                                     closeModal={setIsActiveModifier} 
                                 /> : ''
                             }
+                            {/* to delete the profile */}
                             <button 
                                 className="button is-primary is-rounded" 
                                 onClick={() => {
@@ -82,10 +83,10 @@ export default () => {
                         </div>
                     </section>
 
-                    {/* Section right */}
+                    {/*booking history section */}
                     <section className="card profil__section">
 
-                        {/* First part: booking */}
+                        {/* actual bookings */}
                         <div>
                             <div className="title is-4">
                                 Réservation
@@ -107,7 +108,7 @@ export default () => {
                             
                         </div>
 
-                        {/* First part: history */}
+                        {/* old bookings */}
                         <div>
                             <div className="title is-4">
                                 Historique

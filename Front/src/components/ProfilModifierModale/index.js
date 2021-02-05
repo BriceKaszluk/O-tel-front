@@ -1,22 +1,28 @@
 import React from 'react';
+//components
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import LoadingSpinner from 'src/components/LoadingSpinner';
+//context
 import { useAuthentication } from 'src/components/UserContext';
+//services
 import { userServices } from 'src/services/userServices';
+//scss
 import './styles.scss';
 
 export default ({modalActive, closeModal}) => {
-
+    //context
     const { user, updateUser } = useAuthentication();
 
     return(
+        
     <div className="modal is-active">
+        {/* if click out of modal, will close it */}
         <div
-    className="modal-background"
-    onClick={(event) => {
-        closeModal(!modalActive);
-    }}
+            className="modal-background"
+            onClick={(event) => {
+            closeModal(!modalActive);
+            }}
         />
         <div className="modal-content">
             <div className="modal-card">
@@ -38,21 +44,37 @@ export default ({modalActive, closeModal}) => {
                         email: Yup.string().required('veuillez entrer un email valide'),
                         phone_number: Yup.string().required('veuillez entrer un numéro de téléphone'),
                     })}
-                    onSubmit={({ last_name, first_name, email, phone_number, user_id}, { setStatus, setSubmitting }) => {
-                      setStatus();
-                      console.log('submitting update form');
-                      userServices.handleUpdate(last_name, first_name, email, phone_number, user_id)
-                        .then((user) => {
-                          if (user.data.errors) {
-                            setStatus(user.data.errors);
-                            setSubmitting(false);
-                          }
-                          else {
-                            updateUser(user.data.data);
-                            closeModal(!modalActive);
-                          }
-                        });
-                    }}
+                    onSubmit={(
+                        { 
+                        last_name, 
+                        first_name, 
+                        email, 
+                        phone_number, 
+                        user_id
+                        }, 
+                        { setStatus, setSubmitting }) => {
+                        setStatus();
+                        {/* we call the handle update service */}
+                        userServices.handleUpdate(
+                            last_name, 
+                            first_name, 
+                            email, 
+                            phone_number, 
+                            user_id
+                            )
+                            .then((user) => {
+                            if (user.data.errors) {
+                                setStatus(user.data.errors);
+                                setSubmitting(false);
+                            }
+                            else {
+                                //we update context and close modal
+                                updateUser(user.data.data);
+                                closeModal(!modalActive);
+                            }
+                            });
+                        }
+                    }
                 >
                     {/* end of formik settings */}
 
