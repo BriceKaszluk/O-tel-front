@@ -16,6 +16,7 @@ import Profil from 'src/components/Profil';
 import Nav from 'src/components/Nav';
 import HousingOne from 'src/components/HousingOne';
 import Booking from 'src/components/Booking';
+import BookingAdmin from 'src/components/BookingAdmin';
 import BookingDashboard from 'src/components/BookingDashboard';
 import TermsOfUse from 'src/components/TermsOfUse';
 // component to set path for connected users
@@ -44,6 +45,7 @@ const App = () => {
                   <PrivateRoute path="/booking/:houseId" component={Booking} />
 
                   <Route exact path="/booking_dashboard" component={BookingDashboard} />
+                  <Route exact path="/booking_admin" component={BookingAdmin} />
                   <PrivateRoute exact path="/profil" component={Profil} />
                   <Route exact path="/TermsOfUse" component={TermsOfUse} />
               </Switch>

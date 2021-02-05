@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { Link, useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
+import DatePicker from 'react-datepicker'
 import { bookingService } from 'src/services/bookingService'
 import LoadingSpinner from 'src/components/LoadingSpinner'
 import 'react-datepicker/dist/react-datepicker.css'
 import { useAuthentication } from 'src/components/UserContext'
-import DatePickerField from 'src/components/DatePickerField'
 import axios from 'axios'
 import subDays from 'date-fns/subDays'
 
@@ -14,7 +14,6 @@ import subDays from 'date-fns/subDays'
 import './styles.scss'
 
 export default (props) => {
-    const history = useHistory();
     const { user } = useAuthentication()
     const houseId = props.match.params.houseId
 
@@ -34,7 +33,6 @@ export default (props) => {
     //         []
     // })
 
-
     const DatePickerField = ({ name, value, onChange }) => {
         return (
             <DatePicker
@@ -47,20 +45,18 @@ export default (props) => {
             />
         )
     }
-
     return (
         <div>
             <Formik
                 initialValues={{
-                    last_name: user.last_name,
-                    first_name: user.first_name,
-                    email: user.email,
-                    phone_number: user.phone_number,
-                    begining_date: '',
-                    ending_date: '',
-                    message: '',
-                    user_id: user.id,
-                    housing_id: houseId
+                    last_name: props.user.last_name,
+                    first_name: props.user.first_name,
+                    email: props.user.email,
+                    phone_number: props.user.phone_number,
+                    begining_date: props.begining_date,
+                    ending_date: props.ending_date,
+                    user_id: props.user.id,
+                    housing_id: props.houseId
                 }}
                 validationSchema={Yup.object().shape({
                     begining_date: Yup.string('Veuillez entrer une date'),
@@ -99,7 +95,7 @@ export default (props) => {
                     setSubmitting(false)
                 }}
             >
-                {({ errors, status, touched, isSubmitting, values, setFieldValue }) => (
+                {({ errors, touched, isSubmitting, values, setFieldValue }) => (
                     <Form>
                         {/* BEGIN AND END DATE */}
                         <div className='form-group-field'>
@@ -183,13 +179,11 @@ export default (props) => {
                                 Réserver ce logement
                             </button>
                             {isSubmitting && <LoadingSpinner />}
-                            <button
-                                className="button"
-                                onClick={(event) => {
-                                    history.push('/');
-                                }}
-                                >Annuler
-                            </button>
+                            {isSubmitting != true &&
+                                (() => {
+                                    alert('Tout les champs ne sont pas valides')
+                                })}
+                            <Link to='/'>Annuler</Link>
                             {status && (
                                 <div className={'alert alert-danger'}>
                                     {status}
