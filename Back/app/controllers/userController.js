@@ -2,12 +2,12 @@ require("dotenv").config();
 const bcrypt = require('bcrypt');
 const emailValidator = require('email-validator');
 const jwt = require('jsonwebtoken'); 
-const {User} = require('../models');
+const {User, Booking, Notice} = require('../models');
 const nodemailer = require('nodemailer');
 
 // we require googleapis to get the client google auth
 const {google} = require('googleapis');
-const { response } = require("express");
+
 
 
 module.exports = {
@@ -252,19 +252,45 @@ module.exports = {
 
     deleteUser: async (request, response) => {
         const userId = request.params.id;
+        const noticeId = request.params.id;
+        const bookingId = request.params.id; 
+    
 
         try {
             const deletedUser = await User.findOne({
-                where: {id: userId}
+                where: {id: userId}, 
+               
             }); 
+
+            const deletedNotice = await Notice.findOne({
+                where: {id: noticeId}, 
+                
+            }); 
+
+            const deletedBooking = await Booking.findOne({
+                where: {id: bookingId}, 
+                
+            }); 
+
+
             if(!deletedUser){
                 response.status(404).json({error: "aucuns utilisateurs"});
                 return;
             }
+            if(!deletedNotice){
+                response.status(404).json({error: "aucuns commentaires"});
+                return;
+            }
+            if(!deletedBooking){
+                response.status(404).json({error: "aucunes réservations"});
+                return;
+            }
 
             await deletedUser.destroy(); 
+            // await deletedNotice.destroy(); 
+            await deletedBooking.destroy(); 
 
-            response.json({data: deletedUser}); 
+            response.json({data: deletedUser}, deletedBooking, deletedNotice); 
 
         } catch (error) {
             console.log(error);
