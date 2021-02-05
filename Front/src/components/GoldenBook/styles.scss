@@ -1,16 +1,20 @@
 .h1{
     position:relative;
-    font-size: 5rem;
+    font-size: 4rem;
 }
-.columns.reviews{
-    margin: 2rem auto;
-    padding: 2rem auto;
-    display: flex;
-    flex-wrap:wrap;
-    flex-direction: row;
-    justify-content:center;
+
+.content-box {
+    background-image: url('src/assets/images/bluebell.jpg');
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100vw;
+    z-index: 1;
 }
+
 .notice{
-    padding: 2rem auto;
-    
+    opacity: 0.80;
+    width: 40%;
+    padding: 1rem;
 }

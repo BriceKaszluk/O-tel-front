@@ -24,9 +24,8 @@ const GoldenBook = () => {
               <h1 className="h1">
                   Livre d'or - Avis Clients
               </h1>
-              <div className="content has-text-centered">
-                  <div className="columns reviews">
-                      {
+              <div className="content-box has-text-centered">
+                  {
                     dataLoaded && results.map((result) => (
                         <div className="notice">
                             <CustomerReviews
@@ -39,7 +38,6 @@ const GoldenBook = () => {
                         </div>
                     ))
                   }
-                  </div>
               </div>
           </div>
       </section>
