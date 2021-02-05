@@ -41,7 +41,7 @@ const ToggleContainer = styled.button`
 @media only screen and (max-width: 1023px) {
     position: absolute;
     left: 0rem;
-    top: 3rem;
+    top: 1.5rem;
     margin: 1rem auto 0 0.5rem;
     z-index: 100;
   }

@@ -18,7 +18,7 @@ export const GlobalStyles = createGlobalStyle`
   a {
     color: ${({ theme }) => theme.text};
   }
-  .label {
+  .label, .acceptTerm_p {
     color: ${({ theme }) => theme.text};
   }
   .navbar-item, .navbar-link {
