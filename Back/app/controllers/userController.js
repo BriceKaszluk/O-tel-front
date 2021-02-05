@@ -91,8 +91,13 @@ module.exports = {
                     // JWT VERIFY
                     // It checks if the signature and expiration date are valid
                     const verif = jwt.verify(token, process.env.SECRET_TOKEN); 
+                    console.log('verification --->: ', verif);
                     if (verif){
-                        console.log("token good: ", verif); 
+                        verif.id == token.id;
+                        verif.first_name == token.first_name;
+                        verif.last_name == token.last_name;
+                        verif.email == token.email; 
+                        verif.role_id == token.role_id;
                     } else {
                         return response.status(404).json("Token not valid");
                     }
