@@ -4,6 +4,6 @@ import { useTranslation } from 'react-i18next';
 export default () => {
   const { t } = useTranslation();
   return (
-      <div className="block">{t('description.1')}</div>
+      <div className="block">{t('description.1')}{t('description.2')}</div>
   );
 };

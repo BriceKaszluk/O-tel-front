@@ -41,7 +41,7 @@ const ToggleContainer = styled.button`
 @media only screen and (max-width: 1023px) {
     position: absolute;
     left: 0rem;
-    top: 2.7rem;
+    top: 3rem;
     margin: 1rem auto 0 0.5rem;
     z-index: 100;
   }
@@ -64,6 +64,7 @@ const ToggleContainer = styled.button`
     width: 1.5rem;
     height: auto;
     transition: all 0.3s linear;
+  }
   }
 `;
 
