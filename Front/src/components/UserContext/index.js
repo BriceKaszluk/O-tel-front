@@ -13,7 +13,7 @@ const UserProvider = (props) => {
     //to show the modal to connect
     const [isActiveModalConnexion, setIsActiveModalConnexion] = useState(false);
 
-    //function called to set user info et put them in localStorage
+    //function called to set user infos and put them in localStorage
     const authenticate = (userProfile, userToken) => {
         setUser(userProfile);
         setToken(userToken);
@@ -21,12 +21,18 @@ const UserProvider = (props) => {
         localStorage.setItem('profile', JSON.stringify(userProfile));
         localStorage.setItem('token', userToken );
     }
-
+    //to update when user make change in his profile
+    const updateUser = (userProfile) => {
+        setUser(userProfile);
+        setLoading(false);
+        localStorage.setItem('profile', JSON.stringify(userProfile));
+    }
+    
     const bookingGestion = (actualBookings, pastBookings) => {
         setBooking(actualBookings);
         setOldBooking(pastBookings);
     }
-
+    //activate when user connect or modify his profile
     useEffect(() => {
         //we check local storage
             const userProfile = localStorage.getItem('profile');
@@ -40,7 +46,7 @@ const UserProvider = (props) => {
 
     return (
         <userContext.Provider value={{
-            user, token, loading, authenticate, 
+            user, updateUser, token, loading, authenticate, 
             bookingGestion, booking, oldBooking,
             isActiveModalConnexion, setIsActiveModalConnexion
         }}>

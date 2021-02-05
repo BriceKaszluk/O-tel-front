@@ -18,6 +18,7 @@ export const connexionService = {
   },
 
   logout: () => {
-    localStorage.removeItem('currentUser');
+    localStorage.removeItem('profile');
+    localStorage.removeItem('token');
   },
 };
