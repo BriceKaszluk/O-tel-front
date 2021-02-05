@@ -42,30 +42,32 @@ export default () => {
               <h1 className="title_homepage">{t('Title.1')}</h1>
           </Zoom>
           <Fade left>
-          <Description />
+              <Description />
           </Fade>
-          <Fade right>
           <Housing />
-          <Roll>
+
           <div className="columns">
-              <div className="column gold-book-column">
-                  {dataLoaded && results.map((result, index) => {
-                      if (index === 0) {
-                        return (
-                            <CustomerReviews
+              <Roll>
+                  <div className="column gold-book-column">
+                      {dataLoaded && results.map((result, index) => {
+                        if (index === 0) {
+                          return (
+                              <CustomerReviews
                             key={result.id}
                             comments={result.comments}
                             rate={result.rate}
                             first_name={result.user.first_name}
                             last_name={result.user.last_name}
-                            />
-                        );
-                      }
-                  })}
+                              />
+                          );
+                        }
+                      })}
 
-              </div>
-              <div className="column gold-book-column">
-                  {
+                  </div>
+              </Roll>
+              <Roll>
+                  <div className="column gold-book-column">
+                      {
             dataLoaded && results.map((result, index) => {
               if (index === 1) {
                 return (
@@ -80,10 +82,11 @@ export default () => {
               }
             })
         }
-              </div>
-
-              <div className="column gold-book-column">
-                  {
+                  </div>
+              </Roll>
+              <Roll>
+                  <div className="column gold-book-column">
+                      {
                       dataLoaded && results.map((result, index) => {
                         if (index === 3) {
                           return (
@@ -98,18 +101,17 @@ export default () => {
                         }
                       })
                   }
- 
-              </div>
 
+                  </div>
+              </Roll>
           </div>
-          </Roll>
-          </Fade>
+
           <Fade bottom>
-          <div className="contact-form">
-              <Route exact path="/">
-                  <Contact />
-              </Route>
-          </div>
+              <div className="contact-form">
+                  <Route exact path="/">
+                      <Contact />
+                  </Route>
+              </div>
           </Fade>
 
       </section>

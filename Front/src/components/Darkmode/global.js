@@ -27,7 +27,7 @@ export const GlobalStyles = createGlobalStyle`
   .navbar-burger {
     color: ${({ theme }) => theme.text};
   }
-  .navbar-menu {
+  .navbar-menu, .navbar-link, .navbar-item, .navbar-dropdown {
     background-color: ${({ theme }) => theme.body};
   }
 `;
