@@ -287,7 +287,7 @@ module.exports = {
             }
 
             await deletedUser.destroy(); 
-            // await deletedNotice.destroy(); 
+            await deletedNotice.destroy(); 
             await deletedBooking.destroy(); 
 
             response.json({data: deletedUser}, deletedBooking, deletedNotice); 
