@@ -1,9 +1,23 @@
 h1 {
-  z-index: 1;
   position: absolute;
-  margin-top: 8em;
-  font-size: 3em;
+  font-size: 8rem;
   color: #EDE7D6;
+  text-shadow:   -1px -1px 0 #000,  
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+     1px 1px 0 #000,
+     1px 1px 2px #141414,
+     1px 1px 3px #141414,
+     1px 1px 5px #141414,
+     1px 1px 7px #141414,
+     1px 1px 10px #141414,
+     1px 1px 12px #141414,
+     1px 1px 18px #141414;color:#fff;
+}
+.title_homepage {  
+  
+  z-index: 1;
+  margin: 20rem;
 }
 h2 {
   z-index: 1;
@@ -12,36 +26,20 @@ h2 {
   color:  #EDE7D6;
   text-align: center;
 }
-.calendar {
-  z-index: 1;
-  margin-top: 2em;
-  width: 15em;
-  margin:auto;
-}
 
-.is-fullheight {
+.hero {
   display: flex;
   align-items: center;
 }
 
 .block {
-  margin-top: 1rem;
+  margin: 4rem 0;
   position: relative;
   max-width: 30em;
   text-align: center;
   font-size: 1.2em;
-}
+  line-height: 1.3em;
 
-.gold-book-column {
-  justify-content: center;
-  margin: 2rem auto;
-  border-radius: 30px;
-  width: 30vw;
-}
-
-.columns_housing {
-  display: flex;
-  flex-wrap: wrap;
 }
 
 .misc {
@@ -50,12 +48,29 @@ h2 {
   height: 100vh;
 }
 
+@media screen and (min-width: 1178px){
+  .navbar-menu {
+      flex-grow: 1;
+      flex-shrink: 0;
+  }
+  .navbar-menu {
+    flex-grow: 1;
+    flex-shrink: 0;
+  }
+  a:hover {
+    color: rgba(255,255,255,0);
+  }
+} 
+
 @media only screen and (max-width: 1023px) {
   .form-content {
       max-width: 35rem;
   }
   .gold-book-column {
     width: 40rem;
+  }
+  a:hover {
+    color: rgba(255,255,255,1);
   }
 }
 
@@ -66,6 +81,18 @@ h2 {
   .gold-book-column {
     width: 35rem;
   }
+  .button__language {
+    width: 4rem;
+    height: 2.2rem;
+    font-size: 1rem;
+  }
+  .block {
+    text-align: justify;
+    margin: 2.5rem 1.5rem;
+  }
+  .title_homepage {
+    font-size: 5rem;
+  }
 }
 
 @media only screen and (max-width: 480px) {
@@ -74,5 +101,13 @@ h2 {
   }
   .gold-book-column {
     width: 25rem;
+  }
+  .button__language {
+    width: 3rem;
+    height: 1.8rem;
+    font-size: 0.7rem;
+  }
+  .title_homepage {
+    font-size: 3rem;
   }
 }

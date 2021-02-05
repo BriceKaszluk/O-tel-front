@@ -1,8 +1,29 @@
-.box {
+.card {
   text-align: center;
   margin: 1rem auto;
-  border: 1px solid rgb(134, 132, 132);
+  border: 1px solid rgb(194, 191, 191);
   border-radius: 30px;
-  width: 29vw auto;
-  height: auto ;
+  width: 85vw;
+  padding: 3rem;
+  overflow: hidden;
+}
+
+.media-content {
+  overflow: hidden;
+}
+
+
+#logement6{
+  background: url("https://cdn.pixabay.com/photo/2017/06/03/11/37/giethoorn-2368494_960_720.jpg") center;
+  background-size: cover;
+}
+
+#logement7{
+  background:  url("https://cdn.pixabay.com/photo/2016/12/06/14/33/log-cabin-1886620_960_720.jpg") center;
+  background-size: cover;
+}
+
+#logement8{
+  background: url("https://cdn.pixabay.com/photo/2017/10/27/07/21/container-ship-2893480_960_720.jpg") center;
+  background-size: cover;
 }

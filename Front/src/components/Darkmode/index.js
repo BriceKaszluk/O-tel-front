@@ -7,8 +7,6 @@ import { GlobalStyles } from './global';
 
 import Toggle from './components/Toggle';
 
-import './styles.scss';
-
 function Darkmode2() {
   const [theme, toggleTheme, componentMounted] = useDarkMode();
   const themeMode = theme === 'light' ? lightTheme : darkTheme;
@@ -18,12 +16,11 @@ function Darkmode2() {
   }
 
   return (
-      <div className="button__toggle">
+      <div>
           <ThemeProvider theme={themeMode}>
               <>
                   <GlobalStyles />
                   <Toggle theme={theme} toggleTheme={toggleTheme} />
-                  {/* <h3>Tu es dans le mode {theme === 'light' ? 'jour' : 'nuit'}!</h3> */}
               </>
           </ThemeProvider>
       </div>

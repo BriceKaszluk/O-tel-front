@@ -8,7 +8,8 @@ import MoonIcon from './MoonIcon';
 const ToggleContainer = styled.button`
   position: absolute;
   right: 1rem;
-  top: 1.5rem;
+  top: 0.5rem;
+  z-index:5;
   box-shadow: 0px 7px 38px -6px rgba(143,141,143,0.86);
   display: flex;
   justify-content: space-between;
@@ -35,6 +36,35 @@ const ToggleContainer = styled.button`
     &:nth-child(2) {
       transform: ${({ lightTheme }) => (lightTheme ? 'translateY(-100px)' : 'translateY(0)')};
     }
+  }
+
+@media only screen and (max-width: 1023px) {
+    position: absolute;
+    left: 0rem;
+    top: 3rem;
+    margin: 1rem auto 0 0.5rem;
+    z-index: 100;
+  }
+
+  @media only screen and (max-width: 728px) {
+    width: 6rem;
+    height: 3rem;
+
+    svg {
+    width: 2rem;
+    height: auto;
+    transition: all 0.3s linear;
+  }
+}
+  @media only screen and (max-width: 480px) {
+    width: 5rem;
+    height: 2.5rem;
+
+    svg {
+    width: 1.5rem;
+    height: auto;
+    transition: all 0.3s linear;
+  }
   }
 `;
 
