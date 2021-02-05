@@ -250,47 +250,44 @@ module.exports = {
         }
     },
 
-    deleteUser: async (request, response) => {
+    deleteUser: async (request, response, next) => {
         const userId = request.params.id;
-        const noticeId = request.params.id;
-        const bookingId = request.params.id; 
-    
-
+       
         try {
             const deletedUser = await User.findOne({
                 where: {id: userId}, 
-               
+           
             }); 
 
             const deletedNotice = await Notice.findOne({
-                where: {id: noticeId}, 
-                
+                where: {user_id:userId},
+                  
             }); 
 
             const deletedBooking = await Booking.findOne({
-                where: {id: bookingId}, 
+                 where: {user_id: userId} 
                 
             }); 
 
 
             if(!deletedUser){
-                response.status(404).json({error: "aucuns utilisateurs"});
+                response.status(404).json({error: "aucun utilisateurs"});
                 return;
             }
-            if(!deletedNotice){
-                response.status(404).json({error: "aucuns commentaires"});
-                return;
-            }
-            if(!deletedBooking){
-                response.status(404).json({error: "aucunes réservations"});
-                return;
-            }
+            
+            if(deletedNotice){
+                await deletedNotice.destroy(); 
+            } 
+            
+            if(deletedBooking){
+                await deletedBooking.destroy();
+            } 
 
+            
             await deletedUser.destroy(); 
-            await deletedNotice.destroy(); 
-            await deletedBooking.destroy(); 
-
-            response.json({data: deletedUser}, deletedBooking, deletedNotice); 
+            
+        
+            response.json("l'utilisateur a bien été supprimé")
 
         } catch (error) {
             console.log(error);
