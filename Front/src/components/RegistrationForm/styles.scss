@@ -12,11 +12,15 @@
 }
 
 
-.modal-card {
+.modal-card, .modal-content {
   overflow: auto;
+  overflow: hidden;
 }
 
 
+.modal-card-body {
+  width: 80%;
+}
 
 .social {
   min-width: 8em;

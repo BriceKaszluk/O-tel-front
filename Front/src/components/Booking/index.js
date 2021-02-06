@@ -22,22 +22,6 @@ export default (props) => {
   const [result, setResult] = useState({});
   const [dataLoaded, setDataLoaded] = useState(false);
 
-  const disabledDays = [
-    {
-      year: 2020,
-      month: 2,
-      day: 9,
-    },
-    {
-      year: 2020,
-      month: 2,
-      day: 11,
-    },
-  ];
-  const handleDisabledSelect = (disabledDay) => {
-    console.log('Tried including a disabled day', disabledDay);
-  };
-
   // Methode pour avoir toutest les réservations du logement
   // useEffect(() => {
   //     axios
@@ -59,8 +43,6 @@ export default (props) => {
                 }}
                 minDate={new Date()}
                 dateFormat="dd/MM/yyyy"
-                disabledDays={disabledDays} // here we pass them
-                onDisabledDayError={handleDisabledSelect}
       />
   );
 

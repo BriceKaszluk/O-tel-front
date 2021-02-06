@@ -3,13 +3,15 @@ import React, { useState, useEffect } from 'react'
 import Booking from 'src/components/Booking'
 import { useAuthentication } from 'src/components/UserContext'
 import { Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom'
+
+import "./styles.scss"
+
 export default (props) => {
     const id = props.match.params.houseId
     const { user } = useAuthentication()
 
     const [result, setResult] = useState({})
     const [dataLoaded, setDataLoaded] = useState(false)
-
 
     useEffect(() => {
         axios
@@ -24,11 +26,11 @@ export default (props) => {
     })
 
     return (
-        <div className='box'>
+        <div className='box box__housing'>
             {dataLoaded && (
-                <div>
-                    <article className='media'>
-                        <img src={'#'} />
+                <div className="picture__housing">
+                    <article className='b'>
+                        <img alt="camp" src={'#'} />
                     </article>
                     <h2> {result.house_name}</h2>
                     <h2> Logement pour {result.place_number} personnes</h2>
