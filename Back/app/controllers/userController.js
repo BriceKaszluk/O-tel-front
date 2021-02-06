@@ -2,11 +2,12 @@ require("dotenv").config();
 const bcrypt = require('bcrypt');
 const emailValidator = require('email-validator');
 const jwt = require('jsonwebtoken'); 
-const {User} = require('../models');
+const {User, Booking, Notice} = require('../models');
 const nodemailer = require('nodemailer');
 
 // we require googleapis to get the client google auth
 const {google} = require('googleapis');
+
 
 
 module.exports = {
@@ -211,5 +212,87 @@ module.exports = {
             console.log(error);
             response.status(500).json({error});
         }
+    },
+
+    updateUser: async (request, response) => {
+        const userId = request.params.id; 
+
+        try {
+            const updatedUser = await User.findOne({
+                where: {id: userId}, 
+            });
+
+            const last_name = request.body.last_name; 
+            const first_name = request.body.first_name;
+            const email = request.body.email;
+            const phone_number = request.body.phone_number
+
+            if (last_name){
+                updatedUser.last_name = last_name;
+            }
+            if (first_name){
+                updatedUser.first_name = first_name;
+            }
+            if (email){
+                updatedUser.email = email;
+            }
+            if (phone_number){
+                updatedUser.phone_number = phone_number;
+            }
+
+            await updatedUser.save(); 
+
+            response.json({data: updatedUser}); 
+            
+        } catch (error) {
+            console.log(error);
+            response.status(500).json({ error });
+        }
+    },
+
+    deleteUser: async (request, response, next) => {
+        const userId = request.params.id;
+       
+        try {
+            const deletedUser = await User.findOne({
+                where: {id: userId}, 
+           
+            }); 
+
+            const deletedNotice = await Notice.findOne({
+                where: {user_id:userId},
+                  
+            }); 
+
+            const deletedBooking = await Booking.findOne({
+                 where: {user_id: userId} 
+                
+            }); 
+
+
+            if(!deletedUser){
+                response.status(404).json({error: "aucun utilisateurs"});
+                return;
+            }
+            
+            if(deletedNotice){
+                await deletedNotice.destroy(); 
+            } 
+            
+            if(deletedBooking){
+                await deletedBooking.destroy();
+            } 
+
+            
+            await deletedUser.destroy(); 
+            
+        
+            response.json("l'utilisateur a bien été supprimé")
+
+        } catch (error) {
+            console.log(error);
+            response.status(500).json({ error });
+        }
     }
+
 }
