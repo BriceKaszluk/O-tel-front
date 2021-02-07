@@ -31,5 +31,8 @@
     },
     "Login": {
         "1": "Inscription"
+    },
+    "Guestbook": {
+        "1": "Livre d'or - Avis Clients"
     }
 }
