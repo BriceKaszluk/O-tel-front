@@ -31,8 +31,8 @@ export default () => {
                       <div className="card-content">
                           <div className="media">
                               <div className="media-content">
-                                  <p className="title is-2 has-text-white">{result.house_name}</p>
-                                  <p className="subtitle is-6 has-text-white">  {' '}
+                                  <p className="title is-1 has-text-white">{result.house_name}</p>
+                                  <p className="subtitle is-4 has-text-white">  {' '}
                                       Logement pour {result.place_number}{' '}
                                       personnes
                                   </p>
@@ -41,7 +41,7 @@ export default () => {
                       </div>
                       <Link
                             to={{ pathname: `/logement/${result.id}` }}
-                            className="button is-primary is-small is-rounded"
+                            className="button is-primary is-rounded is-italic"
                       >
                           Voir le logement
                       </Link>
