@@ -36,8 +36,8 @@ export default () => {
                   <div className="column">
                       <strong>CONTACTEZ-NOUS</strong> <br />
 
-                      <p className="p__contact">Adresse : Rue du meilleur gite</p>
-                      <p className="p__contact">Email : michel@fakeemail.com</p>
+                      <p className="p__contact">Adresse : Rue du meilleur gite du monde</p>
+                      <p className="p__contact">Email : michel@mailtrèspro.com</p>
                       <p className="p__contact">Tel : +33(0)1 42 42 42 42</p>
 
                   </div>

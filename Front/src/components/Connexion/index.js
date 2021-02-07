@@ -12,8 +12,7 @@ import { connexionService } from 'src/services/connexionService';
 
 export default () => {
 
-    const { authenticate } = useAuthentication();
-    const { isActiveModalConnexion, setIsActiveModalConnexion } = useAuthentication();
+    const { authenticate, isActiveModalConnexion, setIsActiveModalConnexion } = useAuthentication();
 
     return(
     <div className="modal is-active">
