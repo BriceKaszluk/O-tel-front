@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import { getData } from 'src/hooks/dataFetcher';
 import CustomerReviews from 'src/components/CustomerReviews';
+import { useTranslation } from 'react-i18next';
+import { Route } from 'react-router-dom';
 import './styles.scss';
-
+              
 const GoldenBook = () => {
   const [results, setResults] = useState({});
   const [dataLoaded, setDataLoaded] = useState(false);
+
+  const { t } = useTranslation();
 
   const dispatch = async () => {
     const result = await getData.getAllNotices();
@@ -22,7 +26,7 @@ const GoldenBook = () => {
       <section className="hero">
           <div className="hero-body">
               <h1 className="h1">
-                  Livre d'or - Avis Clients
+                  {t('Guestbook.1')}
               </h1>
               <div className="content-box has-text-centered">
                   {

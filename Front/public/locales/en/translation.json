@@ -30,5 +30,8 @@
     },
     "Login": {
         "1": "Login"
+    },
+    "Guestbook": {
+        "1": "Guestbook - Customer reviews"
     }
 }
