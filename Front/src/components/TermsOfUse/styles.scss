@@ -1,5 +1,18 @@
-.terms__of__use{
-    max-width: 43rem;
-    text-align: center;
-    margin: auto;
+.content{
+    max-width: 80vw;
+    text-align: justify ;
+    margin: 1rem auto;
+    padding: 1rem;
+
+    a{
+        color: rgb(33, 81, 145);   
+        font-style: italic;
+    }
+    h1{
+        font-size:4rem;
+        color:white;
+        position:relative;
+        padding:1rem;
+    }
+
 }
