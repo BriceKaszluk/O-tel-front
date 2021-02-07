@@ -29,15 +29,12 @@ export default (props) => {
         <div className='box box__housing'>
             {dataLoaded && (
                 <div className="picture__housing">
-                    <article className='b'>
-                        <img alt="camp" src={'#'} />
-                    </article>
                     <h2> {result.house_name}</h2>
                     <h2> Logement pour {result.place_number} personnes</h2>
                     <h2> {result.price} par nuit</h2>
                     <h2> {result.description} </h2>
                     <div>
-                        {<Link to={{ pathname: `/booking/${id}` }} className="button btn-primary"> Réserver ce logement</Link>}
+                        {<Link to={{ pathname: `/booking/${id}` }} className="button is-primary is-rounded"> Réserver ce logement</Link>}
                     </div>
                 </div>
             )}
