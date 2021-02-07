@@ -1,25 +1,96 @@
-.title.is-1 {
-    font-size: 3rem;
-    text-shadow: 0em 0.1em 0.1em rgb(223, 190, 7);
-    font-style: italic;
-    margin-top: 0.1rem;
+.h1{
+    position:relative;
+    font-size: 4rem;
+
 }
 
-.goldenbook {
-    border-top: 1px solid rgb(209, 208, 208);
-    padding: 1rem;
-    background-image: url("src/assets/images/goldbook_icon.png");
+.content-box{
+    background-image: url('src/assets/images/bluebell.jpg');
     background-repeat: no-repeat;
-    background-position: 90% 40%;
-    background-size : 25% 40%;
+    background-position: center;
+    background-size: cover;
+
+    position: relative;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: center;
+    margin: 1rem;
+    width: 100vw;
 }
+
 .notice{
-    opacity: 0.96;
-    width: 60%;
-    padding: 1rem;
-    .notification{
-        margin: 2rem auto;
-        padding: 2rem auto;
-        width: 80%;
-    }
+    padding: 2rem auto;
+    opacity: 0.89;
+    width: 30vw;
+    height: 30vh;
+    padding:2rem;
+
 }
+
+@media screen and (min-width: 1178px){
+    .navbar-menu {
+        flex-grow: 1;
+        flex-shrink: 0;
+    }
+    .navbar-menu {
+      flex-grow: 1;
+      flex-shrink: 0;
+    }
+    a:hover {
+      color: rgba(255,255,255,0);
+    }
+  } 
+  
+  @media only screen and (max-width: 1023px) {
+    .form-content {
+        max-width: 35rem;
+    }
+    .gold-book-column {
+      width: 40rem;
+    }
+    a:hover {
+      color: rgba(255,255,255,1);
+    }
+  }
+  
+  @media only screen and (max-width: 728px) {
+    .form-content {
+        max-width: 30rem;
+    }
+    .columns {
+      padding: 0;
+      margin: 0;
+    }
+    .gold-book-column {
+      width: 35rem;    
+    }
+    .button__language {
+      width: 4rem;
+      height: 2.2rem;
+      font-size: 1rem;
+    }
+    .block {
+      text-align: justify;
+      margin: 2.5rem 1.5rem;
+    }
+    .title_homepage {
+      font-size: 5rem;
+    }
+  }
+  
+  @media only screen and (max-width: 480px) {
+    .form-content {
+        max-width: 20rem;
+    }
+    .gold-book-column {
+      width: 25rem;
+    }
+    .button__language {
+      width: 3rem;
+      height: 1.8rem;
+      font-size: 0.7rem;
+    }
+    .title_homepage {
+      font-size: 3rem;
+    }
+  }
