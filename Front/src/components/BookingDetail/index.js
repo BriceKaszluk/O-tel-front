@@ -30,10 +30,10 @@ export default ({actualBooking, beginDate, endDate}) => {
                     <div className='card-content'>
                         <div className='columns'>
                             <div className='column dashboard-column'>
-                                Du : {actualBooking.begining_date}
+                                Du : {actualBooking.begining_date.toLocaleDateString()}
                             </div>
                             <div className='column dashboard-column'>
-                                Au : {actualBooking.ending_date}
+                                Au : {actualBooking.ending_date.toLocaleDateString()}
                             </div>
                             <div className='column dashboard-column'>
                                 {actualBooking.user.first_name}{' '}
@@ -60,8 +60,6 @@ export default ({actualBooking, beginDate, endDate}) => {
                                     modalActive={isActiveModifier} 
                                     closeModal={setIsActiveModifier}
                                     informations={actualBooking} 
-                                    actualDate={beginDate}
-                                    endingDate={endDate}
                                 /> : ''
                                 }
                             </div>

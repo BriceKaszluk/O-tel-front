@@ -103,7 +103,7 @@ export default () => {
                                     return(
                                         <div key={book.id} className="card">
                                             <div>{book.house.house_name}</div>
-                                            <div>Du {book.begining_date} au {book.ending_date}</div>
+                                            <div>Du {book.begining_date.toLocaleDateString()} au {book.ending_date.toLocaleDateString()}</div>
                                             {
                                                 book.house!==null &&
                                                 <div>{book.house.price} €</div>
@@ -126,7 +126,7 @@ export default () => {
                                     return(
                                         <div key={booking.id} className="card">
                                             <div>{booking.house.house_name}</div>
-                                            <div>Du {booking.begining_date} au {booking.ending_date}</div>
+                                            <div>Du {booking.begining_date.toLocaleDateString()} au {booking.ending_date.toLocaleDateString()}</div>
                                             {
                                                 booking.house!==null &&
                                                 <div>{booking.house.price} €</div>

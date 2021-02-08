@@ -21,17 +21,14 @@ const BookingDashboard = () => {
         
         <div className="columns is-multiline has-text-centered is-centered">
             {
-            adminActualBookings !== null || undefined && adminActualBookings.map(booking => {
+            adminActualBookings !== null && adminActualBookings.map(booking => {
                 console.log(booking.begining_date, 'actual dashboard')
                 console.log(booking.ending_date, 'old dashboard');
-                if(booking.begining_date && booking.ending_date){
                     return (
                         <div key={booking.id}>
-                            <BookingDetail actualBooking={booking} beginDate={booking.begining_date} endDate={booking.ending_date}/>
+                            <BookingDetail actualBooking={booking}/>
                         </div>
                         ) 
-                }
-
             })
         }
             

@@ -41,8 +41,8 @@ export default ({modalActive, closeModal, informations, actualDate, endingDate})
                       phone_number: informations.user.phone_number,
                       user_id: informations.user.id,
                       house_name: informations.house.house_name,
-                      begining_date: actualDate,
-                      ending_date: endingDate
+                      begining_date: informations.begining_date,
+                      ending_date: informations.ending_date
                     }}
                     validationSchema={Yup.object().shape({
                         first_name: Yup.string().required('veuillez entrer un prénom'),

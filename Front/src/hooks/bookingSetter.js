@@ -27,28 +27,23 @@ export const allBookings = async () => {
         if (allUserBookings[0].data !== undefined){
             if((booking && oldBooking) === null){
                 //convert ending_date into comparable date
-                let bookingsDate = allUserBookings[0].data;
-                bookingsDate.map(booking => {
-                    if(booking.begining_date && booking.ending_date !== NaN){
-                        booking.begining_date = Date.parse(booking.begining_date);
-                        booking.ending_date = Date.parse(booking.ending_date);
-                    }
-
-                })
+                let bookingsDate = allUserBookings[0].data.map(booking => {
+                    booking.begining_date = new Date(booking.begining_date);
+                    booking.ending_date = new Date(booking.ending_date);
+                    return booking;
+            })
     
                 console.log(bookingsDate, 'bk after parse')
             
                 //we compare actual date to end date of bookings
-                const actualDate = new Date().getTime();
+                const actualDate = new Date();
                 let filteredActualBookings = bookingsDate.filter(booking => {
                     return booking.ending_date > actualDate
                 });
                 let filteredOldBookings = bookingsDate.filter(booking => {
                     return booking.ending_date < actualDate
                 });
-
-                filteredActualBookings= await reverseDate(filteredActualBookings);
-                filteredOldBookings= await reverseDate(filteredOldBookings);
+                
                 console.log(filteredActualBookings, 'bk filtered actual')
                 console.log(filteredOldBookings, 'bk filtered old')
 

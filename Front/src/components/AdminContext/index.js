@@ -12,10 +12,6 @@ const AdminProvider = (props) => {
         setLoading(false);
     }
 
-    useEffect(() => {
-        setLoading(false);
-    }, [])
-
     return(
         <adminContext.Provider value={{
             adminActualBookings, adminOldsBookings, 
