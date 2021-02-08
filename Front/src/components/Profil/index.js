@@ -16,18 +16,19 @@ export default () => {
     const [isActiveModifier, setIsActiveModifier] = useState(false);
     //context
     const { user, booking, oldBooking } = useAuthentication();
+
     
     const history = useHistory();
     //hooks that get all bookings of users
     allBookings();
 
     const fliterActualUserBookings = () => {
-        return booking.filter(book => book.user.id === user.id);
+        return booking.filter(book => book.user_id === user.id);
     }
 
     const filterUserOldBookings = () => {
         if(oldBooking!==null){
-            return oldBooking.filter(book => book.user.id === user.id);
+            return oldBooking.filter(book => book.user_id === user.id);
         }
     }
 

@@ -6,6 +6,7 @@ import {
 import { useAuthentication } from 'src/components/UserContext';
 import * as Yup from 'yup';
 import LoadingSpinner from 'src/components/LoadingSpinner';
+import { useToasts } from 'react-toast-notifications';
 import './styles.scss';
 
 import { connexionService } from 'src/services/connexionService';
@@ -13,6 +14,7 @@ import { connexionService } from 'src/services/connexionService';
 export default () => {
 
     const { authenticate, isActiveModalConnexion, setIsActiveModalConnexion } = useAuthentication();
+    const { addToast } = useToasts()
 
     return(
     <div className="modal is-active">
@@ -50,6 +52,7 @@ export default () => {
                           else {
                             authenticate(user.data.data.user, user.data.token);
                             setIsActiveModalConnexion(!isActiveModalConnexion);
+                            addToast(`Bonjour, ${user.data.data.user.first_name} ${user.data.data.user.last_name}`, { appearance: 'success', autoDismiss: true })
                           }
                         });
                     }}
