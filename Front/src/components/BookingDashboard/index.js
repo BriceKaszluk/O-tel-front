@@ -28,12 +28,14 @@ const BookingDashboard = () => {
         }
     };
 
+    console.log(results.user.phone_number)
+
     dispatch();
 
     return (
     <div className="section">
         <div>
-            <Link to="/booking_admin" className="button is-primary">Ajouter une réservation</Link>  
+            <Link to="/booking_admin" className="button is-primary">Ajouter une réservation</Link>
         </div>
         
         <div className="columns is-multiline has-text-centered is-centered">
@@ -55,7 +57,6 @@ const BookingDashboard = () => {
                     ))
                     
                 }
-                
         </div>
 
     </div>

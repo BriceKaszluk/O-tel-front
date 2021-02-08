@@ -21,12 +21,14 @@
 }
 .profil__section {
   width: 49%;
+  height: auto;
   margin: .5rem;
 }
 
 .profil__section2{
   flex-direction: column;
   justify-content: space-between;
+  height: auto;
 }
 
 .profil__main__body {
@@ -41,6 +43,9 @@
   margin: 0 0.5rem;
 }
 
+.card__container {
+  position: relative;
+}
 
 /*
 .slide-fwd-center:hover {

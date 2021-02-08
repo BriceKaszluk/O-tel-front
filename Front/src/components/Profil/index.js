@@ -22,18 +22,18 @@ export default () => {
     allBookings();
 
     const fliterActualUserBookings = () => {
-        return booking.filter(book => book.user.id === user.id);
+        return booking.filter(book => book.user_id === user.id);
     }
 
     const filterUserOldBookings = () => {
         if(oldBooking!==null){
-            return oldBooking.filter(book => book.user.id === user.id);
+            return oldBooking.filter(book => book.user_id === user.id);
         }
     }
 
     return(
         <div className="bcg2">
-            <div className="bcg2">
+            <div className="bcg21">
                 <title>Profil</title>
                 <div className="nulo">
                     <div className="card-content profil__container">
