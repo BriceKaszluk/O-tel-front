@@ -1,14 +1,16 @@
-import React from 'react';
-
+import React, {useState} from 'react';
 import {
   Formik, Field, Form, ErrorMessage,
 } from 'formik';
 import * as Yup from 'yup';
-
 import { mailService } from 'src/services/mailService';
+import { useToasts } from 'react-toast-notifications'
 import './styles.scss';
 
-function Contact() {
+export default () => {
+
+    const { addToast } = useToasts()
+
   return (
       <Formik
             initialValues={{
@@ -32,13 +34,16 @@ function Contact() {
                 mailService.handleSubmit(name, email, subject, message)
                   .then(
                     console.log('Message envoyé'),
+                    addToast('Message envoyé, nous vous recontacterons bientôt', { appearance: 'success', autoDismiss: true }),
                     resetForm(),
                   );
+                
               }
+              
 }
       >
           {({
-            errors, touched, isSubmitting, dirty,
+            errors, touched, isSubmitting, dirty
           }) => (
               <Form id="contact-form" className="field form-content panel">
                   <div className="field">
@@ -73,6 +78,7 @@ function Contact() {
                               type="submit"
                               className="button is-primary is-small is-rounded"
                               disabled={isSubmitting || !dirty}
+                              
                       >
                           Envoyer le message
                       </button>
@@ -83,4 +89,4 @@ function Contact() {
   );
 }
 
-export default Contact;
+
