@@ -1,31 +1,17 @@
-import React, { useState } from 'react'
-import { bookingService } from 'src/services/bookingService'
-import { Link, useHistory } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { getData } from 'src/hooks/dataFetcher'
+import { useHistory } from 'react-router-dom'
 import './styles.scss'
-import BookingDashboard from '../BookingDashboard'
+import AdminBookingModifier from 'src/components/AdminBookingModifier'
+import { adminServices } from 'src/services/adminServices';
 
-export default (props) => {
+export default ({actualBooking, beginDate, endDate}) => {
+
     const history = useHistory()
-    const [begining_date, setBegining_date] = useState(props.begining_date)
-    const [ending_date, setEnding_date] = useState(props.ending_date)
-    const [customer_first_name, setCustomer_first_name] = useState(props.customer_first_name)
-    const [customer_last_name, setCustomer_last_name] = useState(props.customer_last_name)
-    const [booking_id, setBooking_id] = useState(props.booking_id)
-    const [customer_phone_number, setCustomer_phone_number] = useState(props.customer_phone_number)
-    const [house_name, setHouse_name] = useState(props.house_name)
-    const [customer_email, setCustomer_email] = useState(props.customer_email)
 
-    const handleChange = (event) => {
-        setCustomer_first_name(event.target.textContent)
-        // setCustomer_last_name(event.target.textContent)
-        // setBegining_date(event.target.textContent)
-        // setEnding_date(event.target.textContent)
-        // setCustomer_phone_number(event.target.textContent)
-        // setHouse_name(event.target.textContent)
-        // setCustomer_email(event.target.textContent)
-    }
+    const [isActiveModifier, setIsActiveModifier] = useState(false);
 
-    const updateBooking = (booking_id, customer_last_name, customer_first_name, customer_email, customer_phone_number, begining_date, ending_date, message, housing_id, user_id) => {
+ /*   const updateBooking = (booking_id, customer_last_name, customer_first_name, customer_email, customer_phone_number, begining_date, ending_date, message, housing_id, user_id) => {
         console.log('in booking service patch method');
 
         const requestOptions = {
@@ -36,55 +22,70 @@ export default (props) => {
         };
 
         return axios(requestOptions);
-    }
-    
-    
+    }*/
     return (
-        <div className='column' ref={props.id}>
-            <div className='card dashboard-card'>
-                <div className='card-content'>
-                    <div className='columns'>
-                        <div className='column dashboard-column' contentEditable="true" >
-                            Du : {begining_date} <br />
-                            Au : {ending_date}
-                        </div>
-                        <div className='column dashboard-column' contentEditable="true">
-                            {customer_first_name}{' '}
-                            {customer_last_name}
-                        </div>
-                        <div className='column dashboard-column'>
-                            Booking ID : {booking_id}
-                        </div>
-                        <div className='column dashboard-column' contentEditable="true">{customer_email}</div>
-                        <div className='column dashboard-column' contentEditable="true">
-                            {customer_phone_number}
-                        </div>
-                        <div className='column dashboard-column' contentEditable="true">{house_name}</div>
-                        <div className='column dashboard-column'>
-                            <button
-                                className='button is-primary'
-                                onClick={'#'}
-                            >
-                                Modifier
-                            </button>
-                        </div>
-                        <div className='column dashboard-column'>
-                            <button
-                                className='button is-danger'
-                                onClick={() => {
-                                    props.removeBooking(props.booking_id),
-                                        bookingService.deleteBookingAdmin(
-                                            props.booking_id
-                                        ),
-                                        history.go(0)
-                                }}
-                            >
-                                Supprimer
-                            </button>
+        <div key={actualBooking.id}>
+                <div className='column'>
+                <div className='card dashboard-card'>
+                    <div className='card-content'>
+                        <div className='columns'>
+                            <div className='column dashboard-column'>
+                                Du : {actualBooking.begining_date}
+                            </div>
+                            <div className='column dashboard-column'>
+                                Au : {actualBooking.ending_date}
+                            </div>
+                            <div className='column dashboard-column'>
+                                {actualBooking.user.first_name}{' '}
+                                {actualBooking.user.last_name}
+                            </div>
+                            <div className='column dashboard-column'>
+                                Booking ID : {actualBooking.id}
+                            </div>
+                            <div className='column dashboard-column'>{actualBooking.user.email}</div>
+                            <div className='column dashboard-column'>
+                                {actualBooking.user.phone_number}
+                            </div>
+                            <div className='column dashboard-column'>{actualBooking.house.house_name}</div>
+                            <div className='column dashboard-column'>
+                                <button
+                                    className='button is-primary'
+                                    onClick={() => setIsActiveModifier(!isActiveModifier)}
+                                >
+                                    Modifier
+                                </button>
+                                {
+                                isActiveModifier ? 
+                                    <AdminBookingModifier 
+                                    modalActive={isActiveModifier} 
+                                    closeModal={setIsActiveModifier}
+                                    informations={actualBooking} 
+                                    actualDate={beginDate}
+                                    endingDate={endDate}
+                                /> : ''
+                                }
+                            </div>
+                            <div className='column dashboard-column'>
+                                <button
+                                    className='button is-danger'
+                                    onClick={() => {
+                                        adminServices.handleDelete(actualBooking.id)
+                                        .then(confirm => {
+                                            console.log(confirm, 'a bien été effacé'),
+                                            history.go(0);
+                                            error => {
+                                                console.log('erreur');
+                                            }
+                                        })
+                                    }}
+                                >
+                                    Supprimer
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div>  
     )
 }

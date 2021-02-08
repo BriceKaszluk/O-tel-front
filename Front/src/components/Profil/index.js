@@ -19,15 +19,17 @@ export default () => {
     
     const history = useHistory();
     //hooks that get all bookings of users
-    allBookings();
-
+    allBookings()
+    console.log(booking, 'profil actual')
+    console.log(oldBooking, 'profil old')
+    
     const fliterActualUserBookings = () => {
-        return booking.filter(book => book.user.id === user.id);
+        return booking.filter(book => book.user_id === user.id);
     }
 
     const filterUserOldBookings = () => {
         if(oldBooking!==null){
-            return oldBooking.filter(book => book.user.id === user.id);
+            return oldBooking.filter(book => book.user_id === user.id);
         }
     }
 
@@ -96,6 +98,8 @@ export default () => {
                                 </div>
                                 {
                                 booking!==null && fliterActualUserBookings().map(book => {
+                                    console.log(booking, 'in profile');
+                                    console.log(book, 'user book id')
                                     return(
                                         <div key={book.id} className="card">
                                             <div>{book.house.house_name}</div>
@@ -118,6 +122,7 @@ export default () => {
                                 </div>
                                 {
                                 oldBooking!==null && filterUserOldBookings().map(booking => {
+                                    console.log(oldBooking, 'in profile')
                                     return(
                                         <div key={booking.id} className="card">
                                             <div>{booking.house.house_name}</div>

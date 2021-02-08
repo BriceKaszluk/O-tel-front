@@ -32,7 +32,7 @@ const UserProvider = (props) => {
         setBooking(actualBookings);
         setOldBooking(pastBookings);
     }
-    //activate when user connect or modify his profile
+    //activated when user connect or modify his profile
     useEffect(() => {
         //we check local storage
             const userProfile = localStorage.getItem('profile');

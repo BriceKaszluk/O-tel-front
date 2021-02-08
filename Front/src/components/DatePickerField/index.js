@@ -8,7 +8,10 @@ export default ({ name, value, onChange }) => {
             onChange={(val) => {
                 onChange(name, val)
             }}
+            minDate={new Date()}
             dateFormat='dd/MM/yyyy'
         />
     )
 }
+
+
