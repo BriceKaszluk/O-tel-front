@@ -8,8 +8,6 @@ import './styles.scss';
 const BookingDashboard = () => {
 
     const { adminActualBookings, adminOldsBookings } = useAdminManagement()
-    console.log(adminActualBookings, 'admin actual');
-    console.log(adminOldsBookings, 'admin old');
     
     allBookings();
 
@@ -22,8 +20,6 @@ const BookingDashboard = () => {
         <div className="columns is-multiline has-text-centered is-centered">
             {
             adminActualBookings !== null && adminActualBookings.map(booking => {
-                console.log(booking.begining_date, 'actual dashboard')
-                console.log(booking.ending_date, 'old dashboard');
                     return (
                         <div key={booking.id}>
                             <BookingDetail actualBooking={booking}/>

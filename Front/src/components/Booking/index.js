@@ -23,27 +23,17 @@ export default (props) => {
   const [result, setResult] = useState({});
   const [dataLoaded, setDataLoaded] = useState(false);
 
-  // Methode pour avoir toutest les réservations du logement
-  // useEffect(() => {
-  //     axios
-  //         .get(`https://project-otel.herokuapp.com/hebergement/${houseId}/reservation`)
-  //         .then((response) => {
-  //             setResult(response.data.data), setDataLoaded(true)
-  //         })
-  //         .catch((error) => {
-  //             console.log('error', error)
-  //         }),
-  //         []
-  // })
 
   const DatePickerField = ({ name, value, onChange }) => (
       <DatePicker
+      
                 selected={(value && new Date(value)) || null}
                 onChange={(val) => {
                   onChange(name, val);
                 }}
                 minDate={new Date()}
                 dateFormat="dd/MM/yyyy"
+
       />
   );
 
@@ -69,6 +59,7 @@ export default (props) => {
                   ),
                 })}
                 onSubmit={(
+                    
                   {
                     last_name,
                     first_name,
@@ -80,12 +71,12 @@ export default (props) => {
                     housing_id,
                     user_id,
                   },
-                  { setStatus, setSubmitting },
+                  { setStatus, setSubmitting, },
+                  
                   
                 ) => {
                   setStatus();
                   console.log('submitting form');
-                  addToast(`Confirmation de réservation envoyé sur ${email}`, { appearance: 'success', autoDismiss: true }),
                   history.push('/profil'),
                   bookingService.handleBooking(
                     last_name,
@@ -193,7 +184,7 @@ export default (props) => {
                           <button
                                 className="button"
                                 onClick={(event) => {
-                                  history.push('/');
+                                  history.go(0);
                                 }}
                                 
                           >Annuler

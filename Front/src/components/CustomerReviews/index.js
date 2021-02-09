@@ -7,7 +7,7 @@ export default (props) => {
   const history = useHistory();
 
   return (
-      <div className="box">
+      <div className="box golden-box">
           <div className="card-content ">
               <div className="card-title">
                   <p className="title is-6">

@@ -17,13 +17,15 @@ export const adminServices = {
 
   handleDelete: (booking_id) => {
     console.log('in delete service');
-
-    const requestOptions = {
-      method: 'DELETE',
-      url: `https://project-otel.herokuapp.com/reservation/delete/${booking_id}`,
-      headers: { 'Content-Type': 'application/json' },
-      data: { booking_id }
-  };
-    return axios(requestOptions);
+    if(confirm('Éte-vous sure de vouloir supprimer la réservation ?')) {
+        const requestOptions = {
+            method: 'DELETE',
+            url: `https://project-otel.herokuapp.com/reservation/${booking_id}`,
+            headers: { 'Content-Type': 'application/json' },
+            data: { booking_id }
+        };
+        return axios(requestOptions);
+    }
+    
   }
 }

@@ -82,11 +82,11 @@ export default () => {
 
                   {/* booking history section */}
                   <section className="card profil-history">
-                      <p className="card-header title is-4">
+                      <p className="card-header-title is-4">
                           Réservation
                       </p>
                       {/* actual bookings */}
-                      <div className="card reservation">
+                      <div className="reservation">
                           {
                                 booking !== null && fliterActualUserBookings().map((book) => (
                                     <div key={book.id} className="notification is-light is-success">
@@ -100,8 +100,8 @@ export default () => {
                       </div>
 
                       {/* old bookings */}
-                      <div className="card history">
-                          <p className="card-header title is-4">
+                      <div className="history">
+                          <p className="card-header-title is-4">
                               Historique
                           </p>
                           {oldBooking !== null && filterUserOldBookings().map((booking) => (
