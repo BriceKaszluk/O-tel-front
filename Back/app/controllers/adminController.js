@@ -1,5 +1,5 @@
 
-const {Booking, Notice, Role} = require('../models');
+const {Booking, Notice, Role, User} = require('../models');
 const {google} = require('googleapis');
 const nodemailer = require('nodemailer');
 
@@ -132,7 +132,7 @@ module.exports = {
             message: request.body.message, 
             begining_date: request.body.begining_date,
             ending_date: request.body.ending_date,
-            housing_id: request.body.housing_id,
+            housing_id: request.body.housing_id
         }  
 
         try {
@@ -194,22 +194,49 @@ module.exports = {
             
             const updatedBooking = await Booking.findOne({
                 where: {id: request.params.id},
+                include: [{
+                    model: User, 
+                    as: 'user'
+                }]
                 
             });
+
+            console.log("la réservation modifiée ---> : ",updatedBooking)
             
+                const last_name = request.body.last_name;
+                const first_name = request.body.first_name; 
+                const email = request.body.email;
+                const phone_number = request.body.phone_number; 
+                const house_name = request.body.house_name; 
                 const begining_date = request.body.begining_date;
                 const ending_date = request.body.ending_date;
+               
                 
                
                
              // we check to verify if the values ​​are there, if they are they will be modified
-             if (begining_date){
+            if (begining_date){
                 updatedBooking.begining_date = begining_date;
             }
             if (ending_date){
                 updatedBooking.ending_date = ending_date;
             }
-        
+            if (last_name){
+                updatedBooking.last_name = last_name;
+            }
+            if (first_name){
+                updatedBooking.first_name = first_name;
+            }
+            if (email){
+                updatedBooking.email = email;
+            }
+            if (phone_number){
+                updatedBooking.phone_number = phone_number;
+            }
+            if (house_name){
+                updatedBooking.house_name = house_name;
+            }
+           
                // we save in DB
                await updatedBooking.save(); 
                
