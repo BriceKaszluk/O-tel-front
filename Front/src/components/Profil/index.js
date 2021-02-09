@@ -12,22 +12,26 @@ import { connexionService } from 'src/services/connexionService';
 import './styles.scss';
 
 export default () => {
-  // to activate or not the modifier modale
-  const [isActiveModifier, setIsActiveModifier] = useState(false);
-  // context
-  const { user, booking, oldBooking } = useAuthentication();
-
-  const history = useHistory();
-  // hooks that get all bookings of users
-  allBookings();
-
-  const fliterActualUserBookings = () => booking.filter((book) => book.user.id === user.id);
-
-  const filterUserOldBookings = () => {
-    if (oldBooking !== null) {
-      return oldBooking.filter((book) => book.user_id === user.id);
+    //to activate or not the modifier modale
+    const [isActiveModifier, setIsActiveModifier] = useState(false);
+    //context
+    const { user, booking, oldBooking } = useAuthentication();
+    
+    const history = useHistory();
+    //hooks that get all bookings of users
+    allBookings()
+    console.log(booking, 'profil actual')
+    console.log(oldBooking, 'profil old')
+    
+    const fliterActualUserBookings = () => {
+        return booking.filter(book => book.user_id === user.id);
     }
-  };
+
+    const filterUserOldBookings = () => {
+        if(oldBooking!==null){
+            return oldBooking.filter(book => book.user_id === user.id);
+        }
+    }
 
   return (
       <div className="hero profil">
@@ -87,7 +91,7 @@ export default () => {
                                 booking !== null && fliterActualUserBookings().map((book) => (
                                     <div key={book.id} className="notification is-light is-success">
                                         <p className="title is-4">{book.house.house_name}</p>
-                                        <p className="subtitle is-6">Du {book.begining_date} au {book.ending_date}</p>
+                                        <p className="subtitle is-6">Du {book.begining_date.toLocaleDateString()} au {book.ending_date.toLocaleDateString()}</p>
                                         {book.house !== null && <p>{book.house.price} €</p>}
                                     </div>
                                 ))
@@ -103,7 +107,7 @@ export default () => {
                           {oldBooking !== null && filterUserOldBookings().map((booking) => (
                               <div key={booking.id} className="notification is-light is-dark ">
                                   <p className="title is-4">{booking.house.house_name}</p>
-                                  <p className="subtitle is-6">Du {booking.begining_date} au {booking.ending_date}</p>
+                                  <p className="subtitle is-6">Du {booking.begining_date.toLocaleDateString()} au {booking.ending_date.toLocaleDateString()}</p>
                                   {
                                             booking.house !== null
                                             && <p>{booking.house.price} €</p>

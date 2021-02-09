@@ -1,7 +1,5 @@
 import React from 'react';
 import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css'
-
 
 export default ({ name, value, onChange }) => {
     return (
@@ -10,7 +8,10 @@ export default ({ name, value, onChange }) => {
             onChange={(val) => {
                 onChange(name, val)
             }}
+            minDate={new Date()}
             dateFormat='dd/MM/yyyy'
         />
     )
 }
+
+
