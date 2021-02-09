@@ -3,6 +3,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { UserProvider } from 'src/components/UserContext';
+import { AdminProvider } from 'src/components/AdminContext';
 
 // == Import : local
 // Composants
@@ -14,7 +15,9 @@ import App from 'src/components/App';
 const rootReactElement = (
     <Router>
         <UserProvider>
-            <App />
+            <AdminProvider>
+                <App />
+            </AdminProvider>
         </UserProvider>
     </Router>
 );

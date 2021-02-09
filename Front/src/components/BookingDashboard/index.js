@@ -1,36 +1,17 @@
-import React, { useState } from 'react';
-import { getData } from 'src/hooks/dataFetcher';
+import React, { useEffect } from 'react';
 import { Link} from 'react-router-dom';
 import BookingDetail from 'src/components/BookingDetail';
+import { useAdminManagement } from 'src/components/AdminContext';
+import { allBookings } from 'src/hooks/bookingSetter';
 import './styles.scss';
 
 const BookingDashboard = () => {
-    const [results, setResults] = useState({});
-    const [dataLoaded, setDataLoaded] = useState(false);
-    
-    function removeBooking(id) {
-        const newResults = results;
-        const index = newResults.findIndex(a => a.id === id);
-        if (index === -1) return;
-        newResults.splice(index, 1);
-        setResults(newResults); 
-    }
 
+    const { adminActualBookings, adminOldsBookings } = useAdminManagement()
+    console.log(adminActualBookings, 'admin actual');
+    console.log(adminOldsBookings, 'admin old');
     
-    
-    const dispatch = async () => {
-        const result = await getData.getAllBookings();
-        if (result[0].data !== undefined) {
-            const { data } = result[0];
-            setResults(data);
-            setDataLoaded(true);
-            console.log(results)
-        }
-    };
-
-    console.log(results.user.phone_number)
-
-    dispatch();
+    allBookings();
 
     return (
     <div className="section">
@@ -39,24 +20,18 @@ const BookingDashboard = () => {
         </div>
         
         <div className="columns is-multiline has-text-centered is-centered">
-                {
-                    dataLoaded && results.map((result) => (
-                        <BookingDetail
-                        removeBooking={removeBooking}
-                        key={result.id}
-                        booking_id={result.id}
-                        house_name={result.house.house_name}
-                        begining_date={result.begining_date }
-                        ending_date={result.ending_date }
-                        customer_phone_number={result.user.phone_number}
-                        customer_first_name={result.user.first_name}
-                        customer_last_name={result.user.last_name}
-                        customer_email={result.user.email}
-                        />
-                        
-                    ))
-                    
-                }
+            {
+            adminActualBookings !== null && adminActualBookings.map(booking => {
+                console.log(booking.begining_date, 'actual dashboard')
+                console.log(booking.ending_date, 'old dashboard');
+                    return (
+                        <div key={booking.id}>
+                            <BookingDetail actualBooking={booking}/>
+                        </div>
+                        ) 
+            })
+        }
+            
         </div>
 
     </div>
