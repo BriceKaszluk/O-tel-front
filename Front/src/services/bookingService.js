@@ -41,14 +41,14 @@ export const bookingService = {
     return axios(requestOptions);
   },
 
-  updateBookingAdmin: (id) => {
+  updateBookingAdmin: (last_name, first_name, phone_number, email, begining_date, ending_date, house_name, booking_id) => {
     console.log('in booking service patch method');
-
+    console.log(last_name, first_name, phone_number, email, begining_date, ending_date, house_name, booking_id)
     const requestOptions = {
       method: 'PATCH',
-      url: `https://project-otel.herokuapp.com/admin/reservation/${id}` ,
+      url: `https://project-otel.herokuapp.com/admin/reservation/${booking_id}` ,
       headers: { 'Content-Type': 'application/json' },
-      data: JSON.stringify({ last_name, first_name, email, phone_number, begining_date, ending_date, message, housing_id, user_id }),
+      data: JSON.stringify({ last_name, first_name, email, phone_number, begining_date, ending_date, house_name}),
     };
 
     return axios(requestOptions);

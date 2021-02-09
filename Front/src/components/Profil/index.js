@@ -12,16 +12,25 @@ import { connexionService } from 'src/services/connexionService';
 import './styles.scss';
 
 export default () => {
-  // to activate or not the modifier modale
-  const [isActiveModifier, setIsActiveModifier] = useState(false);
-  // context
-  const { user, booking, oldBooking } = useAuthentication();
+    //to activate or not the modifier modale
+    const [isActiveModifier, setIsActiveModifier] = useState(false);
+    //context
+    const { user, booking, oldBooking } = useAuthentication();
 
-  const history = useHistory();
-  // hooks that get all bookings of users
-  allBookings();
+    
+    const history = useHistory();
+    //hooks that get all bookings of users
+    allBookings();
 
-  const fliterActualUserBookings = () => booking.filter((book) => book.user.id === user.id);
+    const fliterActualUserBookings = () => {
+        return booking.filter(book => book.user_id === user.id);
+    }
+
+    const filterUserOldBookings = () => {
+        if(oldBooking!==null){
+            return oldBooking.filter(book => book.user_id === user.id);
+        }
+    }
 
   const filterUserOldBookings = () => {
     if (oldBooking !== null) {

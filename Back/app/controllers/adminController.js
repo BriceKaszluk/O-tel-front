@@ -1,5 +1,5 @@
 
-const {Booking, Notice, Role, User} = require('../models');
+const {Booking, Notice, Role} = require('../models');
 const {google} = require('googleapis');
 const nodemailer = require('nodemailer');
 
@@ -196,9 +196,7 @@ module.exports = {
                 where: {id: request.params.id},
                 
             });
-            console.log('booking mis à jour --->>: ', updatedBooking)
-
-           
+            
                 const begining_date = request.body.begining_date;
                 const ending_date = request.body.ending_date;
                 

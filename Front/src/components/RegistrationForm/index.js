@@ -8,12 +8,14 @@ import { Link, useHistory } from 'react-router-dom';
 import * as Yup from 'yup';
 import LoadingSpinner from 'src/components/LoadingSpinner';
 import { useAuthentication } from 'src/components/UserContext';
+import { useToasts } from 'react-toast-notifications';
 import './styles.scss';
 
 import { registrationService } from 'src/services/registrationService';
 
 export default ({ modalActive, closeModal }) => {
 
+    const { addToast } = useToasts();
     const { authenticate } = useAuthentication();
     // initialize history to use history.push to redirect
     const history = useHistory();
@@ -60,6 +62,7 @@ export default ({ modalActive, closeModal }) => {
                                 authenticate(user.data.data, user.data.token);
                                 closeModal(!modalActive);
                                 history.push('/profil');
+                                addToast(`Inscription validé !`, { appearance: 'success', autoDismiss: true })
                               },
                             (errors) => {[errors.response.data.errors[0]].map((error) => {
                                 setStatus(error);
