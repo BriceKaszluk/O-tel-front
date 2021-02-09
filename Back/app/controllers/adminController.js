@@ -132,7 +132,8 @@ module.exports = {
             message: request.body.message, 
             begining_date: request.body.begining_date,
             ending_date: request.body.ending_date,
-            housing_id: request.body.housing_id
+            housing_id: request.body.housing_id,
+            user_id: request.body.user_id
         }  
 
         try {
@@ -201,19 +202,17 @@ module.exports = {
                 
             });
 
-            console.log("la réservation modifiée ---> : ",updatedBooking)
+            console.log("la réservation modifiée ---> : ", updatedBooking)
             
                 const last_name = request.body.last_name;
                 const first_name = request.body.first_name; 
                 const email = request.body.email;
                 const phone_number = request.body.phone_number; 
-                const house_name = request.body.house_name; 
                 const begining_date = request.body.begining_date;
                 const ending_date = request.body.ending_date;
+                const user_id = request.body.user_id
                
-                
-               
-               
+   
              // we check to verify if the values ​​are there, if they are they will be modified
             if (begining_date){
                 updatedBooking.begining_date = begining_date;
@@ -222,21 +221,21 @@ module.exports = {
                 updatedBooking.ending_date = ending_date;
             }
             if (last_name){
-                updatedBooking.last_name = last_name;
+                updatedBooking.user.last_name = last_name;
             }
             if (first_name){
-                updatedBooking.first_name = first_name;
+                updatedBooking.user.first_name = first_name;
             }
             if (email){
-                updatedBooking.email = email;
+                updatedBooking.user.email = email;
             }
             if (phone_number){
-                updatedBooking.phone_number = phone_number;
+                updatedBooking.user.phone_number = phone_number;
             }
-            if (house_name){
-                updatedBooking.house_name = house_name;
+            
+            if (user_id) {
+                updatedBooking.user_id = user_id; 
             }
-           
                // we save in DB
                await updatedBooking.save(); 
                
