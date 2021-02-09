@@ -19,7 +19,7 @@ import Booking from 'src/components/Booking';
 import BookingAdmin from 'src/components/BookingAdmin';
 import BookingDashboard from 'src/components/BookingDashboard';
 import TermsOfUse from 'src/components/TermsOfUse';
-import { ToastProvider } from 'react-toast-notifications'
+import { ToastProvider } from 'react-toast-notifications';
 // component to set path for connected users
 import PrivateRoute from 'src/components/PrivateRoute';
 

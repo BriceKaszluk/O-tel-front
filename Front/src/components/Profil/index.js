@@ -12,25 +12,16 @@ import { connexionService } from 'src/services/connexionService';
 import './styles.scss';
 
 export default () => {
-    //to activate or not the modifier modale
-    const [isActiveModifier, setIsActiveModifier] = useState(false);
-    //context
-    const { user, booking, oldBooking } = useAuthentication();
+  // to activate or not the modifier modale
+  const [isActiveModifier, setIsActiveModifier] = useState(false);
+  // context
+  const { user, booking, oldBooking } = useAuthentication();
 
-    
-    const history = useHistory();
-    //hooks that get all bookings of users
-    allBookings();
+  const history = useHistory();
+  // hooks that get all bookings of users
+  allBookings();
 
-    const fliterActualUserBookings = () => {
-        return booking.filter(book => book.user_id === user.id);
-    }
-
-    const filterUserOldBookings = () => {
-        if(oldBooking!==null){
-            return oldBooking.filter(book => book.user_id === user.id);
-        }
-    }
+  const fliterActualUserBookings = () => booking.filter((book) => book.user.id === user.id);
 
   const filterUserOldBookings = () => {
     if (oldBooking !== null) {
@@ -53,19 +44,20 @@ export default () => {
                           <p className="phone">Tel : {user.phone_number}</p>
                           <p className="mail">Mail : {user.email}</p>
                       </div>
-                      <div className="">
-                          <button
+                      <div className="card-footer">
+                          <div className=""></div>
+                              <button
                                         className="button is-primary is-rounded"
                                         onClick={() => setIsActiveModifier(!isActiveModifier)}
-                          >Modifier
-                          </button>
+                              >Modifier
+                              </button>
 
-                          {/* if modifier is active show the modifier modal */}
-                          {isActiveModifier ? (
-                              <ProfilModifierModale modalActive={isActiveModifier} closeModal={setIsActiveModifier} />
-                          ) : ''}
-                          {/* to delete the profile */}
-                          <button
+                              {/* if modifier is active show the modifier modal */}
+                              {isActiveModifier ? (
+                                  <ProfilModifierModale modalActive={isActiveModifier} closeModal={setIsActiveModifier} />
+                              ) : ''}
+                              {/* to delete the profile */}
+                              <button
                                                         className="button is-primary is-rounded"
                                                         onClick={() => {
                                                           userServices.handleDelete(user.id)
@@ -78,8 +70,9 @@ export default () => {
                                                               };
                                                             });
                                                         }}
-                          >Supprimer mon profil
-                          </button>
+                              >Supprimer mon profil
+                              </button>
+
                       </div>
                   </section>
 
