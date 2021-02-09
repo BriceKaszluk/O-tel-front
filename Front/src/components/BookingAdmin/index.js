@@ -156,7 +156,7 @@ export default (props) => {
                                             htmlFor='email'
                                             className='label'
                                         >
-                                            email
+                                            Courriel
                                         </label>
                                         <Field
                                             name='email'
@@ -180,7 +180,7 @@ export default (props) => {
                                             htmlFor='housing_id'
                                             className='label'
                                         >
-                                            logement
+                                            Logement
                                         </label>
                                         <Field
                                             as='select'
@@ -219,7 +219,7 @@ export default (props) => {
                                             htmlFor='phone_number'
                                             className='label'
                                         >
-                                            phone_number
+                                            Numéro de téléphone
                                         </label>
                                         <Field
                                             name='phone_number'

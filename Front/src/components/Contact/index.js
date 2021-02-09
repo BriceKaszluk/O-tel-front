@@ -59,7 +59,7 @@ export default () => {
                       </div>
                   </div>
                   <div className="field">
-                      <label htmlFor="email" className="label">Email</label>
+                      <label htmlFor="email" className="label">Courriel</label>
                       <Field name="email" placeholder="mail@exemple.com" type="email" className={`input is-small${errors.email && touched.email ? ' is-invalid' : ''}`} />
                       <ErrorMessage name="email" component="div" className="invalid-feedback" />
                   </div>
