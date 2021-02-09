@@ -24,7 +24,7 @@ const GoldenBook = () => {
 
   return (
       <section className="hero">
-          <div className="hero-body">
+          <div className="hero-body background__fleuri">
               <h1 className="h1">
                   {t('Guestbook.1')}
               </h1>

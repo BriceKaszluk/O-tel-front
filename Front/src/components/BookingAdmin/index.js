@@ -14,8 +14,7 @@ import subDays from 'date-fns/subDays'
 import './styles.scss'
 
 export default (props) => {
-    
-    const history = useHistory();
+    const history = useHistory()
     const [result, setResult] = useState({})
     const [dataLoaded, setDataLoaded] = useState(false)
 
@@ -96,42 +95,150 @@ export default (props) => {
                 }}
             >
                 {({ errors, touched, isSubmitting, values, setFieldValue }) => (
-                    <Form>
+                    <Form className = 'field form-content panel'>
                         {/* BEGIN AND END DATE */}
+
                         <div className='form-group-field'>
-                            <div className='columns'>
-
-                            <div className="form-group field">
-                                        <label htmlFor="last_name" className="label">Nom</label>
-                                        <Field name="last_name" type="text" className={`form-control input${errors.last_name && touched.last_name ? ' is-invalid' : ''}`} />
-                                        <ErrorMessage name="last_name" component="div" className="invalid-feedback" />
-                            </div>
-
-                            <div className="form-group field">
-                                        <label htmlFor="first_name" className="label">Prénom</label>
-                                        <Field name="first_name" type="text" className={`form-control input${errors.first_name && touched.first_name ? ' is-invalid' : ''}`} />
-                                        <ErrorMessage name="first_name" component="div" className="invalid-feedback" />
-                            </div>
-                            <div className="form-group field">
-                                        <label htmlFor="email" className="label">email</label>
-                                        <Field name="email" type="text" className={`form-control input${errors.email && touched.email ? ' is-invalid' : ''}`} />
-                                        <ErrorMessage name="email" component="div" className="invalid-feedback" />
-                            </div>
-                            <div className="form-group field">
-                                        <label htmlFor="housing_id" className="label">logement</label>
-                                        <Field as="select" name="housing_id"  type="text" className={`form-control input${errors.housing_id && touched.housing_id ? ' is-invalid' : ''}`}>
-                                            <option value="6" > le gite 1</option>
-                                            <option value="7" > le gite 2</option>
-                                            <option value="8" > le gite 3</option>
+                            <h2>Formulaire de réservation admin</h2>
+                                
+                                    <div className='form-group-field'>
+                                        <label
+                                            htmlFor='last_name'
+                                            className='label'
+                                        >
+                                            Nom
+                                        </label>
+                                        <Field
+                                            name='last_name'
+                                            type='text'
+                                            className={`form-control input${
+                                                errors.last_name &&
+                                                touched.last_name
+                                                    ? ' is-invalid'
+                                                    : ''
+                                            }`}
+                                        />
+                                        <ErrorMessage
+                                            name='last_name'
+                                            component='div'
+                                            className='invalid-feedback'
+                                        />
+                                    </div>
+                                
+                                
+                                    <div className='form-group-field'>
+                                        <label
+                                            htmlFor='first_name'
+                                            className='label'
+                                        >
+                                            Prénom
+                                        </label>
+                                        <Field
+                                            name='first_name'
+                                            type='text'
+                                            className={`form-control input${
+                                                errors.first_name &&
+                                                touched.first_name
+                                                    ? ' is-invalid'
+                                                    : ''
+                                            }`}
+                                        />
+                                        <ErrorMessage
+                                            name='first_name'
+                                            component='div'
+                                            className='invalid-feedback'
+                                        />
+                                    </div>
+                                
+                                
+                                    <div className='form-group-field'>
+                                        <label
+                                            htmlFor='email'
+                                            className='label'
+                                        >
+                                            email
+                                        </label>
+                                        <Field
+                                            name='email'
+                                            type='text'
+                                            className={`form-control input${
+                                                errors.email && touched.email
+                                                    ? ' is-invalid'
+                                                    : ''
+                                            }`}
+                                        />
+                                        <ErrorMessage
+                                            name='email'
+                                            component='div'
+                                            className='invalid-feedback'
+                                        />
+                                    </div>
+                                
+                                
+                                    <div className='form-group-field'>
+                                        <label
+                                            htmlFor='housing_id'
+                                            className='label'
+                                        >
+                                            logement
+                                        </label>
+                                        <Field
+                                            as='select'
+                                            name='housing_id'
+                                            type='text'
+                                            className={`form-control input${
+                                                errors.housing_id &&
+                                                touched.housing_id
+                                                    ? ' is-invalid'
+                                                    : ''
+                                            }`}
+                                        >
+                                            <option value='6'>
+                                                {' '}
+                                                le gite 1
+                                            </option>
+                                            <option value='7'>
+                                                {' '}
+                                                le gite 2
+                                            </option>
+                                            <option value='8'>
+                                                {' '}
+                                                le gite 3
+                                            </option>
                                         </Field>
-                                        <ErrorMessage name="housing_id" component="div" className="invalid-feedback" />
-                            </div>
-                            <div className="form-group field">
-                                        <label htmlFor="phone_number" className="label">phone_number</label>
-                                        <Field name="phone_number" type="text" className={`form-control input${errors.phone_number && touched.phone_number ? ' is-invalid' : ''}`} />
-                                        <ErrorMessage name="phone_number" component="div" className="invalid-feedback" />
-                            </div>
-                                <div className='column'>
+                                        <ErrorMessage
+                                            name='housing_id'
+                                            component='div'
+                                            className='invalid-feedback'
+                                        />
+                                    </div>
+                                
+                                
+                                    <div className='form-group-field'>
+                                        <label
+                                            htmlFor='phone_number'
+                                            className='label'
+                                        >
+                                            phone_number
+                                        </label>
+                                        <Field
+                                            name='phone_number'
+                                            type='text'
+                                            className={`form-control input${
+                                                errors.phone_number &&
+                                                touched.phone_number
+                                                    ? ' is-invalid'
+                                                    : ''
+                                            }`}
+                                        />
+                                        <ErrorMessage
+                                            name='phone_number'
+                                            component='div'
+                                            className='invalid-feedback'
+                                        />
+                                    </div>
+                               
+                                
                                     <label
                                         htmlFor='begining_date'
                                         className='label'
@@ -143,8 +250,7 @@ export default (props) => {
                                         value={values.begining_date}
                                         onChange={setFieldValue}
                                     />
-                                </div>
-                                <div className='column'>
+                                
                                     <label
                                         htmlFor='ending_date'
                                         className='label'
@@ -157,8 +263,8 @@ export default (props) => {
                                         onChange={setFieldValue}
                                     />
                                 </div>
-                            </div>
-                        </div>
+                            
+                        
                         {/* MORE INFORMATIONS */}
                         <div className='form-group-field'>
                             <label htmlFor='message' className='label'>
@@ -211,11 +317,12 @@ export default (props) => {
                             </button>
                             {isSubmitting && <LoadingSpinner />}
                             <button
-                                className="button"
+                                className='button'
                                 onClick={(event) => {
-                                    history.push('/');
+                                    history.push('/')
                                 }}
-                                >Annuler
+                            >
+                                Annuler
                             </button>
                             {status && (
                                 <div className={'alert alert-danger'}>
