@@ -86,6 +86,7 @@ export default (props) => {
                   setStatus();
                   console.log('submitting form');
                   addToast(`Confirmation de réservation envoyé sur ${email}`, { appearance: 'success', autoDismiss: true }),
+                  history.push('/profil'),
                   bookingService.handleBooking(
                     last_name,
                     first_name,
@@ -103,7 +104,7 @@ export default (props) => {
               {({
                 errors, status, touched, isSubmitting, values, setFieldValue,
               }) => (
-                  <Form>
+                  <Form className = 'field form-content panel'>
                       {/* BEGIN AND END DATE */}
                       <div className="form-group-field">
                           <div className="columns">
@@ -184,6 +185,7 @@ export default (props) => {
                                 type="submit"
                                 className="button is-success"
                                 disabled={isSubmitting}
+                                
                           >
                               Réserver ce logement
                           </button>
