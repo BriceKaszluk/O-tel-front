@@ -11,7 +11,7 @@ import { adminServices } from 'src/services/adminServices';
 //scss
 import './styles.scss';
 
-export default ({modalActive, closeModal, informations, actualDate, endingDate}) => {
+export default ({modalActive, closeModal, informations}) => {
 
     const { setLoading } = useAdminManagement();
 
@@ -35,11 +35,11 @@ export default ({modalActive, closeModal, informations, actualDate, endingDate})
                 {/* settings of formik */}
                 <Formik
                     initialValues={{
+                      id: informations.id,
                       first_name: informations.user.first_name,
                       last_name: informations.user.last_name,
                       email: informations.user.email,
                       phone_number: informations.user.phone_number,
-                      user_id: informations.user.id,
                       house_name: informations.house.house_name,
                       begining_date: informations.begining_date,
                       ending_date: informations.ending_date
@@ -49,17 +49,16 @@ export default ({modalActive, closeModal, informations, actualDate, endingDate})
                         last_name: Yup.string().required('veuillez entrer un nom'),
                         email: Yup.string().required('veuillez entrer un email valide'),
                         phone_number: Yup.string().required('veuillez entrer un numéro de téléphone'),
-                        begining_date: Yup.string('Veuillez entrer une date'),
-                        ending_date: Yup.string('Veuillez entrer une date')
+                        begining_date: Yup.string().required('Veuillez entrer une date'),
+                        ending_date: Yup.string().required('Veuillez entrer une date')
                     })}
                     onSubmit={(
                         { 
+                        id,
                         last_name, 
                         first_name, 
                         email, 
                         phone_number, 
-                        user_id,
-                        house_name,
                         begining_date,
                         ending_date
                         }, 
@@ -67,12 +66,11 @@ export default ({modalActive, closeModal, informations, actualDate, endingDate})
                         setStatus();
                         {/* we call the handle update service */}
                         adminServices.handleUpdate(
+                            id,
                             last_name, 
                             first_name, 
                             email, 
                             phone_number, 
-                            user_id,
-                            house_name,
                             begining_date,
                             ending_date
                             )

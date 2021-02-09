@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { getData } from 'src/hooks/dataFetcher'
 import { useHistory } from 'react-router-dom'
 import './styles.scss'
 import AdminBookingModifier from 'src/components/AdminBookingModifier'
 import { adminServices } from 'src/services/adminServices';
 
-export default ({actualBooking, beginDate, endDate}) => {
+export default ({actualBooking}) => {
 
     const history = useHistory()
 

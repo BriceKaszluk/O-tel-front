@@ -32,7 +32,6 @@ export const allBookings = async () => {
                     booking.ending_date = new Date(booking.ending_date);
                     return booking;
             })
-    
                 console.log(bookingsDate, 'bk after parse')
             
                 //we compare actual date to end date of bookings
@@ -50,9 +49,6 @@ export const allBookings = async () => {
                 bookingGestion(filteredActualBookings, filteredOldBookings);
                 adminSetUsersBookings(filteredActualBookings, filteredOldBookings)
             }
-            
         }
-
-
 }
 
