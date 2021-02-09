@@ -49,7 +49,7 @@ const App = () => {
                   <Route exact path="/" component={Home} />
                   <Route exact path="/update-booking" component={BookingUpdate} />
                   <PrivateRoute path="/booking/:houseId" component={Booking} />
-                  <Route exact path="/booking_dashboard" component={BookingDashboard} />
+                  <PrivateRoute exact path="/booking_dashboard" component={BookingDashboard} />
                   <Route exact path="/booking_admin" component={BookingAdmin} />
                   <PrivateRoute exact path="/profil" component={Profil} />
                   <Route exact path="/TermsOfUse" component={TermsOfUse} />
