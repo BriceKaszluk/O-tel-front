@@ -1,6 +1,7 @@
 Form {
    width: 50em;
-   margin: auto;
+   margin: auto, 10em;
+  
  }
 
  .checkbox {
@@ -16,4 +17,8 @@ input {
 
 .label {
   margin: 5em;
+}
+
+.form-group-field {
+  margin-bottom: 2em;
 }
