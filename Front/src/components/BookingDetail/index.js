@@ -3,11 +3,12 @@ import { useHistory } from 'react-router-dom'
 import './styles.scss'
 import AdminBookingModifier from 'src/components/AdminBookingModifier'
 import { adminServices } from 'src/services/adminServices';
+import { useToasts } from 'react-toast-notifications';
 
 export default ({actualBooking}) => {
 
     const history = useHistory()
-
+    const { addToast } = useToasts()
     const [isActiveModifier, setIsActiveModifier] = useState(false);
 
  /*   const updateBooking = (booking_id, customer_last_name, customer_first_name, customer_email, customer_phone_number, begining_date, ending_date, message, housing_id, user_id) => {
