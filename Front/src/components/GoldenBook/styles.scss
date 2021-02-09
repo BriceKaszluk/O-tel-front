@@ -1,25 +1,59 @@
-.title.is-1 {
-    font-size: 3rem;
-    text-shadow: 0em 0.1em 0.1em rgb(223, 190, 7);
-    font-style: italic;
-    margin-top: 0.1rem;
+.h1{
+    position:relative;
+    font-size: 4rem;
+
 }
 
-.goldenbook {
-    border-top: 1px solid rgb(209, 208, 208);
-    padding: 1rem;
-    background-image: url("src/assets/images/goldbook_icon.png");
+.content-box{
+    background-image: url('src/assets/images/bluebell.jpg');
     background-repeat: no-repeat;
-    background-position: 90% 40%;
-    background-size : 25% 40%;
+    background-position: center;
+    background-size: cover;
+
+    position: relative;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: center;
+    margin: 1rem;
+    width: 100vw;
 }
+
 .notice{
-    opacity: 0.96;
-    width: 60%;
-    padding: 1rem;
-    .notification{
-        margin: 2rem auto;
-        padding: 2rem auto;
-        width: 80%;
-    }
+    padding: 2rem auto;
+    opacity: 0.85;
+    width: 30vw;
+    height: 30vh;
+    padding:2rem;
+
 }
+
+
+@media screen and (min-width: 1178px){
+
+  .notice{
+    width: 30vw;
+    height: auto;
+  }
+} 
+  
+  @media only screen and (max-width: 1023px) {
+    
+    .notice{
+      width: 80vw;
+      height: 40vh;
+    }
+  }
+  
+  @media only screen and (max-width: 728px) {
+    .notice{
+      width: 80vw;
+      height: 40vh;
+    }
+  }
+  
+  @media only screen and (max-width: 480px) {
+    .notice{
+      width: 90vw;
+      height: 80vh;
+    }
+  }

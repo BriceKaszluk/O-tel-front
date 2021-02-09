@@ -189,26 +189,30 @@ module.exports = {
     }, 
 
     uptadeAdminBooking: async (request, response) => {
+        
         try {
             
             const updatedBooking = await Booking.findOne({
-                where: {id: request.params.id}
+                where: {id: request.params.id},
+                
             });
-
-                // we retrieve the values ​​to modify
-               const begining_date = request.body.begining_date;
-               const ending_date = request.body.ending_date;
-
-               // we check to verify if the values ​​are there, if they are they will be modified
-               if (begining_date){
-                   updatedBooking.begining_date = begining_date;
-               }
-               if (ending_date){
-                   updatedBooking.ending_date = ending_date;
-               }
-
+            
+                const begining_date = request.body.begining_date;
+                const ending_date = request.body.ending_date;
+                
+               
+               
+             // we check to verify if the values ​​are there, if they are they will be modified
+             if (begining_date){
+                updatedBooking.begining_date = begining_date;
+            }
+            if (ending_date){
+                updatedBooking.ending_date = ending_date;
+            }
+        
                // we save in DB
                await updatedBooking.save(); 
+               
                response.json({data: updatedBooking});
         
 
@@ -253,7 +257,7 @@ module.exports = {
                 where: {id: bookingId}
     
             });
-            
+            console.log('réservation: ', booking); 
             await booking.destroy(); 
             response.json({data: booking});
         

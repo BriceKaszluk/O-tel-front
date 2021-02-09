@@ -1,17 +1,82 @@
-.nulo {
+.profil {
   background-image: url('src/assets/images/mountain2.jpg');
-  background-size: cover;
+  background-repeat: no-repeat;
   background-position: center;
-  width: 100vw;
-  height: 100vh;
-  //filter:blur(0.2rem);
-  //opacity: 0.8;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
 }
 
-.nulo {
-  display: flex;
+.profil-detail{
+  width: 50vw;
+  height: 40vh;
+  opacity: 0.95;
 }
-.profil__container {
+
+.profil-history{
+  width: 78vw;
+  height: auto;
+  opacity: 0.93;
+  padding: 0.5rem auto;
+  margin: 0.5rem;
+  justify-content: center;
+
+    .reservation{
+      width: 90%;
+      height: auto;
+      display: flex; 
+      padding: 1rem;
+
+    .notification{
+      width: 60vw;
+      margin: 0.5rem;
+      
+    }
+  }
+    .history{
+      width: 90%;
+      height: 40vh;
+      padding: 1rem;
+
+    .notification{
+      width: 60vw;
+      margin: 0.5rem;
+      
+    }
+  }
+}
+  
+  @media only screen and (max-width: 1023px) {
+    
+    .profil-detail{
+      width: 60vw;
+      height: 60vh;
+      padding: 1rem;
+
+    }
+  }
+  
+  @media only screen and (max-width: 728px) {
+    .profil-detail{
+      width: 70vw;
+      height: auto;
+    }
+    .profil-history{
+      display:flex;
+      flex-wrap: wrap;
+      width: 80vw;
+
+    }
+  }
+  
+  @media only screen and (max-width: 480px) {
+    .profil-detail{
+      width: 90vw;
+      height: 80vh;
+    }
+
+  }
+/*.profil__container {
   width: 90%;
   margin: auto;
   display: flex;

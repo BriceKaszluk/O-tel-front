@@ -9,8 +9,9 @@ import LoadingSpinner from 'src/components/LoadingSpinner';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useAuthentication } from 'src/components/UserContext';
 import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css"
 import axios from 'axios';
-
+import { useToasts } from 'react-toast-notifications';
 // import
 import './styles.scss';
 
@@ -18,7 +19,7 @@ export default (props) => {
   const history = useHistory();
   const { user } = useAuthentication();
   const { houseId } = props.match.params;
-
+  const { addToast } = useToasts()
   const [result, setResult] = useState({});
   const [dataLoaded, setDataLoaded] = useState(false);
 
@@ -80,9 +81,11 @@ export default (props) => {
                     user_id,
                   },
                   { setStatus, setSubmitting },
+                  
                 ) => {
                   setStatus();
                   console.log('submitting form');
+                  addToast(`Confirmation de réservation envoyé sur ${email}`, { appearance: 'success', autoDismiss: true }),
                   bookingService.handleBooking(
                     last_name,
                     first_name,
@@ -104,7 +107,7 @@ export default (props) => {
                       {/* BEGIN AND END DATE */}
                       <div className="form-group-field">
                           <div className="columns">
-                              <div className="column">
+                              <div className="column picker">
                                   <label
                                         htmlFor="begining_date"
                                         className="label"
@@ -115,6 +118,7 @@ export default (props) => {
                                         name="begining_date"
                                         value={values.begining_date}
                                         onChange={setFieldValue}
+                                        
                                   />
                               </div>
                               <div className="column">
@@ -128,6 +132,7 @@ export default (props) => {
                                         name="ending_date"
                                         value={values.ending_date}
                                         onChange={setFieldValue}
+                                        
                                   />
                               </div>
                           </div>
@@ -188,6 +193,7 @@ export default (props) => {
                                 onClick={(event) => {
                                   history.push('/');
                                 }}
+                                
                           >Annuler
                           </button>
                           {status && (
