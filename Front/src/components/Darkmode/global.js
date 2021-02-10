@@ -2,7 +2,7 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
-  body, .navbar-item, .navbar-link {
+  body, .navbar-menu, .navbar-link, .navbar-item {
     background: ${({ theme }) => theme.body};
     color: ${({ theme }) => theme.text};
     transition: all 1.35s linear;
@@ -21,13 +21,7 @@ export const GlobalStyles = createGlobalStyle`
   .label, .acceptTerm_p {
     color: ${({ theme }) => theme.text};
   }
-  .navbar-item, .navbar-link {
-    color: ${({ theme }) => theme.text};
-  }
   .navbar-burger {
     color: ${({ theme }) => theme.text};
-  }
-  .navbar-menu, .navbar-link, .navbar-item, .navbar-dropdown {
-    background-color: ${({ theme }) => theme.body};
   }
 `;
