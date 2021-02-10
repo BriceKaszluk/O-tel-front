@@ -88,7 +88,7 @@ export default ({ modalActive, closeModal }) => {
                                         <ErrorMessage name="first_name" component="div" className="invalid-feedback" />
                                     </div>
                                     <div className="form-group field">
-                                        <label htmlFor="email" className="label">Email</label>
+                                        <label htmlFor="email" className="label">Courriel</label>
                                         <Field name="email" type="email" className={`form-control input${errors.email && touched.email ? ' is-invalid' : ''}`} />
                                         <ErrorMessage name="email" component="div" className="invalid-feedback" />
                                     </div>
