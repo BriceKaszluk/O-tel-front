@@ -7,17 +7,6 @@ export const allBookings = async () => {
 
     const {adminSetUsersBookings} = useAdminManagement();
     const { bookingGestion, booking, oldBooking } = useAuthentication();
-    
-
-    const reverseDate = (array) => {
-        return array.map(date => {
-            const beforeBegining_date = new Date(date.begining_date);
-            const beforeOldEnding_date = new Date (date.ending_date);
-            date.begining_date = beforeBegining_date.toLocaleDateString();
-            date.ending_date = beforeOldEnding_date.toLocaleDateString();
-            return date
-        })
-    }
 
     //we get all the user bookings
     const allUserBookings = await getData.getAllBookings();

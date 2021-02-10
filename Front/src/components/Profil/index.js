@@ -96,7 +96,6 @@ export default () => {
                                     </div>
                                 ))
                                 }
-
                       </div>
 
                       {/* old bookings */}

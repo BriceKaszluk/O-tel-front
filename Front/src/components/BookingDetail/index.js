@@ -10,7 +10,9 @@ export default ({actualBooking}) => {
     const history = useHistory()
     const { addToast } = useToasts()
     const [isActiveModifier, setIsActiveModifier] = useState(false);
-
+    const [beginDate, setBeginDate] = useState(actualBooking.begining_date);
+    const [oldDate, setOldDate] = useState(actualBooking.ending_date);
+console.log(beginDate, 'la begin state')
  /*   const updateBooking = (booking_id, customer_last_name, customer_first_name, customer_email, customer_phone_number, begining_date, ending_date, message, housing_id, user_id) => {
         console.log('in booking service patch method');
 
@@ -30,10 +32,10 @@ export default ({actualBooking}) => {
                     <div className='card-content'>
                         <div className='columns'>
                             <div className='column dashboard-column'>
-                                Du : {actualBooking.begining_date.toLocaleDateString()}
+                                Du : {beginDate.toLocaleDateString()}
                             </div>
                             <div className='column dashboard-column'>
-                                Au : {actualBooking.ending_date.toLocaleDateString()}
+                                Au : {oldDate.toLocaleDateString()}
                             </div>
                             <div className='column dashboard-column'>
                                 {actualBooking.user.first_name}{' '}
@@ -60,6 +62,10 @@ export default ({actualBooking}) => {
                                     modalActive={isActiveModifier} 
                                     closeModal={setIsActiveModifier}
                                     informations={actualBooking} 
+                                    setterBeginDate={setBeginDate}
+                                    seeterEndingDate={setOldDate}
+                                    first_date={actualBooking.begining_date}
+                                    last_date={actualBooking.ending_date}
                                 /> : ''
                                 }
                             </div>

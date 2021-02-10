@@ -11,7 +11,7 @@ import { adminServices } from 'src/services/adminServices';
 //scss
 import './styles.scss';
 
-export default ({modalActive, closeModal, informations}) => {
+export default ({modalActive, closeModal, informations, setterBeginDate, seeterEndingDate, first_date, last_date}) => {
 
     const { setLoading } = useAdminManagement();
 
@@ -36,29 +36,16 @@ export default ({modalActive, closeModal, informations}) => {
                 <Formik
                     initialValues={{
                       id: informations.id,
-                      first_name: informations.user.first_name,
-                      last_name: informations.user.last_name,
-                      email: informations.user.email,
-                      phone_number: informations.user.phone_number,
-                      house_name: informations.house.house_name,
-                      begining_date: informations.begining_date,
-                      ending_date: informations.ending_date
+                      begining_date: first_date,
+                      ending_date: last_date
                     }}
                     validationSchema={Yup.object().shape({
-                        first_name: Yup.string().required('veuillez entrer un prénom'),
-                        last_name: Yup.string().required('veuillez entrer un nom'),
-                        email: Yup.string().required('veuillez entrer un email valide'),
-                        phone_number: Yup.string().required('veuillez entrer un numéro de téléphone'),
                         begining_date: Yup.string().required('Veuillez entrer une date'),
                         ending_date: Yup.string().required('Veuillez entrer une date')
                     })}
                     onSubmit={(
                         { 
                         id,
-                        last_name, 
-                        first_name, 
-                        email, 
-                        phone_number, 
                         begining_date,
                         ending_date
                         }, 
@@ -67,20 +54,20 @@ export default ({modalActive, closeModal, informations}) => {
                         {/* we call the handle update service */}
                         adminServices.handleUpdate(
                             id,
-                            last_name, 
-                            first_name, 
-                            email, 
-                            phone_number, 
                             begining_date,
                             ending_date
                             )
-                            .then((user) => {
-                            if (user.data.errors) {
-                                setStatus(user.data.errors);
+                            .then((booking) => {
+                                console.log(booking.data.data, 'renvoi api');
+                            if (booking.data.errors) {
+                                setStatus(booking.data.errors);
                                 setSubmitting(false);
                             }
                             else {
                                 //we update context and close modal
+                                console.log(booking.data.data.begining_date, 'renvoi api');
+                                setterBeginDate(new Date(booking.data.data.begining_date))
+                                seeterEndingDate(new Date(booking.data.data.ending_date))
                                 setLoading(false);
                                 closeModal(!modalActive);
                             }
@@ -105,7 +92,6 @@ export default ({modalActive, closeModal, informations}) => {
                                         name="begining_date"
                                         value={values.begining_date}
                                         onChange={setFieldValue}
-                                        dateFormat='MM/dd/yyyy'
                                     />
                                     <label
                                         htmlFor="ending_date"
@@ -116,30 +102,7 @@ export default ({modalActive, closeModal, informations}) => {
                                         name="ending_date"
                                         value={values.ending_date}
                                         onChange={setFieldValue}
-                                        dateFormat='dd/MM/yyyy'
                                     />
-                                </div>
-                                <div className="field">
-                                    <div className="form-group field">
-                                        <label htmlFor="first_name" className="label">Prénom</label>
-                                        <Field name="first_name" type="text" className={`form-control input${errors.first_name && touched.first_name ? ' is-invalid' : ''}`} />
-                                        <ErrorMessage name="first_name" component="div" className="invalid-feedback" />
-                                    </div>
-                                    <div className="form-group field">
-                                        <label htmlFor="last_name" className="label">Nom</label>
-                                        <Field name="last_name" type="text" className={`form-control input${errors.first_name && touched.last_name ? ' is-invalid' : ''}`} />
-                                        <ErrorMessage name="last_name" component="div" className="invalid-feedback" />
-                                    </div>
-                                    <div className="form-group field">
-                                        <label htmlFor="email" className="label">Email</label>
-                                        <Field name="email" type="email" className={`form-control input${errors.email && touched.email ? ' is-invalid' : ''}`} />
-                                        <ErrorMessage name="email" component="div" className="invalid-feedback" />
-                                    </div>
-                                    <div className="form-group field">
-                                        <label htmlFor="phone_number" className="label">Téléphone</label>
-                                        <Field name="phone_number" type="tel" className={`form-control input${errors.phone_number && touched.phone_number ? ' is-invalid' : ''}`} />
-                                        <ErrorMessage name="phone_number" component="div" className="invalid-feedback" />
-                                    </div>
                                 </div>
                             </section>
 

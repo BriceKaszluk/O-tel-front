@@ -2,14 +2,14 @@ import axios from 'axios';
 
 export const adminServices = {
 
-  handleUpdate: (last_name, first_name, email, phone_number, id, house_name, begining_date, ending_date) => {
+  handleUpdate: (id, begining_date, ending_date) => {
     console.log('in admin update service');
 
     const requestOptions = {
       method: 'PATCH',
       url: `https://project-otel.herokuapp.com/admin/reservation/${id}`,
       headers: { 'Content-Type': 'application/json' },
-      data: { last_name, first_name, email, phone_number, id, house_name, begining_date, ending_date }
+      data: { id, begining_date, ending_date }
     };
 
     return axios(requestOptions);
