@@ -2,6 +2,7 @@
 const {Booking, Notice, Role, User} = require('../models');
 const {google} = require('googleapis');
 const nodemailer = require('nodemailer');
+const { update } = require('../models/role');
 
 
 
@@ -191,42 +192,30 @@ module.exports = {
     }, 
 
     uptadeAdminBooking: async (request, response,) => {
-        const bookingId = request.params.id; 
-        const userId = request.params.id; 
+       
+        // const userId = request.params.id; 
         try {
             
         
-            const updatedUser = await User.findOne({
-                where: {id: userId}, 
+            // const updatedUser = await User.findOne({
+            //     where: {id: userId}, 
                 
-            });
+            // });
 
-            const last_name = request.body.last_name; 
-            const first_name = request.body.first_name;
-            const email = request.body.email;
-            const phone_number = request.body.phone_number
+            // const last_name = request.body.last_name; 
+            // const first_name = request.body.first_name;
+            // const email = request.body.email;
+            // const phone_number = request.body.phone_number
 
-            if (last_name){
-                updatedUser.last_name = last_name;
-            }
-            if (first_name){
-                updatedUser.first_name = first_name;
-            }
-            if (email){
-                updatedUser.email = email;
-            }
-            if (phone_number){
-                updatedUser.phone_number = phone_number;
-            }
+           
 
             const updatedBooking = await Booking.findOne({
     
-                where: {id: bookingId}, 
-                user_id:userId,
-                include: [{
-                    model: User, 
-                    as: 'user'
-                }]
+                where: {id: request.params.id}, 
+                // include: [{
+                //     model: User, 
+                //     as: 'user'
+                // }]
                 
             });
 
@@ -241,20 +230,33 @@ module.exports = {
                
    
              // we check to verify if the values ​​are there, if they are they will be modified
-           
             if (begining_date){
                 updatedBooking.begining_date = begining_date;
             }
             if (ending_date){
                 updatedBooking.ending_date = ending_date;
             }
-            
+            //  if (last_name){
+            //     updatedBooking.user.last_name = last_name;
+            // }
+            // if (first_name){
+            //     updatedBooking.user.first_name = first_name;
+            // }
+            // if (email){
+            //     updatedBooking.user.email = email;
+            // }
+            // if (phone_number){
+            //     updatedBooking.user.phone_number = phone_number;
+            // }
+            // if (user_id){
+            //     updatedBooking.user_id = user_id;
+            // }
          
                // we save in DB
                await updatedBooking.save(); 
-               await updatedUser.save(); 
+          
 
-               response.json({data: updatedBooking, updatedUser}); 
+               response.json({data: updatedBooking}); 
    
 
           
