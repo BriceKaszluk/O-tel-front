@@ -296,7 +296,7 @@ export default (props) => {
                             />
                             <span className='acceptTerm_p'> J'accepte les</span>
                             <Link
-                                to='/logement2'
+                                to='/TermsOfUse'
                                 className='terms_and_conditions'
                             >
                                 termes et conditions
