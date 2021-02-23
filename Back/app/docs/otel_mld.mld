@@ -1,9 +1,0 @@
-Role (Label) 
-
-User (First_Name, Last_Name, Address, Email,  Phone_Number, Password, #Role) 
-
-Notice (Comments, Rate, #Housing, #User) 
-
-Booking (Begining_Date, Ending_Date, #Housing, #User) 
-
-Housing (Description, Price, Picture, PlaceNumber) 
